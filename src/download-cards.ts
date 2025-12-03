@@ -19,7 +19,7 @@ interface SetResponse {
 // 🌐 TCGdex API base URL
 const TCGDEX_API = "https://api.tcgdex.net/v2/en";
 const IMAGES_DIR = path.join(process.cwd(), "images");
-const LIMIT_PER_SET = 1;
+const LIMIT_PER_SET = 1000;
 
 // 🔽 Download a single image from URL
 const downloadImage = async (imageUrl: string, filePath: string): Promise<void> => {
@@ -57,11 +57,11 @@ const downloadSetImages = async (setId: string): Promise<void> => {
         // Download images sequentially to avoid overwhelming the server
         for (const card of cardsToDownload) {
             // Construct image URL based on TCGdex structure
-            const imageUrl = `${card.image}/low.png`;
+            const imageUrl = `${card.image}/high.png`;
             const fileName = `${card.id}_${card.name.replace(/[^a-z0-9]/gi, "_")}.png`;
-            const filePath = path.join(setDir, imageUrl);
+            const filePath = path.join(setDir, fileName);
 
-            await downloadImage(fileName, filePath);
+            await downloadImage(imageUrl, filePath);
 
             // Small delay to be respectful to the API
             await new Promise((resolve) => setTimeout(resolve, 100));
