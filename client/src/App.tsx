@@ -81,10 +81,22 @@ function App() {
 
     if (!context || video.readyState !== video.HAVE_ENOUGH_DATA) return;
 
-    // Draw video frame to canvas
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    context.drawImage(video, 0, 0);
+    // Calculate crop area (matching frame guide: 60% width, 5:7 ratio)
+    const cropWidth = video.videoWidth * 0.6;
+    const cropHeight = cropWidth * 1.4; // 5:7 ratio = 1.4
+    const cropX = (video.videoWidth - cropWidth) / 2;
+    const cropY = (video.videoHeight - cropHeight) / 2;
+
+    // Set canvas to crop size
+    canvas.width = cropWidth;
+    canvas.height = cropHeight;
+
+    // Draw only the cropped area
+    context.drawImage(
+      video,
+      cropX, cropY, cropWidth, cropHeight,  // source crop
+      0, 0, cropWidth, cropHeight            // destination
+    );
 
     // Convert canvas to blob
     canvas.toBlob(async (blob) => {
@@ -130,14 +142,25 @@ function App() {
 
       <main>
         <div className="scanner-container">
-          {/* Video stream */}
-          <video
-            ref={videoRef}
-            autoPlay
-            playsInline
-            muted
-            className={isScanning ? 'active' : 'hidden'}
-          />
+          {/* Video stream with frame overlay */}
+          <div className="video-wrapper">
+            <video
+              ref={videoRef}
+              autoPlay
+              playsInline
+              muted
+              className={isScanning ? 'active' : 'hidden'}
+            />
+            {isScanning && (
+              <div className="frame-guide">
+                <div className="frame-corner tl"></div>
+                <div className="frame-corner tr"></div>
+                <div className="frame-corner bl"></div>
+                <div className="frame-corner br"></div>
+                <p className="frame-text">Position card here</p>
+              </div>
+            )}
+          </div>
 
           {/* Hidden canvas for frame capture */}
           <canvas ref={canvasRef} style={{ display: 'none' }} />

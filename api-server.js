@@ -6,6 +6,7 @@ import path from 'path';
 import imghash from 'imghash';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { extractCard } from './card-detector.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -49,12 +50,18 @@ const hammingDistance = (hash1, hash2) => {
 };
 
 // 🔍 Find best matching cards
-const findMatches = async (imageHash, topN = 5, maxDistance = 20) => {
+const findMatches = async (imageHash, topN = 5, maxDistance = 50) => {
   const matches = [];
+  let closestDistance = Infinity;
 
   for (const card of hashDatabase.cards) {
     // Compare using perceptual hash (best for variations)
     const distance = hammingDistance(imageHash, card.hashes.perceptual);
+
+    // Track closest distance for debugging
+    if (distance < closestDistance) {
+      closestDistance = distance;
+    }
 
     if (distance <= maxDistance) {
       matches.push({
@@ -63,13 +70,15 @@ const findMatches = async (imageHash, topN = 5, maxDistance = 20) => {
         setId: card.setId,
         fileName: card.fileName,
         distance,
-        confidence: Math.max(0, 100 - (distance * 5)) // Simple confidence score
+        confidence: Math.max(0, 100 - (distance * 2)) // Simple confidence score
       });
     }
   }
 
   // Sort by distance (lower is better)
   matches.sort((a, b) => a.distance - b.distance);
+
+  console.log(`🔍 Closest match distance: ${closestDistance}`);
 
   return matches.slice(0, topN);
 };
@@ -94,24 +103,34 @@ fastify.post('/api/scan', async (request, reply) => {
 
     // Save temporary file
     const tempPath = path.join(__dirname, 'temp-scan.png');
+    const processedPath = path.join(__dirname, 'temp-processed.png');
     await fs.writeFile(tempPath, await data.toBuffer());
 
-    // Generate hash for uploaded image
-    const imageHash = await imghash.hash(tempPath, 16, 'hex');
+    // Extract and preprocess card
+    const extracted = await extractCard(tempPath, processedPath);
+
+    // Generate hash for processed image
+    const hashPath = extracted ? processedPath : tempPath;
+    const imageHash = await imghash.hash(hashPath, 16, 'hex');
+    console.log(`📸 Scan request - Hash: ${imageHash} (extracted: ${extracted})`);
 
     // Find matches
     const matches = await findMatches(imageHash);
 
-    // Clean up temp file
-    await fs.unlink(tempPath);
+    // Clean up temp files
+    await fs.unlink(tempPath).catch(() => {});
+    await fs.unlink(processedPath).catch(() => {});
 
     if (matches.length === 0) {
+      console.log(`❌ No match found`);
       return {
         matched: false,
         message: 'No matching card found',
         hash: imageHash
       };
     }
+
+    console.log(`✅ Match found: ${matches[0].cardId} (distance: ${matches[0].distance})`);
 
     // Return best match
     return {
