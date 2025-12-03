@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "download": "tsx src/download-cards.ts"
+    "download": "tsx src/download-cards.ts",
+    "generate-hashes": "tsx src/generate-hashes.ts"
   },
   "keywords": [
     "fastify",
@@ -17,7 +18,9 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.13.2",
-    "fastify": "^5.6.2"
+    "fastify": "^5.6.2",
+    "imghash": "^1.1.2",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",

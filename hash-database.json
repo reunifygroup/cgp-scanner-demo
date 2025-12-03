@@ -1,0 +1,4784 @@
+{
+  "generatedAt": "2025-12-03T14:09:36.747Z",
+  "totalCards": 434,
+  "sets": [
+    "sv09",
+    "sv10"
+  ],
+  "cards": [
+    {
+      "cardId": "sv09-001",
+      "cardName": "Caterpie",
+      "setId": "sv09",
+      "fileName": "sv09-001_Caterpie.png",
+      "hashes": {
+        "perceptual": "ffff81d1818180f180cb80c18839ffff8801bfef98ed1c077fff0edf000007d1",
+        "difference": "ffff81d1818180f180cb80c18839ffff8801bfef98ed1c077fff0edf000007d1",
+        "average": "ff0089a7e943ff00"
+      }
+    },
+    {
+      "cardId": "sv09-002",
+      "cardName": "Metapod",
+      "setId": "sv09",
+      "fileName": "sv09-002_Metapod.png",
+      "hashes": {
+        "perceptual": "eff9e159c303f001fc19e009b003f7cfbc01bfff90c704077fff0edf000007d1",
+        "difference": "eff9e159c303f001fc19e009b003f7cfbc01bfff90c704077fff0edf000007d1",
+        "average": "dec0c3c3fb01ff00"
+      }
+    },
+    {
+      "cardId": "sv09-003",
+      "cardName": "Butterfree",
+      "setId": "sv09",
+      "fileName": "sv09-003_Butterfree.png",
+      "hashes": {
+        "perceptual": "01d060003ff67ffe3de01ce081cfb07fbc81bfffb80580077fff0edf000007d1",
+        "difference": "01d060003ff67ffe3de01ce081cfb07fbc81bfffb80580077fff0edf000007d1",
+        "average": "00ff6c0ffb01ff00"
+      }
+    },
+    {
+      "cardId": "sv09-004",
+      "cardName": "Paras",
+      "setId": "sv09",
+      "fileName": "sv09-004_Paras.png",
+      "hashes": {
+        "perceptual": "ffffc01f800f800780e7800f803fd3ffbc01bfff9045101f7fff0edf000007d1",
+        "difference": "ffffc01f800f800780e7800f803fd3ffbc01bfff9045101f7fff0edf000007d1",
+        "average": "bf018b87eb03ff00"
+      }
+    },
+    {
+      "cardId": "sv09-005",
+      "cardName": "Parasect",
+      "setId": "sv09",
+      "fileName": "sv09-005_Parasect.png",
+      "hashes": {
+        "perceptual": "fffde1c1c081c063c067c9438019fcff9c01b9ff83c7181d3e7f0fff000007d9",
+        "difference": "fffde1c1c081c063c067c9438019fcff9c01b9ff83c7181d3e7f0fff000007d9",
+        "average": "fc8181e7cb437f10"
+      }
+    },
+    {
+      "cardId": "sv09-006",
+      "cardName": "Petilil",
+      "setId": "sv09",
+      "fileName": "sv09-006_Petilil.png",
+      "hashes": {
+        "perceptual": "effd8031807187f107e185fd81fd80cb8801bfef98ed1c077fff0edf000007d1",
+        "difference": "effd8031807187f107e185fd81fd80cb8801bfef98ed1c077fff0edf000007d1",
+        "average": "9d1c1e0fe943ff00"
+      }
+    },
+    {
+      "cardId": "sv09-007",
+      "cardName": "Lilligant",
+      "setId": "sv09",
+      "fileName": "sv09-007_Lilligant.png",
+      "hashes": {
+        "perceptual": "a7f1a000bd407e7ffc1f93c583c1a08f944d81e7831fb81f7fff0fff00000781",
+        "difference": "a7f1a000bd407e7ffc1f93c583c1a08f944d81e7831fb81f7fff0fff00000781",
+        "average": "c8e6d3898b477f10"
+      }
+    },
+    {
+      "cardId": "sv09-008",
+      "cardName": "Maractus",
+      "setId": "sv09",
+      "fileName": "sv09-008_Maractus.png",
+      "hashes": {
+        "perceptual": "effdb009f801f203f007a00180cbffffb40d81ef8387b83d3fff0fff000007c1",
+        "difference": "effdb009f801f203f007a00180cbffffb40d81ef8387b83d3fff0fff000007c1",
+        "average": "ecc1c1cb83cb7f10"
+      }
+    },
+    {
+      "cardId": "sv09-009",
+      "cardName": "Karrablast",
+      "setId": "sv09",
+      "fileName": "sv09-009_Karrablast.png",
+      "hashes": {
+        "perceptual": "ffff8cd18c018981f38381038781ffc7bc01bfff9845080f7fff0fdf000007c1",
+        "difference": "ffff8cd18c018981f38381038781ffc7bc01bfff9845080f7fff0fdf000007c1",
+        "average": "fd2091b9eb037f10"
+      }
+    },
+    {
+      "cardId": "sv09-010",
+      "cardName": "Foongus",
+      "setId": "sv09",
+      "fileName": "sv09-010_Foongus.png",
+      "hashes": {
+        "perceptual": "effd83f1887190118381838de381e7f78801bfff80453e1f7fff0edf000007d1",
+        "difference": "effd83f1887190118381838de381e7f78801bfff80453e1f7fff0edf000007d1",
+        "average": "dd2499d1eb03ff00"
+      }
+    },
+    {
+      "cardId": "sv09-011",
+      "cardName": "Amoonguss ex",
+      "setId": "sv09",
+      "fileName": "sv09-011_Amoonguss_ex.png",
+      "hashes": {
+        "perceptual": "00106df0cff43ff4e6001b80ffe09ff8bfcdbeed020f2009301e7ffc7c1e1038",
+        "difference": "00106df0cff43ff4e6001b80ffe09ff8bfcdbeed020f2009301e7ffc7c1e1038",
+        "average": "8c3ed0f8fa037e06"
+      }
+    },
+    {
+      "cardId": "sv09-012",
+      "cardName": "Shelmet",
+      "setId": "sv09",
+      "fileName": "sv09-012_Shelmet.png",
+      "hashes": {
+        "perceptual": "fffff01d800180f180f18071803bfff7bc01bfff984518077fff0fdf000007c1",
+        "difference": "fffff01d800180f180f18071803bfff7bc01bfff984518077fff0fdf000007c1",
+        "average": "ff008d87fb01ff00"
+      }
+    },
+    {
+      "cardId": "sv09-013",
+      "cardName": "Accelgor",
+      "setId": "sv09",
+      "fileName": "sv09-013_Accelgor.png",
+      "hashes": {
+        "perceptual": "eff1e1f5807d80098921e4058603ffffbc01bfff98058c077fff0fdf000001d9",
+        "difference": "eff1e1f5807d80098921e4058603ffffbc01bfff98058c077fff0fdf000001d9",
+        "average": "de0381b7fb01ff00"
+      }
+    },
+    {
+      "cardId": "sv09-014",
+      "cardName": "Durant",
+      "setId": "sv09",
+      "fileName": "sv09-014_Durant.png",
+      "hashes": {
+        "perceptual": "ffffc01181d1a7018701d801bb01fffb9c01bfff8081073f7fff0fdf000007c1",
+        "difference": "ffffc01181d1a7018701d801bb01fffb9c01bfff8081073f7fff0fdf000007c1",
+        "average": "fd8091f1f9037f10"
+      }
+    },
+    {
+      "cardId": "sv09-015",
+      "cardName": "Virizion",
+      "setId": "sv09",
+      "fileName": "sv09-015_Virizion.png",
+      "hashes": {
+        "perceptual": "eff921c986c98781aec1b0458001ffff9c01b9fd807f183d3fff0fff000007c1",
+        "difference": "eff921c986c98781aec1b0458001ffff9c01b9fd807f183d3fff0fff000007c1",
+        "average": "dc38c9c36b077f10"
+      }
+    },
+    {
+      "cardId": "sv09-016",
+      "cardName": "Sprigatito",
+      "setId": "sv09",
+      "fileName": "sv09-016_Sprigatito.png",
+      "hashes": {
+        "perceptual": "eff9600064e1f6e1fc41fc79f409f8019801bfff80013f1f7fff0fdf000007c1",
+        "difference": "eff9600064e1f6e1fc41fc79f409f8019801bfff80013f1f7fff0fdf000007c1",
+        "average": "e8e8e8e1eb037f10"
+      }
+    },
+    {
+      "cardId": "sv09-017",
+      "cardName": "Floragato",
+      "setId": "sv09",
+      "fileName": "sv09-017_Floragato.png",
+      "hashes": {
+        "perceptual": "effde0c1e4e1e001e201a58181c7ff9fbc01bfff9005103f7fff0fdf000007c1",
+        "difference": "effde0c1e4e1e001e201a58181c7ff9fbc01bfff9005103f7fff0fdf000007c1",
+        "average": "fd8081bbfb017f10"
+      }
+    },
+    {
+      "cardId": "sv09-018",
+      "cardName": "Meowscarada",
+      "setId": "sv09",
+      "fileName": "sv09-018_Meowscarada.png",
+      "hashes": {
+        "perceptual": "ffffe121c00198d199d982e987318f0f800181efbfef981d2cff2fff000087d1",
+        "difference": "ffffe121c00198d199d982e987318f0f800181efbfef981d2cff2fff000087d1",
+        "average": "fd808db18b637f10"
+      }
+    },
+    {
+      "cardId": "sv09-019",
+      "cardName": "Nymble",
+      "setId": "sv09",
+      "fileName": "sv09-019_Nymble.png",
+      "hashes": {
+        "perceptual": "eff920107c3c9c718ef98ff18121c1e38801bfef986d1c177fff0fff00000781",
+        "difference": "eff920107c3c9c718ef98ff18121c1e38801bfef986d1c177fff0fff00000781",
+        "average": "5c66bd81e943ff00"
+      }
+    },
+    {
+      "cardId": "sv09-020",
+      "cardName": "Magmar",
+      "setId": "sv09",
+      "fileName": "sv09-020_Magmar.png",
+      "hashes": {
+        "perceptual": "aff900107fe07f21887f85bf8011fe439c01bfff10010f3f7fff3fff00000380",
+        "difference": "aff900107fe07f21887f85bf8011fe439c01bfff10010f3f7fff3fff00000380",
+        "average": "14fcaf817b03ff00"
+      }
+    },
+    {
+      "cardId": "sv09-021",
+      "cardName": "Magmortar",
+      "setId": "sv09",
+      "fileName": "sv09-021_Magmortar.png",
+      "hashes": {
+        "perceptual": "effff0c3e00b80038641be01be01ff1f800981ef9fff083d7fff3fff00000380",
+        "difference": "effff0c3e00b80038641be01be01ff1f800981ef9fff083d7fff3fff00000380",
+        "average": "fd01a1f18727ff00"
+      }
+    },
+    {
+      "cardId": "sv09-022",
+      "cardName": "Torchic",
+      "setId": "sv09",
+      "fileName": "sv09-022_Torchic.png",
+      "hashes": {
+        "perceptual": "27c010fc30fe3c7e60178c15f221bddf8001bfff18cd1c1f7fff3fff00000380",
+        "difference": "27c010fc30fe3c7e60178c15f221bddf8001bfff18cd1c1f7fff3fff00000380",
+        "average": "0e4f60e7790bff00"
+      }
+    },
+    {
+      "cardId": "sv09-023",
+      "cardName": "Combusken",
+      "setId": "sv09",
+      "fileName": "sv09-023_Combusken.png",
+      "hashes": {
+        "perceptual": "0200203c3efe7ffe38fe902f90079c3f80013fff19cd1c1f7fff7fff00000180",
+        "difference": "0200203c3efe7ffe38fe902f90079c3f80013fff19cd1c1f7fff7fff00000180",
+        "average": "047f4f43790bff00"
+      }
+    },
+    {
+      "cardId": "sv09-024",
+      "cardName": "Blaziken ex",
+      "setId": "sv09",
+      "fileName": "sv09-024_Blaziken_ex.png",
+      "hashes": {
+        "perceptual": "0000619c7e5f7e7f48f783df1f1eb0800c3805397fff38387ffe3fd20c1e1002",
+        "difference": "0000619c7e5f7e7f48f783df1f1eb0800c3805397fff38387ffe3fd20c1e1002",
+        "average": "00ff3f50066f7f02"
+      }
+    },
+    {
+      "cardId": "sv09-025",
+      "cardName": "Torkoal",
+      "setId": "sv09",
+      "fileName": "sv09-025_Torkoal.png",
+      "hashes": {
+        "perceptual": "fffd8211800fc90fb88790818007ffff8001b9fd3bef083d7fff7fff00000180",
+        "difference": "fffd8211800fc90fb88790818007ffff8001b9fd3bef083d7fff7fff00000180",
+        "average": "bc83c18f6b07ff00"
+      }
+    },
+    {
+      "cardId": "sv09-026",
+      "cardName": "N s Darumaka",
+      "setId": "sv09",
+      "fileName": "sv09-026_N_s_Darumaka.png",
+      "hashes": {
+        "perceptual": "e7f9001077f0a7b1bd9d9e198209d51d8001997d3bff093d7fff7fff00000180",
+        "difference": "e7f9001077f0a7b1bd9d9e198209d51d8001997d3bff093d7fff7fff00000180",
+        "average": "14fce781432fff00"
+      }
+    },
+    {
+      "cardId": "sv09-027",
+      "cardName": "N s Darmanitan",
+      "setId": "sv09",
+      "fileName": "sv09-027_N_s_Darmanitan.png",
+      "hashes": {
+        "perceptual": "fffde061c6818e01801b801d8a1bdfffb86d98ff88df00071fff7fff00000780",
+        "difference": "fffde061c6818e01801b801d8a1bdfffb86d98ff88df00071fff7fff00000780",
+        "average": "fca003b7cf037f10"
+      }
+    },
+    {
+      "cardId": "sv09-028",
+      "cardName": "Larvesta",
+      "setId": "sv09",
+      "fileName": "sv09-028_Larvesta.png",
+      "hashes": {
+        "perceptual": "fff9001513c58ee197218fe183c1f0cf8001bfff184d3c1f7fff7fff00000600",
+        "difference": "fff9001513c58ee197218fe183c1f0cf8001bfff184d3c1f7fff7fff00000600",
+        "average": "7c1cb9897943ff00"
+      }
+    },
+    {
+      "cardId": "sv09-029",
+      "cardName": "Volcarona",
+      "setId": "sv09",
+      "fileName": "sv09-029_Volcarona.png",
+      "hashes": {
+        "perceptual": "fffde0e1e28191019821800591d9ffff8001bfff180d3e1f7fff7fff00000600",
+        "difference": "fffde0e1e28191019821800591d9ffff8001bfff180d3e1f7fff7fff00000600",
+        "average": "fd4081db7943ff00"
+      }
+    },
+    {
+      "cardId": "sv09-030",
+      "cardName": "Reshiram ex",
+      "setId": "sv09",
+      "fileName": "sv09-030_Reshiram_ex.png",
+      "hashes": {
+        "perceptual": "02007c417ffd79f88e3c1d7fc29a60f07ff138fc18fc0038ff9e401cf01e3f01",
+        "difference": "02007c417ffd79f88e3c1d7fc29a60f07ff138fc18fc0038ff9e401cf01e3f01",
+        "average": "607e36cc7e06c6e1"
+      }
+    },
+    {
+      "cardId": "sv09-031",
+      "cardName": "Volcanion ex",
+      "setId": "sv09",
+      "fileName": "sv09-031_Volcanion_ex.png",
+      "hashes": {
+        "perceptual": "07803e784788b7fb3c738023f883fda387b900039fff981d1ffe3edd481f3000",
+        "difference": "07803e784788b7fb3c738023f883fda387b900039fff981d1ffe3edd481f3000",
+        "average": "387365e105e77f40"
+      }
+    },
+    {
+      "cardId": "sv09-032",
+      "cardName": "Articuno",
+      "setId": "sv09",
+      "fileName": "sv09-032_Articuno.png",
+      "hashes": {
+        "perceptual": "2ff02ff17e61824100067c7e783f703f87f9b81f00011ffd7fff7eff000c0008",
+        "difference": "2ff02ff17e61824100067c7e783f703f87f9b81f00011ffd7fff7eff000c0008",
+        "average": "7c9843c7e7217f02"
+      }
+    },
+    {
+      "cardId": "sv09-033",
+      "cardName": "Remoraid",
+      "setId": "sv09",
+      "fileName": "sv09-033_Remoraid.png",
+      "hashes": {
+        "perceptual": "fffffe018481818183c3c141c003ffff82c13bfd07831a7d7fff7fff00080008",
+        "difference": "fffffe018481818183c3c141c003ffff82c13bfd07831a7d7fff7fff00080008",
+        "average": "fd1099c35f127f02"
+      }
+    },
+    {
+      "cardId": "sv09-034",
+      "cardName": "Octillery",
+      "setId": "sv09",
+      "fileName": "sv09-034_Octillery.png",
+      "hashes": {
+        "perceptual": "2ff0603c3833fc33fc07ee03c003fb0f87fdb87d01c3083d3fff7fff00040208",
+        "difference": "2ff0603c3833fc33fc07ee03c003fb0f87fdb87d01c3083d3fff7fff00040208",
+        "average": "46e5e1e16f037f02"
+      }
+    },
+    {
+      "cardId": "sv09-035",
+      "cardName": "Lotad",
+      "setId": "sv09",
+      "fileName": "sv09-035_Lotad.png",
+      "hashes": {
+        "perceptual": "fffffe3380018021838182c18f81ffdf00017fff38453f1e7fff7fff00000088",
+        "difference": "fffffe3380018021838182c18f81ffdf00017fff38453f1e7fff7fff00000088",
+        "average": "f58191f17946ff00"
+      }
+    },
+    {
+      "cardId": "sv09-036",
+      "cardName": "Lombre",
+      "setId": "sv09",
+      "fileName": "sv09-036_Lombre.png",
+      "hashes": {
+        "perceptual": "fffff3718001818185f982fd8101fd4b00417fff00053fbf7fff7fff00080008",
+        "difference": "fffff3718001818185f982fd8101fd4b00417fff00053fbf7fff7fff00080008",
+        "average": "ff008f917f027f02"
+      }
+    },
+    {
+      "cardId": "sv09-037",
+      "cardName": "Ludicolo",
+      "setId": "sv09",
+      "fileName": "sv09-037_Ludicolo.png",
+      "hashes": {
+        "perceptual": "fffdf1298101902796e187e387c1e01f8019816b7fff083d7fff7fff00000108",
+        "difference": "fffdf1298101902796e187e387c1e01f8019816b7fff083d7fff7fff00000108",
+        "average": "fe011d990737ff00"
+      }
+    },
+    {
+      "cardId": "sv09-038",
+      "cardName": "Wingull",
+      "setId": "sv09",
+      "fileName": "sv09-038_Wingull.png",
+      "hashes": {
+        "perceptual": "fffd2f11c441c181950784c18ce1fcfb00017fff39c11f1e7fff7eff000c0008",
+        "difference": "fffd2f11c441c181950784c18ce1fcfb00017fff39c11f1e7fff7eff000c0008",
+        "average": "f68821ed395a7f02"
+      }
+    },
+    {
+      "cardId": "sv09-039",
+      "cardName": "Pelipper",
+      "setId": "sv09",
+      "fileName": "sv09-039_Pelipper.png",
+      "hashes": {
+        "perceptual": "0f9070007d7f18ffff7ff0458001c18f004139fd3bfd183d7fff7eff000c0008",
+        "difference": "0f9070007d7f18ffff7ff0458001c18f004139fd3bfd183d7fff7eff000c0008",
+        "average": "506fe3834f46ff00"
+      }
+    },
+    {
+      "cardId": "sv09-040",
+      "cardName": "Wailmer",
+      "setId": "sv09",
+      "fileName": "sv09-040_Wailmer.png",
+      "hashes": {
+        "perceptual": "2ff07019611df81fd00f990f800dfe3f00017fff09c13f3e7fff7fff00000108",
+        "difference": "2ff07019611df81fd00f990f800dfe3f00017fff09c13f3e7fff7fff00000108",
+        "average": "66c3c3c3391eff00"
+      }
+    },
+    {
+      "cardId": "sv09-041",
+      "cardName": "Wailord",
+      "setId": "sv09",
+      "fileName": "sv09-041_Wailord.png",
+      "hashes": {
+        "perceptual": "aff16035fc0fe003e0f3e1c18001ffe782c17fff000107ff7fff7fff00000108",
+        "difference": "aff16035fc0fe003e0f3e1c18001ffe782c17fff000107ff7fff7fff00000108",
+        "average": "7e818d99ff00ff00"
+      }
+    },
+    {
+      "cardId": "sv09-042",
+      "cardName": "Regice",
+      "setId": "sv09",
+      "fileName": "sv09-042_Regice.png",
+      "hashes": {
+        "perceptual": "ffffe00181e183618229c001e833ffff87c919fd3ffd00013fff7fff00000308",
+        "difference": "ffffe00181e183618229c001e833ffff87c919fd3ffd00013fff7fff00000308",
+        "average": "fd1081e73f0aff00"
+      }
+    },
+    {
+      "cardId": "sv09-043",
+      "cardName": "Veluza ex",
+      "setId": "sv09",
+      "fileName": "sv09-043_Veluza_ex.png",
+      "hashes": {
+        "perceptual": "06007c34ffff013e7e03fe02e70cf213cf3318fc7ff98000f80fffc77c1e1000",
+        "difference": "06007c34ffff013e7e03fe02e70cf213cf3318fc7ff98000f80fffc77c1e1000",
+        "average": "605fe1d27706fb40"
+      }
+    },
+    {
+      "cardId": "sv09-044",
+      "cardName": "Alolan Geodude",
+      "setId": "sv09",
+      "fileName": "sv09-044_Alolan_Geodude.png",
+      "hashes": {
+        "perceptual": "ffff7871f0818001fdc9e4c38003f82f8001b83d3fff183d7fff7ffe00000700",
+        "difference": "ffff7871f0818001fdc9e4c38003f82f8001b83d3fff183d7fff7ffe00000700",
+        "average": "fd80eb814367ff00"
+      }
+    },
+    {
+      "cardId": "sv09-045",
+      "cardName": "Alolan Graveler",
+      "setId": "sv09",
+      "fileName": "sv09-045_Alolan_Graveler.png",
+      "hashes": {
+        "perceptual": "ffffe077c001e001e011fe01ffc1fe018001b83d3fff183d7fff7ffe00000380",
+        "difference": "ffffe077c001e001e011fe01ffc1fe018001b83d3fff183d7fff7ffe00000380",
+        "average": "ef80e0f14747ff00"
+      }
+    },
+    {
+      "cardId": "sv09-046",
+      "cardName": "Alolan Golem",
+      "setId": "sv09",
+      "fileName": "sv09-046_Alolan_Golem.png",
+      "hashes": {
+        "perceptual": "ffffe0f1d00980119019e011f023feffbccdb80507cf183d7fff7ffe00000680",
+        "difference": "ffffe0f1d00980119019e011f023feffbccdb80507cf183d7fff7ffe00000680",
+        "average": "fd8081e7e307ff00"
+      }
+    },
+    {
+      "cardId": "sv09-047",
+      "cardName": "Iono s Voltorb",
+      "setId": "sv09",
+      "fileName": "sv09-047_Iono_s_Voltorb.png",
+      "hashes": {
+        "perceptual": "fffb205789c1e081900186918f37dff99c01ffff0809183f7fff7ffe00000290",
+        "difference": "fffb205789c1e081900186918f37dff99c01ffff0809183f7fff7ffe00000290",
+        "average": "6f8881b77f02ff00"
+      }
+    },
+    {
+      "cardId": "sv09-048",
+      "cardName": "Iono s Electrode",
+      "setId": "sv09",
+      "fileName": "sv09-048_Iono_s_Electrode.png",
+      "hashes": {
+        "perceptual": "3ff1206701e786378e35b8318c37df09fec9980f8003397f7fff7ffe00000380",
+        "difference": "3ff1206701e786378e35b8318c37df09fec9980f8003397f7fff7ffe00000380",
+        "average": "0d1fa5a5e307ff00"
+      }
+    },
+    {
+      "cardId": "sv09-049",
+      "cardName": "N s Joltik",
+      "setId": "sv09",
+      "fileName": "sv09-049_N_s_Joltik.png",
+      "hashes": {
+        "perceptual": "03f860303ff81ff8fc7b987b8003c1c7fffdb97d800104077fff7ffe000000d0",
+        "difference": "03f860303ff81ff8fc7b987b8003c1c7fffdb97d800104077fff7ffe000000d0",
+        "average": "1c3ee781ef01ff00"
+      }
+    },
+    {
+      "cardId": "sv09-050",
+      "cardName": "Togedemaru",
+      "setId": "sv09",
+      "fileName": "sv09-050_Togedemaru.png",
+      "hashes": {
+        "perceptual": "effb0731808180ff83ff83c1800197ffbc81ffff184d00077fff7ffe00000700",
+        "difference": "effb0731808180ff83ff83c1800197ffbc81ffff184d00077fff7ffe00000700",
+        "average": "3d0b1da5ff00ff00"
+      }
+    },
+    {
+      "cardId": "sv09-051",
+      "cardName": "Tapu Koko ex",
+      "setId": "sv09",
+      "fileName": "sv09-051_Tapu_Koko_ex.png",
+      "hashes": {
+        "perceptual": "01e07e72de0cff0cff307f07033cf180fe607fc808001dff3fdf69dec00fa010",
+        "difference": "01e07e72de0cff0cff307f07033cf180fe607fc808001dff3fdf69dec00fa010",
+        "average": "64f2f152f8257f80"
+      }
+    },
+    {
+      "cardId": "sv09-052",
+      "cardName": "Iono s Tadbulb",
+      "setId": "sv09",
+      "fileName": "sv09-052_Iono_s_Tadbulb.png",
+      "hashes": {
+        "perceptual": "3ff90033c033bfc1a0e78047880ffef900013fff187d3e1e7fff7ffe00000380",
+        "difference": "3ff90033c033bfc1a0e78047880ffef900013fff187d3e1e7fff7ffe00000380",
+        "average": "4d998bc37946ff00"
+      }
+    },
+    {
+      "cardId": "sv09-053",
+      "cardName": "Iono s Bellibolt ex",
+      "setId": "sv09",
+      "fileName": "sv09-053_Iono_s_Bellibolt_ex.png",
+      "hashes": {
+        "perceptual": "11707e3e7e0e085fe1ffc47ac067c60180008002bffffefdcff7d1e73c0c9001",
+        "difference": "11707e3e7e0e085fe1ffc47ac067c60180008002bffffefdcff7d1e73c0c9001",
+        "average": "65638f8300ffbf40"
+      }
+    },
+    {
+      "cardId": "sv09-054",
+      "cardName": "Iono s Wattrel",
+      "setId": "sv09",
+      "fileName": "sv09-054_Iono_s_Wattrel.png",
+      "hashes": {
+        "perceptual": "ffff7031881de001f001b821e04ffef98001ffff10013f3f7fff7efe00000780",
+        "difference": "ffff7031881de001f001b821e04ffef98001ffff10013f3f7fff7efe00000780",
+        "average": "fd80c1c77b42ff00"
+      }
+    },
+    {
+      "cardId": "sv09-055",
+      "cardName": "Iono s Kilowattrel",
+      "setId": "sv09",
+      "fileName": "sv09-055_Iono_s_Kilowattrel.png",
+      "hashes": {
+        "perceptual": "bff9a003df03e00da039841db61ffe38803d80ff83cf187d7fff7efe00000780",
+        "difference": "bff9a003df03e00da039841db61ffe38803d80ff83cf187d7fff7efe00000780",
+        "average": "d99106f6072fff00"
+      }
+    },
+    {
+      "cardId": "sv09-056",
+      "cardName": "Lillie s Clefairy ex",
+      "setId": "sv09",
+      "fileName": "sv09-056_Lillie_s_Clefairy_ex.png",
+      "hashes": {
+        "perceptual": "00003f20dfe8effec7fe73c27fce0000804e802e7ffeb81df81f7fde1c0c0419",
+        "difference": "00003f20dfe8effec7fe73c27fce0000804e802e7ffeb81df81f7fde1c0c0419",
+        "average": "20fede6082e7f720"
+      }
+    },
+    {
+      "cardId": "sv09-057",
+      "cardName": "Alolan Marowak",
+      "setId": "sv09",
+      "fileName": "sv09-057_Alolan_Marowak.png",
+      "hashes": {
+        "perceptual": "fff1e0258e87800f803f823f803fe07ffff1b8fd0001087d7fff7efe000000f0",
+        "difference": "fff1e0258e87800f803f823f803fe07ffff1b8fd0001087d7fff7efe000000f0",
+        "average": "fc0387876f057f02"
+      }
+    },
+    {
+      "cardId": "sv09-058",
+      "cardName": "Mr  Mime",
+      "setId": "sv09",
+      "fileName": "sv09-058_Mr__Mime.png",
+      "hashes": {
+        "perceptual": "2ff138117e0f2e0787f18fc18181f6d3fe01b9ff002118fd3fff7ffe080002c0",
+        "difference": "2ff138117e0f2e0787f18fc18181f6d3fe01b9ff002118fd3fff7ffe080002c0",
+        "average": "70e31d995f067f20"
+      }
+    },
+    {
+      "cardId": "sv09-059",
+      "cardName": "Shuppet",
+      "setId": "sv09",
+      "fileName": "sv09-059_Shuppet.png",
+      "hashes": {
+        "perceptual": "fffd3181f401bc019c6183638181cfff00017ff938397f367fff7efe000800d0",
+        "difference": "fffd3181f401bc019c6183638181cfff00017ff938397f367fff7efe000800d0",
+        "average": "f960a9997946ff00"
+      }
+    },
+    {
+      "cardId": "sv09-060",
+      "cardName": "Banette",
+      "setId": "sv09",
+      "fileName": "sv09-060_Banette.png",
+      "hashes": {
+        "perceptual": "ffffe1c7840183018a19803b801befffff81b83f0025387d7fff7efe000800d0",
+        "difference": "ffffe1c7840183018a19803b801befffff81b83f0025387d7fff7efe000800d0",
+        "average": "ff0081af67077f02"
+      }
+    },
+    {
+      "cardId": "sv09-061",
+      "cardName": "Beldum",
+      "setId": "sv09",
+      "fileName": "sv09-061_Beldum.png",
+      "hashes": {
+        "perceptual": "fffff1b3800182218601f801fc61ffcd2801381d3bbf19fd7fff7efe080800c0",
+        "difference": "fffff1b3800182218601f801fc61ffcd2801381d3bbf19fd7fff7efe080800c0",
+        "average": "fd01e0e9654eff00"
+      }
+    },
+    {
+      "cardId": "sv09-062",
+      "cardName": "Metang",
+      "setId": "sv09",
+      "fileName": "sv09-062_Metang.png",
+      "hashes": {
+        "perceptual": "aff1603f002f7c07fc019c61819b83ff200139fd3dfd183d7fff7efe080400c0",
+        "difference": "aff1603f002f7c07fc019c61819b83ff200139fd3dfd183d7fff7efe080400c0",
+        "average": "1e63e08f7c46ff00"
+      }
+    },
+    {
+      "cardId": "sv09-063",
+      "cardName": "Metagross",
+      "setId": "sv09",
+      "fileName": "sv09-063_Metagross.png",
+      "hashes": {
+        "perceptual": "2ff120e13fc17f01ff01e401c401ffe7fc01b87d3ffd10017fff7efe080000d0",
+        "difference": "2ff120e13fc17f01ff01e401c401ffe7fc01b87d3ffd10017fff7efe080000d0",
+        "average": "5cf0f1a16f427f20"
+      }
+    },
+    {
+      "cardId": "sv09-064",
+      "cardName": "N s Sigilyph",
+      "setId": "sv09",
+      "fileName": "sv09-064_N_s_Sigilyph.png",
+      "hashes": {
+        "perceptual": "fffd043f000787078707840986f1f7f9fc01b83d3bff00077fff7ffe080000c0",
+        "difference": "fffd043f000787078707840986f1f7f9fc01b83d3bff00077fff7ffe080000c0",
+        "average": "7f0121bd66477f20"
+      }
+    },
+    {
+      "cardId": "sv09-065",
+      "cardName": "Oricorio",
+      "setId": "sv09",
+      "fileName": "sv09-065_Oricorio.png",
+      "hashes": {
+        "perceptual": "eff903817101fe319dc1804383e1ffc7ffa1b83f0003387d7fff7efe080001c0",
+        "difference": "eff903817101fe319dc1804383e1ffc7ffa1b83f0003387d7fff7efe080001c0",
+        "average": "7dc0899d67437f20"
+      }
+    },
+    {
+      "cardId": "sv09-066",
+      "cardName": "Lillie s Cutiefly",
+      "setId": "sv09",
+      "fileName": "sv09-066_Lillie_s_Cutiefly.png",
+      "hashes": {
+        "perceptual": "088038107ffe7ede7c8e700f781f747000017ff9003f7f3e7fff7ffe08000280",
+        "difference": "088038107ffe7ede7c8e700f781f747000017ff9003f7f3e7fff7ffe08000280",
+        "average": "207f43e67847ff00"
+      }
+    },
+    {
+      "cardId": "sv09-067",
+      "cardName": "Lillie s Ribombee",
+      "setId": "sv09",
+      "fileName": "sv09-067_Lillie_s_Ribombee.png",
+      "hashes": {
+        "perceptual": "0a00201c3f7e7eff387c2e6c37fd1830803d87f100037fff387d7ffe080807f0",
+        "difference": "0a00201c3f7e7eff387c2e6c37fd1830803d87f100037fff387d7ffe080807f0",
+        "average": "047f6e4c075b7f20"
+      }
+    },
+    {
+      "cardId": "sv09-068",
+      "cardName": "Lillie s Comfey",
+      "setId": "sv09",
+      "fileName": "sv09-068_Lillie_s_Comfey.png",
+      "hashes": {
+        "perceptual": "0ec020d87fc87f9d7005f027be67ba07ffa1b83f000138fd3cff7ffe080c00d0",
+        "difference": "0ec020d87fc87f9d7005f027be67ba07ffa1b83f000138fd3cff7ffe080c00d0",
+        "average": "28fac1f1e7097f02"
+      }
+    },
+    {
+      "cardId": "sv09-069",
+      "cardName": "Mimikyu ex",
+      "setId": "sv09",
+      "fileName": "sv09-069_Mimikyu_ex.png",
+      "hashes": {
+        "perceptual": "0ff07fd8437806f0877c8f200fd91fc17ff4bc1e01f018787fee7fdc2c1e0000",
+        "difference": "0ff07fd8437806f0877c8f200fd91fc17ff4bc1e01f018787fee7fdc2c1e0000",
+        "average": "7c1c3c3a7e0c7e24"
+      }
+    },
+    {
+      "cardId": "sv09-070",
+      "cardName": "Dhelmise",
+      "setId": "sv09",
+      "fileName": "sv09-070_Dhelmise.png",
+      "hashes": {
+        "perceptual": "eff9783f0027801de807f01fc019e17fff81a87d03c3183d7fff7ffe000000d0",
+        "difference": "eff9783f0027801de807f01fc019e17fff81a87d03c3183d7fff7ffe000000d0",
+        "average": "7d03c3876c177f04"
+      }
+    },
+    {
+      "cardId": "sv09-071",
+      "cardName": "Impidimp",
+      "setId": "sv09",
+      "fileName": "sv09-071_Impidimp.png",
+      "hashes": {
+        "perceptual": "fffff03780018381e1c18103e003ffff00017ff938717f367fff7ffe000000d0",
+        "difference": "fffff03780018381e1c18103e003ffff00017ff938717f367fff7ffe000000d0",
+        "average": "ff00819f7946ff00"
+      }
+    },
+    {
+      "cardId": "sv09-072",
+      "cardName": "Morgrem",
+      "setId": "sv09",
+      "fileName": "sv09-072_Morgrem.png",
+      "hashes": {
+        "perceptual": "0fc020fe3c1e783ffc2fbe7d80f184012801387d3bfd187d7fff7ffe080000c0",
+        "difference": "0fc020fe3c1e783ffc2fbe7d80f184012801387d3bfd187d7fff7ffe080000c0",
+        "average": "1c67e7056d46ff00"
+      }
+    },
+    {
+      "cardId": "sv09-073",
+      "cardName": "Grimmsnarl",
+      "setId": "sv09",
+      "fileName": "sv09-073_Grimmsnarl.png",
+      "hashes": {
+        "perceptual": "fffda9e78013c001c403f003801bffffff81b83d0063387d7fff7ffe080000c0",
+        "difference": "fffda9e78013c001c403f003801bffffff81b83d0063387d7fff7ffe080000c0",
+        "average": "7d81c1c766477f20"
+      }
+    },
+    {
+      "cardId": "sv09-074",
+      "cardName": "Milcery",
+      "setId": "sv09",
+      "fileName": "sv09-074_Milcery.png",
+      "hashes": {
+        "perceptual": "07c0390871e07fff07f027fb0fb5186100017ff939f17b267fff7ffe08000280",
+        "difference": "07c0390871e07fff07f027fb0fb5186100017ff939f17b267fff7ffe08000280",
+        "average": "50fc1c2f784eff00"
+      }
+    },
+    {
+      "cardId": "sv09-075",
+      "cardName": "Alcremie ex",
+      "setId": "sv09",
+      "fileName": "sv09-075_Alcremie_ex.png",
+      "hashes": {
+        "perceptual": "0000698e1fde5ffd37797bb777e04000c44e039c77fc38397b97e43f381e7800",
+        "difference": "0000698e1fde5ffd37797bb777e04000c44e039c77fc38397b97e43f381e7800",
+        "average": "00ff7790926e7760"
+      }
+    },
+    {
+      "cardId": "sv09-076",
+      "cardName": "Cubone",
+      "setId": "sv09",
+      "fileName": "sv09-076_Cubone.png",
+      "hashes": {
+        "perceptual": "eff903018fc18f318f2186618243fe7fb401f8edfbc518297fff3fdf00000381",
+        "difference": "eff903018fc18f318f2186618243fe7fb401f8edfbc518297fff3fdf00000381",
+        "average": "bc31bd81ebc0ff00"
+      }
+    },
+    {
+      "cardId": "sv09-077",
+      "cardName": "Swinub",
+      "setId": "sv09",
+      "fileName": "sv09-077_Swinub.png",
+      "hashes": {
+        "perceptual": "ffffe071c021e201fc03f403c001ff3ffc43f83f80013cf93dfd7fdf00008781",
+        "difference": "ffffe071c021e201fc03f403c001ff3ffc43f83f80013cf93dfd7fdf00008781",
+        "average": "dd81e1c5e781ff00"
+      }
+    },
+    {
+      "cardId": "sv09-078",
+      "cardName": "Piloswine",
+      "setId": "sv09",
+      "fileName": "sv09-078_Piloswine.png",
+      "hashes": {
+        "perceptual": "e7f1a0f987b10319841f800f8c79c6ffb401f8edfbc518297fff3fdf00000381",
+        "difference": "e7f1a0f987b10319841f800f8c79c6ffb401f8edfbc518297fff3fdf00000381",
+        "average": "9c3c03afeb03ff00"
+      }
+    },
+    {
+      "cardId": "sv09-079",
+      "cardName": "Mamoswine ex",
+      "setId": "sv09",
+      "fileName": "sv09-079_Mamoswine_ex.png",
+      "hashes": {
+        "perceptual": "001071acbb3de3fbe37e8ffe0c86030623ff007247fe181d0f7e6ffee41e1000",
+        "difference": "001071acbb3de3fbe37e8ffe0c86030623ff007247fe181d0f7e6ffee41e1000",
+        "average": "44d79f210f667ec0"
+      }
+    },
+    {
+      "cardId": "sv09-080",
+      "cardName": "Larvitar",
+      "setId": "sv09",
+      "fileName": "sv09-080_Larvitar.png",
+      "hashes": {
+        "perceptual": "fffff535c0018021f461808180c3fffff401ffef800147e97fff3fdf00000681",
+        "difference": "fffff535c0018021f461808180c3fffff401ffef800147e97fff3fdf00000681",
+        "average": "fd8089d9fb08ff00"
+      }
+    },
+    {
+      "cardId": "sv09-081",
+      "cardName": "Pupitar",
+      "setId": "sv09",
+      "fileName": "sv09-081_Pupitar.png",
+      "hashes": {
+        "perceptual": "eff1e1e18707858187d1bf418241c1ffb001ffe780017fe97fff3fdf00000681",
+        "difference": "eff1e1e18707858187d1bf418241c1ffb001ffe780017fe97fff3fdf00000681",
+        "average": "dd11b199fb80ff00"
+      }
+    },
+    {
+      "cardId": "sv09-082",
+      "cardName": "Regirock",
+      "setId": "sv09",
+      "fileName": "sv09-082_Regirock.png",
+      "hashes": {
+        "perceptual": "ffff81fd80538001c0c1fa41f801fd3fa07fc603ffc788097fff3fdf00000681",
+        "difference": "ffff81fd80538001c0c1fa41f801fd3fa07fc603ffc788097fff3fdf00000681",
+        "average": "df0189f18ba3ff00"
+      }
+    },
+    {
+      "cardId": "sv09-083",
+      "cardName": "Pancham",
+      "setId": "sv09",
+      "fileName": "sv09-083_Pancham.png",
+      "hashes": {
+        "perceptual": "e3e1404143f97fe175b1f611fc01fc09fc03fc8dff8d00097fff3fdf00000381",
+        "difference": "e3e1404143f97fe175b1f611fc01fc09fc03fc8dff8d00097fff3fdf00000381",
+        "average": "88fcf4e0e3c2ff00"
+      }
+    },
+    {
+      "cardId": "sv09-084",
+      "cardName": "Rockruff",
+      "setId": "sv09",
+      "fileName": "sv09-084_Rockruff.png",
+      "hashes": {
+        "perceptual": "e7f938593c3188698371f10f8011be7fb401f8ef838179e97cfd7fdf00008781",
+        "difference": "e7f938593c3188698371f10f8011be7fb401f8ef838179e97cfd7fdf00008781",
+        "average": "ee0c8de1cb91ff00"
+      }
+    },
+    {
+      "cardId": "sv09-085",
+      "cardName": "Lycanroc",
+      "setId": "sv09",
+      "fileName": "sv09-085_Lycanroc.png",
+      "hashes": {
+        "perceptual": "eff1a001b11dd61d871da07f8231d89fa07f87c78181f83d803f7fff000087f9",
+        "difference": "eff1a001b11dd61d871da07f8231d89fa07f87c78181f83d803f7fff000087f9",
+        "average": "c8d687878f83ff00"
+      }
+    },
+    {
+      "cardId": "sv09-086",
+      "cardName": "Hop s Silicobra",
+      "setId": "sv09",
+      "fileName": "sv09-086_Hop_s_Silicobra.png",
+      "hashes": {
+        "perceptual": "e2e100310f3f7f1dfc0980038781fffdfc41f87f800139f93dfd7fdf00008781",
+        "difference": "e2e100310f3f7f1dfc0980038781fffdfc41f87f800139f93dfd7fdf00008781",
+        "average": "0c77a1f8ef01ff00"
+      }
+    },
+    {
+      "cardId": "sv09-087",
+      "cardName": "Hop s Sandaconda",
+      "setId": "sv09",
+      "fileName": "sv09-087_Hop_s_Sandaconda.png",
+      "hashes": {
+        "perceptual": "fff1e001bcb1f003e00fa01f803df8fdfc6d88c1efef80010fed7fff000087c1",
+        "difference": "fff1e001bcb1f003e00fa01f803df8fdfc6d88c1efef80010fed7fff000087c1",
+        "average": "cdc1838fcb85ff00"
+      }
+    },
+    {
+      "cardId": "sv09-088",
+      "cardName": "Toedscool",
+      "setId": "sv09",
+      "fileName": "sv09-088_Toedscool.png",
+      "hashes": {
+        "perceptual": "eff100017527b9b5fe37b8058c01f03fa001ffe7b0457f817fff3fdf00000381",
+        "difference": "eff100017527b9b5fe37b8058c01f03fa001ffe7b0457f817fff3fdf00000381",
+        "average": "08f7e5a1f9c0ff00"
+      }
+    },
+    {
+      "cardId": "sv09-089",
+      "cardName": "Toedscruel",
+      "setId": "sv09",
+      "fileName": "sv09-089_Toedscruel.png",
+      "hashes": {
+        "perceptual": "fffff1e1c041840186c38fe18101cffb800f8107f78fb8f97fff3fdf00000681",
+        "difference": "fffff1e1c041840186c38fe18101cffb800f8107f78fb8f97fff3fdf00000681",
+        "average": "fd80b991834fff00"
+      }
+    },
+    {
+      "cardId": "sv09-090",
+      "cardName": "Klawf",
+      "setId": "sv09",
+      "fileName": "sv09-090_Klawf.png",
+      "hashes": {
+        "perceptual": "e3e160003dfd6e0f64806381fbf5f08ffc43f81f808139f93efd7fdf00008781",
+        "difference": "e3e160003dfd6e0f64806381fbf5f08ffc43f81f808139f93efd7fdf00008781",
+        "average": "18e740dfe389ff00"
+      }
+    },
+    {
+      "cardId": "sv09-091",
+      "cardName": "Koffing",
+      "setId": "sv09",
+      "fileName": "sv09-091_Koffing.png",
+      "hashes": {
+        "perceptual": "fc0d180c6ffc6e0c7c0e0c4c0405ffff8001c703c761efff8801fc3b8001ffff",
+        "difference": "fc0d180c6ffc6e0c7c0e0c4c0405ffff8001c703c761efff8801fc3b8001ffff",
+        "average": "62b6627381f9819f"
+      }
+    },
+    {
+      "cardId": "sv09-092",
+      "cardName": "Weezing",
+      "setId": "sv09",
+      "fileName": "sv09-092_Weezing.png",
+      "hashes": {
+        "perceptual": "ff1de00fc0078b719f018f01c001ffff800187c3b781bfbfbc819c198001ffff",
+        "difference": "ff1de00fc0078b719f018f01c001ffff800187c3b781bfbfbc819c198001ffff",
+        "average": "e385b19381f9a1c7"
+      }
+    },
+    {
+      "cardId": "sv09-093",
+      "cardName": "Paldean Wooper",
+      "setId": "sv09",
+      "fileName": "sv09-093_Paldean_Wooper.png",
+      "hashes": {
+        "perceptual": "e70d380c783e783e3c7c1c018421fffdc0018001ffff9c7f8801fc3b8001ffff",
+        "difference": "e70d380c783e783e3c7c1c018421fffdc0018001ffff9c7f8801fc3b8001ffff",
+        "average": "42e760bd81b781cf"
+      }
+    },
+    {
+      "cardId": "sv09-094",
+      "cardName": "Paldean Clodsire ex",
+      "setId": "sv09",
+      "fileName": "sv09-094_Paldean_Clodsire_ex.png",
+      "hashes": {
+        "perceptual": "e4087cbcf0f9e01ec03f403fc703e61fd003a78339fd97836001c847c0ff93ff",
+        "difference": "e4087cbcf0f9e01ec03f403fc703e61fd003a78339fd97836001c847c0ff93ff",
+        "average": "c6c687b1c179819f"
+      }
+    },
+    {
+      "cardId": "sv09-095",
+      "cardName": "Tyranitar",
+      "setId": "sv09",
+      "fileName": "sv09-095_Tyranitar.png",
+      "hashes": {
+        "perceptual": "fe1de00ce330df189f6987618201fb1ff801ff498041a7f79801bc1d8009ffff",
+        "difference": "fe1de00ce330df189f6987618201fb1ff801ff498041a7f79801bc1d8009ffff",
+        "average": "c2f4ba91c1d981d7"
+      }
+    },
+    {
+      "cardId": "sv09-096",
+      "cardName": "N s Purrloin",
+      "setId": "sv09",
+      "fileName": "sv09-096_N_s_Purrloin.png",
+      "hashes": {
+        "perceptual": "ef053e007ec07ee81f80bff9bc01b80780078001b7ffbe7d8801fc1b8011ffff",
+        "difference": "ef053e007ec07ee81f80bff9bc01b80780078001b7ffbe7d8801fc1b8011ffff",
+        "average": "70f878e181f9819f"
+      }
+    },
+    {
+      "cardId": "sv09-097",
+      "cardName": "N s Zorua",
+      "setId": "sv09",
+      "fileName": "sv09-097_N_s_Zorua.png",
+      "hashes": {
+        "perceptual": "fe0d180570f581fe00be000c93f9fefdc0078001d7ff9c7f8801fc3b8001ffff",
+        "difference": "fe0d180570f581fe00be000c93f9fefdc0078001d7ff9c7f8801fc3b8001ffff",
+        "average": "e28e027f81b781d7"
+      }
+    },
+    {
+      "cardId": "sv09-098",
+      "cardName": "N s Zoroark ex",
+      "setId": "sv09",
+      "fileName": "sv09-098_N_s_Zoroark_ex.png",
+      "hashes": {
+        "perceptual": "e898fbbcc3f2004d88d5c437c48f80fff01ffbbfc20107810003e04f84ff53ff",
+        "difference": "e898fbbcc3f2004d88d5c437c48f80fff01ffbbfc20107810003e04f84ff53ff",
+        "average": "f611878bc3b1819f"
+      }
+    },
+    {
+      "cardId": "sv09-099",
+      "cardName": "Pangoro",
+      "setId": "sv09",
+      "fileName": "sv09-099_Pangoro.png",
+      "hashes": {
+        "perceptual": "fe1de00de17f800e840781c78027dfff80018703bfffb587bfc184098001ffff",
+        "difference": "fe1de00de17f800e840781c78027dfff80018703bfffb587bfc184098001ffff",
+        "average": "e38383b381f9e187"
+      }
+    },
+    {
+      "cardId": "sv09-100",
+      "cardName": "Lokix",
+      "setId": "sv09",
+      "fileName": "sv09-100_Lokix.png",
+      "hashes": {
+        "perceptual": "ff9ff80de00d9005b8c1bce1bc01fc0fe0018001d7ff9e7f8801fc1b8011ffff",
+        "difference": "ff9ff80de00d9005b8c1bce1bc01fc0fe0018001d7ff9e7f8801fc1b8011ffff",
+        "average": "e383e8e181bb81d7"
+      }
+    },
+    {
+      "cardId": "sv09-101",
+      "cardName": "Bombirdier",
+      "setId": "sv09",
+      "fileName": "sv09-101_Bombirdier.png",
+      "hashes": {
+        "perceptual": "ff0d1e007fe03b8404008c31b5f1ffef8001c603b741ffffbff180018001ffff",
+        "difference": "ff0d1e007fe03b8404008c31b5f1ffef8001c603b741ffffbff180018001ffff",
+        "average": "727820fd81f9e195"
+      }
+    },
+    {
+      "cardId": "sv09-102",
+      "cardName": "Escavalier",
+      "setId": "sv09",
+      "fileName": "sv09-102_Escavalier.png",
+      "hashes": {
+        "perceptual": "2fc0201f239ff21f800d81ddb161f8ff180139fd3fff180c7fff7efe1c000400",
+        "difference": "2fc0201f239ff21f800d81ddb161f8ff180139fd3fff180c7fff7efe1c000400",
+        "average": "595303cf4a677f20"
+      }
+    },
+    {
+      "cardId": "sv09-103",
+      "cardName": "N s Klink",
+      "setId": "sv09",
+      "fileName": "sv09-103_N_s_Klink.png",
+      "hashes": {
+        "perceptual": "ffffbf118701800183fd80118003ffff18013fff18013f3f7fff7efe1c000040",
+        "difference": "ffffbf118701800183fd80118003ffff18013fff18013f3f7fff7efe1c000040",
+        "average": "ff008d8d7b427f20"
+      }
+    },
+    {
+      "cardId": "sv09-104",
+      "cardName": "N s Klang",
+      "setId": "sv09",
+      "fileName": "sv09-104_N_s_Klang.png",
+      "hashes": {
+        "perceptual": "fffff981d80190018fd981f38083f06f3c0139fd380f18fd7fff7efe1c000400",
+        "difference": "fffff981d80190018fd981f38083f06f3c0139fd380f18fd7fff7efe1c000400",
+        "average": "fd01998b66477f20"
+      }
+    },
+    {
+      "cardId": "sv09-105",
+      "cardName": "N s Klinklang",
+      "setId": "sv09",
+      "fileName": "sv09-105_N_s_Klinklang.png",
+      "hashes": {
+        "perceptual": "fffffdc3c0018001810980399703ffff3c01387d3fff08197fff7efe180000c0",
+        "difference": "fffffdc3c0018001810980399703ffff3c01387d3fff08197fff7efe180000c0",
+        "average": "fd8081dd66277f20"
+      }
+    },
+    {
+      "cardId": "sv09-106",
+      "cardName": "Galarian Stunfisk",
+      "setId": "sv09",
+      "fileName": "sv09-106_Galarian_Stunfisk.png",
+      "hashes": {
+        "perceptual": "fffff517c003800183c38307800ffcff3c0118fd3fff08197fff7efe180000c0",
+        "difference": "fffff517c003800183c38307800ffcff3c0118fd3fff08197fff7efe180000c0",
+        "average": "f58199876b077f20"
+      }
+    },
+    {
+      "cardId": "sv09-107",
+      "cardName": "Magearna",
+      "setId": "sv09",
+      "fileName": "sv09-107_Magearna.png",
+      "hashes": {
+        "perceptual": "0fc0701067fe87be0f7d8f7f807d8101004d03ef1bcf387d7fff7efe38000040",
+        "difference": "0fc0701067fe87be0f7d8f7f807d8101004d03ef1bcf387d7fff7efe38000040",
+        "average": "703e37070b677f20"
+      }
+    },
+    {
+      "cardId": "sv09-108",
+      "cardName": "Hop s Corviknight",
+      "setId": "sv09",
+      "fileName": "sv09-108_Hop_s_Corviknight.png",
+      "hashes": {
+        "perceptual": "ffffb803b8018605800d8007bc0dffff3809393517ff087d3fff7efe3c000400",
+        "difference": "ffffb803b8018605800d8007bc0dffff3809393517ff087d3fff7efe3c000400",
+        "average": "f32183e3462f7f20"
+      }
+    },
+    {
+      "cardId": "sv09-109",
+      "cardName": "Cufant",
+      "setId": "sv09",
+      "fileName": "sv09-109_Cufant.png",
+      "hashes": {
+        "perceptual": "fff96307c303831193f193e18201ff6900013fff08ed3f1e7fff7efe1c000400",
+        "difference": "fff96307c303831193f193e18201ff6900013fff08ed3f1e7fff7efe1c000400",
+        "average": "f1919d916b0e7f20"
+      }
+    },
+    {
+      "cardId": "sv09-110",
+      "cardName": "Copperajah",
+      "setId": "sv09",
+      "fileName": "sv09-110_Copperajah.png",
+      "hashes": {
+        "perceptual": "fffff031a401c205c30182019c33ffff1c0119fd1fff003d7fff7efe1c000400",
+        "difference": "fffff031a401c205c30182019c33ffff1c0119fd1fff003d7fff7efe1c000400",
+        "average": "fd8091e52f077f20"
+      }
+    },
+    {
+      "cardId": "sv09-111",
+      "cardName": "Hop s Zacian ex",
+      "setId": "sv09",
+      "fileName": "sv09-111_Hop_s_Zacian_ex.png",
+      "hashes": {
+        "perceptual": "1fc07f4a76813fc0ac01ffa0fc08ef13787e7a3d96020c7c3879fcfefc1e1000",
+        "difference": "1fc07f4a76813fc0ac01ffa0fc08ef13787e7a3d96020c7c3879fcfefc1e1000",
+        "average": "7878f8e07722eec0"
+      }
+    },
+    {
+      "cardId": "sv09-112",
+      "cardName": "Bagon",
+      "setId": "sv09",
+      "fileName": "sv09-112_Bagon.png",
+      "hashes": {
+        "perceptual": "ffff800183c187e183c187c78181eeef8001b9fdbbef180d7fff3eff00008601",
+        "difference": "ffff800183c187e183c187c78181eeef8001b9fdbbef180d7fff3eff00008601",
+        "average": "9d199999eb03ff00"
+      }
+    },
+    {
+      "cardId": "sv09-113",
+      "cardName": "Shelgon",
+      "setId": "sv09",
+      "fileName": "sv09-113_Shelgon.png",
+      "hashes": {
+        "perceptual": "efffe131e00186618fe1851bf007fc07bc09b8fd81831a3f3fff3eff00008701",
+        "difference": "efffe131e00186618fe1851bf007fc07bc09b8fd81831a3f3fff3eff00008701",
+        "average": "fd80b9c1e703ff00"
+      }
+    },
+    {
+      "cardId": "sv09-114",
+      "cardName": "Salamence ex",
+      "setId": "sv09",
+      "fileName": "sv09-114_Salamence_ex.png",
+      "hashes": {
+        "perceptual": "2790f8bcf89ec186f842f482ff00ff03fdcfb8e604010bb9003f1ffff01f900c",
+        "difference": "2790f8bcf89ec186f842f482ff00ff03fdcfb8e604010bb9003f1ffff01f900c",
+        "average": "ccc3c1f1eb0527c3"
+      }
+    },
+    {
+      "cardId": "sv09-115",
+      "cardName": "Druddigon",
+      "setId": "sv09",
+      "fileName": "sv09-115_Druddigon.png",
+      "hashes": {
+        "perceptual": "efff338db0038015883f804f80f7c0ffbc01b87d81cf183f3fff3eff00008701",
+        "difference": "efff338db0038015883f804f80f7c0ffbc01b87d81cf183f3fff3eff00008701",
+        "average": "ff00078fe703ff00"
+      }
+    },
+    {
+      "cardId": "sv09-116",
+      "cardName": "N s Reshiram",
+      "setId": "sv09",
+      "fileName": "sv09-116_N_s_Reshiram.png",
+      "hashes": {
+        "perceptual": "a3c1003c71fe7ce63fb012ff00798ee8bc01b83d87cf183d3fff3eff00008701",
+        "difference": "a3c1003c71fe7ce63fb012ff00798ee8bc01b83d87cf183d3fff3eff00008701",
+        "average": "06cf7c0e6713ff00"
+      }
+    },
+    {
+      "cardId": "sv09-117",
+      "cardName": "Hop s Snorlax",
+      "setId": "sv09",
+      "fileName": "sv09-117_Hop_s_Snorlax.png",
+      "hashes": {
+        "perceptual": "3ff07c678807938583e593e981d1e98d843d837f07eb083d7ffe5ffa1b000280",
+        "difference": "3ff07c678807938583e593e981d1e98d843d837f07eb083d7ffe5ffa1b000280",
+        "average": "7f01999907377f10"
+      }
+    },
+    {
+      "cardId": "sv09-118",
+      "cardName": "Sentret",
+      "setId": "sv09",
+      "fileName": "sv09-118_Sentret.png",
+      "hashes": {
+        "perceptual": "bffffdb980218001c3c180419017ffff00003ffe38fc3f1e7ffe5ffe0a080600",
+        "difference": "bffffdb980218001c3c180419017ffff00003ffe38fc3f1e7ffe5ffe0a080600",
+        "average": "ff00898f6a4e7f10"
+      }
+    },
+    {
+      "cardId": "sv09-119",
+      "cardName": "Furret",
+      "setId": "sv09",
+      "fileName": "sv09-119_Furret.png",
+      "hashes": {
+        "perceptual": "3ff9f3f310c3c001b20199718221f7ff1c0039fc3ffe183c7ffe5ffe0e000600",
+        "difference": "3ff9f3f310c3c001b20199718221f7ff1c0039fc3ffe183c7ffe5ffe0e000600",
+        "average": "7d81c19d6e467f20"
+      }
+    },
+    {
+      "cardId": "sv09-120",
+      "cardName": "Dunsparce",
+      "setId": "sv09",
+      "fileName": "sv09-120_Dunsparce.png",
+      "hashes": {
+        "perceptual": "fffff0f78001810187e18301a003ffff7cc8397f300619fc7ffe5ffe18080600",
+        "difference": "fffff0f78001810187e18301a003ffff7cc8397f300619fc7ffe5ffe18080600",
+        "average": "ff0018e767467f20"
+      }
+    },
+    {
+      "cardId": "sv09-121",
+      "cardName": "Dudunsparce ex",
+      "setId": "sv09",
+      "fileName": "sv09-121_Dudunsparce_ex.png",
+      "hashes": {
+        "perceptual": "0fe077807f003ff83ffce7fc21d0e0003600fc3cc6967c7c01fe7ffe7c1e1000",
+        "difference": "0fe077807f003ff83ffce7fc21d0e0003600fc3cc6967c7c01fe7ffe7c1e1000",
+        "average": "78787e8862ae7e60"
+      }
+    },
+    {
+      "cardId": "sv09-122",
+      "cardName": "Kecleon",
+      "setId": "sv09",
+      "fileName": "sv09-122_Kecleon.png",
+      "hashes": {
+        "perceptual": "3ff8eff1818184198fbf8723c081c78b7ec87fff080c0a167ffe5ffe18000680",
+        "difference": "3ff8eff1818184198fbf8723c081c78b7ec87fff080c0a167ffe5ffe18000680",
+        "average": "ff00b5897f027f10"
+      }
+    },
+    {
+      "cardId": "sv09-123",
+      "cardName": "Tropius",
+      "setId": "sv09",
+      "fileName": "sv09-123_Tropius.png",
+      "hashes": {
+        "perceptual": "bfffe021c0078387981da01ff81dfd093c8838ff182e19fc7ffe7efe0c080600",
+        "difference": "bfffe021c0078387981da01ff81dfd093c8838ff182e19fc7ffe7efe0c080600",
+        "average": "dd8183e367467f20"
+      }
+    },
+    {
+      "cardId": "sv09-124",
+      "cardName": "Audino",
+      "setId": "sv09",
+      "fileName": "sv09-124_Audino.png",
+      "hashes": {
+        "perceptual": "3ff8ebe1898183c18387c301bf8187f77c8839ff29ce083c7ffe5ffe0b000280",
+        "difference": "3ff8ebe1898183c18387c301bf8187f77c8839ff29ce083c7ffe5ffe0b000280",
+        "average": "fd1091b96f067f10"
+      }
+    },
+    {
+      "cardId": "sv09-125",
+      "cardName": "Minccino",
+      "setId": "sv09",
+      "fileName": "sv09-125_Minccino.png",
+      "hashes": {
+        "perceptual": "fffff1b18001801781d388218c81ffff00003ffe39fc3e1e7ffe5ffe0b000600",
+        "difference": "fffff1b18001801781d388218c81ffff00003ffe39fc3e1e7ffe5ffe0b000600",
+        "average": "fd0181bb685e7f10"
+      }
+    },
+    {
+      "cardId": "sv09-126",
+      "cardName": "Cinccino",
+      "setId": "sv09",
+      "fileName": "sv09-126_Cinccino.png",
+      "hashes": {
+        "perceptual": "0ff020c0378eff96b82f9da58e9db20100003ffe387c3f3e7ffe5ffe0b000600",
+        "difference": "0ff020c0378eff96b82f9da58e9db20100003ffe387c3f3e7ffe5ffe0b000600",
+        "average": "1c76e6a16a667f10"
+      }
+    },
+    {
+      "cardId": "sv09-127",
+      "cardName": "Noibat",
+      "setId": "sv09",
+      "fileName": "sv09-127_Noibat.png",
+      "hashes": {
+        "perceptual": "3ffdf3f78001800d8139842d803fc7ff00003ffe087c3ffe7ffe7efe08000780",
+        "difference": "3ffdf3f78001800d8139842d803fc7ff00003ffe087c3ffe7ffe7efe08000780",
+        "average": "7f01078f7a467f10"
+      }
+    },
+    {
+      "cardId": "sv09-128",
+      "cardName": "Noivern",
+      "setId": "sv09",
+      "fileName": "sv09-128_Noivern.png",
+      "hashes": {
+        "perceptual": "bffff3e3800980038007800fc0dfeeff807f00ff17ff081c7ffe7efe0c180400",
+        "difference": "bffff3e3800980038007800fc0dfeeff807f00ff17ff081c7ffe7efe0c180400",
+        "average": "fd01838f0f277f20"
+      }
+    },
+    {
+      "cardId": "sv09-129",
+      "cardName": "Komala",
+      "setId": "sv09",
+      "fileName": "sv09-129_Komala.png",
+      "hashes": {
+        "perceptual": "bffff9e9820184018e018e078f01ffe77fff39fd0805002a7ffe5ffe0b000600",
+        "difference": "bffff9e9820184018e018e078f01ffe77fff39fd0805002a7ffe5ffe0b000600",
+        "average": "fd80b1b17f027f10"
+      }
+    },
+    {
+      "cardId": "sv09-130",
+      "cardName": "Drampa",
+      "setId": "sv09",
+      "fileName": "sv09-130_Drampa.png",
+      "hashes": {
+        "perceptual": "3ff878a1b841b079a6cd8fd99c81b00f1c0039fc3ffe183c7ffe7ffe0c000600",
+        "difference": "3ff878a1b841b079a6cd8fd99c81b00f1c0039fc3ffe183c7ffe7ffe0c000600",
+        "average": "7c68b9a14e667f20"
+      }
+    },
+    {
+      "cardId": "sv09-131",
+      "cardName": "Skwovet",
+      "setId": "sv09",
+      "fileName": "sv09-131_Skwovet.png",
+      "hashes": {
+        "perceptual": "2ff87ff3f001c003ed81ff018099f60f080039fe0ffe19fc7ffe5ffe1c000600",
+        "difference": "2ff87ff3f001c003ed81ff018099f60f080039fe0ffe19fc7ffe5ffe1c000600",
+        "average": "7d81f1836a1e7f20"
+      }
+    },
+    {
+      "cardId": "sv09-132",
+      "cardName": "Greedent",
+      "setId": "sv09",
+      "fileName": "sv09-132_Greedent.png",
+      "hashes": {
+        "perceptual": "3ff821e7007f881bf89b807180fdc07f08007ffe081c3ffe7ffe5ffe1a000600",
+        "difference": "3ff821e7007f881bf89b807180fdc07f08007ffe081c3ffe7ffe5ffe1a000600",
+        "average": "3f03c18f7e067f10"
+      }
+    },
+    {
+      "cardId": "sv09-133",
+      "cardName": "Hop s Rookidee",
+      "setId": "sv09",
+      "fileName": "sv09-133_Hop_s_Rookidee.png",
+      "hashes": {
+        "perceptual": "1ff87870fc219c19f81f88fd8021f03f7ff8381f010119fe7ffe7ffe0c000600",
+        "difference": "1ff87870fc219c19f81f88fd8021f03f7ff8381f010119fe7ffe7ffe0c000600",
+        "average": "7ce08f85661e7f20"
+      }
+    },
+    {
+      "cardId": "sv09-134",
+      "cardName": "Hop s Corvisquire",
+      "setId": "sv09",
+      "fileName": "sv09-134_Hop_s_Corvisquire.png",
+      "hashes": {
+        "perceptual": "3ffb282f2c07f003f001e00ff00dfeed3c0038fc3ffe087c7ffe7efe0c080600",
+        "difference": "3ffb282f2c07f003f001e00ff00dfeed3c0038fc3ffe087c7ffe7efe0c080600",
+        "average": "6f81c1cb6e267f20"
+      }
+    },
+    {
+      "cardId": "sv09-135",
+      "cardName": "Hop s Wooloo",
+      "setId": "sv09",
+      "fileName": "sv09-135_Hop_s_Wooloo.png",
+      "hashes": {
+        "perceptual": "01f060f47ffe03f0f7f187e18001f2e900003ffe087c3ffe7ffe5ffe0b000600",
+        "difference": "01f060f47ffe03f0f7f187e18001f2e900003ffe087c3ffe7ffe5ffe0b000600",
+        "average": "5c5cbd817a267f10"
+      }
+    },
+    {
+      "cardId": "sv09-136",
+      "cardName": "Hop s Dubwool",
+      "setId": "sv09",
+      "fileName": "sv09-136_Hop_s_Dubwool.png",
+      "hashes": {
+        "perceptual": "3fff60ff000d8039887f984df811f323807c01ff56e708fc7ffe5ffe0e000600",
+        "difference": "3fff60ff000d8039887f984df811f323807c01ff56e708fc7ffe5ffe0e000600",
+        "average": "7f028bc50e2f7f20"
+      }
+    },
+    {
+      "cardId": "sv09-137",
+      "cardName": "Cramorant",
+      "setId": "sv09",
+      "fileName": "sv09-137_Cramorant.png",
+      "hashes": {
+        "perceptual": "004078f879fe7c3efc0fb805b001f9cf3c007ffe10081ffe7ffe7efe0c000700",
+        "difference": "004078f879fe7c3efc0fb805b001f9cf3c007ffe10081ffe7ffe7efe0c000700",
+        "average": "0ceee3c17f027f20"
+      }
+    },
+    {
+      "cardId": "sv09-138",
+      "cardName": "Hop s Cramorant",
+      "setId": "sv09",
+      "fileName": "sv09-138_Hop_s_Cramorant.png",
+      "hashes": {
+        "perceptual": "3ffdfe7d86018001e003c60ffc01fc3f3c007fff38281c3e7ffe7efe1c000600",
+        "difference": "3ffdfe7d86018001e003c60ffc01fc3f3c007fff38281c3e7ffe7efe1c000600",
+        "average": "7f8081e77e067f20"
+      }
+    },
+    {
+      "cardId": "sv09-139",
+      "cardName": "Lechonk",
+      "setId": "sv09",
+      "fileName": "sv09-139_Lechonk.png",
+      "hashes": {
+        "perceptual": "07f863fe033ee01cc9f180a19841fcff00003ffe39fc3e1e7ffe5ffe0b000280",
+        "difference": "07f863fe033ee01cc9f180a19841fcff00003ffe39fc3e1e7ffe5ffe0b000280",
+        "average": "1ec685c7685e7f10"
+      }
+    },
+    {
+      "cardId": "sv09-140",
+      "cardName": "Oinkologne",
+      "setId": "sv09",
+      "fileName": "sv09-140_Oinkologne.png",
+      "hashes": {
+        "perceptual": "3fff21ff001d8007801f801b800fffff7ecd181d007f193e7ffe5ffe0e000600",
+        "difference": "3fff21ff001d8007801f801b800fffff7ecd181d007f193e7ffe5ffe0e000600",
+        "average": "7d03878766277e30"
+      }
+    },
+    {
+      "cardId": "sv09-141",
+      "cardName": "Squawkabilly",
+      "setId": "sv09",
+      "fileName": "sv09-141_Squawkabilly.png",
+      "hashes": {
+        "perceptual": "0ff8607cc07d883f9fbfdfa18009e007180039fe1ffe187c7ffe7efe1c000600",
+        "difference": "0ff8607cc07d883f9fbfdfa18009e007180039fe1ffe187c7ffe7efe1c000600",
+        "average": "4e87bb816e0e7f20"
+      }
+    },
+    {
+      "cardId": "sv09-142",
+      "cardName": "Billy   O Nare",
+      "setId": "sv09",
+      "fileName": "sv09-142_Billy___O_Nare.png",
+      "hashes": {
+        "perceptual": "07c001fc5cfe15decf9ffbef8019800100007ffe0ff00ffc7ffe7ffe3c000000",
+        "difference": "07c001fc5cfe15decf9ffbef8019800100007ffe0ff00ffc7ffe7ffe3c000000",
+        "average": "1c2fbf803c3c7f20"
+      }
+    },
+    {
+      "cardId": "sv09-143",
+      "cardName": "Black Belt s Training",
+      "setId": "sv09",
+      "fileName": "sv09-143_Black_Belt_s_Training.png",
+      "hashes": {
+        "perceptual": "3fe003be3cf8b1c0f1cff9c1e161a06100787ffe1ff801707ffe7ffe3c000000",
+        "difference": "3fe003be3cf8b1c0f1cff9c1e161a06100787ffe1ff801707ffe7ffe3c000000",
+        "average": "3e4cd9853e1c7f20"
+      }
+    },
+    {
+      "cardId": "sv09-144",
+      "cardName": "Black Belt s Training",
+      "setId": "sv09",
+      "fileName": "sv09-144_Black_Belt_s_Training.png",
+      "hashes": {
+        "perceptual": "7fe007be7d3e800185c183f1c5c18cff0c707ffe1ff800707ffe7ffe3c000000",
+        "difference": "7fe007be7d3e800185c183f1c5c18cff0c707ffe1ff800707ffe7ffe3c000000",
+        "average": "7e0399a93c3c7f20"
+      }
+    },
+    {
+      "cardId": "sv09-145",
+      "cardName": "Black Belt s Training",
+      "setId": "sv09",
+      "fileName": "sv09-145_Black_Belt_s_Training.png",
+      "hashes": {
+        "perceptual": "1fc003be7e3c7e10fe318819c79be00f217c7ffe0ff000707ffe7ffe3c000000",
+        "difference": "1fc003be7e3c7e10fe318819c79be00f217c7ffe0ff000707ffe7ffe3c000000",
+        "average": "3ce4a7837e0c7f20"
+      }
+    },
+    {
+      "cardId": "sv09-146",
+      "cardName": "Brock s Scouting",
+      "setId": "sv09",
+      "fileName": "sv09-146_Brock_s_Scouting.png",
+      "hashes": {
+        "perceptual": "7fe00ffe8608843d86798cb98c2dbc7100007ffe1ff807f87ffe7ffe3c000000",
+        "difference": "7fe00ffe8608843d86798cb98c2dbc7100007ffe1ff807f87ffe7ffe3c000000",
+        "average": "3e26a5a53c3c7f20"
+      }
+    },
+    {
+      "cardId": "sv09-147",
+      "cardName": "Hop s Bag",
+      "setId": "sv09",
+      "fileName": "sv09-147_Hop_s_Bag.png",
+      "hashes": {
+        "perceptual": "7fe117fe82d882059e0fb807b80d987d00a07ffe07e00ffc7ffe7ffe0c480000",
+        "difference": "7fe117fe82d882059e0fb807b80d987d00a07ffe07e00ffc7ffe7ffe0c480000",
+        "average": "7e03c3c37c387e28"
+      }
+    },
+    {
+      "cardId": "sv09-148",
+      "cardName": "Hop s Choice Band",
+      "setId": "sv09",
+      "fileName": "sv09-148_Hop_s_Choice_Band.png",
+      "hashes": {
+        "perceptual": "ffe117fe800989c18fe183f183f387410fe07ffe1ff802007ffe7ffe3c000000",
+        "difference": "ffe117fe800989c18fe183f183f387410fe07ffe1ff802007ffe7ffe3c000000",
+        "average": "7f089d197e187f20"
+      }
+    },
+    {
+      "cardId": "sv09-149",
+      "cardName": "Iris s Fighting Spirit",
+      "setId": "sv09",
+      "fileName": "sv09-149_Iris_s_Fighting_Spirit.png",
+      "hashes": {
+        "perceptual": "1fe0017e7c1e781ef01fe03de3bf800300007ffe0fe01ffc7ffe7ffe3c000000",
+        "difference": "1fe0017e7c1e781ef01fe03de3bf800300007ffe0fe01ffc7ffe7ffe3c000000",
+        "average": "1ce3c783383e7f20"
+      }
+    },
+    {
+      "cardId": "sv09-150",
+      "cardName": "Levincia",
+      "setId": "sv09",
+      "fileName": "sv09-150_Levincia.png",
+      "hashes": {
+        "perceptual": "1fe007fe033e40bed43fc0b18331997d080c7ffe0ff007f07ffe7ffe3c000000",
+        "difference": "1fe007fe033e40bed43fc0b18331997d080c7ffe0ff007f07ffe7ffe3c000000",
+        "average": "3c87859d3e1c7f20"
+      }
+    },
+    {
+      "cardId": "sv09-151",
+      "cardName": "Lillie s Pearl",
+      "setId": "sv09",
+      "fileName": "sv09-151_Lillie_s_Pearl.png",
+      "hashes": {
+        "perceptual": "01c003f81ff83ffc1ff01c189c318ff90ff87ffe0ff800007ffe7ffe3c000000",
+        "difference": "01c003f81ff83ffc1ff01c189c318ff90ff87ffe0ff800007ffe7ffe3c000000",
+        "average": "187e74277e187f20"
+      }
+    },
+    {
+      "cardId": "sv09-152",
+      "cardName": "N s Castle",
+      "setId": "sv09",
+      "fileName": "sv09-152_N_s_Castle.png",
+      "hashes": {
+        "perceptual": "fff9bffe80018001c7b7c3f18743850300007ffe0fe00ffe7ffe7ffe3c000000",
+        "difference": "fff9bffe80018001c7b7c3f18743850300007ffe0fe00ffe7ffe7ffe3c000000",
+        "average": "ff009d911c3e7f20"
+      }
+    },
+    {
+      "cardId": "sv09-153",
+      "cardName": "N s PP Up",
+      "setId": "sv09",
+      "fileName": "sv09-153_N_s_PP_Up.png",
+      "hashes": {
+        "perceptual": "fff9afff800180018201878187d1efff02007ffe0fe007fe7ffe7ffe1c080000",
+        "difference": "fff9afff800180018201878187d1efff02007ffe0fe007fe7ffe7ffe1c080000",
+        "average": "ff0081bd3e1c7e28"
+      }
+    },
+    {
+      "cardId": "sv09-154",
+      "cardName": "Postwick",
+      "setId": "sv09",
+      "fileName": "sv09-154_Postwick.png",
+      "hashes": {
+        "perceptual": "1fe007fe741e63c0c047e007867befa307207ffe3ffc00447ffe7ffe3c000000",
+        "difference": "1fe007fe741e63c0c047e007867befa307207ffe3ffc00447ffe7ffe3c000000",
+        "average": "3cd8c1b53e387f20"
+      }
+    },
+    {
+      "cardId": "sv09-155",
+      "cardName": "Professor s Research",
+      "setId": "sv09",
+      "fileName": "sv09-155_Professor_s_Research.png",
+      "hashes": {
+        "perceptual": "1fe005fc19f81e3a9f9196b19471843f001c3ffc07f80ff87ffe7ffe3c000000",
+        "difference": "1fe005fc19f81e3a9f9196b19471843f001c3ffc07f80ff87ffe7ffe3c000000",
+        "average": "3c3575070e3e7f20"
+      }
+    },
+    {
+      "cardId": "sv09-156",
+      "cardName": "Redeemable Ticket",
+      "setId": "sv09",
+      "fileName": "sv09-156_Redeemable_Ticket.png",
+      "hashes": {
+        "perceptual": "1fc0037c4dfe262ea336801f807fa0ff07fc7ffe1ff000007ffe7ffe1c080000",
+        "difference": "1fc0037c4dfe262ea336801f807fa0ff07fc7ffe1ff000007ffe7ffe1c080000",
+        "average": "1c2f078f7e187e28"
+      }
+    },
+    {
+      "cardId": "sv09-157",
+      "cardName": "Ruffian",
+      "setId": "sv09",
+      "fileName": "sv09-157_Ruffian.png",
+      "hashes": {
+        "perceptual": "fff98ffe90098001ce739c7bcc37800300007ffe17e00ffe7ffe7ffe3c000000",
+        "difference": "fff98ffe90098001ce739c7bcc37800300007ffe17e00ffe7ffe7ffe3c000000",
+        "average": "ff00e781187e7f20"
+      }
+    },
+    {
+      "cardId": "sv09-158",
+      "cardName": "Super Potion",
+      "setId": "sv09",
+      "fileName": "sv09-158_Super_Potion.png",
+      "hashes": {
+        "perceptual": "7fe117fec600874187e3833f803f803f00fc7ffe07e007e07ffe7ffe1c080000",
+        "difference": "7fe117fec600874187e3833f803f803f00fc7ffe07e007e07ffe7ffe1c080000",
+        "average": "7e301d873e1c7e28"
+      }
+    },
+    {
+      "cardId": "sv09-159",
+      "cardName": "Spiky Energy",
+      "setId": "sv09",
+      "fileName": "sv09-159_Spiky_Energy.png",
+      "hashes": {
+        "perceptual": "0fe117fce00ea1f8839887d987f98671098104017f7f1ffe0ff007fe7ffe0000",
+        "difference": "0fe117fce00ea1f8839887d987f98671098104017f7f1ffe0ff007fe7ffe0000",
+        "average": "3e8a9a3c00ff3c3c"
+      }
+    },
+    {
+      "cardId": "sv09-160",
+      "cardName": "Maractus",
+      "setId": "sv09",
+      "fileName": "sv09-160_Maractus.png",
+      "hashes": {
+        "perceptual": "fffdfa018640871184b987d987cd81e3b001b7f1ff31da01f001803181f9dfff",
+        "difference": "fffdfa018640871184b987d987cd81e3b001b7f1ff31da01f001803181f9dfff",
+        "average": "fd109d89c1f180bf"
+      }
+    },
+    {
+      "cardId": "sv09-161",
+      "cardName": "Articuno",
+      "setId": "sv09",
+      "fileName": "sv09-161_Articuno.png",
+      "hashes": {
+        "perceptual": "07f041f8633e7b07fd07fd80e00df9c0f9f9b1fd21c90038dafbf9cc384017c0",
+        "difference": "07f041f8633e7b07fd07fd80e00df9c0f9f9b1fd21c90038dafbf9cc384017c0",
+        "average": "1cd3e1cacf0cfe08"
+      }
+    },
+    {
+      "cardId": "sv09-162",
+      "cardName": "Wailord",
+      "setId": "sv09",
+      "fileName": "sv09-162_Wailord.png",
+      "hashes": {
+        "perceptual": "eff16000ff20fc1cfe1bbe138e318c2184618501fff3ff01c201826102ff9fff",
+        "difference": "eff16000ff20fc1cfe1bbe138e318c2184618501fff3ff01c201826102ff9fff",
+        "average": "1ce6e5a1a1f1905f"
+      }
+    },
+    {
+      "cardId": "sv09-163",
+      "cardName": "Iono s Kilowattrel",
+      "setId": "sv09",
+      "fileName": "sv09-163_Iono_s_Kilowattrel.png",
+      "hashes": {
+        "perceptual": "fffff058c1e0c040c00184d7867f877fa7ad87f987e380418981e800ee38dffd",
+        "difference": "fffff058c1e0c040c00184d7867f877fa7ad87f987e380418981e800ee38dffd",
+        "average": "fc888997bc8980fe"
+      }
+    },
+    {
+      "cardId": "sv09-164",
+      "cardName": "Lillie s Ribombee",
+      "setId": "sv09",
+      "fileName": "sv09-164_Lillie_s_Ribombee.png",
+      "hashes": {
+        "perceptual": "af40e050a86bf8eff80efd0dfc0df800ff07de83dc007f00ff00ff0078009ffc",
+        "difference": "af40e050a86bf8eff80efd0dfc0df800ff07de83dc007f00ff00ff0078009ffc",
+        "average": "c0e7e3e0f1e0f078"
+      }
+    },
+    {
+      "cardId": "sv09-165",
+      "cardName": "Swinub",
+      "setId": "sv09",
+      "fileName": "sv09-165_Swinub.png",
+      "hashes": {
+        "perceptual": "fff1000107f0bf0f804787419f61ffe1c225f183f1c7e1c5c30187010ff30fff",
+        "difference": "fff1000107f0bf0f804787419f61ffe1c225f183f1c7e1c5c30187010ff30fff",
+        "average": "9c7809fcc1d9903f"
+      }
+    },
+    {
+      "cardId": "sv09-166",
+      "cardName": "Lycanroc",
+      "setId": "sv09",
+      "fileName": "sv09-166_Lycanroc.png",
+      "hashes": {
+        "perceptual": "3fc0bfb03c08fc0efc68fc20fc01fc85bd838e11ff81bb807f00ef00f1e781c7",
+        "difference": "3fc0bfb03c08fc0efc68fc20fc01fc85bd838e11ff81bb807f00ef00f1e781c7",
+        "average": "78e2e6e0f0f0f0c9"
+      }
+    },
+    {
+      "cardId": "sv09-167",
+      "cardName": "N s Reshiram",
+      "setId": "sv09",
+      "fileName": "sv09-167_N_s_Reshiram.png",
+      "hashes": {
+        "perceptual": "17e048e06ff03ff0be7007f08e319f31bff9b9f1a0e180a010a045bc13be0fff",
+        "difference": "17e048e06ff03ff0be7007f08e319f31bff9b9f1a0e180a010a045bc13be0fff",
+        "average": "18fc7c34fd080c5f"
+      }
+    },
+    {
+      "cardId": "sv09-168",
+      "cardName": "Furret",
+      "setId": "sv09",
+      "fileName": "sv09-168_Furret.png",
+      "hashes": {
+        "perceptual": "fffbe041e08086c798879fa793c78207b007f807dfe1ed018801c801fe339fff",
+        "difference": "fffbe041e08086c798879fa793c78207b007f807dfe1ed018801c801fe339fff",
+        "average": "ed816b13c1f1a07d"
+      }
+    },
+    {
+      "cardId": "sv09-169",
+      "cardName": "Noibat",
+      "setId": "sv09",
+      "fileName": "sv09-169_Noibat.png",
+      "hashes": {
+        "perceptual": "efc301810fe09ff10ff087318fe18a79b8019821fdf9c87d0fe11fe03740df61",
+        "difference": "efc301810fe09ff10ff087318fe18a79b8019821fdf9c87d0fe11fe03740df61",
+        "average": "993c3c3ce08f3c78"
+      }
+    },
+    {
+      "cardId": "sv09-170",
+      "cardName": "Hop s Wooloo",
+      "setId": "sv09",
+      "fileName": "sv09-170_Hop_s_Wooloo.png",
+      "hashes": {
+        "perceptual": "00f801fe03fe1ff8ff7c805e80df8071f3c5ff01ffa180018401ac05a03dffff",
+        "difference": "00f801fe03fe1ff8ff7c805e80df8071f3c5ff01ffa180018401ac05a03dffff",
+        "average": "0e3ee607d1e180ef"
+      }
+    },
+    {
+      "cardId": "sv09-171",
+      "cardName": "Volcanion ex",
+      "setId": "sv09",
+      "fileName": "sv09-171_Volcanion_ex.png",
+      "hashes": {
+        "perceptual": "eff3ffe0483890209b0097818f219f7f930c5ff9e8811ee27f1f1e065c3e0dc0",
+        "difference": "eff3ffe0483890209b0097818f219f7f930c5ff9e8811ee27f1f1e065c3e0dc0",
+        "average": "fc8430f59a697326"
+      }
+    },
+    {
+      "cardId": "sv09-172",
+      "cardName": "Iono s Bellibolt ex",
+      "setId": "sv09",
+      "fileName": "sv09-172_Iono_s_Bellibolt_ex.png",
+      "hashes": {
+        "perceptual": "0100239e1ffe71fee0fff03f86070187078f0fafe00f601f007e7ffe7c1e1c00",
+        "difference": "0100239e1ffe71fee0fff03f86070187078f0fafe00f601f007e7ffe7c1e1c00",
+        "average": "107fc7133b833f60"
+      }
+    },
+    {
+      "cardId": "sv09-173",
+      "cardName": "Lillie s Clefairy ex",
+      "setId": "sv09",
+      "fileName": "sv09-173_Lillie_s_Clefairy_ex.png",
+      "hashes": {
+        "perceptual": "0000381c7ffe7ff27eda0092534e7bb826f844627f8e3c3c7ffe7ffe3c000000",
+        "difference": "0000381c7ffe7ff27eda0092534e7bb826f844627f8e3c3c7ffe7ffe3c000000",
+        "average": "00ff5c561e727f20"
+      }
+    },
+    {
+      "cardId": "sv09-174",
+      "cardName": "Mamoswine ex",
+      "setId": "sv09",
+      "fileName": "sv09-174_Mamoswine_ex.png",
+      "hashes": {
+        "perceptual": "000071fe27fe4e7e47783fb83fb84070f079f33d401ec7607ffe3fc07c1e0800",
+        "difference": "000071fe27fe4e7e47783fb83fb84070f079f33d401ec7607ffe3fc07c1e0800",
+        "average": "48be3c74cf817e60"
+      }
+    },
+    {
+      "cardId": "sv09-175",
+      "cardName": "N s Zoroark ex",
+      "setId": "sv09",
+      "fileName": "sv09-175_N_s_Zoroark_ex.png",
+      "hashes": {
+        "perceptual": "00f061fe80fec9be77bec81f840f801f9001bfe300ff02ff287e007e04bf1ff8",
+        "difference": "00f061fe80fec9be77bec81f840f801f9001bfe300ff02ff287e007e04bf1ff8",
+        "average": "0e8fe703c11f0f27"
+      }
+    },
+    {
+      "cardId": "sv09-176",
+      "cardName": "Hop s Zacian ex",
+      "setId": "sv09",
+      "fileName": "sv09-176_Hop_s_Zacian_ex.png",
+      "hashes": {
+        "perceptual": "0e807fe22e587b78fc70fcc0ff80dc20083c403c7ffc3fb07fbc5f0c7c1e1c00",
+        "difference": "0e807fe22e587b78fc70fcc0ff80dc20083c403c7ffc3fb07fbc5f0c7c1e1c00",
+        "average": "7874ece0867c7266"
+      }
+    },
+    {
+      "cardId": "sv09-177",
+      "cardName": "Salamence ex",
+      "setId": "sv09",
+      "fileName": "sv09-177_Salamence_ex.png",
+      "hashes": {
+        "perceptual": "6ff8ffc0e380e0c0f500fc00f02bf0ffe8df2cc30f661c707ff87f007c1f1c00",
+        "difference": "6ff8ffc0e380e0c0f500fc00f02bf0ffe8df2cc30f661c707ff87f007c1f1c00",
+        "average": "fc90e0c7ab2cfc60"
+      }
+    },
+    {
+      "cardId": "sv09-178",
+      "cardName": "Dudunsparce ex",
+      "setId": "sv09",
+      "fileName": "sv09-178_Dudunsparce_ex.png",
+      "hashes": {
+        "perceptual": "0000011e3ffe7ffe383e79be3cee001c5006783475f07ff87dfe7ffe7c000000",
+        "difference": "0000011e3ffe7ffe383e79be3cee001c5006783475f07ff87dfe7ffe7c000000",
+        "average": "107f4f26c27c7f20"
+      }
+    },
+    {
+      "cardId": "sv09-179",
+      "cardName": "Brock s Scouting",
+      "setId": "sv09",
+      "fileName": "sv09-179_Brock_s_Scouting.png",
+      "hashes": {
+        "perceptual": "7fe00ffef0007807a1efb9e5b801911d81e1f001fc03ff1f6e1b700e63ff03e0",
+        "difference": "7fe00ffef0007807a1efb9e5b801911d81e1f001fc03ff1f6e1b700e63ff03e0",
+        "average": "3ec14bc3c0f3c21f"
+      }
+    },
+    {
+      "cardId": "sv09-180",
+      "cardName": "Iris s Fighting Spirit",
+      "setId": "sv09",
+      "fileName": "sv09-180_Iris_s_Fighting_Spirit.png",
+      "hashes": {
+        "perceptual": "7fe017fef01ee000fa03e803ec31bdb1fb019f0393c1c9f180878001f7ff0ff9",
+        "difference": "7fe017fef01ee000fa03e803ec31bdb1fb019f0393c1c9f180878001f7ff0ff9",
+        "average": "3ec2c1e5b19901df"
+      }
+    },
+    {
+      "cardId": "sv09-181",
+      "cardName": "Ruffian",
+      "setId": "sv09",
+      "fileName": "sv09-181_Ruffian.png",
+      "hashes": {
+        "perceptual": "ffe10ffe4022c00fe19fe18ff207f001f803f82bf83fb0038007800383ff9fff",
+        "difference": "ffe10ffe4022c00fe19fe18ff207f001f803f82bf83fb0038007800383ff9fff",
+        "average": "3e83d3c1e1c3039f"
+      }
+    },
+    {
+      "cardId": "sv09-182",
+      "cardName": "Volcanion ex",
+      "setId": "sv09",
+      "fileName": "sv09-182_Volcanion_ex.png",
+      "hashes": {
+        "perceptual": "effd4fe0e020f018c611c017fd83f1c780c18fc9389f13fd002008743fbf7ffa",
+        "difference": "effd4fe0e020f018c611c017fd83f1c780c18fc9389f13fd002008743fbf7ffa",
+        "average": "bcc491cb384f047f"
+      }
+    },
+    {
+      "cardId": "sv09-183",
+      "cardName": "Iono s Bellibolt ex",
+      "setId": "sv09",
+      "fileName": "sv09-183_Iono_s_Bellibolt_ex.png",
+      "hashes": {
+        "perceptual": "12207e066fc73f47f800f3c0fbc0ffc007c065c079fe7e1c7ffc59f8081e1c60",
+        "difference": "12207e066fc73f47f800f3c0fbc0ffc007c065c079fe7e1c7ffc59f8081e1c60",
+        "average": "7079d0f8385efe04"
+      }
+    },
+    {
+      "cardId": "sv09-184",
+      "cardName": "Lillie s Clefairy ex",
+      "setId": "sv09",
+      "fileName": "sv09-184_Lillie_s_Clefairy_ex.png",
+      "hashes": {
+        "perceptual": "05e07ac4798e38fe01f859f061f07bf87dfe4c63d98c3c007cfc70e4643ed380",
+        "difference": "05e07ac4798e38fe01f859f061f07bf87dfe4c63d98c3c007cfc70e4643ed380",
+        "average": "487e1c7c6d2a6e86"
+      }
+    },
+    {
+      "cardId": "sv09-185",
+      "cardName": "N s Zoroark ex",
+      "setId": "sv09",
+      "fileName": "sv09-185_N_s_Zoroark_ex.png",
+      "hashes": {
+        "perceptual": "ffd3ffa0e6003c00909d98c7dc61e21ff611bc7d802107fd2ffd060000bf13ff",
+        "difference": "ffd3ffa0e6003c00909d98c7dc61e21ff611bc7d802107fd2ffd060000bf13ff",
+        "average": "f8e08be1e61c381f"
+      }
+    },
+    {
+      "cardId": "sv09-186",
+      "cardName": "Hop s Zacian ex",
+      "setId": "sv09",
+      "fileName": "sv09-186_Hop_s_Zacian_ex.png",
+      "hashes": {
+        "perceptual": "0f801fc31fc15df8098ede80c6afbea1fbadf0003b9a7c09f3c8c080f0bfdbc2",
+        "difference": "0f801fc31fc15df8098ede80c6afbea1fbadf0003b9a7c09f3c8c080f0bfdbc2",
+        "average": "397839aaf063c0d7"
+      }
+    },
+    {
+      "cardId": "sv09-187",
+      "cardName": "Salamence ex",
+      "setId": "sv09",
+      "fileName": "sv09-187_Salamence_ex.png",
+      "hashes": {
+        "perceptual": "03007f1e3f1e7c1e3c1f1f83030fce17703e221e479e0b7e3ffe3ffc0c1e0800",
+        "difference": "03007f1e3f1e7c1e3c1f1f83030fce17703e221e479e0b7e3ffe3ffc0c1e0800",
+        "average": "38677313463e7e22"
+      }
+    },
+    {
+      "cardId": "sv09-188",
+      "cardName": "Iono s Bellibolt ex",
+      "setId": "sv09",
+      "fileName": "sv09-188_Iono_s_Bellibolt_ex.png",
+      "hashes": {
+        "perceptual": "03e003fe03fe03fe71fff07384078187878f9fefe609601071c03fe01c3f0fe1",
+        "difference": "03e003fe03fe03fe71fff07384078187878f9fefe609601071c03fe01c3f0fe1",
+        "average": "1c1fcf11bbc07827"
+      }
+    },
+    {
+      "cardId": "sv09-189",
+      "cardName": "N s Zoroark ex",
+      "setId": "sv09",
+      "fileName": "sv09-189_N_s_Zoroark_ex.png",
+      "hashes": {
+        "perceptual": "e1f420e181fe09fe1a3fa863c433f01fb0039063e73f075f6fff0577001f10f0",
+        "difference": "e1f420e181fe09fe1a3fa863c433f01fb0039063e73f075f6fff0577001f10f0",
+        "average": "8c1f25c7c1973f06"
+      }
+    },
+    {
+      "cardId": "sv09-190",
+      "cardName": "Spiky Energy",
+      "setId": "sv09",
+      "fileName": "sv09-190_Spiky_Energy.png",
+      "hashes": {
+        "perceptual": "07c007f83c7e707e77c618e318e19fe08fc0c3c0f06c7cfc703e7f0e7c0607f0",
+        "difference": "07c007f83c7e707e77c618e318e19fe08fc0c3c0f06c7cfc703e7f0e7c0607f0",
+        "average": "1c4f4d3c98ce6738"
+      }
+    },
+    {
+      "cardId": "sv10-001",
+      "cardName": "Ethan s Pinsir",
+      "setId": "sv10",
+      "fileName": "sv10-001_Ethan_s_Pinsir.png",
+      "hashes": {
+        "perceptual": "ebf1052017dadc2b8c0d8c03be09be7f9c01b8fdbbff0801103f7fff000487d9",
+        "difference": "ebf1052017dadc2b8c0d8c03be09be7f9c01b8fdbbff0801103f7fff000487d9",
+        "average": "147b23e36b437f02"
+      }
+    },
+    {
+      "cardId": "sv10-002",
+      "cardName": "Yanma",
+      "setId": "sv10",
+      "fileName": "sv10-002_Yanma.png",
+      "hashes": {
+        "perceptual": "eff903dc01fc014d8e7f800b8001fffbbc01b8ff8007b83f3d7f2cff000087d9",
+        "difference": "eff903dc01fc014d8e7f800b8001fffbbc01b8ff8007b83f3d7f2cff000087d9",
+        "average": "1e1e878dcf037f02"
+      }
+    },
+    {
+      "cardId": "sv10-003",
+      "cardName": "Yanmega ex",
+      "setId": "sv10",
+      "fileName": "sv10-003_Yanmega_ex.png",
+      "hashes": {
+        "perceptual": "01907566fc16fe0fffc25ed2f880f009f2079ef7606108fc0bf2effb781e3000",
+        "difference": "01907566fc16fe0fffc25ed2f880f009f2079ef7606108fc0bf2effb781e3000",
+        "average": "c8e3f8e0c30fbd60"
+      }
+    },
+    {
+      "cardId": "sv10-004",
+      "cardName": "Pineco",
+      "setId": "sv10",
+      "fileName": "sv10-004_Pineco.png",
+      "hashes": {
+        "perceptual": "ffffc3f580c1800188158c0d8419ffff8801bfef986d3c077fff0edf000007d1",
+        "difference": "ffffc3f580c1800188158c0d8419ffff8801bfef986d3c077fff0edf000007d1",
+        "average": "bf8081ebe943ff00"
+      }
+    },
+    {
+      "cardId": "sv10-005",
+      "cardName": "Shroomish",
+      "setId": "sv10",
+      "fileName": "sv10-005_Shroomish.png",
+      "hashes": {
+        "perceptual": "fffff8f78001800181c187818701ffff8801bfef982d3c177fff0edf000007d1",
+        "difference": "fffff8f78001800181c187818701ffff8801bfef982d3c177fff0edf000007d1",
+        "average": "ff0091b9e943ff00"
+      }
+    },
+    {
+      "cardId": "sv10-006",
+      "cardName": "Breloom",
+      "setId": "sv10",
+      "fileName": "sv10-006_Breloom.png",
+      "hashes": {
+        "perceptual": "fffde1f1c04180c180df800180b9ffffbc01b87d81c7987d3e7f0fdf000087d9",
+        "difference": "fffde1f1c04180c180df800180b9ffffbc01b87d81c7987d3e7f0fdf000087d9",
+        "average": "fd80039fe7037f02"
+      }
+    },
+    {
+      "cardId": "sv10-007",
+      "cardName": "Cynthia s Roselia",
+      "setId": "sv10",
+      "fileName": "sv10-007_Cynthia_s_Roselia.png",
+      "hashes": {
+        "perceptual": "ebf9203c607e0d878007807f80ff8ff98801bfef986d3c077fff0edf000007d1",
+        "difference": "ebf9203c607e0d878007807f80ff8ff98801bfef986d3c077fff0edf000007d1",
+        "average": "c68b039fe9437f10"
+      }
+    },
+    {
+      "cardId": "sv10-008",
+      "cardName": "Cynthia s Roserade",
+      "setId": "sv10",
+      "fileName": "sv10-008_Cynthia_s_Roserade.png",
+      "hashes": {
+        "perceptual": "abb02000bffe0f2ff423f005b00ff4f9900981cf81ffb87d7fff0fdf000003d1",
+        "difference": "abb02000bffe0f2ff423f005b00ff4f9900981cf81ffb87d7fff0fdf000003d1",
+        "average": "c03fc1c7832fff00"
+      }
+    },
+    {
+      "cardId": "sv10-009",
+      "cardName": "Mow Rotom",
+      "setId": "sv10",
+      "fileName": "sv10-009_Mow_Rotom.png",
+      "hashes": {
+        "perceptual": "eff961d7c083800f8f0f86058003feffbc81b81d99ff98053e7f0fdf000087d9",
+        "difference": "eff961d7c083800f8f0f86058003feffbc81b81d99ff98053e7f0fdf000087d9",
+        "average": "df01a1ade3077f02"
+      }
+    },
+    {
+      "cardId": "sv10-010",
+      "cardName": "Shaymin",
+      "setId": "sv10",
+      "fileName": "sv10-010_Shaymin.png",
+      "hashes": {
+        "perceptual": "aff0347c678073159f3f9d09803fbc01900d91e791c3b87f7fff0fdf000007c1",
+        "difference": "aff0347c678073159f3f9d09803fbc01900d91e791c3b87f7fff0fdf000007c1",
+        "average": "7cd0370783677f10"
+      }
+    },
+    {
+      "cardId": "sv10-011",
+      "cardName": "Dwebble",
+      "setId": "sv10",
+      "fileName": "sv10-011_Dwebble.png",
+      "hashes": {
+        "perceptual": "fffde73dc201800180018007fc0fffffbc01bfff90470c077fff0edf000007d1",
+        "difference": "fffde73dc201800180018007fc0fffffbc01bfff90470c077fff0edf000007d1",
+        "average": "fe0181f3fb01ff00"
+      }
+    },
+    {
+      "cardId": "sv10-012",
+      "cardName": "Crustle",
+      "setId": "sv10",
+      "fileName": "sv10-012_Crustle.png",
+      "hashes": {
+        "perceptual": "eff1e1709c719811b819a00fe003feef8001816fbfff981d3cff0fdf000087d9",
+        "difference": "eff1e1709c719811b819a00fe003feef8001816fbfff981d3cff0fdf000087d9",
+        "average": "dc64c3c383677f02"
+      }
+    },
+    {
+      "cardId": "sv10-013",
+      "cardName": "Fomantis",
+      "setId": "sv10",
+      "fileName": "sv10-013_Fomantis.png",
+      "hashes": {
+        "perceptual": "eff91010793e830fe397c2018307ff8d8801bfef98ed1c077fff0edf000007d1",
+        "difference": "eff91010793e830fe397c2018307ff8d8801bfef98ed1c077fff0edf000007d1",
+        "average": "e48793d1e943ff00"
+      }
+    },
+    {
+      "cardId": "sv10-014",
+      "cardName": "Lurantis",
+      "setId": "sv10",
+      "fileName": "sv10-014_Lurantis.png",
+      "hashes": {
+        "perceptual": "a7f0a000bcbc78bf9a7fa03fa00fb00fbc01b87dbbff10013e7f0fff000087d1",
+        "difference": "a7f0a000bcbc78bf9a7fa03fa00fb00fbc01b87dbbff10013e7f0fff000087d1",
+        "average": "886f47c3cb43ff00"
+      }
+    },
+    {
+      "cardId": "sv10-015",
+      "cardName": "Team Rocket s Blipbug",
+      "setId": "sv10",
+      "fileName": "sv10-015_Team_Rocket_s_Blipbug.png",
+      "hashes": {
+        "perceptual": "ffffe031a60180e1a1c1a60188c1ffff9801bfef90073c1f7fff0edf000003d9",
+        "difference": "ffffe031a60180e1a1c1a60188c1ffff9801bfef90073c1f7fff0edf000003d9",
+        "average": "e78189abeb03ff00"
+      }
+    },
+    {
+      "cardId": "sv10-016",
+      "cardName": "Applin",
+      "setId": "sv10",
+      "fileName": "sv10-016_Applin.png",
+      "hashes": {
+        "perceptual": "eff92011101ffe29f41ddc05c403f83f9801bbef802d3e1f7fff0edf000007d1",
+        "difference": "eff92011101ffe29f41ddc05c403f83f9801bbef802d3e1f7fff0edf000007d1",
+        "average": "9ce2e1e1e907ff00"
+      }
+    },
+    {
+      "cardId": "sv10-017",
+      "cardName": "Dipplin",
+      "setId": "sv10",
+      "fileName": "sv10-017_Dipplin.png",
+      "hashes": {
+        "perceptual": "ffffe3f181018101831d80178015ffff9c01bfff80013e1f7fff0fdf000007c1",
+        "difference": "ffffe3f181018101831d80178015ffff9c01bfff80013e1f7fff0fdf000007c1",
+        "average": "dd818397f9037f10"
+      }
+    },
+    {
+      "cardId": "sv10-018",
+      "cardName": "Hydrapple",
+      "setId": "sv10",
+      "fileName": "sv10-018_Hydrapple.png",
+      "hashes": {
+        "perceptual": "fffde001c003f30783e18681f00bfc7ffcc9b87f8003981f3c7f0fff000087d9",
+        "difference": "fffde001c003f30783e18681f00bfc7ffcc9b87f8003981f3c7f0fff000087d9",
+        "average": "fc8119e3e7037f02"
+      }
+    },
+    {
+      "cardId": "sv10-019",
+      "cardName": "Team Rocket s Tarountula",
+      "setId": "sv10",
+      "fileName": "sv10-019_Team_Rocket_s_Tarountula.png",
+      "hashes": {
+        "perceptual": "ffff8819802b87038e078ec78301f5ed9801bbff800d3e1f7fff0fdf000007c1",
+        "difference": "ffff8819802b87038e078ec78301f5ed9801bbff800d3e1f7fff0fdf000007c1",
+        "average": "f701b391eb037f10"
+      }
+    },
+    {
+      "cardId": "sv10-020",
+      "cardName": "Team Rocket s Spidops",
+      "setId": "sv10",
+      "fileName": "sv10-020_Team_Rocket_s_Spidops.png",
+      "hashes": {
+        "perceptual": "fffff229c0018017e031906198c1fffb8009806fbfff981d3fff0fdf000007d1",
+        "difference": "fffff229c0018017e031906198c1fffb8009806fbfff981d3fff0fdf000007d1",
+        "average": "fd8085e983677f10"
+      }
+    },
+    {
+      "cardId": "sv10-021",
+      "cardName": "Smoliv",
+      "setId": "sv10",
+      "fileName": "sv10-021_Smoliv.png",
+      "hashes": {
+        "perceptual": "eff9033003ff803383e183818007ffff8801bbef99ed1c077fff0fdf000007c1",
+        "difference": "eff9033003ff803383e183818007ffff8801bbef99ed1c077fff0fdf000007c1",
+        "average": "3c0f9987e943ff00"
+      }
+    },
+    {
+      "cardId": "sv10-022",
+      "cardName": "Dolliv",
+      "setId": "sv10",
+      "fileName": "sv10-022_Dolliv.png",
+      "hashes": {
+        "perceptual": "fffde341c261818181a18011be03ffff9c01b8ff829f183d7fff0edf000007d1",
+        "difference": "fffde341c261818181a18011be03ffff9c01b8ff829f183d7fff0edf000007d1",
+        "average": "fc9081f9eb037f10"
+      }
+    },
+    {
+      "cardId": "sv10-023",
+      "cardName": "Arboliva ex",
+      "setId": "sv10",
+      "fileName": "sv10-023_Arboliva_ex.png",
+      "hashes": {
+        "perceptual": "6bf0fbf0c6130623184187e1f8f890fff86138b940cd627f08716fdffc1e3808",
+        "difference": "6bf0fbf0c6130623184187e1f8f890fff86138b940cd627f08716fdffc1e3808",
+        "average": "dc2518cfcc0f0fe2"
+      }
+    },
+    {
+      "cardId": "sv10-024",
+      "cardName": "Rellor",
+      "setId": "sv10",
+      "fileName": "sv10-024_Rellor.png",
+      "hashes": {
+        "perceptual": "fffde011f801f801f0018401ee09ffff8801b9ef8bef38153fff0fdf000007d1",
+        "difference": "fffde011f801f801f0018401ee09ffff8801b9ef8bef38153fff0fdf000007d1",
+        "average": "fcc081bbc90f7f10"
+      }
+    },
+    {
+      "cardId": "sv10-025",
+      "cardName": "Rabsca ex",
+      "setId": "sv10",
+      "fileName": "sv10-025_Rabsca_ex.png",
+      "hashes": {
+        "perceptual": "0000639e0ffe67df45bfbda2f052a05369ff780f39de0018e67e79fd181e1c00",
+        "difference": "0000639e0ffe67df45bfbda2f052a05369ff780f39de0018e67e79fd181e1c00",
+        "average": "183f6dc15f42fe20"
+      }
+    },
+    {
+      "cardId": "sv10-026",
+      "cardName": "Teal Mask Ogerpon",
+      "setId": "sv10",
+      "fileName": "sv10-026_Teal_Mask_Ogerpon.png",
+      "hashes": {
+        "perceptual": "fffdae11aa11a0098001a8019df9fffbbcc9b87f8207981d1eff0fff000087d1",
+        "difference": "fffdae11aa11a0098001a8019df9fffbbcc9b87f8207981d1eff0fff000087d1",
+        "average": "fd4001fde7037f10"
+      }
+    },
+    {
+      "cardId": "sv10-027",
+      "cardName": "Growlithe",
+      "setId": "sv10",
+      "fileName": "sv10-027_Growlithe.png",
+      "hashes": {
+        "perceptual": "fffd8191838183e185e19cd19c21973f8001b9fd3bef181d7fff3fff00000380",
+        "difference": "fffd8191838183e185e19cd19c21973f8001b9fd3bef181d7fff3fff00000380",
+        "average": "bd182ce54b47ff00"
+      }
+    },
+    {
+      "cardId": "sv10-028",
+      "cardName": "Arcanine",
+      "setId": "sv10",
+      "fileName": "sv10-028_Arcanine.png",
+      "hashes": {
+        "perceptual": "27d0601c3ffe782610f3f02fb01fa11f9c0199fd3fff00057fff3fff000001c0",
+        "difference": "27d0601c3ffe782610f3f02fb01fa11f9c0199fd3fff00057fff3fff000001c0",
+        "average": "047f47c35f03ff00"
+      }
+    },
+    {
+      "cardId": "sv10-029",
+      "cardName": "Ponyta",
+      "setId": "sv10",
+      "fileName": "sv10-029_Ponyta.png",
+      "hashes": {
+        "perceptual": "effd3a91ec018c81ffd187e18001c7d99801bfff00013f3f7fff3fff00000380",
+        "difference": "effd3a91ec018c81ffd187e18001c7d99801bfff00013f3f7fff3fff00000380",
+        "average": "f8e0b9897b03ff00"
+      }
+    },
+    {
+      "cardId": "sv10-030",
+      "cardName": "Rapidash",
+      "setId": "sv10",
+      "fileName": "sv10-030_Rapidash.png",
+      "hashes": {
+        "perceptual": "eff1e019f873e001bfc1bd81bc01fe01800183ef18fd3e3f7fff3fff00000680",
+        "difference": "eff1e019f873e001bfc1bd81bc01fe01800183ef18fd3e3f7fff3fff00000680",
+        "average": "dcc178e1036fff00"
+      }
+    },
+    {
+      "cardId": "sv10-031",
+      "cardName": "Team Rocket s Moltres ex",
+      "setId": "sv10",
+      "fileName": "sv10-031_Team_Rocket_s_Moltres_ex.png",
+      "hashes": {
+        "perceptual": "7ff07ee04001770f9e3f837d8fe180a0b83d1079b7fb3801000f7f1f601f1ff0",
+        "difference": "7ff07ee04001770f9e3f837d8fe180a0b83d1079b7fb3801000f7f1f601f1ff0",
+        "average": "7c91378c466d03e7"
+      }
+    },
+    {
+      "cardId": "sv10-032",
+      "cardName": "Ethan s Cyndaquil",
+      "setId": "sv10",
+      "fileName": "sv10-032_Ethan_s_Cyndaquil.png",
+      "hashes": {
+        "perceptual": "af18000670fe79bf82cd9f718101f8fb8801bfff000d3f1f7fff3fff00000380",
+        "difference": "af18000670fe79bf82cd9f718101f8fb8801bfff000d3f1f7fff3fff00000380",
+        "average": "06cf9f817b03ff00"
+      }
+    },
+    {
+      "cardId": "sv10-033",
+      "cardName": "Ethan s Quilava",
+      "setId": "sv10",
+      "fileName": "sv10-033_Ethan_s_Quilava.png",
+      "hashes": {
+        "perceptual": "fff1e011cb49992197e988019fb1f81b800583e783ff387d7fff3fff00000380",
+        "difference": "fff1e011cb49992197e988019fb1f81b800583e783ff387d7fff3fff00000380",
+        "average": "fc3001fd816fff00"
+      }
+    },
+    {
+      "cardId": "sv10-034",
+      "cardName": "Ethan s Typhlosion",
+      "setId": "sv10",
+      "fileName": "sv10-034_Ethan_s_Typhlosion.png",
+      "hashes": {
+        "perceptual": "fff1e021991fb021e183801f803bd7dfbcc9b87d800b1c3f3fff3fff00000780",
+        "difference": "fff1e021991fb021e183801f803bd7dfbcc9b87d800b1c3f3fff3fff00000780",
+        "average": "c4d387876f037f10"
+      }
+    },
+    {
+      "cardId": "sv10-035",
+      "cardName": "Ethan s Slugma",
+      "setId": "sv10",
+      "fileName": "sv10-035_Ethan_s_Slugma.png",
+      "hashes": {
+        "perceptual": "fff9007d003f801f800f8027f827b9ff8001bfff38053e1f7fff3fff00000380",
+        "difference": "fff9007d003f801f800f8027f827b9ff8001bfff38053e1f7fff3fff00000380",
+        "average": "2f0703cf7943ff00"
+      }
+    },
+    {
+      "cardId": "sv10-036",
+      "cardName": "Ethan s Magcargo",
+      "setId": "sv10",
+      "fileName": "sv10-036_Ethan_s_Magcargo.png",
+      "hashes": {
+        "perceptual": "fffdf071b001b009f801e00fe007fe6f804983ef1fff081d7fff3fff00000380",
+        "difference": "fffdf071b001b009f801e00fe007fe6f804983ef1fff081d7fff3fff00000380",
+        "average": "edc0c3c30b2f7f10"
+      }
+    },
+    {
+      "cardId": "sv10-037",
+      "cardName": "Team Rocket s Houndour",
+      "setId": "sv10",
+      "fileName": "sv10-037_Team_Rocket_s_Houndour.png",
+      "hashes": {
+        "perceptual": "fff903819fc1b801bf019b01a901fff18001bfff38053e1f7fff3fff00000380",
+        "difference": "fff903819fc1b801bf019b01a901fff18001bfff38053e1f7fff3fff00000380",
+        "average": "f870f1d07943ff00"
+      }
+    },
+    {
+      "cardId": "sv10-038",
+      "cardName": "Team Rocket s Houndoom",
+      "setId": "sv10",
+      "fileName": "sv10-038_Team_Rocket_s_Houndoom.png",
+      "hashes": {
+        "perceptual": "fffffee1c0018001878386018603ffffbc01b8ff03c7183d7fff3fff00000380",
+        "difference": "fffffee1c0018001878386018603ffffbc01b8ff03c7183d7fff3fff00000380",
+        "average": "fd8081bd6f03ff00"
+      }
+    },
+    {
+      "cardId": "sv10-039",
+      "cardName": "Ethan s Ho Oh ex",
+      "setId": "sv10",
+      "fileName": "sv10-039_Ethan_s_Ho_Oh_ex.png",
+      "hashes": {
+        "perceptual": "0ab07e40bf830fe78cfe787c99c0818f0187807f87ff813dc77e3ffe0c1f8000",
+        "difference": "0ab07e40bf830fe78cfe787c99c0818f0187807f87ff813dc77e3ffe0c1f8000",
+        "average": "e839ae5807977f20"
+      }
+    },
+    {
+      "cardId": "sv10-040",
+      "cardName": "Torchic",
+      "setId": "sv10",
+      "fileName": "sv10-040_Torchic.png",
+      "hashes": {
+        "perceptual": "eff9238136879807f90f80078017f2ff8001b9ff0bef381d7fff3fff00000380",
+        "difference": "eff9238136879807f90f80078017f2ff8001b9ff0bef381d7fff3fff00000380",
+        "average": "7871838f6b07ff00"
+      }
+    },
+    {
+      "cardId": "sv10-041",
+      "cardName": "Combusken",
+      "setId": "sv10",
+      "fileName": "sv10-041_Combusken.png",
+      "hashes": {
+        "perceptual": "eff1e070b1e1b241bd89880d8091eeff9801b87d3fef180d7fff3fff00000380",
+        "difference": "eff1e070b1e1b241bd89880d8091eeff9801b87d3fef180d7fff3fff00000380",
+        "average": "dc58e18d6b43ff00"
+      }
+    },
+    {
+      "cardId": "sv10-042",
+      "cardName": "Blaziken",
+      "setId": "sv10",
+      "fileName": "sv10-042_Blaziken.png",
+      "hashes": {
+        "perceptual": "eff1e021bd919981b0a1ce01bf81bf39bc4198fd1fff00053e2f7fff000087c1",
+        "difference": "eff1e021bd919981b0a1ce01bf81bf39bc4198fd1fff00053e2f7fff000087c1",
+        "average": "dc68a1f1cf03ff00"
+      }
+    },
+    {
+      "cardId": "sv10-043",
+      "cardName": "Heat Rotom",
+      "setId": "sv10",
+      "fileName": "sv10-043_Heat_Rotom.png",
+      "hashes": {
+        "perceptual": "2fc03e707ef07c217806f017f0279e3dbcc9b9ff0a4718057fff3fff00000380",
+        "difference": "2fc03e707ef07c217806f017f0279e3dbcc9b9ff0a4718057fff3fff00000380",
+        "average": "3ce4c1c76f03ff00"
+      }
+    },
+    {
+      "cardId": "sv10-044",
+      "cardName": "Hearthflame Mask Ogerpon",
+      "setId": "sv10",
+      "fileName": "sv10-044_Hearthflame_Mask_Ogerpon.png",
+      "hashes": {
+        "perceptual": "ffff8c3980b98009809f8203809ff3ffbcc9b87f8207183d7fff3fff00000580",
+        "difference": "ffff8c3980b98009809f8203809ff3ffbcc9b87f8207183d7fff3fff00000580",
+        "average": "f704838f6f03ff00"
+      }
+    },
+    {
+      "cardId": "sv10-045",
+      "cardName": "Misty s Psyduck",
+      "setId": "sv10",
+      "fileName": "sv10-045_Misty_s_Psyduck.png",
+      "hashes": {
+        "perceptual": "08003c147fce7fdef7118161fd45fc0a803d87a702017fff3e3f7fff00080398",
+        "difference": "08003c147fce7fdef7118161fd45fc0a803d87a702017fff3e3f7fff00080398",
+        "average": "60fa94e3071f7f02"
+      }
+    },
+    {
+      "cardId": "sv10-046",
+      "cardName": "Misty s Staryu",
+      "setId": "sv10",
+      "fileName": "sv10-046_Misty_s_Staryu.png",
+      "hashes": {
+        "perceptual": "1a08781c7ffe780e00bd80018dbdfffa82c17fff200107bf7fff7fff00000108",
+        "difference": "1a08781c7ffe780e00bd80018dbdfffa82c17fff200107bf7fff7fff00000108",
+        "average": "60f601feff00ff00"
+      }
+    },
+    {
+      "cardId": "sv10-047",
+      "cardName": "Misty s Starmie",
+      "setId": "sv10",
+      "fileName": "sv10-047_Misty_s_Starmie.png",
+      "hashes": {
+        "perceptual": "fffde001a803bc078003a09ff81dfe9e87c97fff0001071f7fff7fff00000088",
+        "difference": "fffde001a803bc078003a09ff81dfe9e87c97fff0001071f7fff7fff00000088",
+        "average": "ec6103e7ff00ff00"
+      }
+    },
+    {
+      "cardId": "sv10-048",
+      "cardName": "Misty s Magikarp",
+      "setId": "sv10",
+      "fileName": "sv10-048_Misty_s_Magikarp.png",
+      "hashes": {
+        "perceptual": "fffd29919f8180418f4182238103ffff803d81a7037739fd7fff7fff00080008",
+        "difference": "fffd29919f8180418f4182238103ffff803d81a7037739fd7fff7fff00080008",
+        "average": "7c3891f1074f7f02"
+      }
+    },
+    {
+      "cardId": "sv10-049",
+      "cardName": "Misty s Gyarados",
+      "setId": "sv10",
+      "fileName": "sv10-049_Misty_s_Gyarados.png",
+      "hashes": {
+        "perceptual": "3f7160013e7fc0678063e053e047fc7faffdb83d00010afd3fff7fff00080018",
+        "difference": "3f7160013e7fc0678063e053e047fc7faffdb83d00010afd3fff7fff00080018",
+        "average": "64cbc1c76f117f02"
+      }
+    },
+    {
+      "cardId": "sv10-050",
+      "cardName": "Misty s Lapras",
+      "setId": "sv10",
+      "fileName": "sv10-050_Misty_s_Lapras.png",
+      "hashes": {
+        "perceptual": "3ff120117819fc372e31a401bc1cfff887d9383f00031ffd3fff7fff000c0008",
+        "difference": "3ff120117819fc372e31a401bc1cfff887d9383f00031ffd3fff7fff000c0008",
+        "average": "60e760ee67317f02"
+      }
+    },
+    {
+      "cardId": "sv10-051",
+      "cardName": "Team Rocket s Articuno",
+      "setId": "sv10",
+      "fileName": "sv10-051_Team_Rocket_s_Articuno.png",
+      "hashes": {
+        "perceptual": "ffffa1e180c1c049bfdd80c98081ef63807d87f78783087d7f7f7eff000c0088",
+        "difference": "ffffa1e180c1c049bfdd80c98081ef63807d87f78783087d7f7f7eff000c0088",
+        "average": "fd808b998f077f02"
+      }
+    },
+    {
+      "cardId": "sv10-052",
+      "cardName": "Cynthia s Feebas",
+      "setId": "sv10",
+      "fileName": "sv10-052_Cynthia_s_Feebas.png",
+      "hashes": {
+        "perceptual": "1e180e341fe67de1f8f1f8c3b803f81187d97fff200507057fff7fff00000088",
+        "difference": "1e180e341fe67de1f8f1f8c3b803f81187d97fff200507057fff7fff00000088",
+        "average": "3678cdc1ff00ff00"
+      }
+    },
+    {
+      "cardId": "sv10-053",
+      "cardName": "Cynthia s Milotic",
+      "setId": "sv10",
+      "fileName": "sv10-053_Cynthia_s_Milotic.png",
+      "hashes": {
+        "perceptual": "3ff160198f879f019011c181ffc79fb887d9ffff004103137fff7fff00040008",
+        "difference": "3ff160198f879f019011c181ffc79fb887d9ffff004103137fff7fff00040008",
+        "average": "e63111f9ff00ff00"
+      }
+    },
+    {
+      "cardId": "sv10-054",
+      "cardName": "Clamperl",
+      "setId": "sv10",
+      "fileName": "sv10-054_Clamperl.png",
+      "hashes": {
+        "perceptual": "0f18783c7c3e681f8003a1c99c1ffc7f87d9ffff004107057fff7fff00080008",
+        "difference": "0f18783c7c3e681f8003a1c99c1ffc7f87d9ffff004107057fff7fff00080008",
+        "average": "64e381e7ff00ff00"
+      }
+    },
+    {
+      "cardId": "sv10-055",
+      "cardName": "Huntail",
+      "setId": "sv10",
+      "fileName": "sv10-055_Huntail.png",
+      "hashes": {
+        "perceptual": "fffda13d80f38001e021c501e403ffff807f81cf00017fff3e7d7fff00080398",
+        "difference": "fffda13d80f38001e021c501e403ffff807f81cf00017fff3e7d7fff00080398",
+        "average": "7f0181f90f177f02"
+      }
+    },
+    {
+      "cardId": "sv10-056",
+      "cardName": "Gorebyss",
+      "setId": "sv10",
+      "fileName": "sv10-056_Gorebyss.png",
+      "hashes": {
+        "perceptual": "2fd8203d00ff80ff81ff85df8303806fbfffbfbd000102057fff7fff00000208",
+        "difference": "2fd8203d00ff80ff81ff85df8303806fbfffbfbd000102057fff7fff00000208",
+        "average": "4e0f0f937f01ff00"
+      }
+    },
+    {
+      "cardId": "sv10-057",
+      "cardName": "Buizel",
+      "setId": "sv10",
+      "fileName": "sv10-057_Buizel.png",
+      "hashes": {
+        "perceptual": "fffff615e001c00183019f21c023fffb00c138fd3fff083c7fff7fff00080008",
+        "difference": "fffff615e001c00183019f21c023fffb00c138fd3fff083c7fff7fff00080008",
+        "average": "f78091d54f26ff00"
+      }
+    },
+    {
+      "cardId": "sv10-058",
+      "cardName": "Floatzel",
+      "setId": "sv10",
+      "fileName": "sv10-058_Floatzel.png",
+      "hashes": {
+        "perceptual": "2fd0201c3fdf1cc5801583f987c1ffc987f998fd0383087d7fff7fff00080008",
+        "difference": "2fd0201c3fdf1cc5801583f987c1ffc987f998fd0383087d7fff7fff00080008",
+        "average": "507b05f96f057f02"
+      }
+    },
+    {
+      "cardId": "sv10-059",
+      "cardName": "Snover",
+      "setId": "sv10",
+      "fileName": "sv10-059_Snover.png",
+      "hashes": {
+        "perceptual": "0f983e38070e45ff003fb03df04fe03f80c1187d3bfd09bd7fff7fff00000088",
+        "difference": "0f983e38070e45ff003fb03df04fe03f80c1187d3bfd09bd7fff7fff00000088",
+        "average": "741747c30f1eff00"
+      }
+    },
+    {
+      "cardId": "sv10-060",
+      "cardName": "Abomasnow",
+      "setId": "sv10",
+      "fileName": "sv10-060_Abomasnow.png",
+      "hashes": {
+        "perceptual": "2f70600103f39ffb07fa03fb87819e8587d988fd3ffd00017fff7fff00000088",
+        "difference": "2f70600103f39ffb07fa03fb87819e8587d988fd3ffd00017fff7fff00000088",
+        "average": "c45d1d392f16ff00"
+      }
+    },
+    {
+      "cardId": "sv10-061",
+      "cardName": "Wash Rotom",
+      "setId": "sv10",
+      "fileName": "sv10-061_Wash_Rotom.png",
+      "hashes": {
+        "perceptual": "fffd7031f8818203a01b803f8237ffc3affdb87d030f08057fff7fff00080008",
+        "difference": "fffd7031f8818203a01b803f8237ffc3affdb87d030f08057fff7fff00080008",
+        "average": "e78107b56f037f02"
+      }
+    },
+    {
+      "cardId": "sv10-062",
+      "cardName": "Arrokuda",
+      "setId": "sv10",
+      "fileName": "sv10-062_Arrokuda.png",
+      "hashes": {
+        "perceptual": "fffff821f029800180c582f181c3f9ff00417fff000d3fbe7fff7fff00000208",
+        "difference": "fffff821f029800180c582f181c3f9ff00417fff000d3fbe7fff7fff00000208",
+        "average": "fd80899d7f02ff00"
+      }
+    },
+    {
+      "cardId": "sv10-063",
+      "cardName": "Barraskewda",
+      "setId": "sv10",
+      "fileName": "sv10-063_Barraskewda.png",
+      "hashes": {
+        "perceptual": "af7160014a1fbb8f1c07b8c19fe3981f87c938fd3ffd00013fff7fff00000188",
+        "difference": "af7160014a1fbb8f1c07b8c19fe3981f87c938fd3ffd00013fff7fff00000188",
+        "average": "e43361794f1a7f02"
+      }
+    },
+    {
+      "cardId": "sv10-064",
+      "cardName": "Cetoddle",
+      "setId": "sv10",
+      "fileName": "sv10-064_Cetoddle.png",
+      "hashes": {
+        "perceptual": "2fd0000019ffff79043027fd87fdb80780c1397d3f7f003d7fff7fff00000088",
+        "difference": "2fd0000019ffff79043027fd87fdb80780c1397d3f7f003d7fff7fff00000088",
+        "average": "00ff64676f06ff00"
+      }
+    },
+    {
+      "cardId": "sv10-065",
+      "cardName": "Cetitan ex",
+      "setId": "sv10",
+      "fileName": "sv10-065_Cetitan_ex.png",
+      "hashes": {
+        "perceptual": "3f6078f063e371c100fc07fc6ffe420c17804f817ffe08b91fff6fd7641e0000",
+        "difference": "3f6078f063e371c100fc07fc6ffe420c17804f817ffe08b91fff6fd7641e0000",
+        "average": "4cd91e36187eff00"
+      }
+    },
+    {
+      "cardId": "sv10-066",
+      "cardName": "Dondozo ex",
+      "setId": "sv10",
+      "fileName": "sv10-066_Dondozo_ex.png",
+      "hashes": {
+        "perceptual": "0f007ff6fa07d0078076807f04ff817fc1bfb83d01fe103c00fefffee01f8002",
+        "difference": "0f007ff6fa07d0078076807f04ff817fc1bfb83d01fe103c00fefffee01f8002",
+        "average": "74c30f0f870f8f83"
+      }
+    },
+    {
+      "cardId": "sv10-067",
+      "cardName": "Wellspring Mask Ogerpon",
+      "setId": "sv10",
+      "fileName": "sv10-067_Wellspring_Mask_Ogerpon.png",
+      "hashes": {
+        "perceptual": "3f116c1d0cd9bc390c318d319eb9f6d1affdb93f020308397fff7fff00000088",
+        "difference": "3f116c1d0cd9bc390c318d319eb9f6d1affdb93f020308397fff7fff00000088",
+        "average": "6666247de703ff00"
+      }
+    },
+    {
+      "cardId": "sv10-068",
+      "cardName": "Electabuzz",
+      "setId": "sv10",
+      "fileName": "sv10-068_Electabuzz.png",
+      "hashes": {
+        "perceptual": "2ff90e911fe19e0180039f09bc01fffb00013fff187d3e1e7fff7ffe00000380",
+        "difference": "2ff90e911fe19e0180039f09bc01fffb00013fff187d3e1e7fff7ffe00000380",
+        "average": "3c7871e16b46ff00"
+      }
+    },
+    {
+      "cardId": "sv10-069",
+      "cardName": "Electivire ex",
+      "setId": "sv10",
+      "fileName": "sv10-069_Electivire_ex.png",
+      "hashes": {
+        "perceptual": "016065601eb47fff797fc2e687401ec2fee2f8035f8f480817dedffe5c1e0000",
+        "difference": "016065601eb47fff797fc2e687401ec2fee2f8035f8f480817dedffe5c1e0000",
+        "average": "0c7e8f38e163ff00"
+      }
+    },
+    {
+      "cardId": "sv10-070",
+      "cardName": "Team Rocket s Zapdos",
+      "setId": "sv10",
+      "fileName": "sv10-070_Team_Rocket_s_Zapdos.png",
+      "hashes": {
+        "perceptual": "fffb001390f7a181838fabc59c09f1f0ffed983d800f081d7f7f7ffe00000780",
+        "difference": "fffb001390f7a181838fabc59c09f1f0ffed983d800f081d7f7f7ffe00000780",
+        "average": "3d199be0e703ff00"
+      }
+    },
+    {
+      "cardId": "sv10-071",
+      "cardName": "Ethan s Pichu",
+      "setId": "sv10",
+      "fileName": "sv10-071_Ethan_s_Pichu.png",
+      "hashes": {
+        "perceptual": "2bf8301831d1e7f5b7a181059fd99e3880013fff083d3f1e7fff7ffe000002c0",
+        "difference": "2bf8301831d1e7f5b7a181059fd99e3880013fff083d3f1e7fff7ffe000002c0",
+        "average": "4cdc583e7a46ff00"
+      }
+    },
+    {
+      "cardId": "sv10-072",
+      "cardName": "Team Rocket s Mareep",
+      "setId": "sv10",
+      "fileName": "sv10-072_Team_Rocket_s_Mareep.png",
+      "hashes": {
+        "perceptual": "ffff001181e981f1807181f981fdfe19bcc8b87f000738fd7fff7ffe000002c0",
+        "difference": "ffff001181e981f1807181f981fdfe19bcc8b87f000738fd7fff7ffe000002c0",
+        "average": "b70c85a76707ff00"
+      }
+    },
+    {
+      "cardId": "sv10-073",
+      "cardName": "Team Rocket s Flaaffy",
+      "setId": "sv10",
+      "fileName": "sv10-073_Team_Rocket_s_Flaaffy.png",
+      "hashes": {
+        "perceptual": "ffffe081c38183819fc187c183c1f0bb9c00ffff1001077f7fff7ffe00000380",
+        "difference": "ffffe081c38183819fc187c183c1f0bb9c00ffff1001077f7fff7ffe00000380",
+        "average": "fd1099997e03ff00"
+      }
+    },
+    {
+      "cardId": "sv10-074",
+      "cardName": "Team Rocket s Ampharos",
+      "setId": "sv10",
+      "fileName": "sv10-074_Team_Rocket_s_Ampharos.png",
+      "hashes": {
+        "perceptual": "3ff1e07181f980f182f981ff80f1c0f9801d819f9dc7387d7fff7ffe000002c0",
+        "difference": "3ff1e07181f980f182f981ff80f1c0f9801d819f9dc7387d7fff7ffe000002c0",
+        "average": "ec1c1f8c832fff00"
+      }
+    },
+    {
+      "cardId": "sv10-075",
+      "cardName": "Electrike",
+      "setId": "sv10",
+      "fileName": "sv10-075_Electrike.png",
+      "hashes": {
+        "perceptual": "2ff96031f87db005b00d90079e03ff9f800138fd3bff183d7fff7ffe00000380",
+        "difference": "2ff96031f87db005b00d90079e03ff9f800138fd3bff183d7fff7ffe00000380",
+        "average": "1cc7c3d14b4eff00"
+      }
+    },
+    {
+      "cardId": "sv10-076",
+      "cardName": "Manectric",
+      "setId": "sv10",
+      "fileName": "sv10-076_Manectric.png",
+      "hashes": {
+        "perceptual": "effbe071807184718f61808180e1ffffbc81b8fd3bff00011fff7ffe000007c0",
+        "difference": "effbe071807184718f61808180e1ffffbc81b8fd3bff00011fff7ffe000007c0",
+        "average": "dd0c898f4f077f10"
+      }
+    },
+    {
+      "cardId": "sv10-077",
+      "cardName": "Rotom",
+      "setId": "sv10",
+      "fileName": "sv10-077_Rotom.png",
+      "hashes": {
+        "perceptual": "aff90771974183459a499e218001fffffecdb8fd0003183d7e7f7ffe000005d0",
+        "difference": "aff90771974183459a499e218001fffffecdb8fd0003183d7e7f7ffe000005d0",
+        "average": "bd12a1d96f03ff00"
+      }
+    },
+    {
+      "cardId": "sv10-078",
+      "cardName": "Zeraora",
+      "setId": "sv10",
+      "fileName": "sv10-078_Zeraora.png",
+      "hashes": {
+        "perceptual": "eff32837a823a843c003dc03bf079f37bc81b8fd3bff00016e537fff080407d0",
+        "difference": "eff32837a823a843c003dc03bf079f37bc81b8fd3bff00016e537fff080407d0",
+        "average": "75c1a1736f03ff00"
+      }
+    },
+    {
+      "cardId": "sv10-079",
+      "cardName": "Team Rocket s Drowzee",
+      "setId": "sv10",
+      "fileName": "sv10-079_Team_Rocket_s_Drowzee.png",
+      "hashes": {
+        "perceptual": "ffff8f938381800187c38003800fffff20007ffd20057ffe7fff3efe000c00d0",
+        "difference": "ffff8f938381800187c38003800fffff20007ffd20057ffe7fff3efe000c00d0",
+        "average": "fd1081b7fc42ff00"
+      }
+    },
+    {
+      "cardId": "sv10-080",
+      "cardName": "Team Rocket s Hypno",
+      "setId": "sv10",
+      "fileName": "sv10-080_Team_Rocket_s_Hypno.png",
+      "hashes": {
+        "perceptual": "fffffa21c00181c187c19f818941dddbfffdb9fd080d0001347f7ffe080c02f0",
+        "difference": "fffffa21c00181c187c19f818941dddbfffdb9fd080d0001347f7ffe080c02f0",
+        "average": "fd80b9a1fe027f02"
+      }
+    },
+    {
+      "cardId": "sv10-081",
+      "cardName": "Team Rocket s Mewtwo ex",
+      "setId": "sv10",
+      "fileName": "sv10-081_Team_Rocket_s_Mewtwo_ex.png",
+      "hashes": {
+        "perceptual": "1da07c221c3e3eee0ccf6c633f3c04ea00060f9f1ffc1f1e7ffe3ffe201e0000",
+        "difference": "1da07c221c3e3eee0ccf6c633f3c04ea00060f9f1ffc1f1e7ffe3ffe201e0000",
+        "average": "64672b2e133e7f02"
+      }
+    },
+    {
+      "cardId": "sv10-082",
+      "cardName": "Team Rocket s Wobbuffet",
+      "setId": "sv10",
+      "fileName": "sv10-082_Team_Rocket_s_Wobbuffet.png",
+      "hashes": {
+        "perceptual": "ffff3f078081a201b70193038409ff7ffff0b93f0101381d7fff3efe000801d0",
+        "difference": "ffff3f078081a201b70193038409ff7ffff0b93f0101381d7fff3efe000801d0",
+        "average": "fb01d1b177417f02"
+      }
+    },
+    {
+      "cardId": "sv10-083",
+      "cardName": "Steven s Baltoy",
+      "setId": "sv10",
+      "fileName": "sv10-083_Steven_s_Baltoy.png",
+      "hashes": {
+        "perceptual": "3ff927e107c194190c11b03d873ffe19ffe1b81f0103383d7fff3efe080003c0",
+        "difference": "3ff927e107c194190c11b03d873ffe19ffe1b81f0103383d7fff3efe080003c0",
+        "average": "7c3824b7e7417f20"
+      }
+    },
+    {
+      "cardId": "sv10-084",
+      "cardName": "Steven s Claydol",
+      "setId": "sv10",
+      "fileName": "sv10-084_Steven_s_Claydol.png",
+      "hashes": {
+        "perceptual": "fff9f0c1a301c00fec39b8198463e3e3fe01387d23e708797fff3efe080400d0",
+        "difference": "fff9f0c1a301c00fec39b8198463e3e3fe01387d23e708797fff3efe080400d0",
+        "average": "f891c7856c0f7f02"
+      }
+    },
+    {
+      "cardId": "sv10-085",
+      "cardName": "Team Rocket s Chingling",
+      "setId": "sv10",
+      "fileName": "sv10-085_Team_Rocket_s_Chingling.png",
+      "hashes": {
+        "perceptual": "ffff800181e187718f7d8fc18181f14b20007fff00077f7e7fff3efe000c00d0",
+        "difference": "ffff800181e187718f7d8fc18181f14b20007fff00077f7e7fff3efe000c00d0",
+        "average": "f70839997c43ff00"
+      }
+    },
+    {
+      "cardId": "sv10-086",
+      "cardName": "Steven s Carbink",
+      "setId": "sv10",
+      "fileName": "sv10-086_Steven_s_Carbink.png",
+      "hashes": {
+        "perceptual": "ffffc013801187d181518551b783ffc3807983fb00017fff387d7ffe080807f0",
+        "difference": "ffffc013801187d181518551b783ffc3807983fb00017fff387d7ffe080807f0",
+        "average": "e7180cf98d537f20"
+      }
+    },
+    {
+      "cardId": "sv10-087",
+      "cardName": "Team Rocket s Mimikyu",
+      "setId": "sv10",
+      "fileName": "sv10-087_Team_Rocket_s_Mimikyu.png",
+      "hashes": {
+        "perceptual": "fffff2338001c221c07180e1c2e1fff97c007fff100111ff7fff7ffe080000c0",
+        "difference": "fffff2338001c221c07180e1c2e1fff97c007fff100111ff7fff7ffe080000c0",
+        "average": "f7808d8dfc03ff00"
+      }
+    },
+    {
+      "cardId": "sv10-088",
+      "cardName": "Team Rocket s Dottler",
+      "setId": "sv10",
+      "fileName": "sv10-088_Team_Rocket_s_Dottler.png",
+      "hashes": {
+        "perceptual": "fffffe21c00180c187e1866180c1fbfbffa0b81f01a3383d7fff7efe080400c0",
+        "difference": "fffffe21c00180c187e1866180c1fbfbffa0b81f01a3383d7fff7efe080400c0",
+        "average": "fd809999e2477f02"
+      }
+    },
+    {
+      "cardId": "sv10-089",
+      "cardName": "Team Rocket s Orbeetle",
+      "setId": "sv10",
+      "fileName": "sv10-089_Team_Rocket_s_Orbeetle.png",
+      "hashes": {
+        "perceptual": "ffffe60f8601820187918001ba03ffff803983f143ff08fd7f7f7ffe000003c0",
+        "difference": "ffffe60f8601820187918001ba03ffff803983f143ff08fd7f7f7ffe000003c0",
+        "average": "ff0081e78d0f7f20"
+      }
+    },
+    {
+      "cardId": "sv10-090",
+      "cardName": "Mankey",
+      "setId": "sv10",
+      "fileName": "sv10-090_Mankey.png",
+      "hashes": {
+        "perceptual": "ffffe0778003824181f381f18043c7ffb001ffe7a0017fe17fff3fdf00000381",
+        "difference": "ffffe0778003824181f381f18043c7ffb001ffe7a0017fe17fff3fdf00000381",
+        "average": "df019d83fb40ff00"
+      }
+    },
+    {
+      "cardId": "sv10-091",
+      "cardName": "Primeape",
+      "setId": "sv10",
+      "fileName": "sv10-091_Primeape.png",
+      "hashes": {
+        "perceptual": "a1e0602c3f3e3f0fffdf83f98001c20bfc47ffffa08104017fff3fdf00000381",
+        "difference": "a1e0602c3f3e3f0fffdf83f98001c20bfc47ffffa08104017fff3fdf00000381",
+        "average": "88779f81fb01ff00"
+      }
+    },
+    {
+      "cardId": "sv10-092",
+      "cardName": "Annihilape",
+      "setId": "sv10",
+      "fileName": "sv10-092_Annihilape.png",
+      "hashes": {
+        "perceptual": "eff5e0e1c5c1861186999005b801ffffb47fc7c7810198795fe57fdf000087c1",
+        "difference": "eff5e0e1c5c1861186999005b801ffffb47fc7c7810198795fe57fdf000087c1",
+        "average": "dd90c1e99f81ff00"
+      }
+    },
+    {
+      "cardId": "sv10-093",
+      "cardName": "Ethan s Sudowoodo",
+      "setId": "sv10",
+      "fileName": "sv10-093_Ethan_s_Sudowoodo.png",
+      "hashes": {
+        "perceptual": "fff100fdf1f18001c00b810f8639fe7ffc41b8fd83817839b28f7fff000187c1",
+        "difference": "fff100fdf1f18001c00b810f8639fe7ffc41b8fd83817839b28f7fff000187c1",
+        "average": "dc0d83a7ef017f10"
+      }
+    },
+    {
+      "cardId": "sv10-094",
+      "cardName": "Team Rocket s Larvitar",
+      "setId": "sv10",
+      "fileName": "sv10-094_Team_Rocket_s_Larvitar.png",
+      "hashes": {
+        "perceptual": "ffff819581c1838181e181e181c3f7efb001ffe780057fe17fff3fdf00000381",
+        "difference": "ffff819581c1838181e181e181c3f7efb001ffe780057fe17fff3fdf00000381",
+        "average": "ff009999fb01ff00"
+      }
+    },
+    {
+      "cardId": "sv10-095",
+      "cardName": "Team Rocket s Pupitar",
+      "setId": "sv10",
+      "fileName": "sv10-095_Team_Rocket_s_Pupitar.png",
+      "hashes": {
+        "perceptual": "fff1e021810f8fc18dfb87f183e1c049fc45ffffa00105817fff3fdf00000381",
+        "difference": "fff1e021810f8fc18dfb87f183e1c049fc45ffffa00105817fff3fdf00000381",
+        "average": "c51b3d89ff00ff00"
+      }
+    },
+    {
+      "cardId": "sv10-096",
+      "cardName": "Team Rocket s Tyranitar",
+      "setId": "sv10",
+      "fileName": "sv10-096_Team_Rocket_s_Tyranitar.png",
+      "hashes": {
+        "perceptual": "fffde061c681862180e1803183b9fffda07d878787c7b8193f6d7fdf000087c1",
+        "difference": "fffde061c681862180e1803183b9fffda07d878787c7b8193f6d7fdf000087c1",
+        "average": "fd8004bf83d3ff00"
+      }
+    },
+    {
+      "cardId": "sv10-097",
+      "cardName": "Nosepass",
+      "setId": "sv10",
+      "fileName": "sv10-097_Nosepass.png",
+      "hashes": {
+        "perceptual": "fffff8f1820182019801f801fe01ffcff401b8edbfc508697fff3fdf00000681",
+        "difference": "fffff8f1820182019801f801fe01ffcff401b8edbfc508697fff3fdf00000681",
+        "average": "fd01e0f1ebc0ff00"
+      }
+    },
+    {
+      "cardId": "sv10-098",
+      "cardName": "Probopass",
+      "setId": "sv10",
+      "fileName": "sv10-098_Probopass.png",
+      "hashes": {
+        "perceptual": "e7f1a0e19b678d019831b83d8c21fe2ffc43b86dbfcd08017ffd3fdf00000781",
+        "difference": "e7f1a0e19b678d019831b83d8c21fe2ffc43b86dbfcd08017ffd3fdf00000781",
+        "average": "cc3987a3ebc0ff00"
+      }
+    },
+    {
+      "cardId": "sv10-099",
+      "cardName": "Meditite",
+      "setId": "sv10",
+      "fileName": "sv10-099_Meditite.png",
+      "hashes": {
+        "perceptual": "eff9f801f001e3c1870186018cb9ff7fb001ffe7a0017fe17fff3fdf00000381",
+        "difference": "eff9f801f001e3c1870186018cb9ff7fb001ffe7a0017fe17fff3fdf00000381",
+        "average": "dcd010f7fb40ff00"
+      }
+    },
+    {
+      "cardId": "sv10-100",
+      "cardName": "Medicham",
+      "setId": "sv10",
+      "fileName": "sv10-100_Medicham.png",
+      "hashes": {
+        "perceptual": "eff1e1c1f001807fe803e521fa03ff07fc4fffffa00100817fff3fdf00000381",
+        "difference": "eff1e1c1f001807fe803e521fa03ff07fc4fffffa00100817fff3fdf00000381",
+        "average": "dc83c1f1ff00ff00"
+      }
+    },
+    {
+      "cardId": "sv10-101",
+      "cardName": "Regirock ex",
+      "setId": "sv10",
+      "fileName": "sv10-101_Regirock_ex.png",
+      "hashes": {
+        "perceptual": "015060febd7cfcc8f7e9e1f98087c007e03e787f0803b87d80377ffe4c1f3804",
+        "difference": "015060febd7cfcc8f7e9e1f98087c007e03e787f0803b87d80377ffe4c1f3804",
+        "average": "0ceede81c7431e63"
+      }
+    },
+    {
+      "cardId": "sv10-102",
+      "cardName": "Cynthia s Gible",
+      "setId": "sv10",
+      "fileName": "sv10-102_Cynthia_s_Gible.png",
+      "hashes": {
+        "perceptual": "e9e11fb11c39183d983f9c1d901bfe09b401ffe780017fe17fff3fdf00000381",
+        "difference": "e9e11fb11c39183d983f9c1d901bfe09b401ffe780017fe17fff3fdf00000381",
+        "average": "7c4667a1fb40ff00"
+      }
+    },
+    {
+      "cardId": "sv10-103",
+      "cardName": "Cynthia s Gabite",
+      "setId": "sv10",
+      "fileName": "sv10-103_Cynthia_s_Gabite.png",
+      "hashes": {
+        "perceptual": "a8e0207cbc7f708f7c1e301fc01fefc0a01dc68783c7b87d7fff3fdf00000381",
+        "difference": "a8e0207cbc7f708f7c1e301fc01fefc0a01dc68783c7b87d7fff3fdf00000381",
+        "average": "0ce7e3c281cfff00"
+      }
+    },
+    {
+      "cardId": "sv10-104",
+      "cardName": "Cynthia s Garchomp ex",
+      "setId": "sv10",
+      "fileName": "sv10-104_Cynthia_s_Garchomp_ex.png",
+      "hashes": {
+        "perceptual": "28f0f9e8e3e85c23701f084e7f03fda13e553c3c67f818b07ffe7ffc041e0000",
+        "difference": "28f0f9e8e3e85c23701f084e7f03fda13e553c3c67f818b07ffe7ffc041e0000",
+        "average": "ccc543f1666c7e06"
+      }
+    },
+    {
+      "cardId": "sv10-105",
+      "cardName": "Hippopotas",
+      "setId": "sv10",
+      "fileName": "sv10-105_Hippopotas.png",
+      "hashes": {
+        "perceptual": "effdf021f801f8018401fc15f401f9fffc43ffffa00141097fff3fdf00000381",
+        "difference": "effdf021f801f8018401fc15f401f9fffc43ffffa00141097fff3fdf00000381",
+        "average": "cde0e1c5fb01ff00"
+      }
+    },
+    {
+      "cardId": "sv10-106",
+      "cardName": "Hippowdon",
+      "setId": "sv10",
+      "fileName": "sv10-106_Hippowdon.png",
+      "hashes": {
+        "perceptual": "fffff1e1e001a00180018981f631fffffc7f9bfd980980011fed7fdf000087c1",
+        "difference": "fffff1e1e001a00180018981f631fffffc7f9bfd980980011fed7fdf000087c1",
+        "average": "fd8081f5ff007f10"
+      }
+    },
+    {
+      "cardId": "sv10-107",
+      "cardName": "Mudbray",
+      "setId": "sv10",
+      "fileName": "sv10-107_Mudbray.png",
+      "hashes": {
+        "perceptual": "e3e171d173adf001f803f0638121f8fff401ffef800147e97fff3fdf00000381",
+        "difference": "e3e171d173adf001f803f0638121f8fff401ffef800147e97fff3fdf00000381",
+        "average": "dcd0c58dff00ff00"
+      }
+    },
+    {
+      "cardId": "sv10-108",
+      "cardName": "Mudsdale",
+      "setId": "sv10",
+      "fileName": "sv10-108_Mudsdale.png",
+      "hashes": {
+        "perceptual": "fffde1e1e001e201a001b007822fffff806f8087f7cf98397fff3fdf00000381",
+        "difference": "fffde1e1e001e201a001b007822fffff806f8087f7cf98397fff3fdf00000381",
+        "average": "fd80c1978b17ff00"
+      }
+    },
+    {
+      "cardId": "sv10-109",
+      "cardName": "Arven s Toedscool",
+      "setId": "sv10",
+      "fileName": "sv10-109_Arven_s_Toedscool.png",
+      "hashes": {
+        "perceptual": "a8a07e047fc97f093f018c3d9dc99fc0b401ffe780017fe17fff3fdf00000381",
+        "difference": "a8a07e047fc97f093f018c3d9dc99fc0b401ffe780017fe17fff3fdf00000381",
+        "average": "70f2e638fb80ff00"
+      }
+    },
+    {
+      "cardId": "sv10-110",
+      "cardName": "Arven s Toedscruel",
+      "setId": "sv10",
+      "fileName": "sv10-110_Arven_s_Toedscruel.png",
+      "hashes": {
+        "perceptual": "fff1e00de01fc1119b819041cfc3efc3fc45fbef818128196f2f7fdf000087c1",
+        "difference": "fff1e00de01fc1119b819041cfc3efc3fc45fbef818128196f2f7fdf000087c1",
+        "average": "c58798b9fb01ff00"
+      }
+    },
+    {
+      "cardId": "sv10-111",
+      "cardName": "Cornerstone Mask Ogerpon",
+      "setId": "sv10",
+      "fileName": "sv10-111_Cornerstone_Mask_Ogerpon.png",
+      "hashes": {
+        "perceptual": "eff160097c0dfc05bc1f9c0589e1cf51fc7ff87f800198097e6f3fdf000087c1",
+        "difference": "eff160097c0dfc05bc1f9c0589e1cf51fc7ff87f800198097e6f3fdf000087c1",
+        "average": "f0e2e389ef01ff00"
+      }
+    },
+    {
+      "cardId": "sv10-112",
+      "cardName": "Team Rocket s Ekans",
+      "setId": "sv10",
+      "fileName": "sv10-112_Team_Rocket_s_Ekans.png",
+      "hashes": {
+        "perceptual": "ffff808d89e180198019871981c1ffff8007c781fffd86078601fc1b8001ffff",
+        "difference": "ffff808d89e180198019871981c1ffff8007c781fffd86078601fc1b8001ffff",
+        "average": "fb0881dd91e3a1d5"
+      }
+    },
+    {
+      "cardId": "sv10-113",
+      "cardName": "Team Rocket s Arbok",
+      "setId": "sv10",
+      "fileName": "sv10-113_Team_Rocket_s_Arbok.png",
+      "hashes": {
+        "perceptual": "ffdde001c3c187c18641846186f9bdfdb001fb09bff187c1fe4d80098001ffff",
+        "difference": "ffdde001c3c187c18641846186f9bdfdb001fb09bff187c1fe4d80098001ffff",
+        "average": "e2b80c3fc1b9e193"
+      }
+    },
+    {
+      "cardId": "sv10-114",
+      "cardName": "Team Rocket s Nidoran ",
+      "setId": "sv10",
+      "fileName": "sv10-114_Team_Rocket_s_Nidoran_.png",
+      "hashes": {
+        "perceptual": "ffff900d804981f180f180f18023ffff80078001ffff9c7d8001fc3b8011ffff",
+        "difference": "ffff900d804981f180f180f18023ffff80078001ffff9c7d8001fc3b8011ffff",
+        "average": "f30c0d8f81bd819f"
+      }
+    },
+    {
+      "cardId": "sv10-115",
+      "cardName": "Team Rocket s Nidorina",
+      "setId": "sv10",
+      "fileName": "sv10-115_Team_Rocket_s_Nidorina.png",
+      "hashes": {
+        "perceptual": "fffff801c2018781878187c18083fdff800187e1bffd9e258703bc198001ffff",
+        "difference": "fffff801c2018781878187c18083fdff800187e1bffd9e258703bc198001ffff",
+        "average": "f390988f81f3a1c7"
+      }
+    },
+    {
+      "cardId": "sv10-116",
+      "cardName": "Team Rocket s Nidoqueen",
+      "setId": "sv10",
+      "fileName": "sv10-116_Team_Rocket_s_Nidoqueen.png",
+      "hashes": {
+        "perceptual": "eb1de000eff03bb09db18c019c0bbcfb80038783fffd87078601bc1d8009ffff",
+        "difference": "eb1de000eff03bb09db18c019c0bbcfb80038783fffd87078601bc1d8009ffff",
+        "average": "c0fc24e781bd819f"
+      }
+    },
+    {
+      "cardId": "sv10-117",
+      "cardName": "Team Rocket s Nidoran ",
+      "setId": "sv10",
+      "fileName": "sv10-117_Team_Rocket_s_Nidoran_.png",
+      "hashes": {
+        "perceptual": "ffed140d8001bfe13fc0bcc18241fcfa8007c7038761efbf8001fc3f8001ffff",
+        "difference": "ffed140d8001bfe13fc0bcc18241fcfa8007c7038761efbf8001fc3f8001ffff",
+        "average": "f328786981f981af"
+      }
+    },
+    {
+      "cardId": "sv10-118",
+      "cardName": "Team Rocket s Nidorino",
+      "setId": "sv10",
+      "fileName": "sv10-118_Team_Rocket_s_Nidorino.png",
+      "hashes": {
+        "perceptual": "fffffc21c001870181e182c18243ffff8007a7839501bfffbe0994198001ffff",
+        "difference": "fffffc21c001870181e182c18243ffff8007a7839501bfffbe0994198001ffff",
+        "average": "fb80999981f9a1c7"
+      }
+    },
+    {
+      "cardId": "sv10-119",
+      "cardName": "Team Rocket s Nidoking ex",
+      "setId": "sv10",
+      "fileName": "sv10-119_Team_Rocket_s_Nidoking_ex.png",
+      "hashes": {
+        "perceptual": "e200fc38fe1e9e2c1fcf807ae83bc072e07f1783c7d78c01800180078cbfffff",
+        "difference": "e200fc38fe1e9e2c1fcf807ae83bc072e07f1783c7d78c01800180078cbfffff",
+        "average": "c0f66b868fa101bf"
+      }
+    },
+    {
+      "cardId": "sv10-120",
+      "cardName": "Team Rocket s Zubat",
+      "setId": "sv10",
+      "fileName": "sv10-120_Team_Rocket_s_Zubat.png",
+      "hashes": {
+        "perceptual": "ff8d07018f3d84399e01bf018001ffff80078001fffd9c7f8001fe9b8001ffff",
+        "difference": "ff8d07018f3d84399e01bf018001ffff80078001fffd9c7f8001fe9b8001ffff",
+        "average": "b236f1a181bd819f"
+      }
+    },
+    {
+      "cardId": "sv10-121",
+      "cardName": "Team Rocket s Golbat",
+      "setId": "sv10",
+      "fileName": "sv10-121_Team_Rocket_s_Golbat.png",
+      "hashes": {
+        "perceptual": "ffdde00dc00fa289fe11d301c281f79bb801fb01bff18783bc09bc118001ffff",
+        "difference": "ffdde00dc00fa289fe11d301c281f79bb801fb01bff18783bc09bc118001ffff",
+        "average": "e383f191c1b981cf"
+      }
+    },
+    {
+      "cardId": "sv10-122",
+      "cardName": "Team Rocket s Crobat ex",
+      "setId": "sv10",
+      "fileName": "sv10-122_Team_Rocket_s_Crobat_ex.png",
+      "hashes": {
+        "perceptual": "e35cfd22f007f803fe01a183e1e4fe6193a79801fe1987e33e018003c0bf3fff",
+        "difference": "e35cfd22f007f803fe01a183e1e4fe6193a79801fe1987e33e018003c0bf3fff",
+        "average": "f2c1c1ecd19901df"
+      }
+    },
+    {
+      "cardId": "sv10-123",
+      "cardName": "Team Rocket s Grimer",
+      "setId": "sv10",
+      "fileName": "sv10-123_Team_Rocket_s_Grimer.png",
+      "hashes": {
+        "perceptual": "ffff000d810383e793f180e18081fffb80078001f7fdbff18001fc1f8009ffff",
+        "difference": "ffff000d810383e793f180e18081fffb80078001f7fdbff18001fc1f8009ffff",
+        "average": "e3191c9d81f981e7"
+      }
+    },
+    {
+      "cardId": "sv10-124",
+      "cardName": "Team Rocket s Muk",
+      "setId": "sv10",
+      "fileName": "sv10-124_Team_Rocket_s_Muk.png",
+      "hashes": {
+        "perceptual": "ff9df005fe01b801a0c180c1a1c9ffff8001a7839bfd97e3bfe1800d8001fffd",
+        "difference": "ff9df005fe01b801a0c180c1a1c9ffff8001a7839bfd97e3bfe1800d8001fffd",
+        "average": "f2e008df81bde383"
+      }
+    },
+    {
+      "cardId": "sv10-125",
+      "cardName": "Team Rocket s Koffing",
+      "setId": "sv10",
+      "fileName": "sv10-125_Team_Rocket_s_Koffing.png",
+      "hashes": {
+        "perceptual": "ffff854180f18071c031c6318a21fffbb001b989bfff9c01a7839c118001ffff",
+        "difference": "ffff854180f18071c031c6318a21fffbb001b989bfff9c01a7839c118001ffff",
+        "average": "fb0484bdc1e3f185"
+      }
+    },
+    {
+      "cardId": "sv10-126",
+      "cardName": "Team Rocket s Weezing",
+      "setId": "sv10",
+      "fileName": "sv10-126_Team_Rocket_s_Weezing.png",
+      "hashes": {
+        "perceptual": "fffff861e001811181e191c18083ffff80038001affffe7d8001fc3f8001ffff",
+        "difference": "fffff861e001811181e191c18083ffff80038001affffe7d8001fc3f8001ffff",
+        "average": "fb80998b81dd81d7"
+      }
+    },
+    {
+      "cardId": "sv10-127",
+      "cardName": "Team Rocket s Murkrow",
+      "setId": "sv10",
+      "fileName": "sv10-127_Team_Rocket_s_Murkrow.png",
+      "hashes": {
+        "perceptual": "ffed100de307e007e007c783802dfbf98001c701b7e1ef7ffc21b4118001ffff",
+        "difference": "ffed100de307e007e007c783802dfbf98001c701b7e1ef7ffc21b4118001ffff",
+        "average": "f381c18f81f5e1d1"
+      }
+    },
+    {
+      "cardId": "sv10-128",
+      "cardName": "Team Rocket s Sneasel",
+      "setId": "sv10",
+      "fileName": "sv10-128_Team_Rocket_s_Sneasel.png",
+      "hashes": {
+        "perceptual": "ffff9d05830381818601864984b1ffff8001870387e1fffffc2594118001ffff",
+        "difference": "ffff9d05830381818601864984b1ffff8001870387e1fffffc2594118001ffff",
+        "average": "f31101fd81bde1c5"
+      }
+    },
+    {
+      "cardId": "sv10-129",
+      "cardName": "Cynthia s Spiritomb",
+      "setId": "sv10",
+      "fileName": "sv10-129_Cynthia_s_Spiritomb.png",
+      "hashes": {
+        "perceptual": "ffcd020107c19ff13e783e79803fe01980018001dff3fffd8001fc3f8001ffff",
+        "difference": "ffcd020107c19ff13e783e79803fe01980018001dff3fffd8001fc3f8001ffff",
+        "average": "b23c668781f9819f"
+      }
+    },
+    {
+      "cardId": "sv10-130",
+      "cardName": "Marnie s Purrloin",
+      "setId": "sv10",
+      "fileName": "sv10-130_Marnie_s_Purrloin.png",
+      "hashes": {
+        "perceptual": "ff9f200d861f810f801f81a3a003ffff80078001ffffff058001fc3b8011ffff",
+        "difference": "ff9f200d861f810f801f81a3a003ffff80078001ffffff058001fc3b8011ffff",
+        "average": "f30381e781bb819f"
+      }
+    },
+    {
+      "cardId": "sv10-131",
+      "cardName": "Marnie s Liepard",
+      "setId": "sv10",
+      "fileName": "sv10-131_Marnie_s_Liepard.png",
+      "hashes": {
+        "perceptual": "ffbff201e001a0f18351822194b1fffb80078001ffffff058001fc3f8001ffff",
+        "difference": "ffbff201e001a0f18351822194b1fffb80078001ffffff058001fc3f8001ffff",
+        "average": "f3c010fd81f981cf"
+      }
+    },
+    {
+      "cardId": "sv10-132",
+      "cardName": "Marnie s Scraggy",
+      "setId": "sv10",
+      "fileName": "sv10-132_Marnie_s_Scraggy.png",
+      "hashes": {
+        "perceptual": "e70d070007fe1efc9fe18e018001fffb80078001ffff9c7d8001fc3b8011ffff",
+        "difference": "e70d070007fe1efc9fe18e018001fffb80078001ffff9c7d8001fc3b8011ffff",
+        "average": "323e38b981f3819f"
+      }
+    },
+    {
+      "cardId": "sv10-133",
+      "cardName": "Marnie s Scrafty",
+      "setId": "sv10",
+      "fileName": "sv10-133_Marnie_s_Scrafty.png",
+      "hashes": {
+        "perceptual": "e70de01ce07e01fe887f80d987c19ceb800787838741fff79c01bc1b8001ffff",
+        "difference": "e70de01ce07e01fe887f80d987c19ceb800787838741fff79c01bc1b8001ffff",
+        "average": "c28f0f3981f981d7"
+      }
+    },
+    {
+      "cardId": "sv10-134",
+      "cardName": "Marnie s Impidimp",
+      "setId": "sv10",
+      "fileName": "sv10-134_Marnie_s_Impidimp.png",
+      "hashes": {
+        "perceptual": "ff8d000987c19ff115c01cf18ff19fc28007c601fe618fff8001fc3f8001ffff",
+        "difference": "ff8d000987c19ff115c01cf18ff19fc28007c601fe618fff8001fc3f8001ffff",
+        "average": "ba383c3c81bd81cf"
+      }
+    },
+    {
+      "cardId": "sv10-135",
+      "cardName": "Marnie s Morgrem",
+      "setId": "sv10",
+      "fileName": "sv10-135_Marnie_s_Morgrem.png",
+      "hashes": {
+        "perceptual": "ff9df001e231941dbe398f318001dcfb80078001f7ff9c7f8001fc3f8001ffff",
+        "difference": "ff9df001e231941dbe398f318001dcfb80078001f7ff9c7f8001fc3f8001ffff",
+        "average": "f286b5a181bd81d7"
+      }
+    },
+    {
+      "cardId": "sv10-136",
+      "cardName": "Marnie s Grimmsnarl ex",
+      "setId": "sv10",
+      "fileName": "sv10-136_Marnie_s_Grimmsnarl_ex.png",
+      "hashes": {
+        "perceptual": "e410f808fbe9fe0c9341f001fd03dbbb80138a01ffff87c38acf800180bfd3ff",
+        "difference": "e410f808fbe9fe0c9341f001fd03dbbb80138a01ffff87c38acf800180bfd3ff",
+        "average": "c0fad0f1c1b9819f"
+      }
+    },
+    {
+      "cardId": "sv10-137",
+      "cardName": "Marnie s Morpeko",
+      "setId": "sv10",
+      "fileName": "sv10-137_Marnie_s_Morpeko.png",
+      "hashes": {
+        "perceptual": "ff8d001d00ff827b8a77a2378001ffe380078001fffffe258001fc3f8001ffff",
+        "difference": "ff8d001d00ff827b8a77a2378001ffe380078001fffffe258001fc3f8001ffff",
+        "average": "330f97c181f981e7"
+      }
+    },
+    {
+      "cardId": "sv10-138",
+      "cardName": "Arven s Maschiff",
+      "setId": "sv10",
+      "fileName": "sv10-138_Arven_s_Maschiff.png",
+      "hashes": {
+        "perceptual": "ef8d3c0d7e88901e001e7c1e2c0bffd98007c78387c1ff378001fc3b8009ffff",
+        "difference": "ef8d3c0d7e88901e001e7c1e2c0bffd98007c78387c1ff378001fc3b8009ffff",
+        "average": "e26347e191f1819f"
+      }
+    },
+    {
+      "cardId": "sv10-139",
+      "cardName": "Arven s Mabosstiff ex",
+      "setId": "sv10",
+      "fileName": "sv10-139_Arven_s_Mabosstiff_ex.png",
+      "hashes": {
+        "perceptual": "e40cfc3cc07f3545fc0f7e013f0781878007c7c3fe0177c728c1004f05ff53ff",
+        "difference": "e40cfc3cc07f3545fc0f7e013f0781878007c7c3fe0177c728c1004f05ff53ff",
+        "average": "c647e31381f90b1f"
+      }
+    },
+    {
+      "cardId": "sv10-140",
+      "cardName": "Forretress",
+      "setId": "sv10",
+      "fileName": "sv10-140_Forretress.png",
+      "hashes": {
+        "perceptual": "ffffa0118011c0fdd6e7c0078081fe9f7edd38bd12c7100d7fff7efe1c000040",
+        "difference": "ffffa0118011c0fdd6e7c0078081fe9f7edd38bd12c7100d7fff7efe1c000040",
+        "average": "fd048f836f037f20"
+      }
+    },
+    {
+      "cardId": "sv10-141",
+      "cardName": "Skarmory",
+      "setId": "sv10",
+      "fileName": "sv10-141_Skarmory.png",
+      "hashes": {
+        "perceptual": "2fe96019e171f8c97838f805ebe1f6813c0139ff00cf187f7fff7efe38000040",
+        "difference": "2fe96019e171f8c97838f805ebe1f6813c0139ff00cf187f7fff7efe38000040",
+        "average": "d8cce0f84f077f20"
+      }
+    },
+    {
+      "cardId": "sv10-142",
+      "cardName": "Steven s Skarmory",
+      "setId": "sv10",
+      "fileName": "sv10-142_Steven_s_Skarmory.png",
+      "hashes": {
+        "perceptual": "3f807d06ff02fe02ff23f041f823fc013c01187d3fff08173fff7efe3c000040",
+        "difference": "3f807d06ff02fe02ff23f041f823fc013c01187d3fff08173fff7efe3c000040",
+        "average": "70f1e5c166277f20"
+      }
+    },
+    {
+      "cardId": "sv10-143",
+      "cardName": "Steven s Beldum",
+      "setId": "sv10",
+      "fileName": "sv10-143_Steven_s_Beldum.png",
+      "hashes": {
+        "perceptual": "fffffc17c001c001e001f001f203ffff00003fff19ed3e1e7fff7efe1c000040",
+        "difference": "fffffc17c001c001e001f001f203ffff00003fff19ed3e1e7fff7efe1c000040",
+        "average": "f78081f9685e7f20"
+      }
+    },
+    {
+      "cardId": "sv10-144",
+      "cardName": "Steven s Metang",
+      "setId": "sv10",
+      "fileName": "sv10-144_Steven_s_Metang.png",
+      "hashes": {
+        "perceptual": "ffffec01c381800d80ff98d98093c0ff18013fff18053f3e7fff7efe1c000040",
+        "difference": "ffffec01c381800d80ff98d98093c0ff18013fff18053f3e7fff7efe1c000040",
+        "average": "ff008f857e037f20"
+      }
+    },
+    {
+      "cardId": "sv10-145",
+      "cardName": "Steven s Metagross ex",
+      "setId": "sv10",
+      "fileName": "sv10-145_Steven_s_Metagross_ex.png",
+      "hashes": {
+        "perceptual": "3f807c806fc6cfc21f320388f912fde3701c403e741e7e5f787f7e7e7c1c1000",
+        "difference": "3f807c806fc6cfc21f320388f912fde3701c403e741e7e5f787f7e7e7c1c1000",
+        "average": "78b830ed06e76f60"
+      }
+    },
+    {
+      "cardId": "sv10-146",
+      "cardName": "Zamazenta",
+      "setId": "sv10",
+      "fileName": "sv10-146_Zamazenta.png",
+      "hashes": {
+        "perceptual": "fffd7811f801f001fb01fb81c001fc7b7edd3bfd0807000f7fff7efe1c000080",
+        "difference": "fffd7811f801f001fb01fb81c001fc7b7edd3bfd0807000f7fff7efe1c000080",
+        "average": "e7c0f1c16f037f20"
+      }
+    },
+    {
+      "cardId": "sv10-147",
+      "cardName": "Team Rocket s Rattata",
+      "setId": "sv10",
+      "fileName": "sv10-147_Team_Rocket_s_Rattata.png",
+      "hashes": {
+        "perceptual": "fffff23f8001800983c383f38001d7ff3c007ffe00043ffe7ffe5ffe1c080200",
+        "difference": "fffff23f8001800983c383f38001d7ff3c007ffe00043ffe7ffe5ffe1c080200",
+        "average": "ff00998d7e427f20"
+      }
+    },
+    {
+      "cardId": "sv10-148",
+      "cardName": "Team Rocket s Raticate",
+      "setId": "sv10",
+      "fileName": "sv10-148_Team_Rocket_s_Raticate.png",
+      "hashes": {
+        "perceptual": "fffff817c001c201cbc3dfc38101f80f3c807ffe380015fe7ffe5ffe1e000200",
+        "difference": "fffff817c001c201cbc3dfc38101f80f3c807ffe380015fe7ffe5ffe1e000200",
+        "average": "fd80b9917e427f20"
+      }
+    },
+    {
+      "cardId": "sv10-149",
+      "cardName": "Team Rocket s Meowth",
+      "setId": "sv10",
+      "fileName": "sv10-149_Team_Rocket_s_Meowth.png",
+      "hashes": {
+        "perceptual": "fffff4318001878187818fa19f81fccafff8383f1003187c7ffe5ffe0e080200",
+        "difference": "fffff4318001878187818fa19f81fccafff8383f1003187c7ffe5ffe0e080200",
+        "average": "ff00b4a976467f10"
+      }
+    },
+    {
+      "cardId": "sv10-150",
+      "cardName": "Team Rocket s Persian ex",
+      "setId": "sv10",
+      "fileName": "sv10-150_Team_Rocket_s_Persian_ex.png",
+      "hashes": {
+        "perceptual": "1fe07f825e057f013d8770fcf5e0c320fbff980f10005fc248037ffefc1f5800",
+        "difference": "1fe07f825e057f013d8770fcf5e0c320fbff980f10005fc248037ffefc1f5800",
+        "average": "78f06b98c77062e3"
+      }
+    },
+    {
+      "cardId": "sv10-151",
+      "cardName": "Kangaskhan",
+      "setId": "sv10",
+      "fileName": "sv10-151_Kangaskhan.png",
+      "hashes": {
+        "perceptual": "3ffdfc33b801900598c5b3c1bf81fe013c88187d3ffe083c7ffe5ffe0f000200",
+        "difference": "3ffdfc33b801900598c5b3c1bf81fe013c88187d3ffe083c7ffe5ffe0f000200",
+        "average": "fd40c8f16e267f10"
+      }
+    },
+    {
+      "cardId": "sv10-152",
+      "cardName": "Tauros",
+      "setId": "sv10",
+      "fileName": "sv10-152_Tauros.png",
+      "hashes": {
+        "perceptual": "bfffe7038007c0078007e007e01ffcff7ec8387d3ffe08007ffe5ffe1e000200",
+        "difference": "bfffe7038007c0078007e007e01ffcff7ec8387d3ffe08007ffe5ffe1e000200",
+        "average": "bd8181e76e0e7f10"
+      }
+    },
+    {
+      "cardId": "sv10-153",
+      "cardName": "Team Rocket s Porygon",
+      "setId": "sv10",
+      "fileName": "sv10-153_Team_Rocket_s_Porygon.png",
+      "hashes": {
+        "perceptual": "fffffc338001830180c183b98399ff9b3c007ffe10ce187e7ffe5ffe0f000200",
+        "difference": "fffffc338001830180c183b98399ff9b3c007ffe10ce187e7ffe5ffe0f000200",
+        "average": "ff008d997e067f10"
+      }
+    },
+    {
+      "cardId": "sv10-154",
+      "cardName": "Team Rocket s Porygon2",
+      "setId": "sv10",
+      "fileName": "sv10-154_Team_Rocket_s_Porygon2.png",
+      "hashes": {
+        "perceptual": "3fffe07d807980418ee980318021ffff7ec87fff000c3c067ffe5ffe0f000200",
+        "difference": "3fffe07d807980418ee980318021ffff7ec87fff000c3c067ffe5ffe0f000200",
+        "average": "ff008da5fe027f10"
+      }
+    },
+    {
+      "cardId": "sv10-155",
+      "cardName": "Team Rocket s Porygon Z",
+      "setId": "sv10",
+      "fileName": "sv10-155_Team_Rocket_s_Porygon_Z.png",
+      "hashes": {
+        "perceptual": "fffffa69c0038001c381c2938003ffff003801ff3fff183c7ffe5ffe0e000600",
+        "difference": "fffffa69c0038001c381c2938003ffff003801ff3fff183c7ffe5ffe0e000600",
+        "average": "ff00919b0e6e7f20"
+      }
+    },
+    {
+      "cardId": "sv10-156",
+      "cardName": "Taillow",
+      "setId": "sv10",
+      "fileName": "sv10-156_Taillow.png",
+      "hashes": {
+        "perceptual": "1ff873f1801d803f84f980318073d7ff00003ffe387c3f3e7ffe7efe0c080600",
+        "difference": "1ff873f1801d803f84f980318073d7ff00003ffe387c3f3e7ffe7efe0c080600",
+        "average": "7c078d8d7a467f20"
+      }
+    },
+    {
+      "cardId": "sv10-157",
+      "cardName": "Swellow",
+      "setId": "sv10",
+      "fileName": "sv10-157_Swellow.png",
+      "hashes": {
+        "perceptual": "fffffbc18001e001f081fd818f89cf191c0038fe1ffe187c7ffe7cfe0c180300",
+        "difference": "fffffbc18001e001f081fd818f89cf191c0038fe1ffe187c7ffe7cfe0c180300",
+        "average": "fd80c1f14e2e7f10"
+      }
+    },
+    {
+      "cardId": "sv10-158",
+      "cardName": "Arven s Skwovet",
+      "setId": "sv10",
+      "fileName": "sv10-158_Arven_s_Skwovet.png",
+      "hashes": {
+        "perceptual": "3ff87071e50fc007900fb01fb015fdf83c887fff000c14fe7ffe5ffe0e000600",
+        "difference": "3ff87071e50fc007900fb01fb015fdf83c887fff000c14fe7ffe5ffe0e000600",
+        "average": "7c83c3c67e067f20"
+      }
+    },
+    {
+      "cardId": "sv10-159",
+      "cardName": "Arven s Greedent",
+      "setId": "sv10",
+      "fileName": "sv10-159_Arven_s_Greedent.png",
+      "hashes": {
+        "perceptual": "3ff93063002f80ff803f803f801fc5ff003c00ff03c37ffe387c7ffe1f0007c0",
+        "difference": "3ff93063002f80ff803f803f801fc5ff003c00ff03c37ffe387c7ffe1f0007c0",
+        "average": "6d078787027f7e30"
+      }
+    },
+    {
+      "cardId": "sv10-160",
+      "cardName": "Squawkabilly",
+      "setId": "sv10",
+      "fileName": "sv10-160_Squawkabilly.png",
+      "hashes": {
+        "perceptual": "1ff87871fa01f803f891f0b1f941fd017ec87fff18401c067ffe7cfe1c000700",
+        "difference": "1ff87871fa01f803f891f0b1f941fd017ec87fff18401c067ffe7cfe1c000700",
+        "average": "7ce0cce17f407f20"
+      }
+    },
+    {
+      "cardId": "sv10-161",
+      "cardName": "Arven s Sandwich",
+      "setId": "sv10",
+      "fileName": "sv10-161_Arven_s_Sandwich.png",
+      "hashes": {
+        "perceptual": "1fc003fe7f807ec0fce18387848f807f03f87ffe07e007c07ffe7ffe0c480000",
+        "difference": "1fc003fe7f807ec0fce18387848f807f03f87ffe07e007c07ffe7ffe0c480000",
+        "average": "3cf0898f3e1c7e28"
+      }
+    },
+    {
+      "cardId": "sv10-162",
+      "cardName": "Cynthia s Power Weight",
+      "setId": "sv10",
+      "fileName": "sv10-162_Cynthia_s_Power_Weight.png",
+      "hashes": {
+        "perceptual": "fff98ffec001c001c7a1a9b198f189f100207ffe0ff01ff07ffe7ffe3c000000",
+        "difference": "fff98ffec001c001c7a1a9b198f189f100207ffe0ff01ff07ffe7ffe3c000000",
+        "average": "7f80998d3c3c7f20"
+      }
+    },
+    {
+      "cardId": "sv10-163",
+      "cardName": "Emcee s Hype",
+      "setId": "sv10",
+      "fileName": "sv10-163_Emcee_s_Hype.png",
+      "hashes": {
+        "perceptual": "1fc00bfe3df038e0fbc1b091b18186ef03487ffc07e007fc7ffe7ffe3c000000",
+        "difference": "1fc00bfe3df038e0fbc1b091b18186ef03487ffc07e007fc7ffe7ffe3c000000",
+        "average": "3e68c89b3e1c7f20"
+      }
+    },
+    {
+      "cardId": "sv10-164",
+      "cardName": "Energy Recycler",
+      "setId": "sv10",
+      "fileName": "sv10-164_Energy_Recycler.png",
+      "hashes": {
+        "perceptual": "fff99fff80018001830984fd80cf85ff00e07ffc0be00ffc7ffe7ffe1c400000",
+        "difference": "fff99fff80018001830984fd80cf85ff00e07ffc0be00ffc7ffe7ffe1c400000",
+        "average": "ff00138f1e3c7e28"
+      }
+    },
+    {
+      "cardId": "sv10-165",
+      "cardName": "Ethan s Adventure",
+      "setId": "sv10",
+      "fileName": "sv10-165_Ethan_s_Adventure.png",
+      "hashes": {
+        "perceptual": "3fe003fe7fc0880e88ef8cfd8c79980904e47ffe3ff800487ffe7ffe3c000000",
+        "difference": "3fe003fe7fc0880e88ef8cfd8c79980904e47ffe3ff800487ffe7ffe3c000000",
+        "average": "3e232fa17e187f20"
+      }
+    },
+    {
+      "cardId": "sv10-166",
+      "cardName": "Granite Cave",
+      "setId": "sv10",
+      "fileName": "sv10-166_Granite_Cave.png",
+      "hashes": {
+        "perceptual": "fff9bffe80018001c4f3ddfb8001c3c301c07ffe3ffc00387ffe7ffe3c000000",
+        "difference": "fff9bffe80018001c4f3ddfb8001c3c301c07ffe3ffc00387ffe7ffe3c000000",
+        "average": "ff00ad913c1e7f20"
+      }
+    },
+    {
+      "cardId": "sv10-167",
+      "cardName": "Judge",
+      "setId": "sv10",
+      "fileName": "sv10-167_Judge.png",
+      "hashes": {
+        "perceptual": "7fe01ffefc809001f30bf80ff803ee0104007ffe07e01ffc7ffe7ffe3c000000",
+        "difference": "7fe01ffefc809001f30bf80ff803ee0104007ffe07e01ffc7ffe7ffe3c000000",
+        "average": "3ee0c3e13c3c7f20"
+      }
+    },
+    {
+      "cardId": "sv10-168",
+      "cardName": "Sacred Ash",
+      "setId": "sv10",
+      "fileName": "sv10-168_Sacred_Ash.png",
+      "hashes": {
+        "perceptual": "0fc003fc7fe071f0e0f9e079f879838101807ffe0bc01ffc7ffe7ffe1c400000",
+        "difference": "0fc003fc7fe071f0e0f9e079f879838101807ffe0bc01ffc7ffe7ffe1c400000",
+        "average": "18fc8d8d3c3c7e28"
+      }
+    },
+    {
+      "cardId": "sv10-169",
+      "cardName": "Spikemuth Gym",
+      "setId": "sv10",
+      "fileName": "sv10-169_Spikemuth_Gym.png",
+      "hashes": {
+        "perceptual": "fff11ffee4018001807f8001fc419fff00f87ffe1ff800987ffe7ffe3c000000",
+        "difference": "fff11ffee4018001807f8001fc419fff00f87ffe1ff800987ffe7ffe3c000000",
+        "average": "7f8081b73e1c7f20"
+      }
+    },
+    {
+      "cardId": "sv10-170",
+      "cardName": "Team Rocket s Archer",
+      "setId": "sv10",
+      "fileName": "sv10-170_Team_Rocket_s_Archer.png",
+      "hashes": {
+        "perceptual": "fff9b7fe80018081f3c183a7e3e1c82901807ffc03c03ffe7ffe7ffe3c000000",
+        "difference": "fff9b7fe80018081f3c183a7e3e1c82901807ffc03c03ffe7ffe7ffe3c000000",
+        "average": "ff009d893c3c7f20"
+      }
+    },
+    {
+      "cardId": "sv10-171",
+      "cardName": "Team Rocket s Ariana",
+      "setId": "sv10",
+      "fileName": "sv10-171_Team_Rocket_s_Ariana.png",
+      "hashes": {
+        "perceptual": "3fe0175e047e807e847f8f1f86dd888108007ffe3ffc07847ffe7ffe3c000000",
+        "difference": "3fe0175e047e807e847f8f1f86dd888108007ffe3ffc07847ffe7ffe3c000000",
+        "average": "3e07a7293c3c7f20"
+      }
+    },
+    {
+      "cardId": "sv10-172",
+      "cardName": "Team Rocket s Bother Bot",
+      "setId": "sv10",
+      "fileName": "sv10-172_Team_Rocket_s_Bother_Bot.png",
+      "hashes": {
+        "perceptual": "fff9b7ff8001800184c7f8ff825f800b00017ffe3ff807e07ffe7ffe1c400000",
+        "difference": "fff9b7ff8001800184c7f8ff825f800b00017ffe3ff807e07ffe7ffe1c400000",
+        "average": "ff00eb033e387e28"
+      }
+    },
+    {
+      "cardId": "sv10-173",
+      "cardName": "Team Rocket s Factory",
+      "setId": "sv10",
+      "fileName": "sv10-173_Team_Rocket_s_Factory.png",
+      "hashes": {
+        "perceptual": "3fe017fe5d10f011ffe3df219027800700007ffe3ff801fc7ffe7ffe3c000000",
+        "difference": "3fe017fe5d10f011ffe3df219027800700007ffe3ff801fc7ffe7ffe3c000000",
+        "average": "7ec0f5813c3c7f20"
+      }
+    },
+    {
+      "cardId": "sv10-174",
+      "cardName": "Team Rocket s Giovanni",
+      "setId": "sv10",
+      "fileName": "sv10-174_Team_Rocket_s_Giovanni.png",
+      "hashes": {
+        "perceptual": "fff937fec00180038fff8e81e087d007000e7ffe3ffc00e07ffe7ffe3c000000",
+        "difference": "fff937fec00180038fff8e81e087d007000e7ffe3ffc00e07ffe7ffe3c000000",
+        "average": "7f80b983333c7f20"
+      }
+    },
+    {
+      "cardId": "sv10-175",
+      "cardName": "Team Rocket s Great Ball",
+      "setId": "sv10",
+      "fileName": "sv10-175_Team_Rocket_s_Great_Ball.png",
+      "hashes": {
+        "perceptual": "fffdb7ef80018001c019c1f3bfe7a01907f07ffe05e007e07ffe7ffe1c400000",
+        "difference": "fffdb7ef80018001c019c1f3bfe7a01907f07ffe05e007e07ffe7ffe1c400000",
+        "average": "ff008bd17e187e28"
+      }
+    },
+    {
+      "cardId": "sv10-176",
+      "cardName": "Team Rocket s Petrel",
+      "setId": "sv10",
+      "fileName": "sv10-176_Team_Rocket_s_Petrel.png",
+      "hashes": {
+        "perceptual": "fff9b7ff80018001840dfc0df835f83900107ffe0fe00ffc7ffe7ffe3c000000",
+        "difference": "fff9b7ff80018001840dfc0df835f83900107ffe0fe00ffc7ffe7ffe3c000000",
+        "average": "ff00a3c5643e7f20"
+      }
+    },
+    {
+      "cardId": "sv10-177",
+      "cardName": "Team Rocket s Proton",
+      "setId": "sv10",
+      "fileName": "sv10-177_Team_Rocket_s_Proton.png",
+      "hashes": {
+        "perceptual": "1fc0035e1f1ccf1e963f8a1f983d804f00e27ffe3ffe01007ffe7ffe3c000000",
+        "difference": "1fc0035e1f1ccf1e963f8a1f983d804f00e27ffe3ffe01007ffe7ffe3c000000",
+        "average": "1c37a7071e3c7f20"
+      }
+    },
+    {
+      "cardId": "sv10-178",
+      "cardName": "Team Rocket s Transceiver",
+      "setId": "sv10",
+      "fileName": "sv10-178_Team_Rocket_s_Transceiver.png",
+      "hashes": {
+        "perceptual": "fff117f6916180119819f039f073f8e105007ffe1ff801f87ffe7ffe1c400000",
+        "difference": "fff117f6916180119819f039f073f8e105007ffe1ff801f87ffe7ffe1c400000",
+        "average": "ff00c5c97c1c7e28"
+      }
+    },
+    {
+      "cardId": "sv10-179",
+      "cardName": "Team Rocket s Venture Bomb",
+      "setId": "sv10",
+      "fileName": "sv10-179_Team_Rocket_s_Venture_Bomb.png",
+      "hashes": {
+        "perceptual": "fff937f098019c0198bdb0dd90399c3505007ffe3ff803e07ffe7ffe1c400000",
+        "difference": "fff937f098019c0198bdb0dd90399c3505007ffe3ff803e07ffe7ffe1c400000",
+        "average": "fd20c7853c1e7e28"
+      }
+    },
+    {
+      "cardId": "sv10-180",
+      "cardName": "Team Rocket s Watchtower",
+      "setId": "sv10",
+      "fileName": "sv10-180_Team_Rocket_s_Watchtower.png",
+      "hashes": {
+        "perceptual": "fff937fe80018061fe0bff2fc223802100307ffe0be00ffc7ffe7ffe3c000000",
+        "difference": "fff937fe80018061fe0bff2fc223802100307ffe0be00ffc7ffe7ffe3c000000",
+        "average": "ff00f3811e3c7f20"
+      }
+    },
+    {
+      "cardId": "sv10-181",
+      "cardName": "TM Machine",
+      "setId": "sv10",
+      "fileName": "sv10-181_TM_Machine.png",
+      "hashes": {
+        "perceptual": "1fc003fc0edc3e1efc1f803f863f800f02907ffe3ff803487ffe7ffe1c400000",
+        "difference": "1fc003fc0edc3e1efc1f803f863f800f02907ffe3ff803487ffe7ffe1c400000",
+        "average": "3c63e7033e1c7e28"
+      }
+    },
+    {
+      "cardId": "sv10-182",
+      "cardName": "Team Rocket s Energy",
+      "setId": "sv10",
+      "fileName": "sv10-182_Team_Rocket_s_Energy.png",
+      "hashes": {
+        "perceptual": "ffffb7f8c6008000fe21ee11e649b20d000100019fffffff1ffe07cc7ffc0000",
+        "difference": "ffffb7f8c6008000fe21ee11e649b20d000100019fffffff1ffe07cc7ffc0000",
+        "average": "ff00e1c300ff3e1c"
+      }
+    },
+    {
+      "cardId": "sv10-183",
+      "cardName": "Yanma",
+      "setId": "sv10",
+      "fileName": "sv10-183_Yanma.png",
+      "hashes": {
+        "perceptual": "ffff8001b3c1e105bf819ff981978181c181f781fff9e001a0118421fb01ffff",
+        "difference": "ffff8001b3c1e105bf819ff981978181c181f781fff9e001a0118421fb01ffff",
+        "average": "f1d0f581d1e184fc"
+      }
+    },
+    {
+      "cardId": "sv10-184",
+      "cardName": "Cynthia s Roserade",
+      "setId": "sv10",
+      "fileName": "sv10-184_Cynthia_s_Roserade.png",
+      "hashes": {
+        "perceptual": "0f2020e83ffc3ff0fc70e1edf381f001bf1b8f0f9e279001fdc001f8038197ff",
+        "difference": "0f2020e83ffc3ff0fc70e1edf381f001bf1b8f0f9e279001fdc001f8038197ff",
+        "average": "1c7cccd1f381f819"
+      }
+    },
+    {
+      "cardId": "sv10-185",
+      "cardName": "Shaymin",
+      "setId": "sv10",
+      "fileName": "sv10-185_Shaymin.png",
+      "hashes": {
+        "perceptual": "0ffc74dcf007f081dc01fe01cf03ff81b7e5ffe19dc10001001b5eba1ca71bfa",
+        "difference": "0ffc74dcf007f081dc01fe01cf03ff81b7e5ffe19dc10001001b5eba1ca71bfa",
+        "average": "6ec1e0f1fd20272d"
+      }
+    },
+    {
+      "cardId": "sv10-186",
+      "cardName": "Crustle",
+      "setId": "sv10",
+      "fileName": "sv10-186_Crustle.png",
+      "hashes": {
+        "perceptual": "ffffedc1e0038001c001cffbf80fd00f8001f803f803ffff07c20fc30fc21ff6",
+        "difference": "ffffedc1e0038001c001cffbf80fd00f8001f803f803ffff07c20fc30fc21ff6",
+        "average": "fd809dc1c1f13939"
+      }
+    },
+    {
+      "cardId": "sv10-187",
+      "cardName": "Team Rocket s Spidops",
+      "setId": "sv10",
+      "fileName": "sv10-187_Team_Rocket_s_Spidops.png",
+      "hashes": {
+        "perceptual": "fbdfe9c3c6098401964586519fb38a9d8019bff19803b47f80e1a181fe00feff",
+        "difference": "fbdfe9c3c6098401964586519fb38a9d8019bff19803b47f80e1a181fe00feff",
+        "average": "fb018597d54388f9"
+      }
+    },
+    {
+      "cardId": "sv10-188",
+      "cardName": "Hydrapple",
+      "setId": "sv10",
+      "fileName": "sv10-188_Hydrapple.png",
+      "hashes": {
+        "perceptual": "fef9e079b903e040f980f301fc21ff11ffe1878183e181f107f902c9450717ff",
+        "difference": "fef9e079b903e040f980f301fc21ff11ffe1878183e181f107f902c9450717ff",
+        "average": "eec0d8f0f88c1c1f"
+      }
+    },
+    {
+      "cardId": "sv10-189",
+      "cardName": "Rapidash",
+      "setId": "sv10",
+      "fileName": "sv10-189_Rapidash.png",
+      "hashes": {
+        "perceptual": "eff1e000b248fae58870c4d9fcd9fc05b791ff89b88934093e3d323f00811ff9",
+        "difference": "eff1e000b248fae58870c4d9fcd9fc05b791ff89b88934093e3d323f00811ff9",
+        "average": "d0cd8ce3f941572c"
+      }
+    },
+    {
+      "cardId": "sv10-190",
+      "cardName": "Ethan s Typhlosion",
+      "setId": "sv10",
+      "fileName": "sv10-190_Ethan_s_Typhlosion.png",
+      "hashes": {
+        "perceptual": "eef5603c830f818f85f1f027c84983fd83f1a18f21f903f380f31cf0e0bc11ff",
+        "difference": "eef5603c830f818f85f1f027c84983fd83f1a18f21f903f380f31cf0e0bc11ff",
+        "average": "ae13858f1f0d2d0f"
+      }
+    },
+    {
+      "cardId": "sv10-191",
+      "cardName": "Team Rocket s Houndoom",
+      "setId": "sv10",
+      "fileName": "sv10-191_Team_Rocket_s_Houndoom.png",
+      "hashes": {
+        "perceptual": "fff5ee61e004c016f39bd31d862581e189c1a6f1f0f1a2d98039803907f0fffd",
+        "difference": "fff5ee61e004c016f39bd31d862581e189c1a6f1f0f1a2d98039803907f0fffd",
+        "average": "fc8497919c8d84fc"
+      }
+    },
+    {
+      "cardId": "sv10-192",
+      "cardName": "Blaziken",
+      "setId": "sv10",
+      "fileName": "sv10-192_Blaziken.png",
+      "hashes": {
+        "perceptual": "efd1ff80ce008f818f01c71fc32f8f038e1de60df011bc3d8c7f083f000dd1ff",
+        "difference": "efd1ff80ce008f818f01c71fc32f8f038e1de60df011bc3d8c7f083f000dd1ff",
+        "average": "f8b0b1b1b3c12727"
+      }
+    },
+    {
+      "cardId": "sv10-193",
+      "cardName": "Misty s Psyduck",
+      "setId": "sv10",
+      "fileName": "sv10-193_Misty_s_Psyduck.png",
+      "hashes": {
+        "perceptual": "ff8d000b03ce0fdd9fbfb8378823808b801f839db7e7819307b905fc014c8bff",
+        "difference": "ff8d000b03ce0fdd9fbfb8378823808b801f839db7e7819307b905fc014c8bff",
+        "average": "c31b7703079d1e1e"
+      }
+    },
+    {
+      "cardId": "sv10-194",
+      "cardName": "Misty s Lapras",
+      "setId": "sv10",
+      "fileName": "sv10-194_Misty_s_Lapras.png",
+      "hashes": {
+        "perceptual": "eb13808061f9fc7df014f83efe7e82018601fe01fb01ffe17fc07fe07f000fc0",
+        "difference": "eb13808061f9fc7df014f83efe7e82018601fe01fb01ffe17fc07fe07f000fc0",
+        "average": "81dec6a5e0f8f838"
+      }
+    },
+    {
+      "cardId": "sv10-195",
+      "cardName": "Clamperl",
+      "setId": "sv10",
+      "fileName": "sv10-195_Clamperl.png",
+      "hashes": {
+        "perceptual": "eff30107044dcf69bf0dfe01de21e301db01c901df07f0f59001b819b019ffff",
+        "difference": "eff30107044dcf69bf0dfe01de21e301db01c901df07f0f59001b819b019ffff",
+        "average": "39b2f1d091f100ff"
+      }
+    },
+    {
+      "cardId": "sv10-196",
+      "cardName": "Electrike",
+      "setId": "sv10",
+      "fileName": "sv10-196_Electrike.png",
+      "hashes": {
+        "perceptual": "ffff83b3800183c1878199ff83cf80998037807781fba1ef0001910f0b7f9fff",
+        "difference": "ffff83b3800183c1878199ff83cf80998037807781fba1ef0001910f0b7f9fff",
+        "average": "fd80990f878b017f"
+      }
+    },
+    {
+      "cardId": "sv10-197",
+      "cardName": "Rotom",
+      "setId": "sv10",
+      "fileName": "sv10-197_Rotom.png",
+      "hashes": {
+        "perceptual": "e6ef01b819fc9314e10fe187807d873dfe21b9c1bfc1e8203fd10f100c019fff",
+        "difference": "e6ef01b819fc9314e10fe187807d873dfe21b9c1bfc1e8203fd10f100c019fff",
+        "average": "1e36c387e8e83c71"
+      }
+    },
+    {
+      "cardId": "sv10-198",
+      "cardName": "Team Rocket s Orbeetle",
+      "setId": "sv10",
+      "fileName": "sv10-198_Team_Rocket_s_Orbeetle.png",
+      "hashes": {
+        "perceptual": "fffbff00ee00e000a809f8afe1ef800f800787afd103b1ff01fc03fc03fe07f8",
+        "difference": "fffbff00ee00e000a809f8afe1ef800f800787afd103b1ff01fc03fc03fe07f8",
+        "average": "fd80c38b83cd1e1e"
+      }
+    },
+    {
+      "cardId": "sv10-199",
+      "cardName": "Team Rocket s Weezing",
+      "setId": "sv10",
+      "fileName": "sv10-199_Team_Rocket_s_Weezing.png",
+      "hashes": {
+        "perceptual": "fffbe061c021817999ff80758ccd841d80059c01bfff9b87058183f085e0fffd",
+        "difference": "fffbe061c021817999ff80758ccd841d80059c01bfff9b87058183f085e0fffd",
+        "average": "dd8487a381f918bd"
+      }
+    },
+    {
+      "cardId": "sv10-200",
+      "cardName": "Team Rocket s Murkrow",
+      "setId": "sv10",
+      "fileName": "sv10-200_Team_Rocket_s_Murkrow.png",
+      "hashes": {
+        "perceptual": "fff11e193403e027e1f59a67806f824b86e7c021fb65a275e061f0616e109ffd",
+        "difference": "fff11e193403e027e1f59a67806f824b86e7c021fb65a275e061f0616e109ffd",
+        "average": "76c1cb8381ddcc36"
+      }
+    },
+    {
+      "cardId": "sv10-201",
+      "cardName": "Zamazenta",
+      "setId": "sv10",
+      "fileName": "sv10-201_Zamazenta.png",
+      "hashes": {
+        "perceptual": "ffffc00f810f8031f85fe0cfd003c01f801f800fa0dff0ff801f007f007ff47f",
+        "difference": "ffffc00f810f8031f85fe0cfd003c01f801f800fa0dff0ff801f007f007ff47f",
+        "average": "cf03cb85838f078f"
+      }
+    },
+    {
+      "cardId": "sv10-202",
+      "cardName": "Team Rocket s Raticate",
+      "setId": "sv10",
+      "fileName": "sv10-202_Team_Rocket_s_Raticate.png",
+      "hashes": {
+        "perceptual": "fffff0f1e001c001e025c30f8e0de0ffc1cdc3fde1f1c8018001800da37fdfff",
+        "difference": "fffff0f1e001c001e025c30f8e0de0ffc1cdc3fde1f1c8018001800da37fdfff",
+        "average": "fd8083a79f8101df"
+      }
+    },
+    {
+      "cardId": "sv10-203",
+      "cardName": "Team Rocket s Meowth",
+      "setId": "sv10",
+      "fileName": "sv10-203_Team_Rocket_s_Meowth.png",
+      "hashes": {
+        "perceptual": "ffff9b8380198019e4019b01bf87bf838f01cf01efffe001cfc182018035fbff",
+        "difference": "ffff9b8380198019e4019b01bf87bf838f01cf01efffe001cfc182018035fbff",
+        "average": "fd01c1f1b0f1119f"
+      }
+    },
+    {
+      "cardId": "sv10-204",
+      "cardName": "Kangaskhan",
+      "setId": "sv10",
+      "fileName": "sv10-204_Kangaskhan.png",
+      "hashes": {
+        "perceptual": "ffff00ff803d8001984193a981c1fff38803a01f80ffc3ff06010419783ffffd",
+        "difference": "ffff00ff803d8001984193a981c1fff38803a01f80ffc3ff06010419783ffffd",
+        "average": "bf0189d9819f307e"
+      }
+    },
+    {
+      "cardId": "sv10-205",
+      "cardName": "Arven s Greedent",
+      "setId": "sv10",
+      "fileName": "sv10-205_Arven_s_Greedent.png",
+      "hashes": {
+        "perceptual": "e7f3a033801f31aef867c009da1d987d9199d3c5b3798385e129c003c19adbff",
+        "difference": "e7f3a033801f31aef867c009da1d987d9199d3c5b3798385e129c003c19adbff",
+        "average": "8f43c2e6da9180df"
+      }
+    },
+    {
+      "cardId": "sv10-206",
+      "cardName": "Yanmega ex",
+      "setId": "sv10",
+      "fileName": "sv10-206_Yanmega_ex.png",
+      "hashes": {
+        "perceptual": "c3d0e3eee03e007ec4fffffea001a00190011fc77ff309f07ffe039f343e0c00",
+        "difference": "c3d0e3eee03e007ec4fffffea001a00190011fc77ff309f07ffe039f343e0c00",
+        "average": "9a87df80417d5f06"
+      }
+    },
+    {
+      "cardId": "sv10-207",
+      "cardName": "Arboliva ex",
+      "setId": "sv10",
+      "fileName": "sv10-207_Arboliva_ex.png",
+      "hashes": {
+        "perceptual": "07e06bf839f819f078f87ef81ef81c008001121b7efe7e3e7a7e7ffe4c1e0000",
+        "difference": "07e06bf839f819f078f87ef81ef81c008001121b7efe7e3e7a7e7ffe4c1e0000",
+        "average": "3c5c7c6400ff7f20"
+      }
+    },
+    {
+      "cardId": "sv10-208",
+      "cardName": "Team Rocket s Moltres ex",
+      "setId": "sv10",
+      "fileName": "sv10-208_Team_Rocket_s_Moltres_ex.png",
+      "hashes": {
+        "perceptual": "07a07fd07f807f82fc06fc08ff301fa099f0fff07c003f807fc06700743f1bf0",
+        "difference": "07a07fd07f807f82fc06fc08ff301fa099f0fff07c003f807fc06700743f1bf0",
+        "average": "7c70e0f4fc60f807"
+      }
+    },
+    {
+      "cardId": "sv10-209",
+      "cardName": "Ethan s Ho Oh ex",
+      "setId": "sv10",
+      "fileName": "sv10-209_Ethan_s_Ho_Oh_ex.png",
+      "hashes": {
+        "perceptual": "08f01ff03fb07f90ff20ff01f001fc07f3067fdc7fe000c07ff6767e741e0000",
+        "difference": "08f01ff03fb07f90ff20ff01f001fc07f3067fdc7fe000c07ff6767e741e0000",
+        "average": "3c74f0e1fa487e06"
+      }
+    },
+    {
+      "cardId": "sv10-210",
+      "cardName": "Cetitan ex",
+      "setId": "sv10",
+      "fileName": "sv10-210_Cetitan_ex.png",
+      "hashes": {
+        "perceptual": "030061c27fae7ff81ff84ff05c347830e5b034866ff80ef07ffe7ffa7c000000",
+        "difference": "030061c27fae7ff81ff84ff05c347830e5b034866ff80ef07ffe7ffa7c000000",
+        "average": "187e7c64cc3cfe20"
+      }
+    },
+    {
+      "cardId": "sv10-211",
+      "cardName": "Dondozo ex",
+      "setId": "sv10",
+      "fileName": "sv10-211_Dondozo_ex.png",
+      "hashes": {
+        "perceptual": "018406c71cf6fdfafffcc2d88140c0fcf000ef00ffc37c0f7ffc7e407c1e1c00",
+        "difference": "018406c71cf6fdfafffcc2d88140c0fcf000ef00ffc37c0f7ffc7e407c1e1c00",
+        "average": "017fbe88a0f3fc60"
+      }
+    },
+    {
+      "cardId": "sv10-212",
+      "cardName": "Electivire ex",
+      "setId": "sv10",
+      "fileName": "sv10-212_Electivire_ex.png",
+      "hashes": {
+        "perceptual": "0fc0ffc24ce21df0b7f09998fe32e9000907f71f4887725e7ffe706e781e1800",
+        "difference": "0fc0ffc24ce21df0b7f09998fe32e9000907f71f4887725e7ffe706e781e1800",
+        "average": "783c78f013cb7e22"
+      }
+    },
+    {
+      "cardId": "sv10-213",
+      "cardName": "Team Rocket s Mewtwo ex",
+      "setId": "sv10",
+      "fileName": "sv10-213_Team_Rocket_s_Mewtwo_ex.png",
+      "hashes": {
+        "perceptual": "0fc03fe03de03df01bf006f805f907fa27f827fc03dc01dc0070007803ffdfff",
+        "difference": "0fc03fe03de03df01bf006f805f907fa27f827fc03dc01dc0070007803ffdfff",
+        "average": "387c1c3d1e1e0c9f"
+      }
+    },
+    {
+      "cardId": "sv10-214",
+      "cardName": "Regirock ex",
+      "setId": "sv10",
+      "fileName": "sv10-214_Regirock_ex.png",
+      "hashes": {
+        "perceptual": "08402fde1fce33ce63c7ee47e24963900bb87bb87c7a300e7fde7c067c1e1c00",
+        "difference": "08402fde1fce33ce63c7ee47e24963900bb87bb87c7a300e7fde7c067c1e1c00",
+        "average": "1a5bf988dc62f2e0"
+      }
+    },
+    {
+      "cardId": "sv10-215",
+      "cardName": "Cynthia s Garchomp ex",
+      "setId": "sv10",
+      "fileName": "sv10-215_Cynthia_s_Garchomp_ex.png",
+      "hashes": {
+        "perceptual": "0a003f383fee7fc0ffc0e380f20f860ffc03b19b3c97c8463fc63fc37c1e1c00",
+        "difference": "0a003f383fee7fc0ffc0e380f20f860ffc03b19b3c97c8463fc63fc37c1e1c00",
+        "average": "7478d8c3e1a97962"
+      }
+    },
+    {
+      "cardId": "sv10-216",
+      "cardName": "Team Rocket s Nidoking ex",
+      "setId": "sv10",
+      "fileName": "sv10-216_Team_Rocket_s_Nidoking_ex.png",
+      "hashes": {
+        "perceptual": "efd0fec0fe003c301c300c3d0f7f3fc11e801ff43ff61f008f07400065bfdff8",
+        "difference": "efd0fec0fe003c301c300c3d0f7f3fc11e801ff43ff61f008f07400065bfdff8",
+        "average": "f864267c3c78215f"
+      }
+    },
+    {
+      "cardId": "sv10-217",
+      "cardName": "Team Rocket s Crobat ex",
+      "setId": "sv10",
+      "fileName": "sv10-217_Team_Rocket_s_Crobat_ex.png",
+      "hashes": {
+        "perceptual": "ffc0ffc0ff003c00d040e038fc79f87db0fcaff47e0378007e00200045bfdfff",
+        "difference": "ffc0ffc0ff003c00d040e038fc79f87db0fcaff47e0378007e00200045bfdfff",
+        "average": "f8e0c0ee6ee0e01f"
+      }
+    },
+    {
+      "cardId": "sv10-218",
+      "cardName": "Arven s Mabosstiff ex",
+      "setId": "sv10",
+      "fileName": "sv10-218_Arven_s_Mabosstiff_ex.png",
+      "hashes": {
+        "perceptual": "002023983ffe7cfe7cff807f003f001f801fc00ff44ff06ff16678fe7c3e1800",
+        "difference": "002023983ffe7cfe7cff807f003f001f801fc00ff44ff06ff16678fe7c3e1800",
+        "average": "0c7e4f0783cbcf22"
+      }
+    },
+    {
+      "cardId": "sv10-219",
+      "cardName": "Team Rocket s Persian ex",
+      "setId": "sv10",
+      "fileName": "sv10-219_Team_Rocket_s_Persian_ex.png",
+      "hashes": {
+        "perceptual": "00003c1e3fe63ffe1df6220e4c3e707e40fe819e07de171efffe7f30403e0880",
+        "difference": "00003c1e3fe63ffe1df6220e4c3e707e40fe819e07de171efffe7f30403e0880",
+        "average": "027f37078f1af606"
+      }
+    },
+    {
+      "cardId": "sv10-220",
+      "cardName": "Emcee s Hype",
+      "setId": "sv10",
+      "fileName": "sv10-220_Emcee_s_Hype.png",
+      "hashes": {
+        "perceptual": "7fe00bfe07420fe0fd11f007e1c7b107f103ec03e60fe237c2f402b67ffe0d80",
+        "difference": "7fe00bfe07420fe0fd11f007e1c7b107f103ec03e60fe237c2f402b67ffe0d80",
+        "average": "3e31e1c9c1979e38"
+      }
+    },
+    {
+      "cardId": "sv10-221",
+      "cardName": "Ethan s Adventure",
+      "setId": "sv10",
+      "fileName": "sv10-221_Ethan_s_Adventure.png",
+      "hashes": {
+        "perceptual": "1fc003fe03fe223e001e013f9bbfb84ff88df007e607fc0981e1000103ffdfff",
+        "difference": "1fc003fe03fe223e001e013f9bbfb84ff88df007e607fc0981e1000103ffdfff",
+        "average": "3c1707cbc3e10c9f"
+      }
+    },
+    {
+      "cardId": "sv10-222",
+      "cardName": "Judge",
+      "setId": "sv10",
+      "fileName": "sv10-222_Judge.png",
+      "hashes": {
+        "perceptual": "7fe01ffe7c1c000cf26fbee18041b1e183f1a3e3f701f403b0018c1007ff9ffd",
+        "difference": "7fe01ffe7c1c000cf26fbee18041b1e183f1a3e3f701f403b0018c1007ff9ffd",
+        "average": "3e62eac89dc1a03f"
+      }
+    },
+    {
+      "cardId": "sv10-223",
+      "cardName": "Team Rocket s Archer",
+      "setId": "sv10",
+      "fileName": "sv10-223_Team_Rocket_s_Archer.png",
+      "hashes": {
+        "perceptual": "fff937fe00780090d7c1c3c1e19d84758675817d93dd03c9003c17ce07ff03f6",
+        "difference": "fff937fe00780090d7c1c3c1e19d84758675817d93dd03c9003c17ce07ff03f6",
+        "average": "7f04988f1e1e071f"
+      }
+    },
+    {
+      "cardId": "sv10-224",
+      "cardName": "Team Rocket s Ariana",
+      "setId": "sv10",
+      "fileName": "sv10-224_Team_Rocket_s_Ariana.png",
+      "hashes": {
+        "perceptual": "7fe017fe7c08f800f988f8e1fcd1f001e38dd8f98071f23180e3004307ff0fff",
+        "difference": "7fe017fe7c08f800f988f8e1fcd1f001e38dd8f98071f23180e3004307ff0fff",
+        "average": "3ee0e8e19e85891f"
+      }
+    },
+    {
+      "cardId": "sv10-225",
+      "cardName": "Team Rocket s Giovanni",
+      "setId": "sv10",
+      "fileName": "sv10-225_Team_Rocket_s_Giovanni.png",
+      "hashes": {
+        "perceptual": "ffffbfff0800000088c188ff9dbfa007a1078007e807fbff0003900183ffffff",
+        "difference": "ffffbfff0800000088c188ff9dbfa007a1078007e807fbff0003900183ffffff",
+        "average": "ff002f4381f301df"
+      }
+    },
+    {
+      "cardId": "sv10-226",
+      "cardName": "Team Rocket s Petrel",
+      "setId": "sv10",
+      "fileName": "sv10-226_Team_Rocket_s_Petrel.png",
+      "hashes": {
+        "perceptual": "1fc0037e73f0f3c0e999f839f03bc007c00f900fa5dfe18fe005cf0483ff83fc",
+        "difference": "1fc0037e73f0f3c0e999f839f03bc007c00f900fa5dfe18fe005cf0483ff83fc",
+        "average": "3cd8e58583cb831f"
+      }
+    },
+    {
+      "cardId": "sv10-227",
+      "cardName": "Team Rocket s Proton",
+      "setId": "sv10",
+      "fileName": "sv10-227_Team_Rocket_s_Proton.png",
+      "hashes": {
+        "perceptual": "fff9b7ff04000e009ce1bdc1b8c1f861f021c0059f0fff0fe60746070fff0cf0",
+        "difference": "fff9b7ff04000e009ce1bdc1b8c1f861f021c0059f0fff0fe60746070fff0cf0",
+        "average": "7f20e8c981f3213f"
+      }
+    },
+    {
+      "cardId": "sv10-228",
+      "cardName": "Yanmega ex",
+      "setId": "sv10",
+      "fileName": "sv10-228_Yanmega_ex.png",
+      "hashes": {
+        "perceptual": "03e07bfe483e0c3e7e0fe43f088f009fb731b9f97afa08007f8a000007bf1bff",
+        "difference": "03e07bfe483e0c3e7e0fe43f088f009fb731b9f97afa08007f8a000007bf1bff",
+        "average": "1e27e7037ce0681f"
+      }
+    },
+    {
+      "cardId": "sv10-229",
+      "cardName": "Team Rocket s Moltres ex",
+      "setId": "sv10",
+      "fileName": "sv10-229_Team_Rocket_s_Moltres_ex.png",
+      "hashes": {
+        "perceptual": "e1c03fcc379843f804f0153c00ff0fff01bd03ff0ff41ec03ffe2470643f1168",
+        "difference": "e1c03fcc379843f804f0153c00ff0fff01bd03ff0ff41ec03ffe2470643f1168",
+        "average": "7a1c262f0f3a6c0f"
+      }
+    },
+    {
+      "cardId": "sv10-230",
+      "cardName": "Ethan s Ho Oh ex",
+      "setId": "sv10",
+      "fileName": "sv10-230_Ethan_s_Ho_Oh_ex.png",
+      "hashes": {
+        "perceptual": "03c07fc4fe0e439e083e4cfc07c1ff83f718fe907fc00d30fff0ffe00ebe0000",
+        "difference": "03c07fc4fe0e439e083e4cfc07c1ff83f718fe907fc00d30fff0ffe00ebe0000",
+        "average": "38b32f38f074fc06"
+      }
+    },
+    {
+      "cardId": "sv10-231",
+      "cardName": "Team Rocket s Mewtwo ex",
+      "setId": "sv10",
+      "fileName": "sv10-231_Team_Rocket_s_Mewtwo_ex.png",
+      "hashes": {
+        "perceptual": "e3fe0bfc007c187838fc01fc07f9035783fd01ff00e501fe03e001f801ff1bff",
+        "difference": "e3fe0bfc007c187838fc01fc07f9035783fd01ff00e501fe03e001f801ff1bff",
+        "average": "9e0e4e1d1f0e1c1f"
+      }
+    },
+    {
+      "cardId": "sv10-232",
+      "cardName": "Cynthia s Garchomp ex",
+      "setId": "sv10",
+      "fileName": "sv10-232_Cynthia_s_Garchomp_ex.png",
+      "hashes": {
+        "perceptual": "1ab07fa00fec7e06f3f1f11cf301e403d03fc2fd69b81223780c500714bf1bff",
+        "difference": "1ab07fa00fec7e06f3f1f11cf301e403d03fc2fd69b81223780c500714bf1bff",
+        "average": "70badcc1c7c4426f"
+      }
+    },
+    {
+      "cardId": "sv10-233",
+      "cardName": "Team Rocket s Nidoking ex",
+      "setId": "sv10",
+      "fileName": "sv10-233_Team_Rocket_s_Nidoking_ex.png",
+      "hashes": {
+        "perceptual": "1bf87fd6c03821b828c0bc70bac0efebe00162126fff43af01ff43d8f83ff800",
+        "difference": "1bf87fd6c03821b828c0bc70bac0efebe00162126fff43af01ff43d8f83ff800",
+        "average": "fe0464dc813f1ee2"
+      }
+    },
+    {
+      "cardId": "sv10-234",
+      "cardName": "Team Rocket s Crobat ex",
+      "setId": "sv10",
+      "fileName": "sv10-234_Team_Rocket_s_Crobat_ex.png",
+      "hashes": {
+        "perceptual": "fff1fc64e888008e03ce07e697e183c78703bfd93ef91c007fa07ec0fc3ee080",
+        "difference": "fff1fc64e888008e03ce07e697e183c78703bfd93ef91c007fa07ec0fc3ee080",
+        "average": "fc821f19796878c6"
+      }
+    },
+    {
+      "cardId": "sv10-235",
+      "cardName": "Arven s Mabosstiff ex",
+      "setId": "sv10",
+      "fileName": "sv10-235_Arven_s_Mabosstiff_ex.png",
+      "hashes": {
+        "perceptual": "23d077f8f20e0b8eea671823c123cdf90ce800407fff437f7d7f44167cbe1880",
+        "difference": "23d077f8f20e0b8eea671823c123cdf90ce800407fff437f7d7f44167cbe1880",
+        "average": "dc13a1b508df6762"
+      }
+    },
+    {
+      "cardId": "sv10-236",
+      "cardName": "Ethan s Adventure",
+      "setId": "sv10",
+      "fileName": "sv10-236_Ethan_s_Adventure.png",
+      "hashes": {
+        "perceptual": "7fe01ffe63e08050c979e3e3a08d8e15be398c198c03fc4f00015c787fff1fe0",
+        "difference": "7fe01ffe63e08050c979e3e3a08d8e15be398c198c03fc4f00015c787fff1fe0",
+        "average": "7e0c978323e300ff"
+      }
+    },
+    {
+      "cardId": "sv10-237",
+      "cardName": "Team Rocket s Ariana",
+      "setId": "sv10",
+      "fileName": "sv10-237_Team_Rocket_s_Ariana.png",
+      "hashes": {
+        "perceptual": "3fe0035e7c1ef00e208e800fe0fff0dff87ff82f80c3f0017f0e581e5bfe08c0",
+        "difference": "3fe0035e7c1ef00e208e800fe0fff0dff87ff82f80c3f0017f0e581e5bfe08c0",
+        "average": "3cc3838fe781632e"
+      }
+    },
+    {
+      "cardId": "sv10-238",
+      "cardName": "Team Rocket s Giovanni",
+      "setId": "sv10",
+      "fileName": "sv10-238_Team_Rocket_s_Giovanni.png",
+      "hashes": {
+        "perceptual": "fff937fe0c04010c3b90bf99b109a4c7f063f081fe01ff81ac0098000fff9ffd",
+        "difference": "fff937fe0c04010c3b90bf99b109a4c7f063f081fe01ff81ac0098000fff9ffd",
+        "average": "7f027cc1c1f8c03f"
+      }
+    },
+    {
+      "cardId": "sv10-239",
+      "cardName": "Ethan s Ho Oh ex",
+      "setId": "sv10",
+      "fileName": "sv10-239_Ethan_s_Ho_Oh_ex.png",
+      "hashes": {
+        "perceptual": "efc51ec50c621f31ffa0af01f203f807bb0717df13e700e011fe70fe183f19c0",
+        "difference": "efc51ec50c621f31ffa0af01f203f807bb0717df13e700e011fe70fe183f19c0",
+        "average": "3b34f1c1731c4e47"
+      }
+    },
+    {
+      "cardId": "sv10-240",
+      "cardName": "Team Rocket s Mewtwo ex",
+      "setId": "sv10",
+      "fileName": "sv10-240_Team_Rocket_s_Mewtwo_ex.png",
+      "hashes": {
+        "perceptual": "e0f118607cb07ff43ef010f81cf815fc17fc03ff819d00dc007e007e027f8bff",
+        "difference": "e0f118607cb07ff43ef010f81cf815fc17fc03ff819d00dc007e007e027f8bff",
+        "average": "2cec6c4e1f0e0e1f"
+      }
+    },
+    {
+      "cardId": "sv10-241",
+      "cardName": "Cynthia s Garchomp ex",
+      "setId": "sv10",
+      "fileName": "sv10-241_Cynthia_s_Garchomp_ex.png",
+      "hashes": {
+        "perceptual": "7f403f003f147f8cedc1e3c1ca0fc40fdc07819bfcdb08e4c06c807e603f0bff",
+        "difference": "7f403f003f147f8cedc1e3c1ca0fc40fdc07819bfcdb08e4c06c807e603f0bff",
+        "average": "70f2b8a3a16b868f"
+      }
+    },
+    {
+      "cardId": "sv10-242",
+      "cardName": "Team Rocket s Crobat ex",
+      "setId": "sv10",
+      "fileName": "sv10-242_Team_Rocket_s_Crobat_ex.png",
+      "hashes": {
+        "perceptual": "e1e1e060fc40fec75e40e3b8f19cc23d83038781fff911f801fe0138cc3fcfc3",
+        "difference": "e1e1e060fc40fec75e40e3b8f19cc23d83038781fff911f801fe0138cc3fcfc3",
+        "average": "cce8f886117e1ca7"
+      }
+    },
+    {
+      "cardId": "sv10-243",
+      "cardName": "Jamming Tower",
+      "setId": "sv10",
+      "fileName": "sv10-243_Jamming_Tower.png",
+      "hashes": {
+        "perceptual": "fff107fe00003fb0518079b443ee03ff03fe71f83af003f001f3006107ff1fed",
+        "difference": "fff107fe00003fb0518079b443ee03ff03fe71f83af003f001f3006107ff1fed",
+        "average": "ff00581f5e1c0d1f"
+      }
+    },
+    {
+      "cardId": "sv10-244",
+      "cardName": "Levincia",
+      "setId": "sv10",
+      "fileName": "sv10-244_Levincia.png",
+      "hashes": {
+        "perceptual": "03c007f073fe06fed6faca53ca53825103610fe103f363fe03fe03fe07fe5c00",
+        "difference": "03c007f073fe06fed6faca53ca53825103610fe103f363fe03fe03fe07fe5c00",
+        "average": "185fad851c1f1f38"
+      }
+    }
+  ]
+}
