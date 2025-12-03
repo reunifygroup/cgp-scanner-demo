@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
+    "api": "node api-server.js",
     "download": "tsx src/download-cards.ts",
     "generate-hashes": "tsx src/generate-hashes.ts"
   },
@@ -23,6 +24,8 @@
     "sharp": "^0.34.5"
   },
   "devDependencies": {
+    "@fastify/cors": "^11.1.0",
+    "@fastify/multipart": "^9.3.0",
     "@types/node": "^24.10.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"

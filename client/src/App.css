@@ -1,0 +1,230 @@
+/* 🎨 Main app container */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+/* 📹 Scanner container */
+.scanner-container {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+video {
+  width: 100%;
+  max-width: 640px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+video.active {
+  display: block;
+}
+
+video.hidden {
+  display: none;
+}
+
+/* 🔘 Buttons */
+button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+  background: #4CAF50;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+  background: #f44336;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #da190b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* ❌ Error display */
+.error {
+  background: rgba(244, 67, 54, 0.9);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  max-width: 640px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ Result display */
+.result {
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  border-radius: 16px;
+  max-width: 640px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-header {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  padding: 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.result-content {
+  padding: 2rem;
+}
+
+.card-id {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 0.5rem;
+}
+
+.card-name {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.card-meta {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  font-size: 1rem;
+  color: #666;
+}
+
+.card-meta span {
+  background: #f0f0f0;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+/* 🔄 Scanning indicator */
+.scanning-indicator {
+  text-align: center;
+  opacity: 0.8;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 1rem;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 📱 Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+/* 📱 Mobile responsive */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .scanner-container {
+    padding: 1rem;
+  }
+
+  button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .card-id {
+    font-size: 1.5rem;
+  }
+
+  .card-name {
+    font-size: 1.2rem;
+  }
+
+  .card-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
