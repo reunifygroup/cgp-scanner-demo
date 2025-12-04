@@ -43,25 +43,46 @@ This creates `training-data/` with augmented images (rotation, brightness, blur,
 Zip the training data for upload to Google Colab:
 
 ```bash
-cd training-data
-zip -r ../training-data.zip .
-cd ..
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+zip -r training-data_${TIMESTAMP}.zip training-data
+rm -rf training-data
 ```
+
+This creates `training-data_20251204_103045.zip` and removes the source directory.
 
 ### Step 4: Train Model in Google Colab
 
 1. **Open Google Colab**: https://colab.research.google.com/
 2. **Enable GPU**: Runtime → Change runtime type → GPU
-3. **Upload Files**:
+3. **Upload & Extract Training Data**:
     ```python
     from google.colab import files
-    uploaded = files.upload()  # Upload training-data.zip
+    import os
+    import glob
+    import shutil
+
+    # Upload zip file (any name works)
+    uploaded = files.upload()
+
+    # Find the uploaded zip file
+    zip_files = glob.glob('*.zip')
+    if not zip_files:
+        raise Exception("No zip file found!")
+
+    zip_file = max(zip_files, key=os.path.getctime)
+    print(f"Found: {zip_file}")
+
+    # Remove old training-data if exists
+    if os.path.exists('training-data'):
+        print("Removing old training-data...")
+        shutil.rmtree('training-data')
+
+    # Unzip to training-data directory
+    print(f"Unzipping {zip_file}...")
+    !unzip -q {zip_file} -d training-data
+    print("✅ Ready for training!")
     ```
-4. **Unzip**:
-    ```bash
-    !unzip training-data.zip -d training-data
-    ```
-5. **Copy & Paste** the entire `train_card_classifier.py` script into a cell
+4. **Copy & Paste** the entire `train_card_classifier.py` script into a cell
 6. **Run the cell** - Training will start automatically
 7. **Download** the auto-generated `card_classifier_model.zip` when done
 
