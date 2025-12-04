@@ -1,161 +1,138 @@
-# 🎴 Pokémon Card Scanner
+# 🎴 Pokémon Card Scanner (CNN-based)
 
-A real-time Pokémon TCG card scanner using perceptual hashing and computer vision.
+Real-time Pokémon TCG card recognition using Convolutional Neural Networks (CNN) with TensorFlow.js.
 
 ## 🚀 Features
 
-- **Fast Recognition**: Uses perceptual hashing for instant card identification
-- **Real-time Scanning**: Continuous video capture with automatic matching
-- **Web-based**: React frontend with camera access
-- **REST API**: Fastify backend with hash matching
-- **434 Cards**: Pre-loaded with sv09 (Journey Together) and sv10 (Destined Rivals) sets
+-   **AI-Powered Recognition**: Deep learning CNN model for instant card identification
+-   **Real-time Scanning**: Browser-based inference with TensorFlow.js
+-   **Anywhere Detection**: Recognizes cards anywhere in frame, any angle/lighting
+-   **No Backend Needed**: All inference happens in the browser
+-   **Easy Training**: Simple workflow from images to trained model
 
-## 📦 Project Structure
+## 📋 Complete Workflow
+
+### Step 1: Prepare Card Images
+
+Place your card images in the `images/` directory, organized by set:
 
 ```
-tcgdex/
-├── api-server.js           # Fastify API with card matching endpoint
-├── src/
-│   ├── download-cards.ts   # Script to download card images from TCGdex
-│   └── generate-hashes.ts  # Script to generate perceptual hashes
-├── client/                 # React frontend (Vite + TypeScript)
-│   └── src/
-│       ├── App.tsx         # Main scanner component
-│       └── App.css         # Styles
-├── images/                 # Downloaded card images
-│   ├── sv09/              # Journey Together set
-│   └── sv10/              # Destined Rivals set
-└── hash-database.json      # Pre-computed perceptual hashes for all cards
+images/
+├── sv09/
+│   ├── sv09-001_Caterpie.png
+│   └── sv09-002_Metapod.png
+└── sv10/
+    ├── sv10-001_Ethan.png
+    └── sv10-002_Yanma.png
 ```
 
-## 🔧 Setup
+**Note**: You can start with just 2 cards for quick testing! More cards = longer training time.
 
-### 1. Download Card Images
+### Step 2: Generate Augmented Dataset
+
+Run the augmentation script to create 20 variations of each card:
 
 ```bash
-npm run download
+npm run augment-dataset
 ```
 
-This downloads images for sv09 and sv10 sets from TCGdex API.
+This creates `training-data/` with augmented images (rotation, brightness, blur, etc.).
 
-### 2. Generate Hash Database
+### Step 3: Create Training ZIP
 
-```bash
-npm run generate-hashes
-```
-
-This creates `hash-database.json` with perceptual hashes for all downloaded cards.
-
-### 3. Install Frontend Dependencies
+Zip the training data for upload to Google Colab:
 
 ```bash
-cd client
-npm install
+cd training-data
+zip -r ../training-data.zip .
 cd ..
 ```
 
-## 🎮 Running the Scanner
+### Step 4: Train Model in Google Colab
 
-You need to run TWO servers:
+1. **Open Google Colab**: https://colab.research.google.com/
+2. **Enable GPU**: Runtime → Change runtime type → GPU
+3. **Upload Files**:
+    ```python
+    from google.colab import files
+    uploaded = files.upload()  # Upload training-data.zip
+    ```
+4. **Unzip**:
+    ```bash
+    !unzip training-data.zip -d training-data
+    ```
+5. **Copy & Paste** the entire `train_card_classifier.py` script into a cell
+6. **Run the cell** - Training will start automatically
+7. **Download** the auto-generated `card_classifier_model.zip` when done
 
-### Terminal 1: Start the API Server
+## 🛠️ Scripts Reference
 
-```bash
-npm run api
-```
+| Command                    | Description                     |
+| -------------------------- | ------------------------------- |
+| `npm run augment-dataset`  | Generate 20 variations per card |
+| `cd client && npm run dev` | Start scanner app               |
 
-The API will start on `http://localhost:3000`
+## 📊 Training Details
 
-### Terminal 2: Start the Frontend
+-   **Model**: MobileNetV2 (transfer learning)
+-   **Input Size**: 224x224 RGB
+-   **Training Time**: ~5-10 min per card on Colab GPU
+-   **Model Size**: ~9.4MB
+-   **Accuracy**: 95%+ with 20+ augmentations per card
 
-```bash
-cd client
-npm run dev
-```
+## 🎯 How It Works
 
-The frontend will start on `http://localhost:5173` (or similar)
+1. **Camera Capture**: Captures frame every 500ms
+2. **Preprocessing**: Resize to 224x224, normalize to [0,1]
+3. **CNN Inference**: TensorFlow.js runs model in browser
+4. **Prediction**: Returns card ID with confidence score
+5. **Display**: Shows result when confidence > 70%
 
-## 📱 Using the Scanner
-
-1. Open the frontend URL in your browser
-2. Click **"📸 Start Scanner"** button
-3. Allow camera access when prompted
-4. Point your camera at a Pokémon card
-5. The scanner will automatically identify the card and display:
-   - Card ID (e.g., "sv09-001")
-   - Card Name
-   - Set ID
-   - Confidence score
-
-## 🔍 How It Works
-
-1. **Video Capture**: Frontend captures video frames every 500ms
-2. **Frame Extraction**: Converts video frame to PNG image
-3. **API Request**: Sends image to backend `/api/scan` endpoint
-4. **Hash Generation**: Backend generates perceptual hash of the image
-5. **Matching**: Compares hash against 434 pre-computed hashes using Hamming distance
-6. **Result**: Returns best match with confidence score
-
-## 🛠️ Technical Stack
-
-### Backend
-- **Fastify** - Web framework
-- **imghash** - Perceptual hashing library
-- **sharp** - Image processing
-- **axios** - HTTP client for TCGdex API
+## 🔧 Technical Stack
 
 ### Frontend
-- **React** - UI framework
-- **TypeScript** - Type safety
-- **Vite** - Build tool
-- **WebRTC getUserMedia** - Camera access
 
-### Matching Algorithm
-- **Perceptual Hashing (pHash)** - 16-bit hash for image similarity
-- **Hamming Distance** - Bitwise comparison for fast matching
-- **Threshold**: Max distance of 20 for matches
+-   **React + TypeScript** - UI framework
+-   **Vite** - Build tool
+-   **TensorFlow.js** - Browser ML inference
+-   **WebRTC getUserMedia** - Camera access
 
-## 📊 API Endpoints
+### Training
 
-### `GET /api/health`
-Check API status and card database
+-   **Python 3** - Training scripts
+-   **TensorFlow/Keras 3** - Deep learning framework
+-   **MobileNetV2** - Pre-trained CNN base
+-   **Sharp** - Image augmentation
+-   **Google Colab** - Free GPU training
 
-### `POST /api/scan`
-Upload image and get card match
+## 📝 Model Architecture
 
-**Request**: Multipart form data with `file` field
-
-**Response**:
-```json
-{
-  "matched": true,
-  "card": {
-    "cardId": "sv09-001",
-    "cardName": "Caterpie",
-    "setId": "sv09",
-    "distance": 3,
-    "confidence": 85.0
-  },
-  "alternatives": [...],
-  "totalMatches": 5
-}
+```
+Input (224x224x3)
+    ↓
+MobileNetV2 Base (frozen)
+    ↓
+GlobalAveragePooling2D
+    ↓
+Dropout(0.3)
+    ↓
+Dense(128, relu)
+    ↓
+Dropout(0.2)
+    ↓
+Dense(num_cards, softmax)
+    ↓
+Output (card probabilities)
 ```
 
-## 🎯 Scripts Reference
+## 🎓 Tips for Best Results
 
-| Command | Description |
-|---------|-------------|
-| `npm run download` | Download card images from TCGdex |
-| `npm run generate-hashes` | Generate perceptual hash database |
-| `npm run api` | Start Fastify API server |
-| `cd client && npm run dev` | Start React dev server |
+1. **Start Small**: Test with 2 cards first
+2. **Good Images**: Use high-quality card images (400x560+ px)
+3. **More Augmentation**: Increase variations for better robustness
+4. **Longer Training**: 50+ epochs for production models
+5. **More Data**: 50+ real photos per card for ultimate accuracy
 
-## 🔒 Security Notes
-
-- CORS is set to allow all origins (adjust for production)
-- Camera access requires HTTPS in production
-- No authentication implemented (add for production use)
-
-## 📝 License
+## 📄 License
 
 ISC
