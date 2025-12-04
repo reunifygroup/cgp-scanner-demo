@@ -50,54 +50,7 @@ rm -rf training-data
 
 1. **Open Google Colab**: https://colab.research.google.com/
 2. **Enable GPU**: Runtime → Change runtime type → GPU
-3. **Working directory and reset**: Clean or create the working directory under `/content/cgpremium/scanner` and navigate inside it
-
-    ```python
-    import os
-    import shutil
-    import glob
-
-    print("🧹 Cleaning up workspace...")
-    print("=" * 50)
-
-    # List of items to keep
-    KEEP = ['training-data', 'sample_data']
-
-    # Get all items in current directory
-    current_items = os.listdir('.')
-
-    removed_count = 0
-
-    for item in current_items:
-        # Skip items we want to keep
-        if item in KEEP or item.startswith('.'):
-            print(f"✅ Keeping: {item}")
-            continue
-
-        # Remove everything else
-        item_path = os.path.join('.', item)
-
-        try:
-            if os.path.isdir(item_path):
-                shutil.rmtree(item_path)
-                print(f"🗑️  Removed directory: {item}")
-            else:
-                os.remove(item_path)
-                print(f"🗑️  Removed file: {item}")
-            removed_count += 1
-        except Exception as e:
-            print(f"⚠️  Could not remove {item}: {e}")
-
-    print("=" * 50)
-    print(f"✅ Cleanup complete! Removed {removed_count} items")
-    print(f"📁 Kept: {', '.join(KEEP)}")
-
-    # Show what remains
-    print("\n📂 Current directory contents:")
-    !ls -lh
-
-    ```
-
+3. **Working directory and reset**: Navigate or create the working directory under `/content/cgpremium/scanner`
 4. **Upload & Extract Training Data**:
 
     ```python

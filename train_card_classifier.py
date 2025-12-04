@@ -51,6 +51,45 @@ LEARNING_RATE = 0.001
 print(f"✅ Using training data from: {TRAINING_DATA_PATH}")
 
 # ============================================================================
+# 🧹 STEP 2.5: Clean Up Previous Run
+# ============================================================================
+
+print("\n🧹 Cleaning up previous training artifacts...")
+
+cleanup_paths = [
+    TRAIN_DIR,
+    VAL_DIR,
+    MODEL_OUTPUT_DIR,
+    '/content/cgpremium/scanner/saved_model',
+    '/content/cgpremium/scanner/model.keras',
+    '/content/cgpremium/scanner/best_model.keras',
+    '/content/cgpremium/scanner/training_history.png',
+]
+
+# Remove directories and files
+for path in cleanup_paths:
+    try:
+        if os.path.exists(path):
+            if os.path.isdir(path):
+                shutil.rmtree(path)
+                print(f"   🗑️  Removed directory: {os.path.basename(path)}")
+            else:
+                os.remove(path)
+                print(f"   🗑️  Removed file: {os.path.basename(path)}")
+    except Exception as e:
+        print(f"   ⚠️  Could not remove {path}: {e}")
+
+# Remove any .zip files in the directory
+for zip_file in glob.glob('/content/cgpremium/scanner/*.zip'):
+    try:
+        os.remove(zip_file)
+        print(f"   🗑️  Removed zip: {os.path.basename(zip_file)}")
+    except Exception as e:
+        print(f"   ⚠️  Could not remove {zip_file}: {e}")
+
+print("✅ Cleanup complete - ready for fresh training!\n")
+
+# ============================================================================
 # 🔄 STEP 3: Prepare Dataset (Train/Val Split)
 # ============================================================================
 
@@ -165,10 +204,13 @@ print(f"📋 Classes: {list(train_generator.class_indices.keys())}")
 # 🧠 STEP 5: Build CNN Model with Transfer Learning
 # ============================================================================
 
+# Clear Keras layer name counter for consistent naming
+keras.backend.clear_session()
+
 def create_model(num_classes, img_size=IMG_SIZE):
     """Create simple CNN classifier (TF.js compatible)"""
 
-    # Build a simple Sequential CNN (TF.js compatible - no BatchNorm)
+    # Build a simple Sequential CNN (TF.js compatible - no BatchNorm, no name)
     model = keras.Sequential([
         # Conv Block 1 (input_shape specified here, no explicit InputLayer)
         layers.Conv2D(32, 3, padding='same', activation='relu', input_shape=(*img_size, 3)),
@@ -196,11 +238,19 @@ def create_model(num_classes, img_size=IMG_SIZE):
         layers.Dense(256, activation='relu'),
         layers.Dropout(0.4),
         layers.Dense(num_classes, activation='softmax')
-    ], name='card_classifier')
+    ])  # No name parameter
 
     return model
 
 model = create_model(num_classes)
+
+# Explicitly build the model with input shape
+model.build((None, *IMG_SIZE, 3))
+
+print("\n📋 Model layer names:")
+for i, layer in enumerate(model.layers):
+    print(f"   {i}: {layer.name} ({layer.__class__.__name__})")
+
 model.summary()
 
 # ============================================================================
@@ -308,12 +358,20 @@ print(f"\n📋 Saving class names: {class_names_list}")
 with open(os.path.join(MODEL_OUTPUT_DIR, 'class_names.json'), 'w') as f:
     json.dump(class_names_list, f, indent=2)
 
-# Convert to TensorFlow.js format
+# Convert to TensorFlow.js format (Graph Model - better Keras 3.x compatibility)
 print("\n📦 Converting to TensorFlow.js format...")
 
-# Use Python API directly (most reliable for Keras 3.x)
-print(f"Converting model with TensorFlow.js Python API...")
-tfjs.converters.save_keras_model(model, MODEL_OUTPUT_DIR)
+# Step 1: Save as TensorFlow SavedModel
+SAVED_MODEL_PATH = '/content/cgpremium/scanner/saved_model'
+print(f"Saving as TensorFlow SavedModel...")
+model.export(SAVED_MODEL_PATH)
+
+# Step 2: Convert to TensorFlow.js Graph Model format
+print(f"Converting SavedModel to TensorFlow.js Graph Model...")
+tfjs.converters.convert_tf_saved_model(
+    SAVED_MODEL_PATH,
+    MODEL_OUTPUT_DIR
+)
 
 print(f"✅ Model exported to: {MODEL_OUTPUT_DIR}")
 
@@ -321,7 +379,7 @@ print(f"✅ Model exported to: {MODEL_OUTPUT_DIR}")
 print("\n📂 Files in model output directory:")
 !ls -lh {MODEL_OUTPUT_DIR}
 
-print("\n✅ Model ready for TensorFlow.js!")
+print("\n✅ Graph Model ready for TensorFlow.js (no fixes needed)!")
 
 # Create a zip file
 print("\n📦 Creating zip file...")

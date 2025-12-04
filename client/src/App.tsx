@@ -13,20 +13,17 @@ function App() {
   const [result, setResult] = useState<ScanResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [modelStatus, setModelStatus] = useState<string>('Loading model...');
+  const [isModelLoaded, setIsModelLoaded] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const intervalRef = useRef<number | null>(null);
-  const modelRef = useRef<tf.LayersModel | null>(null);
+  const modelRef = useRef<tf.GraphModel | null>(null);
   const classNamesRef = useRef<string[]>([]);
 
   // 🧠 Load TensorFlow.js model on mount
-  useEffect(() => {
-    loadModel();
-  }, []);
-
-  const loadModel = async () => {
+  async function loadModel() {
     try {
       setModelStatus('Loading model...');
 
@@ -34,8 +31,8 @@ function App() {
       const classNamesResponse = await fetch('/model/class_names.json');
       classNamesRef.current = await classNamesResponse.json();
 
-      // Load model
-      const model = await tf.loadLayersModel('/model/model.json');
+      // Load Graph Model (Keras 3.x compatible)
+      const model = await tf.loadGraphModel('/model/model.json');
       modelRef.current = model;
 
       // Warm up the model
@@ -44,13 +41,19 @@ function App() {
       dummyInput.dispose();
 
       setModelStatus(`Model loaded! ${classNamesRef.current.length} cards ready`);
+      setIsModelLoaded(true);
       console.log('✅ Model loaded:', classNamesRef.current);
 
     } catch (err) {
       setError('Failed to load model: ' + (err as Error).message);
       setModelStatus('Model load failed');
+      setIsModelLoaded(false);
     }
-  };
+  }
+
+  useEffect(() => {
+    loadModel();
+  }, []);
 
   // 📸 Start camera and scanning
   const startScanning = async () => {
@@ -218,7 +221,7 @@ function App() {
             <button
               onClick={startScanning}
               className="btn-primary"
-              disabled={!modelRef.current}
+              disabled={!isModelLoaded}
             >
               📸 Start Scanner
             </button>
