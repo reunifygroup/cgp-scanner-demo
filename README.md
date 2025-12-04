@@ -19,11 +19,9 @@ Place your card images in the `images/` directory, organized by set:
 ```
 images/
 ├── sv09/
-│   ├── sv09-001_Caterpie.png
-│   └── sv09-002_Metapod.png
+│   └── sv09-001_Caterpie.png
 └── sv10/
-    ├── sv10-001_Ethan.png
-    └── sv10-002_Yanma.png
+    └── sv10-001_Ethan.png
 ```
 
 **Note**: You can start with just 2 cards for quick testing! More cards = longer training time.
