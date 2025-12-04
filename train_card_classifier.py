@@ -166,7 +166,7 @@ print(f"📋 Classes: {list(train_generator.class_indices.keys())}")
 # ============================================================================
 
 def create_model(num_classes, img_size=IMG_SIZE):
-    """Create MobileNetV2-based classifier"""
+    """Create MobileNetV2-based classifier using Functional API"""
 
     # Load pre-trained MobileNetV2 (without top layer)
     base_model = MobileNetV2(
@@ -178,21 +178,18 @@ def create_model(num_classes, img_size=IMG_SIZE):
     # Freeze base model initially
     base_model.trainable = False
 
-    # Build model WITHOUT augmentation layers (causes export issues)
-    model = keras.Sequential([
-        # Input layer
-        layers.Input(shape=(*img_size, 3)),
+    # Use Functional API instead of Sequential for better TF.js compatibility
+    inputs = base_model.input
+    x = base_model.output
 
-        # Base model
-        base_model,
+    # Classification head
+    x = layers.GlobalAveragePooling2D()(x)
+    x = layers.Dropout(0.3)(x)
+    x = layers.Dense(128, activation='relu')(x)
+    x = layers.Dropout(0.2)(x)
+    outputs = layers.Dense(num_classes, activation='softmax')(x)
 
-        # Classification head
-        layers.GlobalAveragePooling2D(),
-        layers.Dropout(0.3),
-        layers.Dense(128, activation='relu'),
-        layers.Dropout(0.2),
-        layers.Dense(num_classes, activation='softmax')
-    ])
+    model = keras.Model(inputs=inputs, outputs=outputs, name='card_classifier')
 
     return model
 

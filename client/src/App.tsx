@@ -1,36 +1,71 @@
 import { useState, useRef, useEffect } from 'react';
+import * as tf from '@tensorflow/tfjs';
 import './App.css';
 
 interface ScanResult {
-  matched: boolean;
-  card?: {
-    cardId: string;
-    cardName: string;
-    setId: string;
-    distance: number;
-    confidence: number;
-  };
-  message?: string;
+  cardId: string;
+  cardName: string;
+  confidence: number;
 }
 
 function App() {
   const [isScanning, setIsScanning] = useState(false);
   const [result, setResult] = useState<ScanResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [modelStatus, setModelStatus] = useState<string>('Loading model...');
+
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const intervalRef = useRef<number | null>(null);
+  const modelRef = useRef<tf.LayersModel | null>(null);
+  const classNamesRef = useRef<string[]>([]);
+
+  // 🧠 Load TensorFlow.js model on mount
+  useEffect(() => {
+    loadModel();
+  }, []);
+
+  const loadModel = async () => {
+    try {
+      setModelStatus('Loading model...');
+
+      // Load class names
+      const classNamesResponse = await fetch('/model/class_names.json');
+      classNamesRef.current = await classNamesResponse.json();
+
+      // Load model
+      const model = await tf.loadLayersModel('/model/model.json');
+      modelRef.current = model;
+
+      // Warm up the model
+      const dummyInput = tf.zeros([1, 224, 224, 3]);
+      model.predict(dummyInput);
+      dummyInput.dispose();
+
+      setModelStatus(`Model loaded! ${classNamesRef.current.length} cards ready`);
+      console.log('✅ Model loaded:', classNamesRef.current);
+
+    } catch (err) {
+      setError('Failed to load model: ' + (err as Error).message);
+      setModelStatus('Model load failed');
+    }
+  };
 
   // 📸 Start camera and scanning
   const startScanning = async () => {
+    if (!modelRef.current) {
+      setError('Model not loaded yet. Please wait...');
+      return;
+    }
+
     try {
       setError(null);
 
       // Request camera access
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
-          facingMode: 'environment', // Use back camera on mobile
+          facingMode: 'environment',
           width: { ideal: 1280 },
           height: { ideal: 720 }
         }
@@ -43,7 +78,7 @@ function App() {
 
         // Start capturing frames every 500ms
         intervalRef.current = window.setInterval(() => {
-          captureAndScan();
+          captureAndPredict();
         }, 500);
       }
     } catch (err) {
@@ -71,9 +106,9 @@ function App() {
     setResult(null);
   };
 
-  // 📷 Capture frame and send to API
-  const captureAndScan = async () => {
-    if (!videoRef.current || !canvasRef.current) return;
+  // 🎯 Capture frame and run inference
+  const captureAndPredict = async () => {
+    if (!videoRef.current || !canvasRef.current || !modelRef.current) return;
 
     const video = videoRef.current;
     const canvas = canvasRef.current;
@@ -81,55 +116,67 @@ function App() {
 
     if (!context || video.readyState !== video.HAVE_ENOUGH_DATA) return;
 
-    // Calculate crop area (matching frame guide: 60% width, 5:7 ratio)
-    const cropWidth = video.videoWidth * 0.6;
-    const cropHeight = cropWidth * 1.4; // 5:7 ratio = 1.4
-    const cropX = (video.videoWidth - cropWidth) / 2;
-    const cropY = (video.videoHeight - cropHeight) / 2;
+    try {
+      // Set canvas size to model input size
+      canvas.width = 224;
+      canvas.height = 224;
 
-    // Set canvas to crop size
-    canvas.width = cropWidth;
-    canvas.height = cropHeight;
+      // Draw video frame (scaled to 224x224)
+      context.drawImage(video, 0, 0, 224, 224);
 
-    // Draw only the cropped area
-    context.drawImage(
-      video,
-      cropX, cropY, cropWidth, cropHeight,  // source crop
-      0, 0, cropWidth, cropHeight            // destination
-    );
+      // Get image data and convert to tensor
+      const imageData = context.getImageData(0, 0, 224, 224);
 
-    // Convert canvas to blob
-    canvas.toBlob(async (blob) => {
-      if (!blob) return;
+      // Convert to tensor and normalize
+      const tensor = tf.tidy(() => {
+        // Convert to tensor
+        const imageTensor = tf.browser.fromPixels(imageData);
 
-      try {
-        // Send to API
-        const formData = new FormData();
-        formData.append('file', blob, 'scan.png');
+        // Normalize to [0, 1]
+        const normalized = imageTensor.div(255.0);
 
-        const response = await fetch('http://localhost:3000/api/scan', {
-          method: 'POST',
-          body: formData
+        // Add batch dimension
+        const batched = normalized.expandDims(0);
+
+        return batched;
+      });
+
+      // Run inference
+      const predictions = modelRef.current.predict(tensor) as tf.Tensor;
+      const predArray = await predictions.data();
+
+      // Get top prediction
+      const maxIndex = predArray.indexOf(Math.max(...Array.from(predArray)));
+      const confidence = predArray[maxIndex];
+
+      // Clean up tensors
+      tensor.dispose();
+      predictions.dispose();
+
+      // Only show result if confidence is high enough
+      if (confidence > 0.7) {
+        const cardId = classNamesRef.current[maxIndex];
+        const cardName = cardId.split('_').slice(1).join(' ');
+
+        setResult({
+          cardId,
+          cardName,
+          confidence: confidence * 100
         });
-
-        const data: ScanResult = await response.json();
-
-        // Only update if we found a match
-        if (data.matched) {
-          setResult(data);
-          setError(null);
-        }
-      } catch (err) {
-        console.error('Scan error:', err);
-        // Don't show errors for failed scans, just keep trying
       }
-    }, 'image/png');
+
+    } catch (err) {
+      console.error('Prediction error:', err);
+    }
   };
 
   // 🧹 Cleanup on unmount
   useEffect(() => {
     return () => {
       stopScanning();
+      if (modelRef.current) {
+        modelRef.current.dispose();
+      }
     };
   }, []);
 
@@ -137,7 +184,8 @@ function App() {
     <div className="app">
       <header>
         <h1>🎴 Pokémon Card Scanner</h1>
-        <p>Point your camera at a Pokémon card to identify it</p>
+        <p>AI-powered instant card recognition</p>
+        <div className="model-status">{modelStatus}</div>
       </header>
 
       <main>
@@ -167,7 +215,11 @@ function App() {
 
           {/* Control button */}
           {!isScanning ? (
-            <button onClick={startScanning} className="btn-primary">
+            <button
+              onClick={startScanning}
+              className="btn-primary"
+              disabled={!modelRef.current}
+            >
               📸 Start Scanner
             </button>
           ) : (
@@ -185,21 +237,20 @@ function App() {
         )}
 
         {/* Result display */}
-        {result?.matched && result.card && (
+        {result && (
           <div className="result">
             <div className="result-header">✅ Card Detected!</div>
             <div className="result-content">
-              <div className="card-id">{result.card.cardId}</div>
-              <div className="card-name">{result.card.cardName}</div>
+              <div className="card-id">{result.cardId}</div>
+              <div className="card-name">{result.cardName}</div>
               <div className="card-meta">
-                <span>Set: {result.card.setId}</span>
-                <span>Confidence: {result.card.confidence.toFixed(1)}%</span>
+                <span>Confidence: {result.confidence.toFixed(1)}%</span>
               </div>
             </div>
           </div>
         )}
 
-        {isScanning && !result?.matched && (
+        {isScanning && !result && (
           <div className="scanning-indicator">
             <div className="spinner"></div>
             <p>Scanning for cards...</p>
@@ -208,7 +259,7 @@ function App() {
       </main>
 
       <footer>
-        <p>TCGdex Scanner • sv09 & sv10 sets loaded</p>
+        <p>Powered by TensorFlow.js • 10 cards trained</p>
       </footer>
     </div>
   );
