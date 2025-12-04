@@ -152,12 +152,22 @@ function App() {
       const maxIndex = predArray.indexOf(Math.max(...Array.from(predArray)));
       const confidence = predArray[maxIndex];
 
+      // Debug: Show all predictions
+      console.log('Predictions:', {
+        confidence: (confidence * 100).toFixed(1) + '%',
+        card: classNamesRef.current[maxIndex],
+        allConfidences: Array.from(predArray).map((p, i) => ({
+          card: classNamesRef.current[i],
+          conf: (p * 100).toFixed(1) + '%'
+        }))
+      });
+
       // Clean up tensors
       tensor.dispose();
       predictions.dispose();
 
-      // Only show result if confidence is high enough
-      if (confidence > 0.7) {
+      // Only show result if confidence is high enough (95% for small datasets)
+      if (confidence > 0.95) {
         const cardId = classNamesRef.current[maxIndex];
         const cardName = cardId.split('_').slice(1).join(' ');
 

@@ -5,7 +5,7 @@ import path from 'path';
 // 🎨 Configuration
 const IMAGES_DIR = path.join(process.cwd(), 'images');
 const OUTPUT_DIR = path.join(process.cwd(), 'training-data');
-const AUGMENTATIONS_PER_IMAGE = 20; // Generate 20 variations per card
+const AUGMENTATIONS_PER_IMAGE = 100; // Generate 100 variations per card
 
 // 🔄 Augmentation functions
 const augmentations = [

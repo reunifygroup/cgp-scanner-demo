@@ -45,7 +45,7 @@ MODEL_OUTPUT_DIR = '/content/cgpremium/scanner/model_output'
 # Hyperparameters
 IMG_SIZE = (224, 224)  # MobileNetV2 input size
 BATCH_SIZE = 16
-EPOCHS = 50
+EPOCHS = 100
 LEARNING_RATE = 0.001
 
 print(f"✅ Using training data from: {TRAINING_DATA_PATH}")
