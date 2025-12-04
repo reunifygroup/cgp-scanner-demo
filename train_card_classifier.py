@@ -129,7 +129,7 @@ total_train, total_val, class_names_list = create_train_val_split(
 # ============================================================================
 
 train_datagen = ImageDataGenerator(
-    rescale=1./255,
+    rescale=1./255,  # Normalize to [0,1]
     rotation_range=10,
     width_shift_range=0.1,
     height_shift_range=0.1,
@@ -166,30 +166,37 @@ print(f"📋 Classes: {list(train_generator.class_indices.keys())}")
 # ============================================================================
 
 def create_model(num_classes, img_size=IMG_SIZE):
-    """Create MobileNetV2-based classifier using Functional API"""
+    """Create simple CNN classifier (TF.js compatible)"""
 
-    # Load pre-trained MobileNetV2 (without top layer)
-    base_model = MobileNetV2(
-        input_shape=(*img_size, 3),
-        include_top=False,
-        weights='imagenet'
-    )
+    # Build a simple Sequential CNN (TF.js compatible - no BatchNorm)
+    model = keras.Sequential([
+        # Conv Block 1 (input_shape specified here, no explicit InputLayer)
+        layers.Conv2D(32, 3, padding='same', activation='relu', input_shape=(*img_size, 3)),
+        layers.MaxPooling2D(2),
+        layers.Dropout(0.2),
 
-    # Freeze base model initially
-    base_model.trainable = False
+        # Conv Block 2
+        layers.Conv2D(64, 3, padding='same', activation='relu'),
+        layers.MaxPooling2D(2),
+        layers.Dropout(0.2),
 
-    # Use Functional API instead of Sequential for better TF.js compatibility
-    inputs = base_model.input
-    x = base_model.output
+        # Conv Block 3
+        layers.Conv2D(128, 3, padding='same', activation='relu'),
+        layers.MaxPooling2D(2),
+        layers.Dropout(0.3),
 
-    # Classification head
-    x = layers.GlobalAveragePooling2D()(x)
-    x = layers.Dropout(0.3)(x)
-    x = layers.Dense(128, activation='relu')(x)
-    x = layers.Dropout(0.2)(x)
-    outputs = layers.Dense(num_classes, activation='softmax')(x)
+        # Conv Block 4
+        layers.Conv2D(256, 3, padding='same', activation='relu'),
+        layers.MaxPooling2D(2),
+        layers.Dropout(0.3),
 
-    model = keras.Model(inputs=inputs, outputs=outputs, name='card_classifier')
+        # Classification head
+        layers.GlobalAveragePooling2D(),
+        layers.Dropout(0.5),
+        layers.Dense(256, activation='relu'),
+        layers.Dropout(0.4),
+        layers.Dense(num_classes, activation='softmax')
+    ], name='card_classifier')
 
     return model
 
@@ -301,43 +308,56 @@ print(f"\n📋 Saving class names: {class_names_list}")
 with open(os.path.join(MODEL_OUTPUT_DIR, 'class_names.json'), 'w') as f:
     json.dump(class_names_list, f, indent=2)
 
-# Convert to TensorFlow.js format (model is already serializable)
+# Convert to TensorFlow.js format
 print("\n📦 Converting to TensorFlow.js format...")
+
+# Use Python API directly (most reliable for Keras 3.x)
+print(f"Converting model with TensorFlow.js Python API...")
 tfjs.converters.save_keras_model(model, MODEL_OUTPUT_DIR)
 
 print(f"✅ Model exported to: {MODEL_OUTPUT_DIR}")
+
+# Check what files were created
+print("\n📂 Files in model output directory:")
+!ls -lh {MODEL_OUTPUT_DIR}
 
 # Fix model.json for TensorFlow.js compatibility (Keras 3.x issue)
 print("\n🔧 Fixing model.json for TensorFlow.js compatibility...")
 model_json_path = os.path.join(MODEL_OUTPUT_DIR, 'model.json')
 
-with open(model_json_path, 'r') as f:
-    model_json = json.load(f)
+# Check if model.json exists
+if not os.path.exists(model_json_path):
+    print(f"⚠️  Warning: model.json not found at {model_json_path}")
+    print("   Conversion may have failed or produced different format")
+    print("   Skipping fix step...")
+else:
+    with open(model_json_path, 'r') as f:
+        model_json = json.load(f)
 
-def fix_input_layer(obj):
-    """Recursively fix InputLayer batch_shape to batch_input_shape"""
-    if isinstance(obj, dict):
-        # Fix InputLayer config
-        if obj.get('class_name') == 'InputLayer' and 'config' in obj:
-            if 'batch_shape' in obj['config']:
-                obj['config']['batch_input_shape'] = obj['config']['batch_shape']
-                del obj['config']['batch_shape']
-                print(f"   ✅ Fixed InputLayer: {obj.get('name', 'unknown')}")
+    def fix_input_layer(obj):
+        """Recursively fix InputLayer batch_shape to batch_input_shape"""
+        if isinstance(obj, dict):
+            # Fix InputLayer config
+            if obj.get('class_name') == 'InputLayer' and 'config' in obj:
+                if 'batch_shape' in obj['config']:
+                    obj['config']['batch_input_shape'] = obj['config']['batch_shape']
+                    del obj['config']['batch_shape']
+                    print(f"   ✅ Fixed InputLayer: {obj.get('name', 'unknown')}")
 
-        # Recursively check nested objects
-        for key, value in obj.items():
-            fix_input_layer(value)
-    elif isinstance(obj, list):
-        for item in obj:
-            fix_input_layer(item)
+            # Recursively check nested objects
+            for key, value in obj.items():
+                fix_input_layer(value)
+        elif isinstance(obj, list):
+            for item in obj:
+                fix_input_layer(item)
 
-fix_input_layer(model_json)
+    fix_input_layer(model_json)
 
-# Save fixed model.json
-with open(model_json_path, 'w') as f:
-    json.dump(model_json, f, indent=2)
+    # Save fixed model.json
+    with open(model_json_path, 'w') as f:
+        json.dump(model_json, f, indent=2)
 
-print("✅ Model.json fixed - TensorFlow.js compatible!")
+    print("✅ Model.json fixed - TensorFlow.js compatible!")
 
 # Create a zip file
 print("\n📦 Creating zip file...")
