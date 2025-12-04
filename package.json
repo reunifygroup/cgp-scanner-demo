@@ -9,7 +9,8 @@
     "dev": "node --watch server.js",
     "api": "node api-server.js",
     "download": "tsx src/download-cards.ts",
-    "generate-hashes": "tsx src/generate-hashes.ts"
+    "generate-hashes": "tsx src/generate-hashes.ts",
+    "augment-dataset": "tsx src/augment-dataset.ts"
   },
   "keywords": [
     "fastify",
