@@ -321,43 +321,7 @@ print(f"✅ Model exported to: {MODEL_OUTPUT_DIR}")
 print("\n📂 Files in model output directory:")
 !ls -lh {MODEL_OUTPUT_DIR}
 
-# Fix model.json for TensorFlow.js compatibility (Keras 3.x issue)
-print("\n🔧 Fixing model.json for TensorFlow.js compatibility...")
-model_json_path = os.path.join(MODEL_OUTPUT_DIR, 'model.json')
-
-# Check if model.json exists
-if not os.path.exists(model_json_path):
-    print(f"⚠️  Warning: model.json not found at {model_json_path}")
-    print("   Conversion may have failed or produced different format")
-    print("   Skipping fix step...")
-else:
-    with open(model_json_path, 'r') as f:
-        model_json = json.load(f)
-
-    def fix_input_layer(obj):
-        """Recursively fix InputLayer batch_shape to batch_input_shape"""
-        if isinstance(obj, dict):
-            # Fix InputLayer config
-            if obj.get('class_name') == 'InputLayer' and 'config' in obj:
-                if 'batch_shape' in obj['config']:
-                    obj['config']['batch_input_shape'] = obj['config']['batch_shape']
-                    del obj['config']['batch_shape']
-                    print(f"   ✅ Fixed InputLayer: {obj.get('name', 'unknown')}")
-
-            # Recursively check nested objects
-            for key, value in obj.items():
-                fix_input_layer(value)
-        elif isinstance(obj, list):
-            for item in obj:
-                fix_input_layer(item)
-
-    fix_input_layer(model_json)
-
-    # Save fixed model.json
-    with open(model_json_path, 'w') as f:
-        json.dump(model_json, f, indent=2)
-
-    print("✅ Model.json fixed - TensorFlow.js compatible!")
+print("\n✅ Model ready for TensorFlow.js!")
 
 # Create a zip file
 print("\n📦 Creating zip file...")
