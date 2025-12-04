@@ -17,7 +17,7 @@
               "dtype": "float32",
               "sparse": false,
               "ragged": false,
-              "name": "input_layer_7",
+              "name": "input_layer_11",
               "batch_input_shape": [
                 null,
                 224,
@@ -25,7 +25,7 @@
                 3
               ]
             },
-            "name": "input_layer_7",
+            "name": "input_layer_11",
             "inbound_nodes": []
           },
           {
@@ -94,7 +94,7 @@
                       ],
                       "dtype": "float32",
                       "keras_history": [
-                        "input_layer_7",
+                        "input_layer_11",
                         0,
                         0
                       ]
@@ -194,9 +194,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "Conv1_relu",
             "inbound_nodes": [
@@ -389,9 +389,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "expanded_conv_depthwise_relu",
             "inbound_nodes": [
@@ -738,9 +738,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_1_expand_relu",
             "inbound_nodes": [
@@ -984,9 +984,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_1_depthwise_relu",
             "inbound_nodes": [
@@ -1333,9 +1333,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_2_expand_relu",
             "inbound_nodes": [
@@ -1528,9 +1528,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_2_depthwise_relu",
             "inbound_nodes": [
@@ -1936,9 +1936,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_3_expand_relu",
             "inbound_nodes": [
@@ -2182,9 +2182,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_3_depthwise_relu",
             "inbound_nodes": [
@@ -2531,9 +2531,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_4_expand_relu",
             "inbound_nodes": [
@@ -2726,9 +2726,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_4_depthwise_relu",
             "inbound_nodes": [
@@ -3134,9 +3134,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_5_expand_relu",
             "inbound_nodes": [
@@ -3329,9 +3329,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_5_depthwise_relu",
             "inbound_nodes": [
@@ -3737,9 +3737,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_6_expand_relu",
             "inbound_nodes": [
@@ -3983,9 +3983,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_6_depthwise_relu",
             "inbound_nodes": [
@@ -4332,9 +4332,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_7_expand_relu",
             "inbound_nodes": [
@@ -4527,9 +4527,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_7_depthwise_relu",
             "inbound_nodes": [
@@ -4935,9 +4935,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_8_expand_relu",
             "inbound_nodes": [
@@ -5130,9 +5130,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_8_depthwise_relu",
             "inbound_nodes": [
@@ -5538,9 +5538,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_9_expand_relu",
             "inbound_nodes": [
@@ -5733,9 +5733,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_9_depthwise_relu",
             "inbound_nodes": [
@@ -6141,9 +6141,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_10_expand_relu",
             "inbound_nodes": [
@@ -6336,9 +6336,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_10_depthwise_relu",
             "inbound_nodes": [
@@ -6685,9 +6685,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_11_expand_relu",
             "inbound_nodes": [
@@ -6880,9 +6880,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_11_depthwise_relu",
             "inbound_nodes": [
@@ -7288,9 +7288,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_12_expand_relu",
             "inbound_nodes": [
@@ -7483,9 +7483,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_12_depthwise_relu",
             "inbound_nodes": [
@@ -7891,9 +7891,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_13_expand_relu",
             "inbound_nodes": [
@@ -8137,9 +8137,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_13_depthwise_relu",
             "inbound_nodes": [
@@ -8486,9 +8486,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_14_expand_relu",
             "inbound_nodes": [
@@ -8681,9 +8681,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_14_depthwise_relu",
             "inbound_nodes": [
@@ -9089,9 +9089,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_15_expand_relu",
             "inbound_nodes": [
@@ -9284,9 +9284,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_15_depthwise_relu",
             "inbound_nodes": [
@@ -9692,9 +9692,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_16_expand_relu",
             "inbound_nodes": [
@@ -9887,9 +9887,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "block_16_depthwise_relu",
             "inbound_nodes": [
@@ -10236,9 +10236,9 @@
                 },
                 "registered_name": null
               },
-              "max_value": 6,
-              "negative_slope": 0,
-              "threshold": 0
+              "max_value": 6.0,
+              "negative_slope": 0.0,
+              "threshold": 0.0
             },
             "name": "out_relu",
             "inbound_nodes": [
@@ -10269,7 +10269,7 @@
           {
             "class_name": "GlobalAveragePooling2D",
             "config": {
-              "name": "global_average_pooling2d_3",
+              "name": "global_average_pooling2d_7",
               "trainable": true,
               "dtype": {
                 "module": "keras",
@@ -10282,7 +10282,7 @@
               "data_format": "channels_last",
               "keepdims": false
             },
-            "name": "global_average_pooling2d_3",
+            "name": "global_average_pooling2d_7",
             "inbound_nodes": [
               {
                 "args": [
@@ -10311,7 +10311,7 @@
           {
             "class_name": "Dropout",
             "config": {
-              "name": "dropout_6",
+              "name": "dropout_14",
               "trainable": true,
               "dtype": {
                 "module": "keras",
@@ -10325,7 +10325,7 @@
               "seed": null,
               "noise_shape": null
             },
-            "name": "dropout_6",
+            "name": "dropout_14",
             "inbound_nodes": [
               {
                 "args": [
@@ -10338,7 +10338,7 @@
                       ],
                       "dtype": "float32",
                       "keras_history": [
-                        "global_average_pooling2d_3",
+                        "global_average_pooling2d_7",
                         0,
                         0
                       ]
@@ -10354,7 +10354,7 @@
           {
             "class_name": "Dense",
             "config": {
-              "name": "dense_6",
+              "name": "dense_14",
               "trainable": true,
               "dtype": {
                 "module": "keras",
@@ -10386,7 +10386,7 @@
               "kernel_constraint": null,
               "bias_constraint": null
             },
-            "name": "dense_6",
+            "name": "dense_14",
             "inbound_nodes": [
               {
                 "args": [
@@ -10399,7 +10399,7 @@
                       ],
                       "dtype": "float32",
                       "keras_history": [
-                        "dropout_6",
+                        "dropout_14",
                         0,
                         0
                       ]
@@ -10413,7 +10413,7 @@
           {
             "class_name": "Dropout",
             "config": {
-              "name": "dropout_7",
+              "name": "dropout_15",
               "trainable": true,
               "dtype": {
                 "module": "keras",
@@ -10427,7 +10427,7 @@
               "seed": null,
               "noise_shape": null
             },
-            "name": "dropout_7",
+            "name": "dropout_15",
             "inbound_nodes": [
               {
                 "args": [
@@ -10440,7 +10440,7 @@
                       ],
                       "dtype": "float32",
                       "keras_history": [
-                        "dense_6",
+                        "dense_14",
                         0,
                         0
                       ]
@@ -10456,7 +10456,7 @@
           {
             "class_name": "Dense",
             "config": {
-              "name": "dense_7",
+              "name": "dense_15",
               "trainable": true,
               "dtype": {
                 "module": "keras",
@@ -10466,7 +10466,7 @@
                 },
                 "registered_name": null
               },
-              "units": 10,
+              "units": 2,
               "activation": "softmax",
               "use_bias": true,
               "kernel_initializer": {
@@ -10488,7 +10488,7 @@
               "kernel_constraint": null,
               "bias_constraint": null
             },
-            "name": "dense_7",
+            "name": "dense_15",
             "inbound_nodes": [
               {
                 "args": [
@@ -10501,7 +10501,7 @@
                       ],
                       "dtype": "float32",
                       "keras_history": [
-                        "dropout_7",
+                        "dropout_15",
                         0,
                         0
                       ]
@@ -10515,14 +10515,14 @@
         ],
         "input_layers": [
           [
-            "input_layer_7",
+            "input_layer_11",
             0,
             0
           ]
         ],
         "output_layers": [
           [
-            "dense_7",
+            "dense_15",
             0,
             0
           ]
@@ -10544,7 +10544,7 @@
         "class_name": "Adam",
         "config": {
           "name": "adam",
-          "learning_rate": 0.0002500000118743628,
+          "learning_rate": 6.25000029685907e-05,
           "weight_decay": null,
           "clipnorm": null,
           "global_clipnorm": null,
@@ -10556,7 +10556,7 @@
           "gradient_accumulation_steps": null,
           "beta_1": 0.9,
           "beta_2": 0.999,
-          "epsilon": 1e-7,
+          "epsilon": 1e-07,
           "amsgrad": false
         }
       }
@@ -12471,7 +12471,7 @@
           "dtype": "float32"
         },
         {
-          "name": "dense_6/kernel",
+          "name": "dense_14/kernel",
           "shape": [
             1280,
             128
@@ -12479,24 +12479,24 @@
           "dtype": "float32"
         },
         {
-          "name": "dense_6/bias",
+          "name": "dense_14/bias",
           "shape": [
             128
           ],
           "dtype": "float32"
         },
         {
-          "name": "dense_7/kernel",
+          "name": "dense_15/kernel",
           "shape": [
             128,
-            10
+            2
           ],
           "dtype": "float32"
         },
         {
-          "name": "dense_7/bias",
+          "name": "dense_15/bias",
           "shape": [
-            10
+            2
           ],
           "dtype": "float32"
         },

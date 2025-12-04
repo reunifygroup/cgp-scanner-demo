@@ -35,12 +35,12 @@ print(f"GPU available: {tf.config.list_physical_devices('GPU')}")
 # 📁 STEP 2: Configure Data Paths
 # ============================================================================
 
-TRAINING_DATA_PATH = '/content/training-data'
+TRAINING_DATA_PATH = '/content/cgpremium/scanner/training-data'
 
 # Local paths in Colab
-TRAIN_DIR = '/content/train'
-VAL_DIR = '/content/val'
-MODEL_OUTPUT_DIR = '/content/model_output'
+TRAIN_DIR = '/content/cgpremium/scanner/train'
+VAL_DIR = '/content/cgpremium/scanner/val'
+MODEL_OUTPUT_DIR = '/content/cgpremium/scanner/model_output'
 
 # Hyperparameters
 IMG_SIZE = (224, 224)  # MobileNetV2 input size
@@ -230,7 +230,7 @@ callbacks = [
 
     # Model checkpoint
     keras.callbacks.ModelCheckpoint(
-        '/content/best_model.keras',
+        '/content/cgpremium/scanner/best_model.keras',
         monitor='val_accuracy',
         save_best_only=True,
         verbose=1
@@ -279,7 +279,7 @@ plt.legend()
 plt.grid(True)
 
 plt.tight_layout()
-plt.savefig('/content/training_history.png')
+plt.savefig('/content/cgpremium/scanner/training_history.png')
 plt.show()
 
 # Final evaluation
@@ -341,12 +341,12 @@ print("✅ Model.json fixed - TensorFlow.js compatible!")
 
 # Create a zip file
 print("\n📦 Creating zip file...")
-shutil.make_archive('/content/card_classifier_model', 'zip', MODEL_OUTPUT_DIR)
-print("✅ Model packaged as: /content/card_classifier_model.zip")
+shutil.make_archive('/content/cgpremium/scanner/card_classifier_model', 'zip', MODEL_OUTPUT_DIR)
+print("✅ Model packaged as: /content/cgpremium/scanner/card_classifier_model.zip")
 
 # Download model
 print("\n⬇️  Downloading model...")
-files.download('/content/card_classifier_model.zip')
+files.download('/content/cgpremium/scanner/card_classifier_model.zip')
 
 print("\n" + "="*50)
 print("🎉 TRAINING COMPLETE!")
