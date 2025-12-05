@@ -198,19 +198,22 @@ function App() {
             tensor.dispose();
             predictions.dispose();
 
-            // Show result if confidence is high enough
-            // Lower threshold (50%) to catch cards at various positions
-            if (confidence > 0.5) {
+            // Two-stage confidence thresholds
+            const FIRST_CARD_THRESHOLD = 0.3; // Low threshold to capture initial background
+            const VALID_CARD_THRESHOLD = 0.70; // High threshold for actual card detection
+
+            // First detection: low threshold (just establishing baseline)
+            if (confidence > FIRST_CARD_THRESHOLD && firstCardIdRef.current === null) {
+                firstCardIdRef.current = classNamesRef.current[maxIndex];
+                console.log("First card detected (baseline):", firstCardIdRef.current, `${(confidence * 100).toFixed(1)}%`);
+                return;
+            }
+
+            // Actual card detection: high threshold (must be confident)
+            if (confidence > VALID_CARD_THRESHOLD && firstCardIdRef.current !== null) {
                 const cardId = classNamesRef.current[maxIndex];
 
-                // If this is the first detection, just store it (likely wrong)
-                if (firstCardIdRef.current === null) {
-                    firstCardIdRef.current = cardId;
-                    console.log("First card detected (ignoring):", cardId);
-                    return;
-                }
-
-                // If we detect a DIFFERENT card, this is likely the real one
+                // If we detect a DIFFERENT card with high confidence, lock it!
                 if (cardId !== firstCardIdRef.current) {
                     const cardName = cardId.split("_").slice(1).join(" ");
 
@@ -220,7 +223,7 @@ function App() {
                         confidence: confidence * 100,
                     });
 
-                    console.log("New card detected! Locking on:", cardId);
+                    console.log("Valid card detected! Locking on:", cardId, `${(confidence * 100).toFixed(1)}%`);
 
                     // Stop scanning after detecting different card
                     stopScanning();
