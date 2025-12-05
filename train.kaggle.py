@@ -179,8 +179,7 @@ total_train, total_val, class_names_list = create_train_val_split(
 # No runtime augmentation - pre-augmentation already did heavy lifting
 # Runtime augmentation creates CPU bottleneck and prevents GPU utilization
 train_datagen = ImageDataGenerator(
-    rescale=1./255,
-    rotation_range=5
+    rescale=1./255
 )
 
 # Validation with only rescaling (no augmentation)
