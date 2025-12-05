@@ -9,6 +9,7 @@ import numpy as np
 import os
 from pathlib import Path
 import random
+import shutil
 
 # Configuration
 IMAGES_DIR = 'images'
@@ -182,6 +183,12 @@ def main():
     print("   - Partial occlusion simulation")
     print("   - Background integration")
     print("\n" + "=" * 50 + "\n")
+
+    # Clean up previous training data if exists
+    if os.path.exists(OUTPUT_DIR):
+        print("🧹 Removing previous training-data directory...")
+        shutil.rmtree(OUTPUT_DIR)
+        print("✅ Previous data cleaned\n")
 
     # Create augmentation pipeline
     augmentation_pipeline = create_advanced_augmentation_pipeline()
