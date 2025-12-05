@@ -46,10 +46,6 @@ const downloadSetImages = async (setId: string): Promise<void> => {
 
         console.log(`📦 Set: ${setData.name} (${setData.cards.length} cards total)`);
 
-        // Create directory for this set
-        const setDir = path.join(IMAGES_DIR, setId);
-        await fs.mkdir(setDir, { recursive: true });
-
         // Limit to first N cards
         const cardsToDownload = setData.cards.slice(0, LIMIT_PER_SET);
         console.log(`⬇️  Downloading ${cardsToDownload.length} cards...\n`);
@@ -59,7 +55,8 @@ const downloadSetImages = async (setId: string): Promise<void> => {
             // Construct image URL based on TCGdex structure
             const imageUrl = `${card.image}/high.png`;
             const fileName = `${card.id}_${card.name.replace(/[^a-z0-9]/gi, "_")}.png`;
-            const filePath = path.join(setDir, fileName);
+            // Save directly to images/ (flat structure, no subdirectories)
+            const filePath = path.join(IMAGES_DIR, fileName);
 
             await downloadImage(imageUrl, filePath);
 
@@ -79,7 +76,7 @@ const main = async () => {
     console.log("=".repeat(50));
 
     // Target sets: sv09 = Journey Together, sv10 = Destined Rivals
-    const sets = ["sv09", "sv10"];
+    const sets = ["sv10"];
 
     // Create base images directory
     await fs.mkdir(IMAGES_DIR, { recursive: true });
