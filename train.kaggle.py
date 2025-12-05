@@ -1,6 +1,6 @@
 """
 # 🎴 Pokémon Card Classifier Training
-# Run this in Google Colab with GPU enabled
+# Run this in Kaggle with GPU enabled
 
 ## Setup Instructions:
 1. Upload training-data.zip to Colab using files.upload()
@@ -22,7 +22,6 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import numpy as np
 import os
 import shutil
-from google.colab import files
 import matplotlib.pyplot as plt
 import json
 import tensorflowjs as tfjs
@@ -35,9 +34,9 @@ print(f"GPU available: {tf.config.list_physical_devices('GPU')}")
 # 📁 STEP 2: Configure Data Paths
 # ============================================================================
 
-TRAINING_DATA_PATH = '/kaggle/input/training-data'
+TRAINING_DATA_PATH = '/kaggle/input/training-data' # Change to your dataset name
 
-# Local paths in Colab
+# Local paths in Kaggle
 TRAIN_DIR = '/kaggle/working/cgpremium/scanner/train'
 VAL_DIR = '/kaggle/working/cgpremium/scanner/val'
 MODEL_OUTPUT_DIR = '/kaggle/working/cgpremium/scanner/model_output'
