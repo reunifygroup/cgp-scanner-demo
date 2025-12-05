@@ -43,7 +43,7 @@ MODEL_OUTPUT_DIR = '/kaggle/working/cgpremium/scanner/model_output'
 
 # Hyperparameters - OPTIMIZED for advanced pre-augmented data
 IMG_SIZE = (224, 224)
-BATCH_SIZE = 16  # Can use larger batches with pre-augmented data
+BATCH_SIZE = 32  # Larger batches for better GPU utilization
 EPOCHS = 100  # Fewer epochs needed with high-quality augmentation
 LEARNING_RATE = 0.0005  # Can use higher LR with pre-augmented data
 
@@ -176,16 +176,11 @@ total_train, total_val, class_names_list = create_train_val_split(
 # 🎨 STEP 4: Data Generators with LIGHT Augmentation
 # ============================================================================
 
-# Light augmentation since pre-augmentation already did heavy lifting
+# No runtime augmentation - pre-augmentation already did heavy lifting
+# Runtime augmentation creates CPU bottleneck and prevents GPU utilization
 train_datagen = ImageDataGenerator(
     rescale=1./255,
-    rotation_range=10,  # Light rotation for extra variety
-    width_shift_range=0.1,
-    height_shift_range=0.1,
-    brightness_range=[0.85, 1.15],  # Subtle brightness only
-    zoom_range=0.1,
-    horizontal_flip=False,
-    fill_mode='nearest'
+    rotation_range=5
 )
 
 # Validation with only rescaling (no augmentation)
