@@ -10,7 +10,8 @@
     "api": "node api-server.js",
     "download": "tsx src/download-cards.ts",
     "generate-hashes": "tsx src/generate-hashes.ts",
-    "augment-dataset": "tsx src/augment-dataset.ts"
+    "augment-dataset": "tsx src/augment-dataset.ts",
+    "augment-advanced": "python3 src/augment-dataset-advanced.py"
   },
   "keywords": [
     "fastify",

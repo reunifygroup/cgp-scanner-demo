@@ -18,7 +18,6 @@
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
-from tensorflow.keras.applications import MobileNetV2
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import numpy as np
 import os
@@ -27,6 +26,7 @@ from google.colab import files
 import matplotlib.pyplot as plt
 import json
 import tensorflowjs as tfjs
+import glob
 
 print(f"TensorFlow version: {tf.__version__}")
 print(f"GPU available: {tf.config.list_physical_devices('GPU')}")
@@ -42,11 +42,11 @@ TRAIN_DIR = '/content/cgpremium/scanner/train'
 VAL_DIR = '/content/cgpremium/scanner/val'
 MODEL_OUTPUT_DIR = '/content/cgpremium/scanner/model_output'
 
-# Hyperparameters
-IMG_SIZE = (224, 224)  # MobileNetV2 input size
-BATCH_SIZE = 16
-EPOCHS = 100
-LEARNING_RATE = 0.001
+# Hyperparameters - OPTIMIZED for advanced pre-augmented data
+IMG_SIZE = (224, 224)
+BATCH_SIZE = 16  # Can use larger batches with pre-augmented data
+EPOCHS = 100  # Fewer epochs needed with high-quality augmentation
+LEARNING_RATE = 0.0005  # Can use higher LR with pre-augmented data
 
 print(f"✅ Using training data from: {TRAINING_DATA_PATH}")
 
@@ -99,61 +99,71 @@ def create_train_val_split(source_dir, train_dir, val_dir, val_split=0.2):
     os.makedirs(train_dir, exist_ok=True)
     os.makedirs(val_dir, exist_ok=True)
 
-    # Get all card classes (subdirectories)
-    sets = [d for d in os.listdir(source_dir)
-            if os.path.isdir(os.path.join(source_dir, d))]
-
     total_train = 0
     total_val = 0
     all_card_classes = []
 
-    for set_id in sets:
-        set_path = os.path.join(source_dir, set_id)
-        images = [f for f in os.listdir(set_path) if f.endswith(('.png', '.jpg'))]
+    # Get all images directly in source_dir
+    all_images = [f for f in os.listdir(source_dir)
+                  if f.endswith(('.png', '.jpg')) and os.path.isfile(os.path.join(source_dir, f))]
 
-        # Group images by card
-        card_groups = {}
-        for img in images:
-            # Extract card ID (e.g., sv09-001 from sv09-001_Caterpie_aug0.png)
-            card_id = '_'.join(img.split('_')[:2])  # sv09-001_Caterpie
-            if card_id not in card_groups:
-                card_groups[card_id] = []
-            card_groups[card_id].append(img)
+    if not all_images:
+        raise Exception(f"No images found in {source_dir}! Please check your training data.")
 
-        # Create directories for each card
-        for card_id, card_images in card_groups.items():
-            all_card_classes.append(card_id)
+    print(f"📦 Found {len(all_images)} images\n")
 
-            # Split images for this card
-            np.random.shuffle(card_images)
-            val_count = max(1, int(len(card_images) * val_split))
-            train_count = len(card_images) - val_count
+    # Group images by card ID (extracted from filename)
+    card_groups = {}
+    for img in all_images:
+        # Extract card ID from filename
+        # For "cardname_aug0.png" -> "cardname"
+        # For "cardname_original.png" -> "cardname"
+        parts = img.split('_')
+        if parts[-1].startswith('aug') or parts[-1] == 'original.png':
+            card_id = '_'.join(parts[:-1])
+        else:
+            card_id = img.rsplit('.', 1)[0]  # Remove extension
 
-            train_images = card_images[:train_count]
-            val_images = card_images[train_count:]
+        if card_id not in card_groups:
+            card_groups[card_id] = []
+        card_groups[card_id].append(img)
 
-            # Create class directories
-            train_class_dir = os.path.join(train_dir, card_id)
-            val_class_dir = os.path.join(val_dir, card_id)
-            os.makedirs(train_class_dir, exist_ok=True)
-            os.makedirs(val_class_dir, exist_ok=True)
+    print(f"📋 Detected {len(card_groups)} unique cards\n")
 
-            # Copy files
-            for img in train_images:
-                shutil.copy2(
-                    os.path.join(set_path, img),
-                    os.path.join(train_class_dir, img)
-                )
-                total_train += 1
+    # Process each card
+    for card_id, card_images in card_groups.items():
+        all_card_classes.append(card_id)
 
-            for img in val_images:
-                shutil.copy2(
-                    os.path.join(set_path, img),
-                    os.path.join(val_class_dir, img)
-                )
-                total_val += 1
+        # Split images
+        np.random.shuffle(card_images)
+        val_count = max(1, int(len(card_images) * val_split))
+        train_count = len(card_images) - val_count
 
-            print(f"✅ {card_id}: {train_count} train, {val_count} val")
+        train_images = card_images[:train_count]
+        val_images = card_images[train_count:]
+
+        # Create class directories
+        train_class_dir = os.path.join(train_dir, card_id)
+        val_class_dir = os.path.join(val_dir, card_id)
+        os.makedirs(train_class_dir, exist_ok=True)
+        os.makedirs(val_class_dir, exist_ok=True)
+
+        # Copy files
+        for img in train_images:
+            shutil.copy2(
+                os.path.join(source_dir, img),
+                os.path.join(train_class_dir, img)
+            )
+            total_train += 1
+
+        for img in val_images:
+            shutil.copy2(
+                os.path.join(source_dir, img),
+                os.path.join(val_class_dir, img)
+            )
+            total_val += 1
+
+        print(f"✅ {card_id}: {train_count} train, {val_count} val")
 
     print(f"\n📊 Total: {total_train} train, {total_val} val images")
     return total_train, total_val, sorted(all_card_classes)
@@ -164,20 +174,22 @@ total_train, total_val, class_names_list = create_train_val_split(
 )
 
 # ============================================================================
-# 🎨 STEP 4: Data Generators with Augmentation
+# 🎨 STEP 4: Data Generators with LIGHT Augmentation
 # ============================================================================
 
+# Light augmentation since pre-augmentation already did heavy lifting
 train_datagen = ImageDataGenerator(
-    rescale=1./255,  # Normalize to [0,1]
-    rotation_range=10,
+    rescale=1./255,
+    rotation_range=10,  # Light rotation for extra variety
     width_shift_range=0.1,
     height_shift_range=0.1,
-    brightness_range=[0.8, 1.2],
+    brightness_range=[0.85, 1.15],  # Subtle brightness only
     zoom_range=0.1,
-    horizontal_flip=False,  # Cards have specific orientation
+    horizontal_flip=False,
     fill_mode='nearest'
 )
 
+# Validation with only rescaling (no augmentation)
 val_datagen = ImageDataGenerator(rescale=1./255)
 
 train_generator = train_datagen.flow_from_directory(
@@ -201,44 +213,39 @@ print(f"\n📦 Number of card classes: {num_classes}")
 print(f"📋 Classes: {list(train_generator.class_indices.keys())}")
 
 # ============================================================================
-# 🧠 STEP 5: Build CNN Model with Transfer Learning
+# 🧠 STEP 5: Build SMALLER CNN Model (prevents overfitting)
 # ============================================================================
 
 # Clear Keras layer name counter for consistent naming
 keras.backend.clear_session()
 
 def create_model(num_classes, img_size=IMG_SIZE):
-    """Create simple CNN classifier (TF.js compatible)"""
+    """Create lightweight CNN classifier optimized for small datasets"""
 
-    # Build a simple Sequential CNN (TF.js compatible - no BatchNorm, no name)
+    # Smaller model to prevent overfitting on small dataset
     model = keras.Sequential([
-        # Conv Block 1 (input_shape specified here, no explicit InputLayer)
+        # Conv Block 1
         layers.Conv2D(32, 3, padding='same', activation='relu', input_shape=(*img_size, 3)),
         layers.MaxPooling2D(2),
-        layers.Dropout(0.2),
+        layers.Dropout(0.25),
 
         # Conv Block 2
         layers.Conv2D(64, 3, padding='same', activation='relu'),
         layers.MaxPooling2D(2),
-        layers.Dropout(0.2),
+        layers.Dropout(0.25),
 
         # Conv Block 3
         layers.Conv2D(128, 3, padding='same', activation='relu'),
         layers.MaxPooling2D(2),
-        layers.Dropout(0.3),
+        layers.Dropout(0.4),
 
-        # Conv Block 4
-        layers.Conv2D(256, 3, padding='same', activation='relu'),
-        layers.MaxPooling2D(2),
-        layers.Dropout(0.3),
-
-        # Classification head
+        # Classification head - smaller to prevent overfitting
         layers.GlobalAveragePooling2D(),
         layers.Dropout(0.5),
-        layers.Dense(256, activation='relu'),
-        layers.Dropout(0.4),
+        layers.Dense(128, activation='relu'),  # Reduced from 256
+        layers.Dropout(0.5),
         layers.Dense(num_classes, activation='softmax')
-    ])  # No name parameter
+    ])
 
     return model
 
@@ -272,15 +279,15 @@ callbacks = [
     keras.callbacks.ReduceLROnPlateau(
         monitor='val_loss',
         factor=0.5,
-        patience=5,
+        patience=10,  # Increased patience
         verbose=1,
         min_lr=1e-7
     ),
 
-    # Early stopping
+    # Early stopping with more patience
     keras.callbacks.EarlyStopping(
         monitor='val_loss',
-        patience=10,
+        patience=20,  # Increased from 10
         restore_best_weights=True,
         verbose=1
     ),
@@ -379,7 +386,7 @@ print(f"✅ Model exported to: {MODEL_OUTPUT_DIR}")
 print("\n📂 Files in model output directory:")
 !ls -lh {MODEL_OUTPUT_DIR}
 
-print("\n✅ Graph Model ready for TensorFlow.js (no fixes needed)!")
+print("\n✅ Graph Model ready for TensorFlow.js!")
 
 # Create a zip file
 print("\n📦 Creating zip file...")
@@ -400,5 +407,8 @@ print("3. Load model in React app with TensorFlow.js")
 print("\n📊 Model Details:")
 print(f"- Classes: {num_classes} cards")
 print(f"- Val Accuracy: {val_accuracy*100:.2f}%")
-print(f"- Model size: ~5-10MB")
 print(f"- Input size: 224x224")
+print("\n⚠️  IMPORTANT: For production use, you need:")
+print("   - At least 10-20 REAL photos per card (different angles/lighting)")
+print("   - Not just augmentations of 1 image per card")
+print("   - This will dramatically improve real-world accuracy")

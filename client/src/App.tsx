@@ -166,8 +166,9 @@ function App() {
       tensor.dispose();
       predictions.dispose();
 
-      // Only show result if confidence is high enough (95% for small datasets)
-      if (confidence > 0.95) {
+      // Show result if confidence is high enough
+      // Lower threshold (70%) for better-trained models that don't overfit
+      if (confidence > 0.70) {
         const cardId = classNamesRef.current[maxIndex];
         const cardName = cardId.split('_').slice(1).join(' ');
 
@@ -176,6 +177,9 @@ function App() {
           cardName,
           confidence: confidence * 100
         });
+      } else {
+        // Clear result if confidence drops
+        setResult(null);
       }
 
     } catch (err) {
