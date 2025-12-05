@@ -71,6 +71,7 @@ cd training-data && zip -r ../training-data_${TIMESTAMP}.zip . && cd ..
     ```python
     from google.colab import files
     import glob
+    import os
 
     # Upload zip
     uploaded = files.upload()
@@ -86,57 +87,87 @@ cd training-data && zip -r ../training-data_${TIMESTAMP}.zip . && cd ..
 6. **Run the cell** - training starts automatically
 7. **Download** `card_classifier_model.zip` when done
 
-### 5️⃣ Deploy Model
+### 4️⃣ (Alternative) Train Model in Kaggle Notebooks
 
-```bash
-# Extract model files
-unzip card_classifier_model.zip
+**⭐ Recommended** - More free GPU hours (30/week vs ~12-15/week on Colab)
 
-# Move to client
-mv model.json group1-shard1of1.bin class_names.json client/public/model/
+1. **Sign up/Login**: https://www.kaggle.com/
 
-# Start app
-cd client && npm run dev
-```
+2. **Create new notebook**:
 
-## 📊 Expected Results
+    - Click "Code" → "New Notebook"
+    - Settings → Accelerator → **GPU T4 x2**
+    - Settings → Internet → **On**
 
-| Cards  | Training Time | Expected Accuracy | Use Case         |
-| ------ | ------------- | ----------------- | ---------------- |
-| 4      | ~2 min        | 60-75%            | Pipeline testing |
-| 10     | ~5 min        | 70-80%            | Quick demo       |
-| 100    | ~20 min       | 80-90%            | Prototype        |
-| 1,000  | ~3 hours      | 90-95%            | Production beta  |
-| 20,000 | ~60 hours     | 95%+              | Pro-level app    |
+3. **Upload training data as dataset**:
 
-## 🎓 Why This Works
+    - Click "+ Add Data" → "Upload"
+    - Select your `training-data_TIMESTAMP.zip`
+    - Kaggle will extract it automatically to `/kaggle/input/your-dataset-name/`
 
-### Basic Augmentation (Old Approach)
+4. **Setup paths** (first cell):
 
--   Simple rotation, brightness
--   2D transformations only
--   **Result**: Model memorizes flat images, fails on real camera views
+    ```python
+    import os
+    import shutil
+    import glob as glob_module
 
-### Advanced Augmentation (New Approach)
+    # Create working directory
+    !mkdir -p /kaggle/working/cgpremium/scanner
 
--   3D perspective transforms
--   Realistic lighting simulation
--   Camera effect simulation
--   **Result**: Model learns card features, works like pro apps
+    # Find your uploaded dataset (check "Data" tab for exact name)
+    input_path = '/kaggle/input'
+    dataset_folders = [f for f in os.listdir(input_path) if os.path.isdir(os.path.join(input_path, f))]
 
-### Scale Effect
+    if dataset_folders:
+        dataset_name = dataset_folders[0]
+        print(f"Found dataset: {dataset_name}")
 
-With **4 cards**: Limited data, harder to generalize
-With **100+ cards**: Enough data to learn general patterns
-With **20,000 cards**: Production-quality like TCGPlayer
+        # Copy training data from Kaggle dataset to working dir
+        source = f'/kaggle/input/{dataset_name}'
+        dest = '/kaggle/working/cgpremium/scanner/training-data'
 
-## 🚨 Important Notes
+        !mkdir -p {dest}
+        !cp -r {source}/* {dest}/
 
-1. **Always use `augment-advanced`** - basic augmentation is outdated
-2. **Test with 4 cards first** - validate pipeline works
-3. **Scale gradually** - 4 → 10 → 100 → 1,000 → 20,000
-4. **Monitor GPU usage** - Google Colab has limits
-5. **Save checkpoints** - Download model after each training
+        print(f"✅ Training data copied to {dest}")
+    else:
+        print("❌ No dataset found! Please upload your training-data zip as a dataset")
+
+    # Change to working directory
+    os.chdir('/kaggle/working/cgpremium/scanner')
+    print(f"Working directory: {os.getcwd()}")
+    ```
+
+5. **Install dependencies** (second cell):
+
+    ```python
+    !pip install -q tensorflowjs
+    ```
+
+6. **Training script** (third cell):
+
+    - Copy entire `train_card_classifier.py` content
+    - Change the paths at the top to Kaggle paths:
+        ```python
+        TRAINING_DATA_PATH = '/kaggle/working/cgpremium/scanner/training-data'
+        TRAIN_DIR = '/kaggle/working/cgpremium/scanner/train'
+        VAL_DIR = '/kaggle/working/cgpremium/scanner/val'
+        MODEL_OUTPUT_DIR = '/kaggle/working/cgpremium/scanner/model_output'
+        ```
+    - At the end, **replace** the `files.download()` line with:
+        ```python
+        # Model is saved to /kaggle/working/cgpremium/scanner/card_classifier_model.zip
+        # Download it from the Output panel on the right →
+        print("\n✅ Model saved! Check the Output panel to download:")
+        print("   /kaggle/working/cgpremium/scanner/card_classifier_model.zip")
+        ```
+    - Run the cell!
+
+7. **Download model** (after training completes):
+    - Look in the **Output** panel on the right side
+    - Find `card_classifier_model.zip`
+    - Click the three dots → Download
 
 ## 🔄 Iterating
 
@@ -147,29 +178,3 @@ When adding more cards:
 3. Create new zip
 4. Train in Colab
 5. Deploy new model
-
-## 💡 Pro Tips
-
--   **Start small** (4 cards) to validate pipeline
--   **Add cards gradually** - easier to debug issues
--   **Keep original images** - you can re-augment anytime
--   **Version your models** - use timestamps in filenames
--   **Test thoroughly** - try different lighting/angles with real camera
-
-## 📈 Scaling to 20,000 Cards
-
-Once your pipeline works with 4 cards:
-
-1. **Download all card images** from TCGdex API
-2. **Organize by set** (as you're doing now)
-3. **Run `augment-advanced`** (will take ~2-3 hours)
-4. **Train in Colab** (will take ~60 hours with GPU)
-5. **Deploy** production model
-
-**Storage needs**:
-
--   20,000 cards × 50 augmentations = 1M images
--   ~200GB of training data
--   ~50MB final model size
-
-This is exactly how the big apps do it!
