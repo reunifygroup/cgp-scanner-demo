@@ -23,34 +23,34 @@ function App() {
     const classNamesRef = useRef<string[]>([]);
 
     // 🧠 Load TensorFlow.js model on mount
-    async function loadModel() {
-        try {
-            setModelStatus("Loading model...");
-
-            // Load class names
-            const classNamesResponse = await fetch("/model/class_names.json");
-            classNamesRef.current = await classNamesResponse.json();
-
-            // Load Graph Model (Keras 3.x compatible)
-            const model = await tf.loadGraphModel("/model/model.json");
-            modelRef.current = model;
-
-            // Warm up the model
-            const dummyInput = tf.zeros([1, 224, 224, 3]);
-            model.predict(dummyInput);
-            dummyInput.dispose();
-
-            setModelStatus(`Model loaded! ${classNamesRef.current.length} cards ready`);
-            setIsModelLoaded(true);
-            console.log("✅ Model loaded:", classNamesRef.current);
-        } catch (err) {
-            setError("Failed to load model: " + (err as Error).message);
-            setModelStatus("Model load failed");
-            setIsModelLoaded(false);
-        }
-    }
-
     useEffect(() => {
+        async function loadModel() {
+            try {
+                setModelStatus("Loading model...");
+
+                // Load class names
+                const classNamesResponse = await fetch("/model/class_names.json");
+                classNamesRef.current = await classNamesResponse.json();
+
+                // Load Graph Model (Keras 3.x compatible)
+                const model = await tf.loadGraphModel("/model/model.json");
+                modelRef.current = model;
+
+                // Warm up the model
+                const dummyInput = tf.zeros([1, 224, 224, 3]);
+                model.predict(dummyInput);
+                dummyInput.dispose();
+
+                setModelStatus(`Model loaded! ${classNamesRef.current.length} cards ready`);
+                setIsModelLoaded(true);
+                console.log("✅ Model loaded:", classNamesRef.current);
+            } catch (err) {
+                setError("Failed to load model: " + (err as Error).message);
+                setModelStatus("Model load failed");
+                setIsModelLoaded(false);
+            }
+        }
+
         loadModel();
     }, []);
 
