@@ -83,7 +83,7 @@ cd training-data && zip -r ../training-data_${TIMESTAMP}.zip . && cd ..
     !rm {zip_file}
     ```
 
-5. **Copy entire `train_card_classifier.py`** into a cell
+5. **Copy entire `train.colab.py`** into a cell
 6. **Run the cell** - training starts automatically
 7. **Download** `card_classifier_model.zip` when done
 
@@ -141,21 +141,7 @@ cd training-data && zip -r ../training-data_${TIMESTAMP}.zip . && cd ..
 
 6. **Training script** (third cell):
 
-    - Copy entire `train_card_classifier.py` content
-    - **Change ONLY the first path** at the top (use your dataset name from step 4):
-        ```python
-        TRAINING_DATA_PATH = '/kaggle/input/YOUR-DATASET-NAME'  # <-- Change this!
-        TRAIN_DIR = '/kaggle/working/cgpremium/scanner/train'
-        VAL_DIR = '/kaggle/working/cgpremium/scanner/val'
-        MODEL_OUTPUT_DIR = '/kaggle/working/cgpremium/scanner/model_output'
-        ```
-    - At the end, **replace** the `files.download()` line with:
-        ```python
-        # Model saved to /kaggle/working/cgpremium/scanner/card_classifier_model.zip
-        # Download from Output panel →
-        print("\n✅ Model saved! Check Output panel to download:")
-        print("   /kaggle/working/cgpremium/scanner/card_classifier_model.zip")
-        ```
+    - Copy entire `train.kaggle.py` content
     - Run the cell!
 
     **⚡ Note**: Training reads directly from `/kaggle/input/`
