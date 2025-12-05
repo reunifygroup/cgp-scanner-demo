@@ -105,7 +105,7 @@ cd training-data && zip -r ../training-data_${TIMESTAMP}.zip . && cd ..
     - Select your `training-data_TIMESTAMP.zip`
     - Kaggle will extract it automatically to `/kaggle/input/your-dataset-name/`
 
-4. **Setup** (first cell):
+4. **Setup**:
 
     ```python
     import os
@@ -128,25 +128,14 @@ cd training-data && zip -r ../training-data_${TIMESTAMP}.zip . && cd ..
     print(f"✅ Working directory: {os.getcwd()}")
     ```
 
-5. **Install dependencies** (second cell):
-
-    ```python
-    !pip install -q tensorflowjs
-    ```
-
-    ```python
-    import tensorflowjs as tfjs
-    print(f"✅ TensorFlow.js version: {tfjs.__version__}")
-    ```
-
-6. **Training script** (third cell):
+5. **Training script**:
 
     - Copy entire `train.kaggle.py` content
     - Run the cell!
 
     **⚡ Note**: Training reads directly from `/kaggle/input/`
 
-7. **Download model** (after training completes):
+6. **Download model** (after training completes):
     - Look in the **Output** panel on the right side
     - Find `card_classifier_model.zip`
     - Click the three dots → Download
