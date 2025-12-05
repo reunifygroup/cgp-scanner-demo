@@ -21,6 +21,7 @@ function App() {
     const intervalRef = useRef<number | null>(null);
     const modelRef = useRef<tf.GraphModel | null>(null);
     const classNamesRef = useRef<string[]>([]);
+    const firstCardIdRef = useRef<string | null>(null);
 
     // 🧠 Load TensorFlow.js model on mount
     useEffect(() => {
@@ -107,7 +108,13 @@ function App() {
         }
 
         setIsScanning(false);
+    };
+
+    // 🔄 Clear result and restart scanning
+    const scanAgain = () => {
         setResult(null);
+        firstCardIdRef.current = null; // Reset first card tracker
+        startScanning();
     };
 
     // 🎯 Capture frame and run inference
@@ -191,16 +198,29 @@ function App() {
             // Lower threshold (50%) to catch cards at various positions
             if (confidence > 0.5) {
                 const cardId = classNamesRef.current[maxIndex];
-                const cardName = cardId.split("_").slice(1).join(" ");
 
-                setResult({
-                    cardId,
-                    cardName,
-                    confidence: confidence * 100,
-                });
-            } else {
-                // Clear result if confidence drops
-                setResult(null);
+                // If this is the first detection, just store it (likely wrong)
+                if (firstCardIdRef.current === null) {
+                    firstCardIdRef.current = cardId;
+                    console.log("First card detected (ignoring):", cardId);
+                    return;
+                }
+
+                // If we detect a DIFFERENT card, this is likely the real one
+                if (cardId !== firstCardIdRef.current) {
+                    const cardName = cardId.split("_").slice(1).join(" ");
+
+                    setResult({
+                        cardId,
+                        cardName,
+                        confidence: confidence * 100,
+                    });
+
+                    console.log("New card detected! Locking on:", cardId);
+
+                    // Stop scanning after detecting different card
+                    stopScanning();
+                }
             }
         } catch (err) {
             console.error("Prediction error:", err);
@@ -264,6 +284,9 @@ function App() {
                             <div className="card-meta">
                                 <span>Confidence: {result.confidence.toFixed(1)}%</span>
                             </div>
+                            <button onClick={scanAgain} className="btn-primary" style={{ marginTop: "1rem" }}>
+                                Scan Again
+                            </button>
                         </div>
                     </div>
                 )}
