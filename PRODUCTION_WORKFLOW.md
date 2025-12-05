@@ -7,6 +7,7 @@ This workflow creates a **production-quality card recognition system** that scal
 ## Key Insight
 
 Professional card recognition apps **don't photograph each card**. They use:
+
 1. Official card images (from APIs)
 2. **Advanced augmentation** to simulate real camera conditions
 3. CNN classification (scales to thousands of cards)
@@ -19,12 +20,10 @@ Place official card images in `images/`:
 
 ```
 images/
-├── sv09/
-│   ├── sv09-001_Caterpie.png
-│   └── sv09-003_Butterfree.png
-└── sv10/
-    ├── sv10-001_Ethan_s_Pinsir.png
-    └── sv10-133_Scrafty.png
+├── sv09-001_Caterpie.png
+├── sv09-003_Butterfree.png
+├── sv10-001_Ethan_s_Pinsir.png
+└── sv10-133_Scrafty.png
 ```
 
 **Start with 4 cards for testing**, then scale to hundreds/thousands.
@@ -40,11 +39,12 @@ npm run augment-advanced
 ```
 
 This creates **50 high-quality variations per card** with:
-- ✅ 3D perspective transforms (card at angles)
-- ✅ Realistic lighting & shadows
-- ✅ Camera blur, noise, compression
-- ✅ Partial occlusion (fingers, glare)
-- ✅ Background integration
+
+-   ✅ 3D perspective transforms (card at angles)
+-   ✅ Realistic lighting & shadows
+-   ✅ Camera blur, noise, compression
+-   ✅ Partial occlusion (fingers, glare)
+-   ✅ Background integration
 
 **Output**: `training-data/` with ~200 images for 4 cards
 
@@ -60,25 +60,27 @@ cd training-data && zip -r ../training-data_${TIMESTAMP}.zip . && cd ..
 1. **Open**: https://colab.research.google.com/
 2. **Enable GPU**: Runtime → Change runtime type → GPU
 3. **Create working directory**:
-   ```python
-   !mkdir -p /content/cgpremium/scanner
-   %cd /content/cgpremium/scanner
-   ```
+
+    ```python
+    !mkdir -p /content/cgpremium/scanner
+    %cd /content/cgpremium/scanner
+    ```
 
 4. **Upload & Extract**:
-   ```python
-   from google.colab import files
-   import glob
 
-   # Upload zip
-   uploaded = files.upload()
+    ```python
+    from google.colab import files
+    import glob
 
-   # Find and extract
-   zip_file = max(glob.glob('*.zip'), key=os.path.getctime)
-   !rm -rf training-data
-   !unzip -q {zip_file} -d training-data
-   !rm {zip_file}
-   ```
+    # Upload zip
+    uploaded = files.upload()
+
+    # Find and extract
+    zip_file = max(glob.glob('*.zip'), key=os.path.getctime)
+    !rm -rf training-data
+    !unzip -q {zip_file} -d training-data
+    !rm {zip_file}
+    ```
 
 5. **Copy entire `train_card_classifier.py`** into a cell
 6. **Run the cell** - training starts automatically
@@ -99,28 +101,31 @@ cd client && npm run dev
 
 ## 📊 Expected Results
 
-| Cards | Training Time | Expected Accuracy | Use Case |
-|-------|--------------|-------------------|----------|
-| 4 | ~2 min | 60-75% | Pipeline testing |
-| 10 | ~5 min | 70-80% | Quick demo |
-| 100 | ~20 min | 80-90% | Prototype |
-| 1,000 | ~3 hours | 90-95% | Production beta |
-| 20,000 | ~60 hours | 95%+ | Pro-level app |
+| Cards  | Training Time | Expected Accuracy | Use Case         |
+| ------ | ------------- | ----------------- | ---------------- |
+| 4      | ~2 min        | 60-75%            | Pipeline testing |
+| 10     | ~5 min        | 70-80%            | Quick demo       |
+| 100    | ~20 min       | 80-90%            | Prototype        |
+| 1,000  | ~3 hours      | 90-95%            | Production beta  |
+| 20,000 | ~60 hours     | 95%+              | Pro-level app    |
 
 ## 🎓 Why This Works
 
 ### Basic Augmentation (Old Approach)
-- Simple rotation, brightness
-- 2D transformations only
-- **Result**: Model memorizes flat images, fails on real camera views
+
+-   Simple rotation, brightness
+-   2D transformations only
+-   **Result**: Model memorizes flat images, fails on real camera views
 
 ### Advanced Augmentation (New Approach)
-- 3D perspective transforms
-- Realistic lighting simulation
-- Camera effect simulation
-- **Result**: Model learns card features, works like pro apps
+
+-   3D perspective transforms
+-   Realistic lighting simulation
+-   Camera effect simulation
+-   **Result**: Model learns card features, works like pro apps
 
 ### Scale Effect
+
 With **4 cards**: Limited data, harder to generalize
 With **100+ cards**: Enough data to learn general patterns
 With **20,000 cards**: Production-quality like TCGPlayer
@@ -136,6 +141,7 @@ With **20,000 cards**: Production-quality like TCGPlayer
 ## 🔄 Iterating
 
 When adding more cards:
+
 1. Add images to `images/` directory
 2. Run `augment-advanced` again (overwrites `training-data/`)
 3. Create new zip
@@ -144,11 +150,11 @@ When adding more cards:
 
 ## 💡 Pro Tips
 
-- **Start small** (4 cards) to validate pipeline
-- **Add cards gradually** - easier to debug issues
-- **Keep original images** - you can re-augment anytime
-- **Version your models** - use timestamps in filenames
-- **Test thoroughly** - try different lighting/angles with real camera
+-   **Start small** (4 cards) to validate pipeline
+-   **Add cards gradually** - easier to debug issues
+-   **Keep original images** - you can re-augment anytime
+-   **Version your models** - use timestamps in filenames
+-   **Test thoroughly** - try different lighting/angles with real camera
 
 ## 📈 Scaling to 20,000 Cards
 
@@ -161,8 +167,9 @@ Once your pipeline works with 4 cards:
 5. **Deploy** production model
 
 **Storage needs**:
-- 20,000 cards × 50 augmentations = 1M images
-- ~200GB of training data
-- ~50MB final model size
+
+-   20,000 cards × 50 augmentations = 1M images
+-   ~200GB of training data
+-   ~50MB final model size
 
 This is exactly how the big apps do it!

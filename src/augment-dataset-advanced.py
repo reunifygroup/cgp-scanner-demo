@@ -55,25 +55,17 @@ def create_advanced_augmentation_pipeline():
         ], p=0.8),
 
         # 3. SHADOWS & HIGHLIGHTS - Simulate uneven lighting
-        A.OneOf([
-            A.RandomShadow(
-                shadow_roi=(0, 0, 1, 1),
-                num_shadows_limit=(1, 2),
-                shadow_dimension=5,
-                p=1.0
-            ),
-            A.RandomBrightnessContrast(
-                brightness_limit=(-0.2, 0.3),
-                contrast_limit=0.2,
-                p=1.0
-            ),
-        ], p=0.4),
+        A.RandomBrightnessContrast(
+            brightness_limit=(-0.2, 0.3),
+            contrast_limit=0.2,
+            p=0.4
+        ),
 
         # 4. CAMERA EFFECTS - Simulate phone camera issues
         A.OneOf([
             A.GaussianBlur(blur_limit=(3, 7), p=1.0),  # Focus issues
             A.MotionBlur(blur_limit=7, p=1.0),  # Camera shake
-            A.GaussNoise(var_limit=(10.0, 50.0), mean=0, per_channel=True, p=1.0),  # Sensor noise
+            A.GaussNoise(var_limit=(10.0, 50.0), p=1.0),  # Sensor noise
             A.ISONoise(color_shift=(0.01, 0.05), intensity=(0.1, 0.5), p=1.0),
         ], p=0.3),
 
@@ -91,13 +83,16 @@ def create_advanced_augmentation_pipeline():
         ], p=0.3),
 
         # 7. COMPRESSION ARTIFACTS - Simulate compressed images
-        A.ImageCompression(quality_range=(60, 100), p=0.3),
+        A.ImageCompression(quality_lower=60, quality_upper=100, p=0.3),
 
         # 8. COARSE DROPOUT - Simulate partial occlusion (fingers, glare)
         A.CoarseDropout(
-            num_holes_range=(1, 3),
-            hole_height_range=(20, 50),
-            hole_width_range=(20, 50),
+            max_holes=3,
+            max_height=50,
+            max_width=50,
+            min_holes=1,
+            min_height=20,
+            min_width=20,
             fill_value=0,
             p=0.2
         ),
