@@ -21,7 +21,6 @@ function App() {
     const intervalRef = useRef<number | null>(null);
     const modelRef = useRef<tf.GraphModel | null>(null);
     const classNamesRef = useRef<string[]>([]);
-    const firstCardIdRef = useRef<string | null>(null);
 
     // 🧠 Load TensorFlow.js model on mount
     useEffect(() => {
@@ -113,7 +112,6 @@ function App() {
     // 🔄 Clear result and restart scanning
     const scanAgain = () => {
         setResult(null);
-        firstCardIdRef.current = null; // Reset first card tracker
         startScanning();
     };
 
@@ -198,36 +196,22 @@ function App() {
             tensor.dispose();
             predictions.dispose();
 
-            // Two-stage confidence thresholds
-            const FIRST_CARD_THRESHOLD = 0.3; // Low threshold to capture initial background
-            const VALID_CARD_THRESHOLD = 0.70; // High threshold for actual card detection
+            // Simple high-confidence threshold
+            const CONFIDENCE_THRESHOLD = 0.8; // Lock on any card with >80% confidence
 
-            // First detection: low threshold (just establishing baseline)
-            if (confidence > FIRST_CARD_THRESHOLD && firstCardIdRef.current === null) {
-                firstCardIdRef.current = classNamesRef.current[maxIndex];
-                console.log("First card detected (baseline):", firstCardIdRef.current, `${(confidence * 100).toFixed(1)}%`);
-                return;
-            }
-
-            // Actual card detection: high threshold (must be confident)
-            if (confidence > VALID_CARD_THRESHOLD && firstCardIdRef.current !== null) {
+            // Lock on first high-confidence detection
+            if (confidence > CONFIDENCE_THRESHOLD) {
                 const cardId = classNamesRef.current[maxIndex];
+                const cardName = cardId.split("_").slice(1).join(" ");
 
-                // If we detect a DIFFERENT card with high confidence, lock it!
-                if (cardId !== firstCardIdRef.current) {
-                    const cardName = cardId.split("_").slice(1).join(" ");
+                setResult({
+                    cardId,
+                    cardName,
+                    confidence: confidence * 100,
+                });
 
-                    setResult({
-                        cardId,
-                        cardName,
-                        confidence: confidence * 100,
-                    });
-
-                    console.log("Valid card detected! Locking on:", cardId, `${(confidence * 100).toFixed(1)}%`);
-
-                    // Stop scanning after detecting different card
-                    stopScanning();
-                }
+                console.log("Card detected:", cardId, `${(confidence * 100).toFixed(1)}%`);
+                stopScanning();
             }
         } catch (err) {
             console.error("Prediction error:", err);
