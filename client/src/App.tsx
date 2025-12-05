@@ -38,7 +38,7 @@ function App() {
                 modelRef.current = model;
 
                 // Warm up the model
-                const dummyInput = tf.zeros([1, 224, 224, 3]);
+                const dummyInput = tf.zeros([1, 224, 312, 3]);
                 model.predict(dummyInput);
                 dummyInput.dispose();
 
@@ -128,35 +128,39 @@ function App() {
         if (!context || video.readyState !== video.HAVE_ENOUGH_DATA) return;
 
         try {
-            // Set canvas size to model input size
+            // Set canvas size to model input size (card aspect ratio)
             canvas.width = 224;
-            canvas.height = 224;
+            canvas.height = 312;
 
-            // Crop center of video to focus on card area (zoom effect)
-            // This matches training data where cards fill the frame
+            // Crop card-shaped region from video center
+            // This matches training data: card images resized to 224×312
+            const cardAspect = 224 / 312; // Card width/height ratio (≈0.716)
             const videoAspect = video.videoWidth / video.videoHeight;
-            const targetAspect = 1; // Square for 224x224
 
             let sx = 0,
                 sy = 0,
                 sWidth = video.videoWidth,
                 sHeight = video.videoHeight;
 
-            if (videoAspect > targetAspect) {
-                // Video is wider - crop sides
-                sWidth = video.videoHeight * targetAspect;
+            if (videoAspect > cardAspect) {
+                // Video is wider - crop sides to get card aspect
+                sHeight = video.videoHeight;
+                sWidth = sHeight * cardAspect;
                 sx = (video.videoWidth - sWidth) / 2;
+                sy = 0;
             } else {
-                // Video is taller - crop top/bottom
-                sHeight = video.videoWidth / targetAspect;
+                // Video is taller - crop top/bottom to get card aspect
+                sWidth = video.videoWidth;
+                sHeight = sWidth / cardAspect;
+                sx = 0;
                 sy = (video.videoHeight - sHeight) / 2;
             }
 
-            // Draw cropped and scaled video frame
-            context.drawImage(video, sx, sy, sWidth, sHeight, 0, 0, 224, 224);
+            // Draw card-shaped crop, resized to 224×312 (matches training)
+            context.drawImage(video, sx, sy, sWidth, sHeight, 0, 0, 224, 312);
 
             // Get image data and convert to tensor
-            const imageData = context.getImageData(0, 0, 224, 224);
+            const imageData = context.getImageData(0, 0, 224, 312);
 
             // Convert to tensor and normalize
             const tensor = tf.tidy(() => {
