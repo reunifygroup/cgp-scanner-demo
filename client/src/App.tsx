@@ -65,12 +65,14 @@ function App() {
     try {
       setError(null);
 
-      // Request camera access
+      // Request camera access with card-like aspect ratio (portrait)
+      // Card ratio: 63mm × 88mm ≈ 0.716:1
       const stream = await navigator.mediaDevices.getUserMedia({
         video: {
           facingMode: 'environment',
-          width: { ideal: 1280 },
-          height: { ideal: 720 }
+          width: { ideal: 720 },   // Portrait mode
+          height: { ideal: 1000 },  // Card-like ratio
+          aspectRatio: { ideal: 0.72 }
         }
       });
 
@@ -124,8 +126,25 @@ function App() {
       canvas.width = 224;
       canvas.height = 224;
 
-      // Draw video frame (scaled to 224x224)
-      context.drawImage(video, 0, 0, 224, 224);
+      // Crop center of video to focus on card area (zoom effect)
+      // This matches training data where cards fill the frame
+      const videoAspect = video.videoWidth / video.videoHeight;
+      const targetAspect = 1; // Square for 224x224
+
+      let sx = 0, sy = 0, sWidth = video.videoWidth, sHeight = video.videoHeight;
+
+      if (videoAspect > targetAspect) {
+        // Video is wider - crop sides
+        sWidth = video.videoHeight * targetAspect;
+        sx = (video.videoWidth - sWidth) / 2;
+      } else {
+        // Video is taller - crop top/bottom
+        sHeight = video.videoWidth / targetAspect;
+        sy = (video.videoHeight - sHeight) / 2;
+      }
+
+      // Draw cropped and scaled video frame
+      context.drawImage(video, sx, sy, sWidth, sHeight, 0, 0, 224, 224);
 
       // Get image data and convert to tensor
       const imageData = context.getImageData(0, 0, 224, 224);
@@ -167,8 +186,8 @@ function App() {
       predictions.dispose();
 
       // Show result if confidence is high enough
-      // Lower threshold (70%) for better-trained models that don't overfit
-      if (confidence > 0.70) {
+      // Lower threshold (50%) to catch cards at various positions
+      if (confidence > 0.50) {
         const cardId = classNamesRef.current[maxIndex];
         const cardName = cardId.split('_').slice(1).join(' ');
 
@@ -207,7 +226,7 @@ function App() {
 
       <main>
         <div className="scanner-container">
-          {/* Video stream with frame overlay */}
+          {/* Video stream - full freedom, no guides */}
           <div className="video-wrapper">
             <video
               ref={videoRef}
@@ -216,15 +235,6 @@ function App() {
               muted
               className={isScanning ? 'active' : 'hidden'}
             />
-            {isScanning && (
-              <div className="frame-guide">
-                <div className="frame-corner tl"></div>
-                <div className="frame-corner tr"></div>
-                <div className="frame-corner bl"></div>
-                <div className="frame-corner br"></div>
-                <p className="frame-text">Position card here</p>
-              </div>
-            )}
           </div>
 
           {/* Hidden canvas for frame capture */}
