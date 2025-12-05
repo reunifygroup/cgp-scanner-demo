@@ -1,300 +1,247 @@
-/* 🎨 Main app container */
+/* Minimal grayscale design */
 .app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #1a1a1a;
+    color: #e0e0e0;
 }
 
 header {
-  text-align: center;
-  padding: 2rem 1rem;
+    text-align: center;
+    padding: 2rem 1rem;
 }
 
 header h1 {
-  margin: 0 0 0.5rem 0;
-  font-size: 2.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0 0 0.5rem 0;
+    font-size: 2rem;
+    color: #ffffff;
+    font-weight: 600;
 }
 
 header p {
-  margin: 0;
-  opacity: 0.9;
-  font-size: 1.1rem;
+    margin: 0 0 1rem 0;
+    color: #a0a0a0;
+    font-size: 1rem;
+}
+
+.model-status {
+    color: #808080;
+    font-size: 0.9rem;
 }
 
 main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  gap: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
 }
 
-/* 📹 Scanner container */
+/* Scanner container - centered */
 .scanner-container {
-  position: relative;
-  width: 100%;
-  max-width: 640px;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 16px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+    position: relative;
+    max-width: 600px;
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 auto;
 }
 
-/* 📹 Video wrapper with overlay */
+/* Video wrapper with max height constraint */
 .video-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 640px;
+    position: relative;
+    width: 100%;
+    max-height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 video {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-height: 40vh;
+    object-fit: contain;
+    border-radius: 4px;
+    background: #000000;
 }
 
 video.active {
-  display: block;
+    display: block;
 }
 
 video.hidden {
-  display: none;
+    display: none;
 }
 
-/* 🎯 Frame guide overlay */
-.frame-guide {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  aspect-ratio: 5/7; /* Pokemon card ratio */
-  pointer-events: none;
-}
-
-.frame-corner {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border: 3px solid #4CAF50;
-}
-
-.frame-corner.tl {
-  top: 0;
-  left: 0;
-  border-right: none;
-  border-bottom: none;
-  border-top-left-radius: 8px;
-}
-
-.frame-corner.tr {
-  top: 0;
-  right: 0;
-  border-left: none;
-  border-bottom: none;
-  border-top-right-radius: 8px;
-}
-
-.frame-corner.bl {
-  bottom: 0;
-  left: 0;
-  border-right: none;
-  border-top: none;
-  border-bottom-left-radius: 8px;
-}
-
-.frame-corner.br {
-  bottom: 0;
-  right: 0;
-  border-left: none;
-  border-top: none;
-  border-bottom-right-radius: 8px;
-}
-
-.frame-text {
-  position: absolute;
-  top: -2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(76, 175, 80, 0.9);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-/* 🔘 Buttons */
+/* Buttons - grayscale */
 button {
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    border: 1px solid #4a4a4a;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    min-width: 180px;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .btn-primary {
-  background: #4CAF50;
-  color: white;
+    background: #404040;
+    color: #ffffff;
 }
 
-.btn-primary:hover {
-  background: #45a049;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+.btn-primary:hover:not(:disabled) {
+    background: #505050;
+    border-color: #5a5a5a;
 }
 
 .btn-secondary {
-  background: #f44336;
-  color: white;
+    background: #303030;
+    color: #e0e0e0;
 }
 
 .btn-secondary:hover {
-  background: #da190b;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    background: #3a3a3a;
+    border-color: #4a4a4a;
 }
 
-/* ❌ Error display */
+/* Error display */
 .error {
-  background: rgba(244, 67, 54, 0.9);
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  max-width: 640px;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background: #3a2a2a;
+    border: 1px solid #5a3a3a;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    color: #e0e0e0;
 }
 
-/* ✅ Result display */
+/* Result display */
 .result {
-  background: rgba(255, 255, 255, 0.95);
-  color: #333;
-  border-radius: 16px;
-  max-width: 640px;
-  width: 100%;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  animation: slideIn 0.3s ease;
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 100%;
+    overflow: hidden;
+    animation: slideIn 0.3s ease;
 }
 
 @keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .result-header {
-  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-  color: white;
-  padding: 1rem;
-  font-size: 1.3rem;
-  font-weight: bold;
-  text-align: center;
+    background: #353535;
+    border-bottom: 1px solid #3a3a3a;
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
 }
 
 .result-content {
-  padding: 2rem;
+    padding: 1.5rem;
 }
 
 .card-id {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #667eea;
-  margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
 }
 
 .card-name {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: #c0c0c0;
+    margin-bottom: 1rem;
 }
 
 .card-meta {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  font-size: 1rem;
-  color: #666;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #909090;
 }
 
 .card-meta span {
-  background: #f0f0f0;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+    background: #353535;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid #404040;
 }
 
-/* 🔄 Scanning indicator */
+/* Scanning indicator */
 .scanning-indicator {
-  text-align: center;
-  opacity: 0.8;
+    text-align: center;
+    color: #808080;
 }
 
 .spinner {
-  width: 50px;
-  height: 50px;
-  margin: 0 auto 1rem;
-  border: 4px solid rgba(255, 255, 255, 0.3);
-  border-top-color: white;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 1rem;
+    border: 3px solid #3a3a3a;
+    border-top-color: #808080;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-/* 📱 Footer */
-footer {
-  text-align: center;
-  padding: 1.5rem;
-  opacity: 0.8;
-  font-size: 0.9rem;
-}
-
-/* 📱 Mobile responsive */
+/* Mobile responsive */
 @media (max-width: 768px) {
-  header h1 {
-    font-size: 2rem;
-  }
+    header h1 {
+        font-size: 1.5rem;
+    }
 
-  .scanner-container {
-    padding: 1rem;
-  }
+    .scanner-container {
+        padding: 1rem;
+    }
 
-  button {
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-  }
+    button {
+        padding: 0.65rem 1.5rem;
+        font-size: 0.95rem;
+        min-width: 160px;
+    }
 
-  .card-id {
-    font-size: 1.5rem;
-  }
+    .card-id {
+        font-size: 1.25rem;
+    }
 
-  .card-name {
-    font-size: 1.2rem;
-  }
+    .card-name {
+        font-size: 1rem;
+    }
 
-  .card-meta {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+    .card-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 }
