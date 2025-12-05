@@ -105,15 +105,14 @@ cd training-data && zip -r ../training-data_${TIMESTAMP}.zip . && cd ..
     - Select your `training-data_TIMESTAMP.zip`
     - Kaggle will extract it automatically to `/kaggle/input/your-dataset-name/`
 
-4. **Setup paths** (first cell):
+4. **Setup** (first cell):
 
     ```python
     import os
-    import shutil
-    import glob as glob_module
 
     # Create working directory
     !mkdir -p /kaggle/working/cgpremium/scanner
+    os.chdir('/kaggle/working/cgpremium/scanner')
 
     # Find your uploaded dataset (check "Data" tab for exact name)
     input_path = '/kaggle/input'
@@ -121,22 +120,12 @@ cd training-data && zip -r ../training-data_${TIMESTAMP}.zip . && cd ..
 
     if dataset_folders:
         dataset_name = dataset_folders[0]
-        print(f"Found dataset: {dataset_name}")
-
-        # Copy training data from Kaggle dataset to working dir
-        source = f'/kaggle/input/{dataset_name}'
-        dest = '/kaggle/working/cgpremium/scanner/training-data'
-
-        !mkdir -p {dest}
-        !cp -r {source}/* {dest}/
-
-        print(f"✅ Training data copied to {dest}")
+        print(f"✅ Found dataset: {dataset_name}")
+        print(f"   Path: /kaggle/input/{dataset_name}")
     else:
-        print("❌ No dataset found! Please upload your training-data zip as a dataset")
+        print("❌ No dataset found! Please upload your training-data zip")
 
-    # Change to working directory
-    os.chdir('/kaggle/working/cgpremium/scanner')
-    print(f"Working directory: {os.getcwd()}")
+    print(f"✅ Working directory: {os.getcwd()}")
     ```
 
 5. **Install dependencies** (second cell):
@@ -145,24 +134,31 @@ cd training-data && zip -r ../training-data_${TIMESTAMP}.zip . && cd ..
     !pip install -q tensorflowjs
     ```
 
+    ```python
+    import tensorflowjs as tfjs
+    print(f"✅ TensorFlow.js version: {tfjs.__version__}")
+    ```
+
 6. **Training script** (third cell):
 
     - Copy entire `train_card_classifier.py` content
-    - Change the paths at the top to Kaggle paths:
+    - **Change ONLY the first path** at the top (use your dataset name from step 4):
         ```python
-        TRAINING_DATA_PATH = '/kaggle/working/cgpremium/scanner/training-data'
+        TRAINING_DATA_PATH = '/kaggle/input/YOUR-DATASET-NAME'  # <-- Change this!
         TRAIN_DIR = '/kaggle/working/cgpremium/scanner/train'
         VAL_DIR = '/kaggle/working/cgpremium/scanner/val'
         MODEL_OUTPUT_DIR = '/kaggle/working/cgpremium/scanner/model_output'
         ```
     - At the end, **replace** the `files.download()` line with:
         ```python
-        # Model is saved to /kaggle/working/cgpremium/scanner/card_classifier_model.zip
-        # Download it from the Output panel on the right →
-        print("\n✅ Model saved! Check the Output panel to download:")
+        # Model saved to /kaggle/working/cgpremium/scanner/card_classifier_model.zip
+        # Download from Output panel →
+        print("\n✅ Model saved! Check Output panel to download:")
         print("   /kaggle/working/cgpremium/scanner/card_classifier_model.zip")
         ```
     - Run the cell!
+
+    **⚡ Note**: Training reads directly from `/kaggle/input/`
 
 7. **Download model** (after training completes):
     - Look in the **Output** panel on the right side
