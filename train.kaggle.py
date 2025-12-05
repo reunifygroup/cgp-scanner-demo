@@ -42,7 +42,7 @@ VAL_DIR = '/kaggle/working/cgpremium/scanner/val'
 MODEL_OUTPUT_DIR = '/kaggle/working/cgpremium/scanner/model_output'
 
 # Hyperparameters - OPTIMIZED for advanced pre-augmented data
-IMG_SIZE = (224, 312)  # Card aspect ratio (width × height) - 63mm × 88mm ≈ 0.716
+IMG_SIZE = (312, 224)  # Portrait card (height × width) - 88mm × 63mm in Keras format
 BATCH_SIZE = 32  # Larger batches for better GPU utilization
 EPOCHS = 100  # Fewer epochs needed with high-quality augmentation
 LEARNING_RATE = 0.0005  # Can use higher LR with pre-augmented data

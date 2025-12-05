@@ -37,8 +37,8 @@ function App() {
                 const model = await tf.loadGraphModel("/model/model.json");
                 modelRef.current = model;
 
-                // Warm up the model
-                const dummyInput = tf.zeros([1, 224, 312, 3]);
+                // Warm up the model (portrait: height=312, width=224)
+                const dummyInput = tf.zeros([1, 312, 224, 3]); // [batch, height, width, channels]
                 model.predict(dummyInput);
                 dummyInput.dispose();
 
@@ -128,13 +128,13 @@ function App() {
         if (!context || video.readyState !== video.HAVE_ENOUGH_DATA) return;
 
         try {
-            // Set canvas size to model input size (card aspect ratio)
+            // Set canvas size to model input size (portrait card)
             canvas.width = 224;
             canvas.height = 312;
 
-            // Crop card-shaped region from video center
-            // This matches training data: card images resized to 224×312
-            const cardAspect = 224 / 312; // Card width/height ratio (≈0.716)
+            // Crop card-shaped region from video center (portrait orientation)
+            // This matches training data: card images resized to portrait 312×224 (height×width)
+            const cardAspect = 224 / 312; // Width/height ratio for portrait cards (≈0.718)
             const videoAspect = video.videoWidth / video.videoHeight;
 
             let sx = 0,
@@ -156,7 +156,7 @@ function App() {
                 sy = (video.videoHeight - sHeight) / 2;
             }
 
-            // Draw card-shaped crop, resized to 224×312 (matches training)
+            // Draw portrait card crop, resized to 224×312 (width×height)
             context.drawImage(video, sx, sy, sWidth, sHeight, 0, 0, 224, 312);
 
             // Get image data and convert to tensor
