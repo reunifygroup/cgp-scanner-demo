@@ -117,8 +117,9 @@ def create_train_val_split(source_dir, train_dir, val_dir, val_split=0.2):
         # Extract card ID from filename
         # For "cardname_aug0.png" -> "cardname"
         # For "cardname_original.png" -> "cardname"
+        # For "aaa_no_card_gen000.png" -> "aaa_no_card"
         parts = img.split('_')
-        if parts[-1].startswith('aug') or parts[-1] == 'original.png':
+        if parts[-1].startswith('aug') or parts[-1].startswith('gen') or parts[-1] == 'original.png':
             card_id = '_'.join(parts[:-1])
         else:
             card_id = img.rsplit('.', 1)[0]  # Remove extension

@@ -15,7 +15,7 @@ import shutil
 # Configuration
 IMAGES_DIR = 'images'
 OUTPUT_DIR = 'training-data'
-AUGMENTATIONS_PER_IMAGE = 50  # Generate 50 high-quality variations per card
+AUGMENTATIONS_PER_IMAGE = 100  # Generate 50 high-quality variations per card
 
 # Card dimensions (target size for training) - Optimized for speed/quality balance
 TARGET_WIDTH = 320

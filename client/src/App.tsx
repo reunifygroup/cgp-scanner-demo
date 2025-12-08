@@ -110,7 +110,6 @@ function App() {
         setIsScanning(false);
     };
 
-
     // 🎯 Capture frame and run inference
     const captureAndPredict = async () => {
         if (!videoRef.current || !canvasRef.current || !modelRef.current) return;
@@ -122,17 +121,51 @@ function App() {
         if (!context || video.readyState !== video.HAVE_ENOUGH_DATA) return;
 
         try {
-            // Set canvas size to model input size (portrait card)
-            canvas.width = 320;
-            canvas.height = 440;
+            // Model input size
+            const TARGET_WIDTH = 320;
+            const TARGET_HEIGHT = 440;
+            const TARGET_ASPECT = TARGET_WIDTH / TARGET_HEIGHT; // ≈ 0.727
 
-            // Resize full camera frame to 320×440
-            context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, 320, 440);
+            // Set canvas to match model input
+            canvas.width = TARGET_WIDTH;
+            canvas.height = TARGET_HEIGHT;
 
-            // Get image data and convert to tensor
-            const imageData = context.getImageData(0, 0, 320, 440);
+            const videoWidth = video.videoWidth;
+            const videoHeight = video.videoHeight;
 
-            // Convert to tensor and normalize
+            if (!videoWidth || !videoHeight) {
+                console.warn("⚠️ videoWidth/videoHeight is zero — iOS metadata not ready");
+                return;
+            }
+
+            const videoAspect = videoWidth / videoHeight;
+
+            let sx = 0;
+            let sy = 0;
+            let sWidth = videoWidth;
+            let sHeight = videoHeight;
+
+            // 💡 Decide how to crop to match model aspect ratio
+            if (videoAspect > TARGET_ASPECT) {
+                // Video is wider → crop left/right
+                sHeight = videoHeight;
+                sWidth = sHeight * TARGET_ASPECT;
+                sx = (videoWidth - sWidth) / 2;
+                sy = 0;
+            } else {
+                // Video is taller → crop top/bottom
+                sWidth = videoWidth;
+                sHeight = sWidth / TARGET_ASPECT;
+                sx = 0;
+                sy = (videoHeight - sHeight) / 2;
+            }
+
+            // Draw cropped region into 320×440
+            context.drawImage(video, sx, sy, sWidth, sHeight, 0, 0, TARGET_WIDTH, TARGET_HEIGHT);
+
+            // Convert to tensor
+            const imageData = context.getImageData(0, 0, TARGET_WIDTH, TARGET_HEIGHT);
+
             const tensor = tf.tidy(() => {
                 const imageTensor = tf.browser.fromPixels(imageData);
                 const normalized = imageTensor.div(255.0);
@@ -144,13 +177,13 @@ function App() {
             const predictions = modelRef.current.predict(tensor) as tf.Tensor;
             const predArray = await predictions.data();
 
-            // Get top prediction
+            // Find max class
             const maxIndex = predArray.indexOf(Math.max(...Array.from(predArray)));
             const confidence = predArray[maxIndex];
             const cardId = classNamesRef.current[maxIndex];
 
-            // Debug: Show all predictions
-            console.log("Predictions:", {
+            // 🧪 FULL DEBUG LOG (same as before)
+            console.log("🔍 Predictions:", {
                 cardId,
                 confidence: (confidence * 100).toFixed(1) + "%",
                 tensors: tf.memory().numTensors,
@@ -162,11 +195,11 @@ function App() {
                     .sort((a, b) => parseFloat(b.conf) - parseFloat(a.conf)),
             });
 
-            // Clean up tensors
+            // Cleanup
             tensor.dispose();
             predictions.dispose();
 
-            // Show result continuously (no threshold) for debugging
+            // Live result (no threshold)
             const cardName = cardId.split("_").slice(1).join(" ");
             const debugImage = canvas.toDataURL("image/png");
 
@@ -176,10 +209,8 @@ function App() {
                 confidence: confidence * 100,
                 debugImage,
             });
-
-            // Keep scanning - don't stop (for debugging)
         } catch (err) {
-            console.error("Prediction error:", err);
+            console.error("❌ Prediction error:", err);
         }
     };
 
@@ -237,7 +268,7 @@ function App() {
                         <div className="result-content">
                             <div className="card-id">{result.cardId}</div>
                             <div className="card-name">{result.cardName}</div>
-                            <div className="card-meta">
+                            <div className={"card-meta" + (result.confidence > 90 ? " card-meta--high-confidence" : "")}>
                                 <span>Confidence: {result.confidence.toFixed(1)}%</span>
                             </div>
 

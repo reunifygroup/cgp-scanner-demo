@@ -190,6 +190,11 @@ button:disabled {
     color: #606060;
 }
 
+.card-meta.card-meta--high-confidence span {
+    border-color: #2ecc71; /* green border */
+    background-color: #2ecc71 !important; /* very light green background */
+}
+
 .card-meta span {
     background: #f5f5f5;
     padding: 0.5rem 1rem;
