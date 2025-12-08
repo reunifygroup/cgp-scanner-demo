@@ -4,6 +4,7 @@ Uses sophisticated transforms to simulate real camera conditions
 """
 
 import albumentations as A
+from albumentations.core.transforms_interface import ImageOnlyTransform
 import cv2
 import numpy as np
 import os
@@ -19,6 +20,64 @@ AUGMENTATIONS_PER_IMAGE = 50  # Generate 50 high-quality variations per card
 # Card dimensions (target size for training)
 TARGET_WIDTH = 400
 TARGET_HEIGHT = 560
+
+# Custom edge-only dropout transform
+class EdgeCoarseDropout(ImageOnlyTransform):
+    """CoarseDropout that only places holes on the edges (not center)"""
+
+    def __init__(
+        self,
+        max_holes=3,
+        max_height=50,
+        max_width=50,
+        min_holes=1,
+        min_height=20,
+        min_width=20,
+        fill_value=0,
+        edge_margin=0.25,  # Only place holes in outer 25% of image
+        always_apply=False,
+        p=0.5
+    ):
+        super().__init__(always_apply, p)
+        self.max_holes = max_holes
+        self.max_height = max_height
+        self.max_width = max_width
+        self.min_holes = min_holes
+        self.min_height = min_height
+        self.min_width = min_width
+        self.fill_value = fill_value
+        self.edge_margin = edge_margin
+
+    def apply(self, img, **params):
+        height, width = img.shape[:2]
+        holes = random.randint(self.min_holes, self.max_holes)
+
+        for _ in range(holes):
+            hole_height = random.randint(self.min_height, self.max_height)
+            hole_width = random.randint(self.min_width, self.max_width)
+
+            # Randomly choose which edge: 0=top, 1=right, 2=bottom, 3=left
+            edge = random.randint(0, 3)
+
+            if edge == 0:  # Top edge
+                y1 = random.randint(0, int(height * self.edge_margin))
+                x1 = random.randint(0, max(1, width - hole_width))
+            elif edge == 1:  # Right edge
+                y1 = random.randint(0, max(1, height - hole_height))
+                x1 = random.randint(int(width * (1 - self.edge_margin)), max(1, width - hole_width))
+            elif edge == 2:  # Bottom edge
+                y1 = random.randint(int(height * (1 - self.edge_margin)), max(1, height - hole_height))
+                x1 = random.randint(0, max(1, width - hole_width))
+            else:  # Left edge
+                y1 = random.randint(0, max(1, height - hole_height))
+                x1 = random.randint(0, int(width * self.edge_margin))
+
+            y2 = min(y1 + hole_height, height)
+            x2 = min(x1 + hole_width, width)
+
+            img[y1:y2, x1:x2] = self.fill_value
+
+        return img
 
 def create_advanced_augmentation_pipeline():
     """
@@ -70,14 +129,7 @@ def create_advanced_augmentation_pipeline():
             A.ISONoise(color_shift=(0.01, 0.05), intensity=(0.1, 0.5), p=1.0),
         ], p=0.3),
 
-        # 5. COLOR TEMPERATURE - Simulate different light sources
-        A.OneOf([
-            A.ToSepia(p=1.0),  # Warm lighting
-            A.ToGray(p=1.0),  # B&W (edge case)
-            A.ChannelShuffle(p=1.0),  # Color cast
-        ], p=0.1),
-
-        # 6. EXPOSURE & WHITE BALANCE
+        # 5. EXPOSURE & WHITE BALANCE (removed extreme color transforms)
         A.OneOf([
             A.RandomGamma(gamma_limit=(80, 120), p=1.0),
             A.CLAHE(clip_limit=4.0, p=1.0),  # Contrast enhancement
@@ -86,8 +138,8 @@ def create_advanced_augmentation_pipeline():
         # 7. COMPRESSION ARTIFACTS - Simulate compressed images
         A.ImageCompression(quality_lower=60, quality_upper=100, p=0.3),
 
-        # 8. COARSE DROPOUT - Simulate partial occlusion (fingers, glare)
-        A.CoarseDropout(
+        # 8. EDGE DROPOUT - Only on borders, preserves center features
+        EdgeCoarseDropout(
             max_holes=3,
             max_height=50,
             max_width=50,
@@ -95,6 +147,7 @@ def create_advanced_augmentation_pipeline():
             min_height=20,
             min_width=20,
             fill_value=0,
+            edge_margin=0.25,  # Only outer 25% of image (edges)
             p=0.2
         ),
 
