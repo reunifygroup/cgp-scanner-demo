@@ -85,8 +85,7 @@ def create_advanced_augmentation_pipeline():
     real-world camera conditions from flat card images
     """
 
-    # SIMPLIFIED: Only geometric transforms and minimal camera effects
-    # NO color augmentation - let runtime training handle that
+    # Realistic camera augmentation - balanced approach
     return A.Compose([
         # 1. GEOMETRIC TRANSFORMS - Different viewing angles
         A.OneOf([
@@ -100,16 +99,32 @@ def create_advanced_augmentation_pipeline():
             ),
         ], p=0.9),
 
-        # 2. LIGHT CAMERA BLUR - Simulate focus issues (NO color changes)
+        # 2. CAMERA BLUR - More frequent, stronger blur for out-of-focus effect
         A.OneOf([
-            A.GaussianBlur(blur_limit=(3, 5), p=1.0),  # Light blur
-            A.MotionBlur(blur_limit=5, p=1.0),  # Camera shake
-        ], p=0.3),
+            A.GaussianBlur(blur_limit=(3, 9), p=1.0),  # Out of focus
+            A.MotionBlur(blur_limit=7, p=1.0),  # Camera shake
+            A.Defocus(radius=(3, 7), alias_blur=(0.1, 0.3), p=1.0),  # Defocus effect
+        ], p=0.6),  # Increased from 0.3 to 0.6
 
-        # 3. LIGHT NOISE - Sensor noise (NO color shifts)
-        A.GaussNoise(var_limit=(10.0, 30.0), p=0.2),
+        # 3. SUBTLE COLOR/BRIGHTNESS/CONTRAST - Very conservative
+        A.OneOf([
+            A.RandomBrightnessContrast(
+                brightness_limit=0.15,  # ±15% brightness
+                contrast_limit=0.15,    # ±15% contrast
+                p=1.0
+            ),
+            A.HueSaturationValue(
+                hue_shift_limit=5,      # Very minimal hue shift
+                sat_shift_limit=15,     # Slight saturation change
+                val_shift_limit=15,     # Slight brightness
+                p=1.0
+            ),
+        ], p=0.5),  # Apply to 50% of images
 
-        # 4. EDGE DROPOUT - Partial occlusion (preserves center)
+        # 4. SENSOR NOISE - Light camera sensor noise
+        A.GaussNoise(var_limit=(10.0, 40.0), p=0.3),
+
+        # 5. EDGE DROPOUT - Partial occlusion (preserves center)
         EdgeCoarseDropout(
             max_holes=2,
             max_height=40,
@@ -183,6 +198,82 @@ def add_background(card_img, backgrounds_dir='backgrounds'):
 
     return result
 
+def place_card_in_scene(card_img, backgrounds_dir='backgrounds'):
+    """
+    Place card (smaller) on a larger background to show full card with surrounding area.
+    Simulates real camera view where card is in center with visible background.
+    """
+    card_h, card_w = card_img.shape[:2]
+
+    # Random scale: card takes 40-70% of the frame width
+    scale_factor = random.uniform(0.4, 0.7)
+    new_card_w = int(card_w * scale_factor)
+    new_card_h = int(card_h * scale_factor)
+
+    # Resize card to be smaller
+    small_card = cv2.resize(card_img, (new_card_w, new_card_h))
+
+    # Create larger canvas (same aspect ratio as target, but we'll work with card dimensions)
+    canvas_w = card_w
+    canvas_h = card_h
+
+    # Generate or load background for the canvas
+    if not os.path.exists(backgrounds_dir):
+        # Generate table-like background
+        background_types = [
+            ('wood', [101, 67, 33], [139, 90, 43]),
+            ('table', [180, 180, 180], [220, 220, 220]),
+            ('dark', [20, 20, 20], [60, 60, 60]),
+            ('white', [230, 230, 230], [255, 255, 255]),
+            ('desk', [70, 50, 40], [100, 80, 60]),
+        ]
+        bg_type, min_color, max_color = random.choice(background_types)
+        bg_color = np.array([
+            np.random.randint(min_color[0], max_color[0]),
+            np.random.randint(min_color[1], max_color[1]),
+            np.random.randint(min_color[2], max_color[2])
+        ])
+        canvas = np.full((canvas_h, canvas_w, 3), bg_color, dtype=np.uint8)
+        noise = np.random.normal(0, 15, canvas.shape)
+        canvas = np.clip(canvas + noise, 0, 255).astype(np.uint8)
+    else:
+        # Use random background image
+        bg_files = list(Path(backgrounds_dir).glob('*.jpg')) + list(Path(backgrounds_dir).glob('*.png'))
+        if bg_files:
+            bg_path = random.choice(bg_files)
+            canvas = cv2.imread(str(bg_path))
+            canvas = cv2.resize(canvas, (canvas_w, canvas_h))
+        else:
+            # Fallback
+            canvas = np.full((canvas_h, canvas_w, 3), [180, 180, 180], dtype=np.uint8)
+
+    # Calculate position to place card (centered with small random offset)
+    max_offset_x = (canvas_w - new_card_w) // 2
+    max_offset_y = (canvas_h - new_card_h) // 2
+
+    # Center position with slight random offset (±20% of available space)
+    offset_x = (canvas_w - new_card_w) // 2 + random.randint(-max_offset_x // 5, max_offset_x // 5)
+    offset_y = (canvas_h - new_card_h) // 2 + random.randint(-max_offset_y // 5, max_offset_y // 5)
+
+    # Ensure card stays within bounds
+    offset_x = max(0, min(offset_x, canvas_w - new_card_w))
+    offset_y = max(0, min(offset_y, canvas_h - new_card_h))
+
+    # Create mask for card (non-black pixels)
+    mask = np.any(small_card != [0, 0, 0], axis=-1).astype(np.uint8) * 255
+
+    # Place card on canvas
+    y1, y2 = offset_y, offset_y + new_card_h
+    x1, x2 = offset_x, offset_x + new_card_w
+
+    roi = canvas[y1:y2, x1:x2]
+    mask_3ch = np.stack([mask] * 3, axis=-1) / 255.0
+
+    blended = (small_card * mask_3ch + roi * (1 - mask_3ch)).astype(np.uint8)
+    canvas[y1:y2, x1:x2] = blended
+
+    return canvas
+
 def process_card_image(image_path, output_dir, card_id, augmentation_pipeline):
     """Process a single card image with advanced augmentation"""
 
@@ -211,9 +302,15 @@ def process_card_image(image_path, output_dir, card_id, augmentation_pipeline):
             augmented = augmentation_pipeline(image=image)
             augmented_image = augmented['image']
 
-            # Add background to some images (30% chance) - don't overdo it
-            if random.random() < 0.3:
+            # Choose background strategy (40% full scene, 40% edge background, 20% no background)
+            rand = random.random()
+            if rand < 0.4:
+                # Place smaller card in full scene with lots of visible background
+                augmented_image = place_card_in_scene(augmented_image)
+            elif rand < 0.8:
+                # Add background to edges only (card fills frame)
                 augmented_image = add_background(augmented_image)
+            # else: No background (20% of images)
 
             # Save augmented image
             output_path = os.path.join(output_dir, f"{card_id}_aug{i}.png")

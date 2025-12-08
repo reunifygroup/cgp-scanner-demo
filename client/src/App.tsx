@@ -110,35 +110,6 @@ function App() {
         setIsScanning(false);
     };
 
-    // 🔄 Clear result and restart scanning with full reset
-    const scanAgain = async () => {
-        // Clear result
-        setResult(null);
-
-        // Stop and cleanup current scan completely
-        stopScanning();
-
-        // Clear canvas to remove any residual state
-        if (canvasRef.current) {
-            const ctx = canvasRef.current.getContext("2d");
-            if (ctx) {
-                ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-            }
-        }
-
-        // Force TensorFlow.js to cleanup tensors
-        tf.engine().startScope();
-        tf.engine().endScope();
-
-        // Small delay to ensure complete cleanup
-        await new Promise((resolve) => setTimeout(resolve, 100));
-
-        // Log tensor memory for debugging
-        console.log("🔄 Scan reset - Tensors in memory:", tf.memory().numTensors);
-
-        // Start fresh scan
-        startScanning();
-    };
 
     // 🎯 Capture frame and run inference
     const captureAndPredict = async () => {
@@ -195,23 +166,18 @@ function App() {
             tensor.dispose();
             predictions.dispose();
 
-            // High confidence threshold
-            const CONFIDENCE_THRESHOLD = 0.95;
+            // Show result continuously (no threshold) for debugging
+            const cardName = cardId.split("_").slice(1).join(" ");
+            const debugImage = canvas.toDataURL("image/png");
 
-            if (confidence > CONFIDENCE_THRESHOLD) {
-                const cardName = cardId.split("_").slice(1).join(" ");
-                const debugImage = canvas.toDataURL("image/png");
+            setResult({
+                cardId,
+                cardName,
+                confidence: confidence * 100,
+                debugImage,
+            });
 
-                setResult({
-                    cardId,
-                    cardName,
-                    confidence: confidence * 100,
-                    debugImage,
-                });
-
-                console.log("✅ Card detected:", cardId, `${(confidence * 100).toFixed(1)}%`);
-                stopScanning();
-            }
+            // Keep scanning - don't stop (for debugging)
         } catch (err) {
             console.error("Prediction error:", err);
         }
@@ -264,10 +230,10 @@ function App() {
                     </div>
                 )}
 
-                {/* Result display */}
-                {result && (
+                {/* Result display - updates continuously */}
+                {result && isScanning && (
                     <div className="result">
-                        <div className="result-header">Card Detected</div>
+                        <div className="result-header">🔄 Continuous Prediction (Live)</div>
                         <div className="result-content">
                             <div className="card-id">{result.cardId}</div>
                             <div className="card-name">{result.cardName}</div>
@@ -283,7 +249,7 @@ function App() {
                                         src={result.debugImage}
                                         alt="Debug view"
                                         style={{
-                                            border: "1px solid #3a3a3a",
+                                            border: "1px solid #e0e0e0",
                                             borderRadius: "4px",
                                             maxWidth: "200px",
                                             imageRendering: "auto",
@@ -291,10 +257,6 @@ function App() {
                                     />
                                 </div>
                             )}
-
-                            <button onClick={scanAgain} className="btn-primary" style={{ marginTop: "1rem" }}>
-                                Scan Again
-                            </button>
                         </div>
                     </div>
                 )}

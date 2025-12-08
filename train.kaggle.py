@@ -176,17 +176,9 @@ total_train, total_val, class_names_list = create_train_val_split(
 # 🎨 STEP 4: Data Generators with LIGHT Augmentation
 # ============================================================================
 
-# Runtime augmentation - MINIMAL to preserve colors
-train_datagen = ImageDataGenerator(
-    rescale=1./255,
-    rotation_range=10,  # Light rotation for extra variety
-    width_shift_range=0.1,
-    height_shift_range=0.1,
-    brightness_range=[0.95, 1.05],  # VERY subtle - preserve color distinctions
-    zoom_range=0.1,
-    horizontal_flip=False,
-    fill_mode='nearest'
-)
+# NO runtime augmentation - pre-augmented images already have variety
+# Adding more augmentation just confuses the model
+train_datagen = ImageDataGenerator(rescale=1./255)
 
 # Validation with only rescaling (no augmentation)
 val_datagen = ImageDataGenerator(rescale=1./255)
@@ -210,6 +202,8 @@ val_generator = val_datagen.flow_from_directory(
 num_classes = len(train_generator.class_indices)
 print(f"\n📦 Number of card classes: {num_classes}")
 print(f"📋 Classes: {list(train_generator.class_indices.keys())}")
+print(f"📋 Class indices: {train_generator.class_indices}")
+print(f"\n⚠️  NOTE: Keras sorts classes alphabetically. Class 0 may become 'fallback' when model is uncertain.")
 
 # ============================================================================
 # 🧠 STEP 5: Build SMALLER CNN Model (prevents overfitting)
@@ -371,10 +365,17 @@ print(f"   Top-3 Accuracy: {val_top_k*100:.2f}%")
 # Create output directory
 os.makedirs(MODEL_OUTPUT_DIR, exist_ok=True)
 
-# Save class names
-print(f"\n📋 Saving class names: {class_names_list}")
+# Save class names in the EXACT order Keras uses (from train_generator.class_indices)
+# This ensures class_names.json matches the model's output classes
+keras_class_order = [None] * num_classes
+for class_name, class_idx in train_generator.class_indices.items():
+    keras_class_order[class_idx] = class_name
+
+print(f"\n📋 Keras class indices: {train_generator.class_indices}")
+print(f"📋 Saving class names in Keras order: {keras_class_order}")
+
 with open(os.path.join(MODEL_OUTPUT_DIR, 'class_names.json'), 'w') as f:
-    json.dump(class_names_list, f, indent=2)
+    json.dump(keras_class_order, f, indent=2)
 
 # Convert to TensorFlow.js format (Graph Model - better Keras 3.x compatibility)
 print("\n📦 Converting to TensorFlow.js format...")
