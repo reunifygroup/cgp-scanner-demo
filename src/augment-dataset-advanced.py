@@ -1,10 +1,15 @@
 """
-Advanced Card Dataset Augmentation for Production-Scale Recognition
-Uses sophisticated transforms to simulate real camera conditions
+Simplified, realistic card dataset augmentation for webcam-style recognition.
+
+Key ideas vs previous version:
+- Gentler geometric + color augmentations (better for tiny datasets).
+- Two background modes:
+    * place_card_in_scene: card smaller in frame, lots of visible table/background.
+    * add_background: card big, small margin of background around edges.
+- No reliance on black background pixels.
 """
 
 import albumentations as A
-from albumentations.core.transforms_interface import ImageOnlyTransform
 import cv2
 import numpy as np
 import os
@@ -13,277 +18,228 @@ import random
 import shutil
 
 # Configuration
-IMAGES_DIR = 'images'
-OUTPUT_DIR = 'training-data'
-AUGMENTATIONS_PER_IMAGE = 100  # Generate 50 high-quality variations per card
+IMAGES_DIR = "images"        # input: one or more base images per card
+OUTPUT_DIR = "training-data" # output for training script
+AUGMENTATIONS_PER_IMAGE = 50  # how many augmented variants per input image
 
-# Card dimensions (target size for training) - Optimized for speed/quality balance
+# Card dimensions (target size for training)
 TARGET_WIDTH = 320
 TARGET_HEIGHT = 440
 
-# Custom edge-only dropout transform
-class EdgeCoarseDropout(ImageOnlyTransform):
-    """CoarseDropout that only places holes on the edges (not center)"""
 
-    def __init__(
-        self,
-        max_holes=3,
-        max_height=50,
-        max_width=50,
-        min_holes=1,
-        min_height=20,
-        min_width=20,
-        fill_value=0,
-        edge_margin=0.25,  # Only place holes in outer 25% of image
-        always_apply=False,
-        p=0.5
-    ):
-        super().__init__(always_apply, p)
-        self.max_holes = max_holes
-        self.max_height = max_height
-        self.max_width = max_width
-        self.min_holes = min_holes
-        self.min_height = min_height
-        self.min_width = min_width
-        self.fill_value = fill_value
-        self.edge_margin = edge_margin
-
-    def apply(self, img, **params):
-        height, width = img.shape[:2]
-        holes = random.randint(self.min_holes, self.max_holes)
-
-        for _ in range(holes):
-            hole_height = random.randint(self.min_height, self.max_height)
-            hole_width = random.randint(self.min_width, self.max_width)
-
-            # Randomly choose which edge: 0=top, 1=right, 2=bottom, 3=left
-            edge = random.randint(0, 3)
-
-            if edge == 0:  # Top edge
-                y1 = random.randint(0, int(height * self.edge_margin))
-                x1 = random.randint(0, max(1, width - hole_width))
-            elif edge == 1:  # Right edge
-                y1 = random.randint(0, max(1, height - hole_height))
-                x1 = random.randint(int(width * (1 - self.edge_margin)), max(1, width - hole_width))
-            elif edge == 2:  # Bottom edge
-                y1 = random.randint(int(height * (1 - self.edge_margin)), max(1, height - hole_height))
-                x1 = random.randint(0, max(1, width - hole_width))
-            else:  # Left edge
-                y1 = random.randint(0, max(1, height - hole_height))
-                x1 = random.randint(0, int(width * self.edge_margin))
-
-            y2 = min(y1 + hole_height, height)
-            x2 = min(x1 + hole_width, width)
-
-            img[y1:y2, x1:x2] = self.fill_value
-
-        return img
-
-def create_advanced_augmentation_pipeline():
+# -----------------------------------------------------------------------------
+# 1. Augmentation pipeline (simplified & more realistic)
+# -----------------------------------------------------------------------------
+def create_augmentation_pipeline():
     """
-    Create production-quality augmentation pipeline that simulates
-    real-world camera conditions from flat card images
+    Create a realistic augmentation pipeline that stays reasonably close to
+    real phone camera conditions, without going overboard.
+
+    This is intentionally simpler than the previous "advanced" pipeline:
+    - Small rotations / translations / scale changes.
+    - Occasional mild blur.
+    - Mild brightness/contrast changes.
+    - Light noise.
     """
 
-    # Realistic camera augmentation - balanced approach
-    return A.Compose([
-        # 1. GEOMETRIC TRANSFORMS - Different viewing angles
-        A.OneOf([
-            A.Perspective(scale=(0.05, 0.15), p=1.0),  # Card at angle
+    return A.Compose(
+        [
+            # Light geometric jitter (no crazy perspective)
             A.Affine(
-                rotate=(-25, 25),
-                shear=(-15, 15),
-                translate_percent={'x': (-0.1, 0.1), 'y': (-0.1, 0.1)},
-                scale=(0.8, 1.2),
-                p=1.0
+                rotate=(-10, 10),
+                shear=(-5, 5),
+                translate_percent={"x": (-0.05, 0.05), "y": (-0.05, 0.05)},
+                scale=(0.9, 1.1),
+                p=0.7,
             ),
-        ], p=0.9),
 
-        # 2. CAMERA BLUR - More frequent, stronger blur for out-of-focus effect
-        A.OneOf([
-            A.GaussianBlur(blur_limit=(3, 9), p=1.0),  # Out of focus
-            A.MotionBlur(blur_limit=7, p=1.0),  # Camera shake
-            A.Defocus(radius=(3, 7), alias_blur=(0.1, 0.3), p=1.0),  # Defocus effect
-        ], p=0.6),  # Increased from 0.3 to 0.6
+            # Mild blur sometimes (out-of-focus / tiny motion)
+            A.OneOf(
+                [
+                    A.GaussianBlur(blur_limit=(3, 5), p=1.0),
+                    A.MotionBlur(blur_limit=5, p=1.0),
+                ],
+                p=0.3,
+            ),
 
-        # 3. SUBTLE COLOR/BRIGHTNESS/CONTRAST - Very conservative
-        A.OneOf([
+            # Subtle brightness / contrast
             A.RandomBrightnessContrast(
-                brightness_limit=0.15,  # ±15% brightness
-                contrast_limit=0.15,    # ±15% contrast
-                p=1.0
+                brightness_limit=0.1,
+                contrast_limit=0.1,
+                p=0.5,
             ),
-            A.HueSaturationValue(
-                hue_shift_limit=5,      # Very minimal hue shift
-                sat_shift_limit=15,     # Slight saturation change
-                val_shift_limit=15,     # Slight brightness
-                p=1.0
-            ),
-        ], p=0.5),  # Apply to 50% of images
 
-        # 4. SENSOR NOISE - Light camera sensor noise
-        A.GaussNoise(var_limit=(10.0, 40.0), p=0.3),
-
-        # 5. EDGE DROPOUT - Partial occlusion (preserves center)
-        EdgeCoarseDropout(
-            max_holes=2,
-            max_height=40,
-            max_width=40,
-            min_holes=1,
-            min_height=20,
-            min_width=20,
-            fill_value=0,
-            edge_margin=0.25,  # Only outer 25%
-            p=0.2
-        ),
-
-    ])
-
-def add_background(card_img, backgrounds_dir='backgrounds'):
-    """
-    Place card on random background to simulate real environment
-    Generates realistic table/surface backgrounds if no images provided
-    """
-    # If no backgrounds provided, create realistic table-like backgrounds
-    if not os.path.exists(backgrounds_dir):
-        # Table/surface colors (browns, grays, whites, blacks)
-        background_types = [
-            ('wood', [101, 67, 33], [139, 90, 43]),      # Brown wood
-            ('table', [180, 180, 180], [220, 220, 220]), # Light gray table
-            ('dark', [20, 20, 20], [60, 60, 60]),        # Dark surface
-            ('white', [230, 230, 230], [255, 255, 255]), # White table
-            ('desk', [70, 50, 40], [100, 80, 60]),       # Dark wood
+            # Light sensor noise
+            A.GaussNoise(var_limit=(5.0, 20.0), p=0.2),
         ]
+    )
 
-        bg_type, min_color, max_color = random.choice(background_types)
 
-        # Random base color within range
-        bg_color = np.array([
+# -----------------------------------------------------------------------------
+# 2. Background helpers
+# -----------------------------------------------------------------------------
+def _generate_table_like_background(height, width):
+    """
+    Generate a simple "table / desk / surface" style background with
+    mild texture and optional gradient.
+    """
+    background_types = [
+        ("wood", [101, 67, 33], [139, 90, 43]),      # Brown wood
+        ("table", [180, 180, 180], [220, 220, 220]), # Light gray table
+        ("dark", [20, 20, 20], [60, 60, 60]),        # Dark surface
+        ("white", [230, 230, 230], [255, 255, 255]), # White table
+        ("desk", [70, 50, 40], [100, 80, 60]),       # Dark wood
+    ]
+
+    bg_type, min_color, max_color = random.choice(background_types)
+
+    # Random base color within range
+    bg_color = np.array(
+        [
             np.random.randint(min_color[0], max_color[0]),
             np.random.randint(min_color[1], max_color[1]),
-            np.random.randint(min_color[2], max_color[2])
-        ])
+            np.random.randint(min_color[2], max_color[2]),
+        ]
+    )
 
-        # Create base background
-        background = np.full(card_img.shape, bg_color, dtype=np.uint8)
+    background = np.full((height, width, 3), bg_color, dtype=np.uint8)
 
-        # Add realistic texture noise (grain, imperfections)
-        noise = np.random.normal(0, 15, card_img.shape)  # Subtle texture
-        background = np.clip(background + noise, 0, 255).astype(np.uint8)
+    # Add subtle texture noise
+    noise = np.random.normal(0, 15, background.shape)
+    background = np.clip(background + noise, 0, 255).astype(np.uint8)
 
-        # 30% chance of slight gradient (lighting variation)
-        if random.random() < 0.3:
-            h, w = background.shape[:2]
-            gradient = np.linspace(-20, 20, h)[:, np.newaxis]  # Shape: (h, 1)
-            gradient = np.tile(gradient, (1, w))  # Shape: (h, w)
-            gradient = np.stack([gradient] * 3, axis=-1)  # Shape: (h, w, 3)
-            background = np.clip(background + gradient, 0, 255).astype(np.uint8)
-    else:
-        # Use random background image
-        bg_files = list(Path(backgrounds_dir).glob('*.jpg')) + \
-                   list(Path(backgrounds_dir).glob('*.png'))
+    # 30% chance of a vertical gradient to simulate lighting
+    if random.random() < 0.3:
+        gradient = np.linspace(-20, 20, height)[:, np.newaxis]
+        gradient = np.tile(gradient, (1, width))
+        gradient = np.stack([gradient] * 3, axis=-1)
+        background = np.clip(background + gradient, 0, 255).astype(np.uint8)
+
+    return background
+
+
+def _load_or_generate_background(height, width, backgrounds_dir="backgrounds"):
+    """
+    Either load a random background image from a folder, or generate a
+    synthetic table-like surface if none exist.
+    """
+    if os.path.exists(backgrounds_dir):
+        bg_files = list(Path(backgrounds_dir).glob("*.jpg")) + list(
+            Path(backgrounds_dir).glob("*.png")
+        )
         if bg_files:
             bg_path = random.choice(bg_files)
             background = cv2.imread(str(bg_path))
-            background = cv2.resize(background, (card_img.shape[1], card_img.shape[0]))
-        else:
-            return card_img
+            if background is not None:
+                background = cv2.resize(background, (width, height))
+                return background
 
-    # Create mask for card (assume card is centered)
-    mask = np.any(card_img != [0, 0, 0], axis=-1).astype(np.uint8) * 255
+    # Fallback: synthetic background
+    return _generate_table_like_background(height, width)
 
-    # Blend card onto background
-    mask_3ch = np.stack([mask] * 3, axis=-1) / 255.0
-    result = (card_img * mask_3ch + background * (1 - mask_3ch)).astype(np.uint8)
 
-    return result
-
-def place_card_in_scene(card_img, backgrounds_dir='backgrounds'):
+def add_background(card_img, backgrounds_dir="backgrounds"):
     """
-    Place card (smaller) on a larger background to show full card with surrounding area.
-    Simulates real camera view where card is in center with visible background.
+    Place the card on a background where the card is large and fills most
+    of the frame, with a small visible margin around it.
+
+    This is meant to simulate the "card fills the scan window" scenario.
     """
     card_h, card_w = card_img.shape[:2]
 
-    # Random scale: card takes 40-70% of the frame width
-    scale_factor = random.uniform(0.4, 0.7)
-    new_card_w = int(card_w * scale_factor)
-    new_card_h = int(card_h * scale_factor)
+    # Create background canvas same size as target/card
+    canvas = _load_or_generate_background(card_h, card_w, backgrounds_dir)
 
-    # Resize card to be smaller
-    small_card = cv2.resize(card_img, (new_card_w, new_card_h))
+    # Card should take ~85–95% of the frame width
+    scale_factor = random.uniform(0.85, 0.95)
+    new_w = int(card_w * scale_factor)
+    new_h = int(card_h * scale_factor)
 
-    # Create larger canvas (same aspect ratio as target, but we'll work with card dimensions)
-    canvas_w = card_w
-    canvas_h = card_h
+    resized_card = cv2.resize(card_img, (new_w, new_h))
 
-    # Generate or load background for the canvas
-    if not os.path.exists(backgrounds_dir):
-        # Generate table-like background
-        background_types = [
-            ('wood', [101, 67, 33], [139, 90, 43]),
-            ('table', [180, 180, 180], [220, 220, 220]),
-            ('dark', [20, 20, 20], [60, 60, 60]),
-            ('white', [230, 230, 230], [255, 255, 255]),
-            ('desk', [70, 50, 40], [100, 80, 60]),
-        ]
-        bg_type, min_color, max_color = random.choice(background_types)
-        bg_color = np.array([
-            np.random.randint(min_color[0], max_color[0]),
-            np.random.randint(min_color[1], max_color[1]),
-            np.random.randint(min_color[2], max_color[2])
-        ])
-        canvas = np.full((canvas_h, canvas_w, 3), bg_color, dtype=np.uint8)
-        noise = np.random.normal(0, 15, canvas.shape)
-        canvas = np.clip(canvas + noise, 0, 255).astype(np.uint8)
-    else:
-        # Use random background image
-        bg_files = list(Path(backgrounds_dir).glob('*.jpg')) + list(Path(backgrounds_dir).glob('*.png'))
-        if bg_files:
-            bg_path = random.choice(bg_files)
-            canvas = cv2.imread(str(bg_path))
-            canvas = cv2.resize(canvas, (canvas_w, canvas_h))
-        else:
-            # Fallback
-            canvas = np.full((canvas_h, canvas_w, 3), [180, 180, 180], dtype=np.uint8)
+    # Center with small random jitter
+    max_offset_x = card_w - new_w
+    max_offset_y = card_h - new_h
 
-    # Calculate position to place card (centered with small random offset)
-    max_offset_x = (canvas_w - new_card_w) // 2
-    max_offset_y = (canvas_h - new_card_h) // 2
+    offset_x = max_offset_x // 2
+    offset_y = max_offset_y // 2
 
-    # Center position with slight random offset (±20% of available space)
-    offset_x = (canvas_w - new_card_w) // 2 + random.randint(-max_offset_x // 5, max_offset_x // 5)
-    offset_y = (canvas_h - new_card_h) // 2 + random.randint(-max_offset_y // 5, max_offset_y // 5)
+    jitter_x = int(max_offset_x * 0.2) if max_offset_x > 0 else 0
+    jitter_y = int(max_offset_y * 0.2) if max_offset_y > 0 else 0
 
-    # Ensure card stays within bounds
-    offset_x = max(0, min(offset_x, canvas_w - new_card_w))
-    offset_y = max(0, min(offset_y, canvas_h - new_card_h))
+    offset_x += random.randint(-jitter_x, jitter_x) if jitter_x > 0 else 0
+    offset_y += random.randint(-jitter_y, jitter_y) if jitter_y > 0 else 0
 
-    # Create mask for card (non-black pixels)
-    mask = np.any(small_card != [0, 0, 0], axis=-1).astype(np.uint8) * 255
+    offset_x = max(0, min(offset_x, card_w - new_w))
+    offset_y = max(0, min(offset_y, card_h - new_h))
 
-    # Place card on canvas
-    y1, y2 = offset_y, offset_y + new_card_h
-    x1, x2 = offset_x, offset_x + new_card_w
+    y1, y2 = offset_y, offset_y + new_h
+    x1, x2 = offset_x, offset_x + new_w
 
-    roi = canvas[y1:y2, x1:x2]
-    mask_3ch = np.stack([mask] * 3, axis=-1) / 255.0
-
-    blended = (small_card * mask_3ch + roi * (1 - mask_3ch)).astype(np.uint8)
-    canvas[y1:y2, x1:x2] = blended
+    # Paste card on background (no mask needed, full rectangle)
+    canvas[y1:y2, x1:x2] = resized_card
 
     return canvas
 
-def process_card_image(image_path, output_dir, card_id, augmentation_pipeline):
-    """Process a single card image with advanced augmentation"""
 
-    # Read image
+def place_card_in_scene(card_img, backgrounds_dir="backgrounds"):
+    """
+    Place card smaller on a background, so the frame includes a lot of the
+    surroundings. This simulates a real camera view where the card is in the
+    middle but not filling the entire image.
+    """
+    card_h, card_w = card_img.shape[:2]
+
+    # Random scale: card takes 60–90% of the frame width (smaller than add_background)
+    scale_factor = random.uniform(0.6, 0.9)
+    new_card_w = int(card_w * scale_factor)
+    new_card_h = int(card_h * scale_factor)
+
+    small_card = cv2.resize(card_img, (new_card_w, new_card_h))
+
+    # Canvas same size as target/card
+    canvas_w = card_w
+    canvas_h = card_h
+
+    canvas = _load_or_generate_background(canvas_h, canvas_w, backgrounds_dir)
+
+    # Center position with small random offset
+    max_offset_x = canvas_w - new_card_w
+    max_offset_y = canvas_h - new_card_h
+
+    base_x = max_offset_x // 2
+    base_y = max_offset_y // 2
+
+    jitter_x = int(max_offset_x * 0.4) if max_offset_x > 0 else 0
+    jitter_y = int(max_offset_y * 0.4) if max_offset_y > 0 else 0
+
+    offset_x = base_x + (random.randint(-jitter_x, jitter_x) if jitter_x > 0 else 0)
+    offset_y = base_y + (random.randint(-jitter_y, jitter_y) if jitter_y > 0 else 0)
+
+    offset_x = max(0, min(offset_x, canvas_w - new_card_w))
+    offset_y = max(0, min(offset_y, canvas_h - new_card_h))
+
+    y1, y2 = offset_y, offset_y + new_card_h
+    x1, x2 = offset_x, offset_x + new_card_w
+
+    canvas[y1:y2, x1:x2] = small_card
+
+    return canvas
+
+
+# -----------------------------------------------------------------------------
+# 3. Per-card processing
+# -----------------------------------------------------------------------------
+def process_card_image(image_path, output_dir, card_id, augmentation_pipeline):
+    """Process a single card base image with augmentation + backgrounds."""
+
+    # Read base image
     image = cv2.imread(str(image_path))
     if image is None:
         print(f"   ⚠️  Could not read {image_path}")
         return 0
 
-    # Resize to target dimensions
+    # Resize to target dimensions once
     image = cv2.resize(image, (TARGET_WIDTH, TARGET_HEIGHT))
 
     # Create output directory
@@ -293,24 +249,21 @@ def process_card_image(image_path, output_dir, card_id, augmentation_pipeline):
     original_path = os.path.join(output_dir, f"{card_id}_original.png")
     cv2.imwrite(original_path, image)
 
-    # Generate augmented versions
-    success_count = 1  # Count original
+    success_count = 1  # counting original
 
     for i in range(AUGMENTATIONS_PER_IMAGE):
         try:
-            # Apply augmentation pipeline
+            # Apply core augmentations
             augmented = augmentation_pipeline(image=image)
-            augmented_image = augmented['image']
+            augmented_image = augmented["image"]
 
-            # Choose background strategy (40% full scene, 40% edge background, 20% no background)
-            rand = random.random()
-            if rand < 0.4:
-                # Place smaller card in full scene with lots of visible background
+            # Choose background strategy:
+            #  - ~50%: card smaller in a broader scene
+            #  - ~50%: card big with small margin of background
+            if random.random() < 0.5:
                 augmented_image = place_card_in_scene(augmented_image)
-            elif rand < 0.8:
-                # Add background to edges only (card fills frame)
+            else:
                 augmented_image = add_background(augmented_image)
-            # else: No background (20% of images)
 
             # Save augmented image
             output_path = os.path.join(output_dir, f"{card_id}_aug{i}.png")
@@ -323,64 +276,60 @@ def process_card_image(image_path, output_dir, card_id, augmentation_pipeline):
 
     return success_count
 
+
+# -----------------------------------------------------------------------------
+# 4. Main script
+# -----------------------------------------------------------------------------
 def main():
-    print("🎴 Advanced Card Dataset Augmentation")
+    print("🎴 Card Dataset Augmentation")
     print("=" * 50)
     print("\n✨ Features:")
-    print("   - Perspective transforms (3D card angles)")
-    print("   - Realistic lighting & shadows")
-    print("   - Camera blur & noise")
-    print("   - Partial occlusion simulation")
-    print("   - Background integration")
-    print("\n" + "=" * 50 + "\n")
+    print("   - Gentle affine transforms (rotation, scale, small shifts)")
+    print("   - Mild blur and noise (camera-like)")
+    print("   - Realistic table/desk backgrounds")
+    print("   - Card placed big or small in scene\n")
+    print("=" * 50 + "\n")
 
-    # Clean up previous training data if exists
+    # Clean previous training data
     if os.path.exists(OUTPUT_DIR):
         print("🧹 Removing previous training-data directory...")
         shutil.rmtree(OUTPUT_DIR)
         print("✅ Previous data cleaned\n")
 
     # Create augmentation pipeline
-    augmentation_pipeline = create_advanced_augmentation_pipeline()
+    augmentation_pipeline = create_augmentation_pipeline()
 
-    # Create output directory
+    # Ensure output directory
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-    # Process all sets
     images_path = Path(IMAGES_DIR)
     if not images_path.exists():
         print(f"❌ Error: {IMAGES_DIR} directory not found!")
         return
 
-    total_cards = 0
-    total_images = 0
-
-    # Get all images directly in images/ directory
-    card_images = list(images_path.glob('*.png')) + list(images_path.glob('*.jpg'))
-
+    # Collect all base images in images/
+    card_images = list(images_path.glob("*.png")) + list(images_path.glob("*.jpg"))
     if not card_images:
         print("❌ No images found in images/ directory!")
         print("   Please add .png or .jpg files directly to the images/ folder")
         return
 
-    print(f"📦 Processing {len(card_images)} cards\n")
+    print(f"📦 Processing {len(card_images)} base images (cards)\n")
 
-    # Create output directory
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    total_cards = 0
+    total_images = 0
 
-    # Process each card
+    # Process each base image (each is treated as one card ID)
     for img_path in card_images:
-        # Extract card ID from filename
-        card_id = img_path.stem
+        card_id = img_path.stem  # filename without extension
 
         print(f"  🎴 Augmenting: {img_path.name}...")
 
-        # Process card
         count = process_card_image(
             img_path,
             OUTPUT_DIR,
             card_id,
-            augmentation_pipeline
+            augmentation_pipeline,
         )
 
         print(f"    ✅ Generated {count} images")
@@ -389,15 +338,18 @@ def main():
 
     print("\n" + "=" * 50)
     print("✅ Augmentation complete!")
-    print(f"📊 Total cards processed: {total_cards}")
-    print(f"📸 Total training images: {total_images}")
+    print(f"📊 Total distinct base images (cards) processed: {total_cards}")
+    print(f"📸 Total training images (including originals): {total_images}")
     print(f"💾 Output directory: {OUTPUT_DIR}")
     print("\n📋 Next steps:")
     print("   1. Zip the training-data directory")
-    print("   2. Upload to Google Colab")
-    print("   3. Train with train_card_classifier.py")
-    print("\n💡 This augmentation simulates real camera conditions!")
-    print("   Works with official card images - no physical photos needed")
+    print("   2. Upload to Kaggle / Colab")
+    print("   3. Train with your train_card_classifier.py")
+    print("\n💡 Tip:")
+    print("   Add multiple real photos per card into images/ to dramatically")
+    print("   improve realism. Each file in images/ becomes its own base.")
+    print("=" * 50)
+
 
 if __name__ == "__main__":
     main()
