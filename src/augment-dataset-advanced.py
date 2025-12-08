@@ -17,9 +17,9 @@ IMAGES_DIR = 'images'
 OUTPUT_DIR = 'training-data'
 AUGMENTATIONS_PER_IMAGE = 50  # Generate 50 high-quality variations per card
 
-# Card dimensions (target size for training)
-TARGET_WIDTH = 400
-TARGET_HEIGHT = 560
+# Card dimensions (target size for training) - Optimized for speed/quality balance
+TARGET_WIDTH = 320
+TARGET_HEIGHT = 440
 
 # Custom edge-only dropout transform
 class EdgeCoarseDropout(ImageOnlyTransform):
@@ -107,10 +107,10 @@ def create_advanced_augmentation_pipeline():
             ),
             A.RandomToneCurve(scale=0.3, p=1.0),  # Natural lighting variation
             A.HueSaturationValue(
-                hue_shift_limit=5,   # Reduced from 10 - preserve color differences
-                sat_shift_limit=15,  # Reduced from 30 - keep colors distinct
-                val_shift_limit=15,  # Reduced from 30 - preserve brightness
-                p=0.8                # Reduced from 1.0 - not every image
+                hue_shift_limit=3,   # Very conservative - preserve blue/green/red differences
+                sat_shift_limit=10,  # Light saturation only - keep colors distinct
+                val_shift_limit=15,  # Brightness okay to vary
+                p=0.5                # Apply less frequently - preserve original colors
             ),
         ], p=0.8),
 
@@ -156,13 +156,42 @@ def create_advanced_augmentation_pipeline():
 def add_background(card_img, backgrounds_dir='backgrounds'):
     """
     Place card on random background to simulate real environment
+    Generates realistic table/surface backgrounds if no images provided
     """
-    # If no backgrounds provided, create colored noise background
+    # If no backgrounds provided, create realistic table-like backgrounds
     if not os.path.exists(backgrounds_dir):
-        bg_color = np.random.randint(50, 200, 3)
-        noise = np.random.normal(0, 30, card_img.shape)
+        # Table/surface colors (browns, grays, whites, blacks)
+        background_types = [
+            ('wood', [101, 67, 33], [139, 90, 43]),      # Brown wood
+            ('table', [180, 180, 180], [220, 220, 220]), # Light gray table
+            ('dark', [20, 20, 20], [60, 60, 60]),        # Dark surface
+            ('white', [230, 230, 230], [255, 255, 255]), # White table
+            ('desk', [70, 50, 40], [100, 80, 60]),       # Dark wood
+        ]
+
+        bg_type, min_color, max_color = random.choice(background_types)
+
+        # Random base color within range
+        bg_color = np.array([
+            np.random.randint(min_color[0], max_color[0]),
+            np.random.randint(min_color[1], max_color[1]),
+            np.random.randint(min_color[2], max_color[2])
+        ])
+
+        # Create base background
         background = np.full(card_img.shape, bg_color, dtype=np.uint8)
+
+        # Add realistic texture noise (grain, imperfections)
+        noise = np.random.normal(0, 15, card_img.shape)  # Subtle texture
         background = np.clip(background + noise, 0, 255).astype(np.uint8)
+
+        # 30% chance of slight gradient (lighting variation)
+        if random.random() < 0.3:
+            h, w = background.shape[:2]
+            gradient = np.linspace(-20, 20, h)[:, np.newaxis]  # Shape: (h, 1)
+            gradient = np.tile(gradient, (1, w))  # Shape: (h, w)
+            gradient = np.stack([gradient] * 3, axis=-1)  # Shape: (h, w, 3)
+            background = np.clip(background + gradient, 0, 255).astype(np.uint8)
     else:
         # Use random background image
         bg_files = list(Path(backgrounds_dir).glob('*.jpg')) + \
@@ -211,8 +240,8 @@ def process_card_image(image_path, output_dir, card_id, augmentation_pipeline):
             augmented = augmentation_pipeline(image=image)
             augmented_image = augmented['image']
 
-            # Optionally add background (20% chance)
-            if random.random() < 0.2:
+            # Add background to most images (70% chance) - matches real camera conditions
+            if random.random() < 0.7:
                 augmented_image = add_background(augmented_image)
 
             # Save augmented image

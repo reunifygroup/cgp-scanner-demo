@@ -37,8 +37,8 @@ function App() {
                 const model = await tf.loadGraphModel("/model/model.json");
                 modelRef.current = model;
 
-                // Warm up the model (portrait: height=312, width=224)
-                const dummyInput = tf.zeros([1, 312, 224, 3]); // [batch, height, width, channels]
+                // Warm up the model (portrait: height=440, width=320)
+                const dummyInput = tf.zeros([1, 440, 320, 3]); // [batch, height, width, channels]
                 model.predict(dummyInput);
                 dummyInput.dispose();
 
@@ -152,15 +152,15 @@ function App() {
 
         try {
             // Set canvas size to model input size (portrait card)
-            canvas.width = 224;
-            canvas.height = 312;
+            canvas.width = 320;
+            canvas.height = 440;
 
-            // Resize full camera frame to 224×312 (no cropping)
+            // Resize full camera frame to 320×440 (no cropping)
             // Camera is already card-shaped (0.72 aspect ratio)
-            context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, 224, 312);
+            context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, 320, 440);
 
             // Get image data and convert to tensor
-            const imageData = context.getImageData(0, 0, 224, 312);
+            const imageData = context.getImageData(0, 0, 320, 440);
 
             // Convert to tensor and normalize
             const tensor = tf.tidy(() => {
@@ -289,7 +289,7 @@ function App() {
                             {/* Debug: Show the actual image sent to AI */}
                             {result.debugImage && (
                                 <div style={{ marginTop: "1rem" }}>
-                                    <div style={{ fontSize: "0.9rem", color: "#808080", marginBottom: "0.5rem" }}>Image sent to AI (224×312):</div>
+                                    <div style={{ fontSize: "0.9rem", color: "#808080", marginBottom: "0.5rem" }}>Image sent to AI (320×440):</div>
                                     <img
                                         src={result.debugImage}
                                         alt="Debug view"
@@ -297,7 +297,7 @@ function App() {
                                             border: "1px solid #3a3a3a",
                                             borderRadius: "4px",
                                             maxWidth: "200px",
-                                            imageRendering: "pixelated",
+                                            imageRendering: "auto",
                                         }}
                                     />
                                 </div>
