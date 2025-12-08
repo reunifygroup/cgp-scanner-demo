@@ -176,13 +176,13 @@ total_train, total_val, class_names_list = create_train_val_split(
 # 🎨 STEP 4: Data Generators with LIGHT Augmentation
 # ============================================================================
 
-# Runtime augmentation
+# Runtime augmentation - MINIMAL to preserve colors
 train_datagen = ImageDataGenerator(
     rescale=1./255,
     rotation_range=10,  # Light rotation for extra variety
     width_shift_range=0.1,
     height_shift_range=0.1,
-    brightness_range=[0.85, 1.15],  # Subtle brightness only
+    brightness_range=[0.95, 1.05],  # VERY subtle - preserve color distinctions
     zoom_range=0.1,
     horizontal_flip=False,
     fill_mode='nearest'
@@ -421,7 +421,7 @@ print("3. Load model in React app with TensorFlow.js")
 print("\n📊 Model Details:")
 print(f"- Classes: {num_classes} cards")
 print(f"- Val Accuracy: {val_accuracy*100:.2f}%")
-print(f"- Input size: 224x224")
+print(f"- Input size: 320×440 (portrait card)")
 print("\n⚠️  IMPORTANT: For production use, you need:")
 print("   - At least 10-20 REAL photos per card (different angles/lighting)")
 print("   - Not just augmentations of 1 image per card")

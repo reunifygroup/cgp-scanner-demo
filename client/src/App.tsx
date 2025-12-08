@@ -33,11 +33,11 @@ function App() {
                 const classNamesResponse = await fetch("/model/class_names.json");
                 classNamesRef.current = await classNamesResponse.json();
 
-                // Load Graph Model (Keras 3.x compatible)
+                // Load classification model
                 const model = await tf.loadGraphModel("/model/model.json");
                 modelRef.current = model;
 
-                // Warm up the model (portrait: height=440, width=320)
+                // Warm up model (portrait: height=440, width=320)
                 const dummyInput = tf.zeros([1, 440, 320, 3]); // [batch, height, width, channels]
                 model.predict(dummyInput);
                 dummyInput.dispose();
@@ -155,8 +155,7 @@ function App() {
             canvas.width = 320;
             canvas.height = 440;
 
-            // Resize full camera frame to 320×440 (no cropping)
-            // Camera is already card-shaped (0.72 aspect ratio)
+            // Resize full camera frame to 320×440
             context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, 320, 440);
 
             // Get image data and convert to tensor
@@ -164,52 +163,43 @@ function App() {
 
             // Convert to tensor and normalize
             const tensor = tf.tidy(() => {
-                // Convert to tensor
                 const imageTensor = tf.browser.fromPixels(imageData);
-
-                // Normalize to [0, 1]
                 const normalized = imageTensor.div(255.0);
-
-                // Add batch dimension
                 const batched = normalized.expandDims(0);
-
                 return batched;
             });
 
-            // Run inference
+            // Run classification
             const predictions = modelRef.current.predict(tensor) as tf.Tensor;
             const predArray = await predictions.data();
 
             // Get top prediction
             const maxIndex = predArray.indexOf(Math.max(...Array.from(predArray)));
             const confidence = predArray[maxIndex];
+            const cardId = classNamesRef.current[maxIndex];
 
-            // Debug: Show all predictions and memory
+            // Debug: Show all predictions
             console.log("Predictions:", {
+                cardId,
                 confidence: (confidence * 100).toFixed(1) + "%",
-                card: classNamesRef.current[maxIndex],
-                tensors: tf.memory().numTensors, // Monitor tensor count
+                tensors: tf.memory().numTensors,
                 allConfidences: Array.from(predArray)
                     .map((p, i) => ({
                         card: classNamesRef.current[i],
                         conf: (p * 100).toFixed(1) + "%",
                     }))
-                    .sort((a, b) => parseFloat(b.conf) - parseFloat(a.conf)), // Show all 4 cards
+                    .sort((a, b) => parseFloat(b.conf) - parseFloat(a.conf)),
             });
 
-            // Clean up tensors immediately
+            // Clean up tensors
             tensor.dispose();
             predictions.dispose();
 
-            // Simple high-confidence threshold
-            const CONFIDENCE_THRESHOLD = 0.7; // Lock on any card with >80% confidence
+            // High confidence threshold
+            const CONFIDENCE_THRESHOLD = 0.95;
 
-            // Lock on first high-confidence detection
             if (confidence > CONFIDENCE_THRESHOLD) {
-                const cardId = classNamesRef.current[maxIndex];
                 const cardName = cardId.split("_").slice(1).join(" ");
-
-                // Capture the canvas as image for debugging
                 const debugImage = canvas.toDataURL("image/png");
 
                 setResult({
@@ -219,8 +209,7 @@ function App() {
                     debugImage,
                 });
 
-                console.log("Card detected:", cardId, `${(confidence * 100).toFixed(1)}%`);
-                console.log("Debug image saved - check result display");
+                console.log("✅ Card detected:", cardId, `${(confidence * 100).toFixed(1)}%`);
                 stopScanning();
             }
         } catch (err) {

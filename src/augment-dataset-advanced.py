@@ -85,10 +85,12 @@ def create_advanced_augmentation_pipeline():
     real-world camera conditions from flat card images
     """
 
+    # SIMPLIFIED: Only geometric transforms and minimal camera effects
+    # NO color augmentation - let runtime training handle that
     return A.Compose([
-        # 1. PERSPECTIVE & GEOMETRY - Simulate card at different angles
+        # 1. GEOMETRIC TRANSFORMS - Different viewing angles
         A.OneOf([
-            A.Perspective(scale=(0.05, 0.15), p=1.0),  # Card viewed at angle
+            A.Perspective(scale=(0.05, 0.15), p=1.0),  # Card at angle
             A.Affine(
                 rotate=(-25, 25),
                 shear=(-15, 15),
@@ -98,56 +100,25 @@ def create_advanced_augmentation_pipeline():
             ),
         ], p=0.9),
 
-        # 2. REALISTIC LIGHTING - Simulate different lighting conditions
+        # 2. LIGHT CAMERA BLUR - Simulate focus issues (NO color changes)
         A.OneOf([
-            A.RandomBrightnessContrast(
-                brightness_limit=0.3,
-                contrast_limit=0.3,
-                p=1.0
-            ),
-            A.RandomToneCurve(scale=0.3, p=1.0),  # Natural lighting variation
-            A.HueSaturationValue(
-                hue_shift_limit=3,   # Very conservative - preserve blue/green/red differences
-                sat_shift_limit=10,  # Light saturation only - keep colors distinct
-                val_shift_limit=15,  # Brightness okay to vary
-                p=0.5                # Apply less frequently - preserve original colors
-            ),
-        ], p=0.8),
-
-        # 3. SHADOWS & HIGHLIGHTS - Simulate uneven lighting
-        A.RandomBrightnessContrast(
-            brightness_limit=(-0.2, 0.3),
-            contrast_limit=0.2,
-            p=0.4
-        ),
-
-        # 4. CAMERA EFFECTS - Simulate phone camera issues
-        A.OneOf([
-            A.GaussianBlur(blur_limit=(3, 7), p=1.0),  # Focus issues
-            A.MotionBlur(blur_limit=7, p=1.0),  # Camera shake
-            A.GaussNoise(var_limit=(10.0, 50.0), p=1.0),  # Sensor noise
-            A.ISONoise(color_shift=(0.01, 0.05), intensity=(0.1, 0.5), p=1.0),
+            A.GaussianBlur(blur_limit=(3, 5), p=1.0),  # Light blur
+            A.MotionBlur(blur_limit=5, p=1.0),  # Camera shake
         ], p=0.3),
 
-        # 5. EXPOSURE & WHITE BALANCE (removed extreme color transforms)
-        A.OneOf([
-            A.RandomGamma(gamma_limit=(80, 120), p=1.0),
-            A.CLAHE(clip_limit=4.0, p=1.0),  # Contrast enhancement
-        ], p=0.3),
+        # 3. LIGHT NOISE - Sensor noise (NO color shifts)
+        A.GaussNoise(var_limit=(10.0, 30.0), p=0.2),
 
-        # 7. COMPRESSION ARTIFACTS - Simulate compressed images
-        A.ImageCompression(quality_lower=60, quality_upper=100, p=0.3),
-
-        # 8. EDGE DROPOUT - Only on borders, preserves center features
+        # 4. EDGE DROPOUT - Partial occlusion (preserves center)
         EdgeCoarseDropout(
-            max_holes=3,
-            max_height=50,
-            max_width=50,
+            max_holes=2,
+            max_height=40,
+            max_width=40,
             min_holes=1,
             min_height=20,
             min_width=20,
             fill_value=0,
-            edge_margin=0.25,  # Only outer 25% of image (edges)
+            edge_margin=0.25,  # Only outer 25%
             p=0.2
         ),
 
@@ -240,8 +211,8 @@ def process_card_image(image_path, output_dir, card_id, augmentation_pipeline):
             augmented = augmentation_pipeline(image=image)
             augmented_image = augmented['image']
 
-            # Add background to most images (70% chance) - matches real camera conditions
-            if random.random() < 0.7:
+            # Add background to some images (30% chance) - don't overdo it
+            if random.random() < 0.3:
                 augmented_image = add_background(augmented_image)
 
             # Save augmented image
