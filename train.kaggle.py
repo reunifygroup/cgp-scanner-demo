@@ -176,10 +176,16 @@ total_train, total_val, class_names_list = create_train_val_split(
 # 🎨 STEP 4: Data Generators with LIGHT Augmentation
 # ============================================================================
 
-# No runtime augmentation - pre-augmentation already did heavy lifting
-# Runtime augmentation creates CPU bottleneck and prevents GPU utilization
+# Runtime augmentation
 train_datagen = ImageDataGenerator(
-    rescale=1./255
+    rescale=1./255,
+    rotation_range=10,  # Light rotation for extra variety
+    width_shift_range=0.1,
+    height_shift_range=0.1,
+    brightness_range=[0.85, 1.15],  # Subtle brightness only
+    zoom_range=0.1,
+    horizontal_flip=False,
+    fill_mode='nearest'
 )
 
 # Validation with only rescaling (no augmentation)
