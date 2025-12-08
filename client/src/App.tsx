@@ -130,32 +130,9 @@ function App() {
             canvas.width = 224;
             canvas.height = 312;
 
-            // Crop card-shaped region from video center (portrait orientation)
-            // This matches training data: card images resized to portrait 312×224 (height×width)
-            const cardAspect = 224 / 312; // Width/height ratio for portrait cards (≈0.718)
-            const videoAspect = video.videoWidth / video.videoHeight;
-
-            let sx = 0,
-                sy = 0,
-                sWidth = video.videoWidth,
-                sHeight = video.videoHeight;
-
-            if (videoAspect > cardAspect) {
-                // Video is wider - crop sides to get card aspect
-                sHeight = video.videoHeight;
-                sWidth = sHeight * cardAspect;
-                sx = (video.videoWidth - sWidth) / 2;
-                sy = 0;
-            } else {
-                // Video is taller - crop top/bottom to get card aspect
-                sWidth = video.videoWidth;
-                sHeight = sWidth / cardAspect;
-                sx = 0;
-                sy = (video.videoHeight - sHeight) / 2;
-            }
-
-            // Draw portrait card crop, resized to 224×312 (width×height)
-            context.drawImage(video, sx, sy, sWidth, sHeight, 0, 0, 224, 312);
+            // Resize full camera frame to 224×312 (no cropping)
+            // Camera is already card-shaped (0.72 aspect ratio)
+            context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, 224, 312);
 
             // Get image data and convert to tensor
             const imageData = context.getImageData(0, 0, 224, 312);
