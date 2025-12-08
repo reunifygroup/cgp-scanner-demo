@@ -107,10 +107,10 @@ def create_advanced_augmentation_pipeline():
             ),
             A.RandomToneCurve(scale=0.3, p=1.0),  # Natural lighting variation
             A.HueSaturationValue(
-                hue_shift_limit=10,
-                sat_shift_limit=30,
-                val_shift_limit=30,
-                p=1.0
+                hue_shift_limit=5,   # Reduced from 10 - preserve color differences
+                sat_shift_limit=15,  # Reduced from 30 - keep colors distinct
+                val_shift_limit=15,  # Reduced from 30 - preserve brightness
+                p=0.8                # Reduced from 1.0 - not every image
             ),
         ], p=0.8),
 

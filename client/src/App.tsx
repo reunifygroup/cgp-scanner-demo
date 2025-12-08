@@ -6,6 +6,7 @@ interface ScanResult {
     cardId: string;
     cardName: string;
     confidence: number;
+    debugImage?: string; // Base64 image data for debugging
 }
 
 function App() {
@@ -109,9 +110,33 @@ function App() {
         setIsScanning(false);
     };
 
-    // 🔄 Clear result and restart scanning
-    const scanAgain = () => {
+    // 🔄 Clear result and restart scanning with full reset
+    const scanAgain = async () => {
+        // Clear result
         setResult(null);
+
+        // Stop and cleanup current scan completely
+        stopScanning();
+
+        // Clear canvas to remove any residual state
+        if (canvasRef.current) {
+            const ctx = canvasRef.current.getContext("2d");
+            if (ctx) {
+                ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+            }
+        }
+
+        // Force TensorFlow.js to cleanup tensors
+        tf.engine().startScope();
+        tf.engine().endScope();
+
+        // Small delay to ensure complete cleanup
+        await new Promise((resolve) => setTimeout(resolve, 100));
+
+        // Log tensor memory for debugging
+        console.log("🔄 Scan reset - Tensors in memory:", tf.memory().numTensors);
+
+        // Start fresh scan
         startScanning();
     };
 
@@ -159,35 +184,43 @@ function App() {
             const maxIndex = predArray.indexOf(Math.max(...Array.from(predArray)));
             const confidence = predArray[maxIndex];
 
-            // Debug: Show all predictions
+            // Debug: Show all predictions and memory
             console.log("Predictions:", {
                 confidence: (confidence * 100).toFixed(1) + "%",
                 card: classNamesRef.current[maxIndex],
-                allConfidences: Array.from(predArray).map((p, i) => ({
-                    card: classNamesRef.current[i],
-                    conf: (p * 100).toFixed(1) + "%",
-                })),
+                tensors: tf.memory().numTensors, // Monitor tensor count
+                allConfidences: Array.from(predArray)
+                    .map((p, i) => ({
+                        card: classNamesRef.current[i],
+                        conf: (p * 100).toFixed(1) + "%",
+                    }))
+                    .sort((a, b) => parseFloat(b.conf) - parseFloat(a.conf)), // Show all 4 cards
             });
 
-            // Clean up tensors
+            // Clean up tensors immediately
             tensor.dispose();
             predictions.dispose();
 
             // Simple high-confidence threshold
-            const CONFIDENCE_THRESHOLD = 0.8; // Lock on any card with >80% confidence
+            const CONFIDENCE_THRESHOLD = 0.7; // Lock on any card with >80% confidence
 
             // Lock on first high-confidence detection
             if (confidence > CONFIDENCE_THRESHOLD) {
                 const cardId = classNamesRef.current[maxIndex];
                 const cardName = cardId.split("_").slice(1).join(" ");
 
+                // Capture the canvas as image for debugging
+                const debugImage = canvas.toDataURL("image/png");
+
                 setResult({
                     cardId,
                     cardName,
                     confidence: confidence * 100,
+                    debugImage,
                 });
 
                 console.log("Card detected:", cardId, `${(confidence * 100).toFixed(1)}%`);
+                console.log("Debug image saved - check result display");
                 stopScanning();
             }
         } catch (err) {
@@ -252,6 +285,24 @@ function App() {
                             <div className="card-meta">
                                 <span>Confidence: {result.confidence.toFixed(1)}%</span>
                             </div>
+
+                            {/* Debug: Show the actual image sent to AI */}
+                            {result.debugImage && (
+                                <div style={{ marginTop: "1rem" }}>
+                                    <div style={{ fontSize: "0.9rem", color: "#808080", marginBottom: "0.5rem" }}>Image sent to AI (224×312):</div>
+                                    <img
+                                        src={result.debugImage}
+                                        alt="Debug view"
+                                        style={{
+                                            border: "1px solid #3a3a3a",
+                                            borderRadius: "4px",
+                                            maxWidth: "200px",
+                                            imageRendering: "pixelated",
+                                        }}
+                                    />
+                                </div>
+                            )}
+
                             <button onClick={scanAgain} className="btn-primary" style={{ marginTop: "1rem" }}>
                                 Scan Again
                             </button>

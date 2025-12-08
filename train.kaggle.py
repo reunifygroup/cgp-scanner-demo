@@ -306,11 +306,23 @@ callbacks = [
 
 print("\n🚀 Starting training...\n")
 
+# Add class weights to balance training (reduce first-class bias)
+# Give slightly more weight to non-first classes
+from sklearn.utils.class_weight import compute_class_weight
+class_weights_array = compute_class_weight(
+    'balanced',
+    classes=np.unique(train_generator.classes),
+    y=train_generator.classes
+)
+class_weights = dict(enumerate(class_weights_array))
+print(f"📊 Class weights: {class_weights}")
+
 history = model.fit(
     train_generator,
     epochs=EPOCHS,
     validation_data=val_generator,
     callbacks=callbacks,
+    class_weight=class_weights,  # Apply balanced class weights
     verbose=1
 )
 
