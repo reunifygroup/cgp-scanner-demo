@@ -174,7 +174,7 @@ function App() {
             predictions.dispose();
 
             // Simple high-confidence threshold
-            const CONFIDENCE_THRESHOLD = 0.8; // Lock on any card with >80% confidence
+            const CONFIDENCE_THRESHOLD = 0.85; // Lock on any card with >80% confidence
 
             // Lock on first high-confidence detection
             if (confidence > CONFIDENCE_THRESHOLD) {
