@@ -12,7 +12,7 @@
  */
 
 import sharp from 'sharp';
-import { readdir, mkdir, rm, writeFile } from 'fs/promises';
+import { readdir, mkdir, rm } from 'fs/promises';
 import { existsSync } from 'fs';
 import { join } from 'path';
 
@@ -166,6 +166,7 @@ async function applyAugmentations(cardBuffer: Buffer): Promise<Buffer> {
       fit: 'cover',
       position: 'center',
     })
+    .removeAlpha() // Ensure RGB (3 channels) output
     .toBuffer();
 }
 
@@ -174,7 +175,6 @@ async function applyAugmentations(cardBuffer: Buffer): Promise<Buffer> {
  */
 async function addBackground(cardBuffer: Buffer): Promise<Buffer> {
   const cardImage = sharp(cardBuffer);
-  const { width: cardWidth, height: cardHeight } = await cardImage.metadata();
 
   // Generate background
   const background = await generateTableBackground(
@@ -225,6 +225,7 @@ async function addBackground(cardBuffer: Buffer): Promise<Buffer> {
         left: offsetX,
       },
     ])
+    .removeAlpha() // Ensure RGB (3 channels) output
     .png()
     .toBuffer();
 }
@@ -284,6 +285,7 @@ async function placeCardInScene(cardBuffer: Buffer): Promise<Buffer> {
         left: offsetX,
       },
     ])
+    .removeAlpha() // Ensure RGB (3 channels) output
     .png()
     .toBuffer();
 }
@@ -304,7 +306,7 @@ async function processCardImage(
 
     // Save original (no augmentation)
     const originalPath = join(outputDir, `${cardId}_original.png`);
-    await sharp(image).png().toFile(originalPath);
+    await sharp(image).removeAlpha().png().toFile(originalPath);
 
     let successCount = 1; // counting original
 
@@ -323,7 +325,7 @@ async function processCardImage(
 
         // Save augmented image
         const outputPath = join(outputDir, `${cardId}_aug${i}.png`);
-        await sharp(augmented).png().toFile(outputPath);
+        await sharp(augmented).removeAlpha().png().toFile(outputPath);
         successCount++;
       } catch (err) {
         console.error(`   ⚠️  Aug ${i} failed:`, err);

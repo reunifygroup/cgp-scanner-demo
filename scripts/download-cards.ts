@@ -1,3 +1,4 @@
+import "dotenv/config";
 import axios from "axios";
 import fs from "fs/promises";
 import path from "path";
@@ -79,7 +80,17 @@ const main = async () => {
     // Target sets: sv09 = Journey Together, sv10 = Destined Rivals
     const sets = ["sv02"];
 
-    // Create base images directory
+    // Clean previous images directory
+    try {
+        await fs.access(IMAGES_DIR);
+        console.log("\n🧹 Removing previous images directory...");
+        await fs.rm(IMAGES_DIR, { recursive: true });
+        console.log("✅ Previous images cleaned\n");
+    } catch {
+        // Directory doesn't exist, no need to clean
+    }
+
+    // Create fresh images directory
     await fs.mkdir(IMAGES_DIR, { recursive: true });
 
     // Download images for each set

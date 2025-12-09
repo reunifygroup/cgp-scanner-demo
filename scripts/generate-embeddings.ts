@@ -69,6 +69,7 @@ async function loadAndPreprocessImage(imagePath: string): Promise<tf.Tensor3D> {
     // Load image with sharp and resize to 224x224
     const imageBuffer = await sharp(imagePath)
         .resize(IMAGE_SIZE, IMAGE_SIZE, { fit: "fill" })
+        .removeAlpha() // Ensure exactly 3 channels (RGB)
         .raw() // Get raw pixel data
         .toBuffer({ resolveWithObject: true });
 
