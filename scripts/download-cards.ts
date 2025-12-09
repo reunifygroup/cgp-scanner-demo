@@ -76,7 +76,7 @@ const main = async () => {
     console.log("=".repeat(50));
 
     // Target sets: sv09 = Journey Together, sv10 = Destined Rivals
-    const sets = ["sv10"];
+    const sets = ["sv02"];
 
     // Create base images directory
     await fs.mkdir(IMAGES_DIR, { recursive: true });

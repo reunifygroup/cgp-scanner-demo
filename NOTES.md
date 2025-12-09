@@ -10,68 +10,66 @@
 
 # Solution 2 (TENSORFLOWJS + Kaggle)
 
--   Google Colab single GPU and limits are really limiting. Kaggle free tier is much faster and higher free tier (30H per week).
+-   Google Colab single GPU and limits are really limiting. Kaggle free tier is much faster and higher free tier (30H per week). This solution won't ever scale properly with 20k+ cards.
 
 # Known issue
 
 -   The model WANTS always to recognize something in the camera. Even when no card is there, the model says a card is there and guess which one, giving always the same wrong result.
 
-## Proposed solutions:
+# Solution 3 (EMBEDDING BASED RECOGNITION ENGINE)
 
-1.  Stricter Thresholds (Easy - No Retraining)
+Problems with CNN Classification at Scale
 
-        A) Higher confidence + Gap check:
-        const top1 = predictions[maxIndex]
-        const top2 = predictions[secondMaxIndex]
+1. Model size grows with cards: With 20k+ cards, your final classification layer alone would have millions of parameters (e.g., 512
+   features × 20,000 classes = 10M+ parameters just for the output layer). This is enormous for in-browser use.
+2. Retraining nightmare: Every time you add new cards, you need to retrain the entire model. With 20k+ cards, this becomes impractical.
+3. Recognition unreliability: CNN classifiers struggle with subtle visual differences between similar cards. With thousands of
+   similar-looking cards, the confusion increases exponentially.
+4. Augmentation doesn't solve the core problem: You could generate 1000 augmentations per card and it still won't fix the fundamental issue
 
-        // Only show if:
-        // - Top confidence > 70% AND
-        // - Big gap between 1st and 2nd place
-        if (top1 > 0.70 && (top1 - top2) > 0.25) {
-        showCard()
-        }
+-   classification doesn't scale.
 
-        Pros: Quick fix, no retraining
-        Cons: Might miss some real cards at angles
+Why Embedding-Based Recognition is the Answer
 
-2.  Add "Background" Class ⭐ (Best - Requires Retraining)
+Professional scanner apps (TCGPlayer, Delver Lens, etc.) use embedding-based similarity search, not classification. Here's how it works:
 
-        Add a 5th class called "no_card":
+1. Fixed model size: The CNN creates a fixed-size feature vector (embedding) - e.g., 512 dimensions. Model stays the same whether you have
+   10 cards or 1 million.
+2. No retraining needed: Compute embeddings once for each reference card image. Add new cards by just computing their embeddings - no model
+   updates.
+3. Better accuracy: Uses similarity matching (find the most visually similar card) rather than trying to force the model to learn 20k
+   different classes.
+4. In-browser friendly: Small model (~5-20MB) + fast similarity search using libraries like FAISS or even simple cosine similarity.
 
-        Training data:
+Architecture Comparison
 
-        -   4 card classes (51 images each)
-        -   1 background class (200 images: tables, hands, walls, random objects)
+Current (Classification):
+Image → CNN → [20k outputs] → Softmax → Card ID
+❌ Model grows with cards
+❌ Requires retraining
+❌ Heavy for browser
 
-        Pros:
+Embedding (Similarity Search):
+Image → CNN → [512-dim embedding] → Nearest Neighbor Search → Card ID
+✅ Fixed model size
+✅ No retraining
+✅ Browser-friendly
 
-        -   Model learns what "not a card" looks like
-        -   More robust long-term solution
-        -   Scales well to 1000+ cards
+Implementation Path
 
-        Cons:
+1. Model: Use a pre-trained feature extractor (MobileNetV3, EfficientNet) - remove classification head
+2. Index: Pre-compute embeddings for all reference cards, store in JSON/binary format
+3. Runtime: Extract embedding from camera → find nearest neighbor (cosine similarity)
+4. Storage: ~2KB per card embedding (512 floats) = ~40MB for 20k cards
 
-        -   Need to collect ~200 background images
-        -   Retrain model (~2 min)
+---
 
-        3. Entropy Threshold (Medium - No Retraining)
+One suggestion: Your augmentations are quite gentle (which is good for classification). For embeddings, you could be slightly more
+aggressive since we're doing similarity matching. But let's test with current settings first - they should work well.
 
-        Check if model is "confused":
-        // If all predictions are similar, model is uncertain
-        const entropy = calculateEntropy(predictions)
-        if (entropy > threshold) {
-        // Too uncertain - don't show anything
-        }
+---
 
-        Pros: Catches when model doesn't know
-        Cons: Need to tune threshold
+`source .venv/bin/activate`
 
-3.  Object Detection First (Advanced - Major Change)
-
-        Two-stage approach:
-
-        1. Stage 1: Detect IF card exists (YOLO/SSD)
-        2. Stage 2: Classify WHICH card (your CNN)
-
-        Pros: Production-quality solution
-        Cons: Complex, requires different architecture
+`pip freeze > requirements.txt`
+`pip install -r requirements.txt`

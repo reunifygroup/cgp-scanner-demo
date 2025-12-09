@@ -20,7 +20,7 @@ import shutil
 # Configuration
 IMAGES_DIR = "images"        # input: one or more base images per card
 OUTPUT_DIR = "training-data" # output for training script
-AUGMENTATIONS_PER_IMAGE = 50  # how many augmented variants per input image
+AUGMENTATIONS_PER_IMAGE = 25  # how many augmented variants per input image
 
 # Card dimensions (target size for training)
 TARGET_WIDTH = 320

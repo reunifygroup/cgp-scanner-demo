@@ -29,4 +29,9 @@ Thumbs.db
 dist/
 build/
 training-data/
+embeddings/
+public/embeddings/
 *.zip
+
+# Python VENV
+.venv
