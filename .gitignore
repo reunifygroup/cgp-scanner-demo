@@ -30,6 +30,8 @@ dist/
 build/
 training-data/
 embeddings/
+public/embeddings/
+images/
 *.zip
 
 # Python VENV

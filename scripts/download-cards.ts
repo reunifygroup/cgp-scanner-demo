@@ -19,7 +19,8 @@ interface SetResponse {
 // 🌐 TCGdex API base URL
 const TCGDEX_API = "https://api.tcgdex.net/v2/en";
 const IMAGES_DIR = path.join(process.cwd(), "images");
-const LIMIT_PER_SET = 1000;
+// Use environment variable for limit, default to 50 for production builds
+const LIMIT_PER_SET = parseInt(process.env.CARD_LIMIT || "50", 10);
 
 // 🔽 Download a single image from URL
 const downloadImage = async (imageUrl: string, filePath: string): Promise<void> => {

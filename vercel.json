@@ -1,0 +1,12 @@
+{
+    "buildCommand": "npm run build",
+    "framework": "vite",
+    "env": {
+        "CARD_LIMIT": "1000"
+    },
+    "build": {
+        "env": {
+            "CARD_LIMIT": "1000"
+        }
+    }
+}

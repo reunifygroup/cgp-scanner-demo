@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run pipeline && tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "augment": "node --expose-gc --max-old-space-size=4096 node_modules/.bin/tsx scripts/augment-dataset-advanced.ts",
+    "generate-embeddings": "tsx scripts/generate-embeddings.ts",
+    "download-cards": "tsx scripts/download-cards.ts",
+    "pipeline": "npm run download-cards && npm run augment && npm run generate-embeddings"
   },
   "dependencies": {
     "@fastify/cors": "^11.1.0",
@@ -30,6 +34,7 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "sharp": "^0.34.5",
+    "tsx": "^4.21.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4"
