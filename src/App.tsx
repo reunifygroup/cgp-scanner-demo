@@ -247,12 +247,12 @@ function App() {
 
                 // Extract embedding using MobileNet's infer method (1024-dim)
                 // The second parameter (true) returns embeddings instead of classifications
-                const embeddingRaw = modelRef.current!.infer(imageTensor, true) as tf.Tensor;
+                const embeddingRaw = modelRef.current!.infer(imageTensor as any, true) as unknown as tf.Tensor;
 
                 console.log("Raw embedding shape:", embeddingRaw.shape);
 
                 // Squeeze to remove batch dimension if present: [1, 1024] -> [1024]
-                const embedding = embeddingRaw.squeeze() as tf.Tensor;
+                const embedding = embeddingRaw.squeeze() as unknown as tf.Tensor;
 
                 console.log("Squeezed embedding shape:", embedding.shape);
                 console.log("Raw embedding sample:", embedding.slice([0], [10]).dataSync());
