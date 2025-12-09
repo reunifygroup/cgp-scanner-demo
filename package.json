@@ -17,7 +17,7 @@
     "@fastify/cors": "^11.1.0",
     "@fastify/multipart": "^9.3.0",
     "@tensorflow-models/mobilenet": "2.1.1",
-    "@tensorflow/tfjs": "4.22.0",
+    "@tensorflow/tfjs": "4.21.0",
     "axios": "^1.13.2",
     "dotenv": "^17.2.3",
     "react": "^19.2.0",
@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-    "@tensorflow/tfjs-node": "4.22.0",
+    "@tensorflow/tfjs-node": "4.21.0",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
