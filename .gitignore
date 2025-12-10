@@ -29,10 +29,10 @@ Thumbs.db
 dist/
 build/
 training-data/
-embeddings/
-public/embeddings/
 images/
-*.zip
+
+# Embeddings - ignore JSON but keep ZIP
+public/embeddings/*.json
 
 # Python VENV
 .venv

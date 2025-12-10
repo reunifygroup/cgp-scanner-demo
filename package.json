@@ -5,15 +5,14 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "npm run conditional-pipeline && tsc -b && vite build",
+        "build": "npm run unzip-embeddings && tsc -b && vite build",
         "lint": "eslint .",
         "preview": "vite preview",
         "augment": "node --expose-gc --max-old-space-size=4096 node_modules/.bin/tsx scripts/augment-dataset-advanced.ts",
         "generate-embeddings": "tsx scripts/generate-embeddings.ts",
         "download-cards": "tsx scripts/download-cards.ts",
-        "pipeline": "npm run download-cards && npm run augment && npm run generate-embeddings",
-        "fetch-embeddings": "tsx scripts/fetch-production-embeddings.ts",
-        "conditional-pipeline": "if [ \"$SKIP_PIPELINE\" != \"true\" ]; then npm run pipeline; else npm run fetch-embeddings; fi"
+        "pipeline": "npm run download-cards && npm run augment && npm run generate-embeddings && cd public/embeddings && zip -9 embeddings.zip embeddings.json && cd ../..",
+        "unzip-embeddings": "tsx scripts/unzip-embeddings.ts"
     },
     "dependencies": {
         "@fastify/cors": "^11.1.0",

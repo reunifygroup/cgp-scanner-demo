@@ -1,17 +1,5 @@
 {
     "buildCommand": "npm run build",
     "installCommand": "npm install",
-    "framework": "vite",
-    "env": {
-        "CARD_LIMIT": "5",
-        "SKIP_PIPELINE": "true",
-        "PRODUCTION_URL": "https://cgp-scanner-demo.vercel.app"
-    },
-    "build": {
-        "env": {
-            "CARD_LIMIT": "5",
-            "SKIP_PIPELINE": "true",
-            "PRODUCTION_URL": "https://cgp-scanner-demo.vercel.app"
-        }
-    }
+    "framework": "vite"
 }
