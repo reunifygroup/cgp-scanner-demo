@@ -247,7 +247,7 @@ function App() {
 
                 // Extract embedding using MobileNet's infer method (1024-dim)
                 // The second parameter (true) returns embeddings instead of classifications
-                const embeddingRaw = modelRef.current!.infer(imageTensor as any, true) as unknown as tf.Tensor;
+                const embeddingRaw = modelRef.current!.infer(imageTensor as unknown as tf.Tensor3D, true) as unknown as tf.Tensor;
 
                 console.log("Raw embedding shape:", embeddingRaw.shape);
 
