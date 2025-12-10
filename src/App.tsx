@@ -7,7 +7,11 @@ interface ScanResult {
     cardId: string;
     cardName: string;
     similarity: number; // cosine similarity in [0, 100]
-    debugImage?: string;
+}
+
+interface Hit {
+    cardId: string;
+    similarity: number;
 }
 
 interface EmbeddingData {
@@ -26,7 +30,8 @@ interface EmbeddingsDatabase {
 
 function App() {
     const [isScanning, setIsScanning] = useState(false);
-    const [result, setResult] = useState<ScanResult | null>(null);
+    const [validHit, setValidHit] = useState<ScanResult | null>(null);
+    const [hitHistory, setHitHistory] = useState<Hit[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [modelStatus, setModelStatus] = useState<string>("Loading model...");
     const [isModelLoaded, setIsModelLoaded] = useState(false);
@@ -88,6 +93,8 @@ function App() {
 
         try {
             setError(null);
+            setValidHit(null); // Clear previous valid hit
+            setHitHistory([]); // Clear hit history
 
             // Request camera access
             const stream = await navigator.mediaDevices.getUserMedia({
@@ -104,10 +111,10 @@ function App() {
                 streamRef.current = stream;
                 setIsScanning(true);
 
-                // Start capturing frames every 500ms
+                // Start capturing frames every 250ms
                 intervalRef.current = window.setInterval(() => {
                     captureAndPredict();
-                }, 500);
+                }, 250);
             }
         } catch (err) {
             setError("Failed to access camera: " + (err as Error).message);
@@ -131,6 +138,13 @@ function App() {
         }
 
         setIsScanning(false);
+    };
+
+    // 🔄 Scan again - restart everything
+    const scanAgain = () => {
+        setValidHit(null);
+        setHitHistory([]);
+        startScanning();
     };
 
     // 🔢 Compute cosine similarity between two vectors
@@ -182,6 +196,41 @@ function App() {
         }
 
         return bestMatch;
+    };
+
+    // ✅ Check if we have a valid hit (3 consecutive hits on same card with >65% similarity)
+    const checkForValidHit = (newHitHistory: Hit[]) => {
+        if (newHitHistory.length < 3) {
+            return null;
+        }
+
+        // Get last 3 hits
+        const lastThree = newHitHistory.slice(-3);
+
+        // Check if all 3 are the same card
+        const firstCardId = lastThree[0].cardId;
+        const allSameCard = lastThree.every((hit) => hit.cardId === firstCardId);
+
+        if (!allSameCard) {
+            return null;
+        }
+
+        // Check if all have >65% similarity
+        const allAboveThreshold = lastThree.every((hit) => hit.similarity > 65);
+
+        if (!allAboveThreshold) {
+            return null;
+        }
+
+        // Valid hit! Return the result
+        const cardName = firstCardId.split("_").slice(1).join(" ");
+        const avgSimilarity = lastThree.reduce((sum, hit) => sum + hit.similarity, 0) / 3;
+
+        return {
+            cardId: firstCardId,
+            cardName,
+            similarity: avgSimilarity,
+        };
     };
 
     // 🎯 Capture frame and run embedding extraction + similarity search
@@ -243,25 +292,16 @@ function App() {
                 // Convert canvas to tensor [224, 224, 3]
                 const imageTensor = tf.browser.fromPixels(imageData);
 
-                console.log("Input tensor shape:", imageTensor.shape);
-
                 // Extract embedding using MobileNet's infer method (1024-dim)
                 // The second parameter (true) returns embeddings instead of classifications
                 const embeddingRaw = modelRef.current!.infer(imageTensor as unknown as tf.Tensor3D, true) as unknown as tf.Tensor;
 
-                console.log("Raw embedding shape:", embeddingRaw.shape);
-
                 // Squeeze to remove batch dimension if present: [1, 1024] -> [1024]
                 const embedding = embeddingRaw.squeeze() as unknown as tf.Tensor;
-
-                console.log("Squeezed embedding shape:", embedding.shape);
-                console.log("Raw embedding sample:", embedding.slice([0], [10]).dataSync());
 
                 // L2 normalize (same as training)
                 const norm = tf.norm(embedding, 2, -1, true);
                 const normalizedEmbedding = embedding.div(norm).squeeze() as tf.Tensor;
-
-                console.log("Normalized embedding sample:", normalizedEmbedding.slice([0], [10]).dataSync());
 
                 // Return 1D tensor [1024]
                 return normalizedEmbedding;
@@ -271,29 +311,36 @@ function App() {
             const embeddingArray = await embeddingTensor.data();
             const embeddingVector = Array.from(embeddingArray);
 
-            console.log("Embedding vector length:", embeddingVector.length);
-
             // Find nearest card
             const match = findNearestCard(embeddingVector);
 
             console.log("🔍 Similarity search:", {
                 cardId: match.cardId,
                 similarity: (match.similarity * 100).toFixed(1) + "%",
-                tensors: tf.memory().numTensors,
             });
 
             // Cleanup
             embeddingTensor.dispose();
 
-            // Update result
-            const cardName = match.cardId.split("_").slice(1).join(" ");
-            const debugImage = canvas.toDataURL("image/png");
-
-            setResult({
+            // Add to hit history
+            const newHit: Hit = {
                 cardId: match.cardId,
-                cardName,
                 similarity: match.similarity * 100,
-                debugImage,
+            };
+
+            setHitHistory((prev) => {
+                const updated = [...prev, newHit];
+
+                // Check for valid hit
+                const validResult = checkForValidHit(updated);
+                if (validResult) {
+                    console.log("✅ VALID HIT DETECTED:", validResult);
+                    setValidHit(validResult);
+                    stopScanning(); // Stop scanning when valid hit is detected
+                }
+
+                // Keep only last 10 hits to avoid memory issues
+                return updated.slice(-10);
             });
         } catch (err) {
             console.error("❌ Prediction error:", err);
@@ -317,27 +364,6 @@ function App() {
             </header>
 
             <main>
-                <div className="scanner-container">
-                    {/* Video stream */}
-                    <div className="video-wrapper">
-                        <video ref={videoRef} autoPlay playsInline muted className={isScanning ? "active" : "hidden"} />
-                    </div>
-
-                    {/* Hidden canvas for frame capture */}
-                    <canvas ref={canvasRef} style={{ display: "none" }} />
-
-                    {/* Control button */}
-                    {!isScanning ? (
-                        <button onClick={startScanning} className="btn-primary" disabled={!isModelLoaded}>
-                            Start Scanner
-                        </button>
-                    ) : (
-                        <button onClick={stopScanning} className="btn-secondary">
-                            Stop Scanner
-                        </button>
-                    )}
-                </div>
-
                 {/* Error display */}
                 {error && (
                     <div className="error">
@@ -345,48 +371,63 @@ function App() {
                     </div>
                 )}
 
-                {/* Result display - updates continuously */}
-                {result && isScanning && (
-                    <div className="result">
-                        <div className="result-header">🔄 Continuous Prediction (Live)</div>
+                {/* Valid hit result - only shown after 3 consecutive matches */}
+                {validHit && (
+                    <div className="result result--confirmed">
+                        <div className="result-header">✅ Card Identified!</div>
                         <div className="result-content">
-                            <div className="card-id">{result.cardId}</div>
-                            <div className="card-name">{result.cardName}</div>
-                            <div className={"card-meta" + (result.similarity > 80 ? " card-meta--high-confidence" : "")}>
-                                <span>Similarity: {result.similarity.toFixed(1)}%</span>
+                            <div className="card-id">{validHit.cardId}</div>
+                            <div className="card-name">{validHit.cardName}</div>
+                            <div className="card-meta card-meta--high-confidence">
+                                <span>Confidence: {validHit.similarity.toFixed(1)}%</span>
                             </div>
-
-                            {/* Debug: Show the actual image sent to AI */}
-                            {result.debugImage && (
-                                <div style={{ marginTop: "1rem" }}>
-                                    <div
-                                        style={{
-                                            fontSize: "0.9rem",
-                                            color: "#808080",
-                                            marginBottom: "0.5rem",
-                                        }}>
-                                        Image sent to AI (224×224):
-                                    </div>
-                                    <img
-                                        src={result.debugImage}
-                                        alt="Debug view"
-                                        style={{
-                                            border: "1px solid #e0e0e0",
-                                            borderRadius: "4px",
-                                            maxWidth: "200px",
-                                            imageRendering: "auto",
-                                        }}
-                                    />
-                                </div>
-                            )}
                         </div>
                     </div>
                 )}
 
-                {isScanning && !result && (
+                {/* Scanner container - only show when actively scanning */}
+                <div className="scanner-container" style={{ display: isScanning ? "flex" : "none" }}>
+                    {/* Video stream */}
+                    <div className="video-wrapper">
+                        <video ref={videoRef} autoPlay playsInline muted className="active" />
+                    </div>
+
+                    {/* Hidden canvas for frame capture */}
+                    <canvas ref={canvasRef} style={{ display: "none" }} />
+                </div>
+
+                {/* Control buttons */}
+                {!validHit && !isScanning && (
+                    <button onClick={startScanning} className="btn-primary" disabled={!isModelLoaded}>
+                        Start Scanner
+                    </button>
+                )}
+
+                {!validHit && isScanning && (
+                    <button onClick={stopScanning} className="btn-secondary">
+                        Stop Scanner
+                    </button>
+                )}
+
+                {validHit && (
+                    <button onClick={scanAgain} className="btn-primary">
+                        Scan Again
+                    </button>
+                )}
+
+                {/* Scanning indicator - only shown while actively scanning */}
+                {isScanning && !validHit && (
                     <div className="scanning-indicator">
                         <div className="spinner"></div>
                         <p>Scanning for cards...</p>
+                        <div style={{ fontSize: "0.9rem", color: "#808080", marginTop: "0.5rem" }}>
+                            {hitHistory.length > 0 && (
+                                <>
+                                    Hits: {hitHistory.slice(-3).length}/3
+                                    {hitHistory.length >= 3 && <span style={{ marginLeft: "1rem" }}>{hitHistory.slice(-3).every((h) => h.cardId === hitHistory[hitHistory.length - 1].cardId) ? "🎯 Same card detected" : "🔄 Different cards"}</span>}
+                                </>
+                            )}
+                        </div>
                     </div>
                 )}
             </main>
