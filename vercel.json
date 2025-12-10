@@ -3,11 +3,11 @@
     "installCommand": "npm install",
     "framework": "vite",
     "env": {
-        "CARD_LIMIT": "300"
+        "CARD_LIMIT": "5"
     },
     "build": {
         "env": {
-            "CARD_LIMIT": "300"
+            "CARD_LIMIT": "5"
         }
     }
 }
