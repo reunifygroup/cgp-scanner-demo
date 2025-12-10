@@ -1,43 +1,43 @@
 {
-  "name": "client",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "npm run pipeline && tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "augment": "node --expose-gc --max-old-space-size=4096 node_modules/.bin/tsx scripts/augment-dataset-advanced.ts",
-    "generate-embeddings": "tsx scripts/generate-embeddings.ts",
-    "download-cards": "tsx scripts/download-cards.ts",
-    "pipeline": "npm run download-cards && npm run augment && npm run generate-embeddings"
-  },
-  "dependencies": {
-    "@fastify/cors": "^11.1.0",
-    "@fastify/multipart": "^9.3.0",
-    "@tensorflow-models/mobilenet": "2.1.1",
-    "@tensorflow/tfjs": "4.21.0",
-    "axios": "^1.13.2",
-    "dotenv": "^17.2.3",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.39.1",
-    "@tensorflow/tfjs-node": "4.21.0",
-    "@types/node": "^24.10.1",
-    "@types/react": "^19.2.5",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.1",
-    "eslint": "^9.39.1",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.24",
-    "globals": "^16.5.0",
-    "sharp": "^0.34.5",
-    "tsx": "^4.21.0",
-    "typescript": "~5.9.3",
-    "typescript-eslint": "^8.46.4",
-    "vite": "^7.2.4"
-  }
+    "name": "client",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "npm run pipeline && tsc -b && vite build",
+        "lint": "eslint .",
+        "preview": "vite preview",
+        "augment": "node --expose-gc --max-old-space-size=4096 node_modules/.bin/tsx scripts/augment-dataset-advanced.ts",
+        "generate-embeddings": "tsx scripts/generate-embeddings.ts",
+        "download-cards": "tsx scripts/download-cards.ts",
+        "pipeline": "npm run download-cards && npm run augment && npm run generate-embeddings"
+    },
+    "dependencies": {
+        "@fastify/cors": "^11.1.0",
+        "@fastify/multipart": "^9.3.0",
+        "@tensorflow-models/mobilenet": "2.1.1",
+        "@tensorflow/tfjs": "^4.22.0",
+        "axios": "^1.13.2",
+        "dotenv": "^17.2.3",
+        "react": "^19.2.0",
+        "react-dom": "^19.2.0"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.39.1",
+        "@tensorflow/tfjs-node": "4.21.0",
+        "@types/node": "^24.10.1",
+        "@types/react": "^19.2.5",
+        "@types/react-dom": "^19.2.3",
+        "@vitejs/plugin-react": "^5.1.1",
+        "eslint": "^9.39.1",
+        "eslint-plugin-react-hooks": "^7.0.1",
+        "eslint-plugin-react-refresh": "^0.4.24",
+        "globals": "^16.5.0",
+        "sharp": "^0.34.5",
+        "tsx": "^4.21.0",
+        "typescript": "~5.9.3",
+        "typescript-eslint": "^8.46.4",
+        "vite": "^7.2.4"
+    }
 }
