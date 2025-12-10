@@ -36,3 +36,5 @@ public/embeddings/*.json
 
 # Python VENV
 .venv
+.vercel
+.env*.local
