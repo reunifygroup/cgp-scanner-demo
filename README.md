@@ -13,7 +13,7 @@ AI-powered instant Pokemon card recognition using computer vision and embedding-
 -   **MobileNet v2 embeddings** for fast similarity search
 -   **Scalable architecture** - handles 20,000+ cards without retraining
 -   **100% TypeScript**
--   **Auto-generated pipeline** - downloads, augments, and extracts embeddings on deploy
+-   **Compressed embeddings** - zipped embeddings committed to git for fast deployments
 -   **Realistic augmentation** - 26 variations per card with backgrounds, rotation, blur, etc.
 
 ## How It Works
@@ -41,35 +41,15 @@ This scanner uses **embedding-based recognition**:
 
 ```bash
 # Install dependencies
-
 npm install
 
-# Download card images
+# If you have embeddings.zip, unzip it:
+npm run unzip-embeddings
 
-npm run download-cards
-
-# Generate augmented training data
-
-npm run augment
-
-# Extract embeddings
-
-npm run generate-embeddings
-
-# Start dev server
-
-npm run dev
-```
-
-### Run Full Pipeline
-
-```bash
-# Download -> Augment -> Generate Embeddings
-
+# OR run full pipeline to generate embeddings:
 npm run pipeline
 
-# Then start the app
-
+# Start dev server
 npm run dev
 ```
 
@@ -77,15 +57,16 @@ Open http://localhost:5173 and allow camera access to start scanning!
 
 ## Available Scripts
 
-| Script                        | Description                                |
-| ----------------------------- | ------------------------------------------ |
-| `npm run dev`                 | Start Vite dev server                      |
-| `npm run build`               | **Full pipeline + build** (used by Vercel) |
-| `npm run download-cards`      | Download cards from TCGdex API             |
-| `npm run augment`             | Generate augmented training images         |
-| `npm run generate-embeddings` | Extract MobileNet embeddings               |
-| `npm run pipeline`            | Run all three scripts sequentially         |
-| `npm run preview`             | Preview production build                   |
+| Script                        | Description                                       |
+| ----------------------------- | ------------------------------------------------- |
+| `npm run dev`                 | Start Vite dev server                             |
+| `npm run build`               | **Unzip embeddings + build** (used by Vercel)    |
+| `npm run download-cards`      | Download cards from TCGdex API                    |
+| `npm run augment`             | Generate augmented training images                |
+| `npm run generate-embeddings` | Extract MobileNet embeddings                      |
+| `npm run pipeline`            | Download + Augment + Generate + Zip embeddings    |
+| `npm run unzip-embeddings`    | Extract embeddings.json from embeddings.zip       |
+| `npm run preview`             | Preview production build                          |
 
 ## Data Pipeline
 
@@ -135,21 +116,49 @@ Extracts embeddings using MobileNet v2:
 -   L2-normalizes for cosine similarity
 -   Saves to `public/embeddings/embeddings.json`
 
+### 4. Full Pipeline with Auto-Zip
+
+```bash
+npm run pipeline
+```
+
+Runs all steps and automatically creates a compressed zip file:
+
+-   Downloads cards → Augments → Generates embeddings → **Zips embeddings.json**
+-   Creates `public/embeddings/embeddings.zip` (< 100MB when compressed)
+-   Ready to commit to git and deploy
+
 ## Deployment (Vercel)
 
-The project is configured for **automatic deployment** on Vercel with full pipeline execution:
+The project uses a **zip-based deployment** approach for fast builds:
 
 ### How It Works
 
-1. **Push to GitHub** -> Vercel detects the push
-2. **Vercel runs** `npm run build`:
-    - Downloads cards from TCGdex API
-    - Generates augmented training images
-    - Extracts embeddings with MobileNet
-    - Builds the Vite app
-3. **Deploys** with embeddings included
+1. **Generate embeddings locally** (one-time or when updating cards):
+   ```bash
+   npm run pipeline
+   # Creates public/embeddings/embeddings.zip (< 100MB)
+   ```
 
-**Important**: All generated files (`images/`, `training-data/`, `public/embeddings/`) are `.gitignore`d and regenerated fresh on each deploy.
+2. **Commit and push**:
+   ```bash
+   git add public/embeddings/embeddings.zip
+   git commit -m "Update embeddings"
+   git push
+   ```
+
+3. **Vercel deployment**:
+   - Unzips embeddings.zip → embeddings.json
+   - Builds the Vite app
+   - **Fast deployment** (~2-3 minutes)
+
+### Benefits
+
+-   **No heavy files in git** - Only the compressed zip (< 100MB) is committed
+-   **Fast Vercel builds** - No need to regenerate embeddings on every deploy
+-   **Simple updates** - Just re-run `npm run pipeline` and commit the new zip
+
+**Important**: The zip file is committed to git, but the JSON files are `.gitignore`d. Embeddings are unzipped during the Vercel build process.
 
 ## Technology Stack
 
