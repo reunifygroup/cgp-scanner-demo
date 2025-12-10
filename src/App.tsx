@@ -173,29 +173,24 @@ function App() {
         return dotProduct / (normA * normB);
     };
 
-    // 🔍 Find nearest neighbor in embeddings database
-    const findNearestCard = (queryEmbedding: number[]): { cardId: string; similarity: number } => {
+    // 🔍 Find top N nearest neighbors in embeddings database
+    const findTopNCards = (queryEmbedding: number[], topN: number = 3): Array<{ cardId: string; similarity: number }> => {
         if (!embeddingsDatabaseRef.current) {
             throw new Error("Embeddings database not loaded");
         }
 
-        let bestMatch = {
-            cardId: "",
-            similarity: -1,
-        };
+        const allMatches: Array<{ cardId: string; similarity: number }> = [];
 
         for (const entry of embeddingsDatabaseRef.current.embeddings) {
             const similarity = cosineSimilarity(queryEmbedding, entry.embedding);
-
-            if (similarity > bestMatch.similarity) {
-                bestMatch = {
-                    cardId: entry.card_id,
-                    similarity: similarity,
-                };
-            }
+            allMatches.push({
+                cardId: entry.card_id,
+                similarity: similarity,
+            });
         }
 
-        return bestMatch;
+        // Sort by similarity (highest first) and return top N
+        return allMatches.sort((a, b) => b.similarity - a.similarity).slice(0, topN);
     };
 
     // ✅ Check if we have a valid hit (3 consecutive hits on same card with >65% similarity)
@@ -311,13 +306,15 @@ function App() {
             const embeddingArray = await embeddingTensor.data();
             const embeddingVector = Array.from(embeddingArray);
 
-            // Find nearest card
-            const match = findNearestCard(embeddingVector);
+            // Find top 3 nearest cards
+            const topMatches = findTopNCards(embeddingVector, 3);
+            const match = topMatches[0]; // Use best match for logic
 
-            console.log("🔍 Similarity search:", {
-                cardId: match.cardId,
-                similarity: (match.similarity * 100).toFixed(1) + "%",
-            });
+            console.log("🔍 Top 3 Similarity Results:", topMatches.map((m, i) => ({
+                rank: i + 1,
+                cardId: m.cardId,
+                similarity: (m.similarity * 100).toFixed(1) + "%",
+            })));
 
             // Cleanup
             embeddingTensor.dispose();
@@ -358,7 +355,7 @@ function App() {
     return (
         <div className="app">
             <header>
-                <h1>🃏 CGP Card Scanner</h1>
+                <h1>CGP Card Scanner</h1>
                 <p>AI-powered instant card recognition (MobileNet v2 embeddings)</p>
                 <div className="model-status">{modelStatus}</div>
             </header>
