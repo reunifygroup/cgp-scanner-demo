@@ -20,8 +20,12 @@ interface SetResponse {
 // 🌐 TCGdex API base URL
 const TCGDEX_API = "https://api.tcgdex.net/v2/en";
 const IMAGES_DIR = path.join(process.cwd(), "images");
+const POKEMON_NAMES_FILE = path.join(process.cwd(), "public", "pokemon-names.json");
 // Use environment variable for limit, default to 50 for production builds
 const LIMIT_PER_SET = parseInt(process.env.CARD_LIMIT || "50", 10);
+
+// 📝 Store all unique Pokemon names
+const allPokemonNames = new Set<string>();
 
 // 🔽 Download a single image from URL
 const downloadImage = async (imageUrl: string, filePath: string): Promise<void> => {
@@ -59,6 +63,10 @@ const downloadSetImages = async (setId: string): Promise<void> => {
             const fileName = `${card.id}_${card.name.replace(/[^a-z0-9]/gi, "_")}.png`;
             // Save directly to images/ (flat structure, no subdirectories)
             const filePath = path.join(IMAGES_DIR, fileName);
+
+            // Extract and store the Pokemon name (same format as filename)
+            const pokemonName = card.name.replace(/[^a-z0-9]/gi, "_");
+            allPokemonNames.add(pokemonName);
 
             await downloadImage(imageUrl, filePath);
 
@@ -98,8 +106,15 @@ const main = async () => {
         await downloadSetImages(setId);
     }
 
-    console.log("✅ All downloads complete!");
+    // Save Pokemon names database
+    const namesArray = Array.from(allPokemonNames).sort();
+    await fs.mkdir(path.dirname(POKEMON_NAMES_FILE), { recursive: true });
+    await fs.writeFile(POKEMON_NAMES_FILE, JSON.stringify(namesArray, null, 2));
+
+    console.log("\n✅ All downloads complete!");
     console.log(`📁 Images saved to: ${IMAGES_DIR}`);
+    console.log(`📝 Pokemon names database saved to: ${POKEMON_NAMES_FILE}`);
+    console.log(`🎯 Total unique Pokemon names: ${namesArray.length}`);
 };
 
 // 🎯 Execute script

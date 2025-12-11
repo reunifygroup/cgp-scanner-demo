@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as mobilenet from "@tensorflow-models/mobilenet";
 import Tesseract from "tesseract.js";
+import Fuse from "fuse.js";
 import "./App.css";
 
 interface ScanResult {
@@ -45,8 +46,9 @@ function App() {
     // MobileNet model reference
     const modelRef = useRef<mobilenet.MobileNet | null>(null);
     const embeddingsDatabaseRef = useRef<EmbeddingsDatabase | null>(null);
+    const pokemonNamesFuseRef = useRef<Fuse<string> | null>(null);
 
-    // 🧠 Load MobileNet feature extractor + embeddings database
+    // 🧠 Load MobileNet feature extractor + embeddings database + Pokemon names
     useEffect(() => {
         async function loadModel() {
             try {
@@ -60,6 +62,21 @@ function App() {
                 // console.log(`✅ Loaded ${embeddingsData.total_images} embeddings for ${embeddingsData.total_cards} cards`);
                 // console.log(`   Model: ${embeddingsData.model}`);
                 // console.log(`   Embedding dimension: ${embeddingsData.embedding_dim}`);
+
+                setModelStatus("Loading Pokemon names database...");
+
+                // Load Pokemon names for fuzzy matching
+                const pokemonNamesResponse = await fetch("/pokemon-names.json");
+                const pokemonNames: string[] = await pokemonNamesResponse.json();
+
+                // Create Fuse instance for fuzzy searching
+                pokemonNamesFuseRef.current = new Fuse(pokemonNames, {
+                    threshold: 0.4, // 0 = perfect match, 1 = match anything
+                    distance: 100,
+                    includeScore: true,
+                });
+
+                console.log(`✅ Loaded ${pokemonNames.length} Pokemon names for fuzzy matching`);
 
                 setModelStatus("Loading MobileNet model...");
 
@@ -112,10 +129,10 @@ function App() {
                 streamRef.current = stream;
                 setIsScanning(true);
 
-                // Start capturing frames every 2000ms (slowed for OCR debugging)
+                // Start capturing frames every 500ms (slowed for OCR debugging)
                 intervalRef.current = window.setInterval(() => {
                     captureAndPredict();
-                }, 2000);
+                }, 500);
             }
         } catch (err) {
             setError("Failed to access camera: " + (err as Error).message);
@@ -193,7 +210,6 @@ function App() {
         // Sort by similarity (highest first) and return top N
         return allMatches.sort((a, b) => b.similarity - a.similarity).slice(0, topN);
     };
-
 
     // 🎯 Capture frame and run embedding extraction + similarity search
     const captureAndPredict = async () => {
@@ -284,28 +300,41 @@ function App() {
             embeddingTensor.dispose();
 
             // 🔤 OCR: Only run if all top 3 matches are >65% similarity
-            const allAboveThreshold = topMatches.every(m => m.similarity * 100 > 65);
+            const allAboveThreshold = topMatches.every((m) => m.similarity * 100 > 65);
 
             if (allAboveThreshold) {
                 // Create a temporary canvas for OCR with original resolution
-                const ocrCanvas = document.createElement('canvas');
-                const ocrContext = ocrCanvas.getContext('2d');
+                const ocrCanvas = document.createElement("canvas");
+                const ocrContext = ocrCanvas.getContext("2d");
 
                 if (ocrContext) {
-                    // Set canvas to cropped card size (full resolution, not resized)
-                    ocrCanvas.width = sWidth;
-                    ocrCanvas.height = sHeight;
+                    // Only use top half of the card (where the title is)
+                    const ocrHeight = sHeight / 2;
 
-                    // Draw the cropped card region at full resolution
-                    ocrContext.drawImage(video, sx, sy, sWidth, sHeight, 0, 0, sWidth, sHeight);
+                    // Set canvas to top half only
+                    ocrCanvas.width = sWidth;
+                    ocrCanvas.height = ocrHeight;
+
+                    // Draw only the top half of the cropped card region
+                    ocrContext.drawImage(
+                        video,
+                        sx,
+                        sy, // Source x, y (top-left of card)
+                        sWidth,
+                        ocrHeight, // Source width, height (top half only)
+                        0,
+                        0, // Dest x, y
+                        sWidth,
+                        ocrHeight // Dest width, height
+                    );
 
                     // Preprocessing: Enhance image for better OCR
-                    const imageData = ocrContext.getImageData(0, 0, sWidth, sHeight);
+                    const imageData = ocrContext.getImageData(0, 0, sWidth, ocrHeight);
                     const data = imageData.data;
 
-                    // Apply brightness, contrast, and grayscale
-                    const brightness = 30; // Increase brightness
-                    const contrast = 40;   // Increase contrast
+                    // Apply brightness, contrast, and grayscale (more aggressive)
+                    const brightness = 50; // Higher brightness
+                    const contrast = 60; // Higher contrast
 
                     for (let i = 0; i < data.length; i += 4) {
                         // Convert to grayscale first (helps OCR focus on text)
@@ -314,13 +343,13 @@ function App() {
                         // Apply brightness and contrast
                         let value = gray;
                         value += brightness;
-                        value = ((value - 128) * (contrast + 100) / 100) + 128;
+                        value = ((value - 128) * (contrast + 100)) / 100 + 128;
 
                         // Clamp to valid range
                         value = Math.max(0, Math.min(255, value));
 
                         // Apply to all RGB channels
-                        data[i] = value;     // R
+                        data[i] = value; // R
                         data[i + 1] = value; // G
                         data[i + 2] = value; // B
                         // Alpha channel (data[i + 3]) stays unchanged
@@ -330,22 +359,42 @@ function App() {
                     ocrContext.putImageData(imageData, 0, 0);
 
                     try {
-                        const ocrResult = await Tesseract.recognize(ocrCanvas, "eng");
+                        // Configure Tesseract for single line mode (better for Pokemon names)
+                        const ocrResult = await Tesseract.recognize(ocrCanvas, "eng", {
+                            tesseract_parameters: {
+                                tessedit_pageseg_mode: "7", // Single line of text
+                                tessedit_char_whitelist: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ",
+                            },
+                        } as Record<string, unknown>);
 
                         console.log("📝 OCR Text Detected:", ocrResult.data.text);
-                        console.log("📊 OCR Confidence:", (ocrResult.data.confidence).toFixed(1) + "%");
+                        console.log("📊 OCR Confidence:", ocrResult.data.confidence.toFixed(1) + "%");
 
-                        // Store OCR text for validation
-                        const ocrText = ocrResult.data.text.toLowerCase();
+                        // Use fuzzy matching to check if any top 3 cards appear in OCR text
+                        if (!pokemonNamesFuseRef.current) {
+                            console.error("❌ Pokemon names database not loaded");
+                            return;
+                        }
 
-                        // Check each of the top 3 matches against OCR text
+                        const ocrText = ocrResult.data.text.toLowerCase().trim();
+
+                        // Split OCR text into words and clean them
+                        const ocrWords = ocrText
+                            .split(/\s+/)
+                            .map((word) => word.replace(/[^a-z0-9]/gi, "").toLowerCase())
+                            .filter((word) => word.length > 2); // Filter out very short words
+
+                        console.log("🔍 OCR words:", ocrWords.join(", "));
+
+                        // Check each of the top 3 embedding matches
                         for (const match of topMatches) {
                             // Extract card name from card ID (e.g., "sv02-085_Slowpoke" -> "Slowpoke")
-                            const cardName = match.cardId.split('_').slice(1).join('_');
+                            const cardName = match.cardId.split("_").slice(1).join("_");
+                            const cardNameClean = cardName.replace(/_/g, " ").toLowerCase();
 
-                            // Check if card name is in OCR text (case insensitive)
-                            if (ocrText.includes(cardName.toLowerCase())) {
-                                console.log("✅ VALID HIT! Card:", cardName, "| Similarity:", (match.similarity * 100).toFixed(1) + "%");
+                            // Try exact substring match first
+                            if (ocrText.includes(cardNameClean)) {
+                                console.log("✅ VALID HIT! (Exact match) Card:", cardName, "| Similarity:", (match.similarity * 100).toFixed(1) + "%");
                                 const validResult: ScanResult = {
                                     cardId: match.cardId,
                                     cardName: cardName,
@@ -353,20 +402,41 @@ function App() {
                                 };
                                 setValidHit(validResult);
                                 stopScanning();
-                                return; // Exit early since we found a valid hit
+                                return;
+                            }
+
+                            // Try fuzzy matching each OCR word against the card name
+                            for (const word of ocrWords) {
+                                const fuseResults = pokemonNamesFuseRef.current!.search(word);
+                                if (fuseResults.length > 0) {
+                                    const bestMatch = fuseResults[0];
+                                    const matchedName = bestMatch.item.toLowerCase();
+                                    const matchScore = bestMatch.score || 0;
+
+                                    // Check if fuzzy match is the card we're checking
+                                    if (matchedName === cardNameClean) {
+                                        console.log("✅ VALID HIT! (Fuzzy match) OCR word:", word, "→", matchedName, "| Score:", (matchScore * 100).toFixed(1) + "%");
+                                        const validResult: ScanResult = {
+                                            cardId: match.cardId,
+                                            cardName: cardName,
+                                            similarity: match.similarity * 100,
+                                        };
+                                        setValidHit(validResult);
+                                        stopScanning();
+                                        return;
+                                    }
+                                }
                             }
                         }
 
                         // If we get here, none of the top 3 matched
-                        console.log("❌ OCR mismatch - None of top 3 matches found in OCR text:",
-                            topMatches.map(m => m.cardId.split('_').slice(1).join('_')).join(', '));
+                        console.log("❌ No match - Top 3:", topMatches.map((m) => m.cardId.split("_").slice(1).join("_")).join(", "), "| OCR words:", ocrWords.join(", "));
                     } catch (ocrError) {
                         console.error("❌ OCR Error:", ocrError);
                     }
                 }
             } else {
-                console.log("⏭️ Skipping OCR - not all top 3 above 65%:",
-                    topMatches.map(m => (m.similarity * 100).toFixed(1) + "%").join(', '));
+                console.log("⏭️ Skipping OCR - not all top 3 above 65%:", topMatches.map((m) => (m.similarity * 100).toFixed(1) + "%").join(", "));
             }
         } catch (err) {
             console.error("❌ Prediction error:", err);
