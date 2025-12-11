@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import * as mobilenet from "@tensorflow-models/mobilenet";
+import Tesseract from "tesseract.js";
 import "./App.css";
 
 interface ScanResult {
@@ -56,9 +57,9 @@ function App() {
                 const embeddingsData: EmbeddingsDatabase = await embeddingsResponse.json();
                 embeddingsDatabaseRef.current = embeddingsData;
 
-                console.log(`✅ Loaded ${embeddingsData.total_images} embeddings for ${embeddingsData.total_cards} cards`);
-                console.log(`   Model: ${embeddingsData.model}`);
-                console.log(`   Embedding dimension: ${embeddingsData.embedding_dim}`);
+                // console.log(`✅ Loaded ${embeddingsData.total_images} embeddings for ${embeddingsData.total_cards} cards`);
+                // console.log(`   Model: ${embeddingsData.model}`);
+                // console.log(`   Embedding dimension: ${embeddingsData.embedding_dim}`);
 
                 setModelStatus("Loading MobileNet model...");
 
@@ -69,7 +70,7 @@ function App() {
                 });
                 modelRef.current = featureExtractor;
 
-                console.log("✅ MobileNet v2 loaded successfully");
+                // console.log("✅ MobileNet v2 loaded successfully");
 
                 setModelStatus(`Model loaded! ${embeddingsData.total_cards} cards ready (${embeddingsData.total_images} variations)`);
                 setIsModelLoaded(true);
@@ -111,10 +112,10 @@ function App() {
                 streamRef.current = stream;
                 setIsScanning(true);
 
-                // Start capturing frames every 250ms
+                // Start capturing frames every 2000ms (slowed for OCR debugging)
                 intervalRef.current = window.setInterval(() => {
                     captureAndPredict();
-                }, 250);
+                }, 2000);
             }
         } catch (err) {
             setError("Failed to access camera: " + (err as Error).message);
@@ -193,40 +194,6 @@ function App() {
         return allMatches.sort((a, b) => b.similarity - a.similarity).slice(0, topN);
     };
 
-    // ✅ Check if we have a valid hit (3 consecutive hits on same card with >65% similarity)
-    const checkForValidHit = (newHitHistory: Hit[]) => {
-        if (newHitHistory.length < 3) {
-            return null;
-        }
-
-        // Get last 3 hits
-        const lastThree = newHitHistory.slice(-3);
-
-        // Check if all 3 are the same card
-        const firstCardId = lastThree[0].cardId;
-        const allSameCard = lastThree.every((hit) => hit.cardId === firstCardId);
-
-        if (!allSameCard) {
-            return null;
-        }
-
-        // Check if all have >65% similarity
-        const allAboveThreshold = lastThree.every((hit) => hit.similarity > 65);
-
-        if (!allAboveThreshold) {
-            return null;
-        }
-
-        // Valid hit! Return the result
-        const cardName = firstCardId.split("_").slice(1).join(" ");
-        const avgSimilarity = lastThree.reduce((sum, hit) => sum + hit.similarity, 0) / 3;
-
-        return {
-            cardId: firstCardId,
-            cardName,
-            similarity: avgSimilarity,
-        };
-    };
 
     // 🎯 Capture frame and run embedding extraction + similarity search
     const captureAndPredict = async () => {
@@ -239,18 +206,11 @@ function App() {
         if (!context || video.readyState !== video.HAVE_ENOUGH_DATA) return;
 
         try {
-            // MobileNet expects 224×224 input
-            const TARGET_SIZE = 224;
-
-            // Set canvas to model input size
-            canvas.width = TARGET_SIZE;
-            canvas.height = TARGET_SIZE;
-
             const videoWidth = video.videoWidth;
             const videoHeight = video.videoHeight;
 
             if (!videoWidth || !videoHeight) {
-                console.warn("⚠️ videoWidth/videoHeight is zero — metadata not ready");
+                // console.warn("⚠️ videoWidth/videoHeight is zero — metadata not ready");
                 return;
             }
 
@@ -277,7 +237,12 @@ function App() {
                 sy = (videoHeight - sHeight) / 2;
             }
 
-            // Draw cropped card region and resize to 224×224
+            // Prepare image for MobileNet embedding extraction (224×224)
+            const TARGET_SIZE = 224;
+            canvas.width = TARGET_SIZE;
+            canvas.height = TARGET_SIZE;
+
+            // Draw cropped card region and resize to 224×224 for embeddings
             context.drawImage(video, sx, sy, sWidth, sHeight, 0, 0, TARGET_SIZE, TARGET_SIZE);
 
             // Convert to tensor and extract embeddings with MobileNet
@@ -308,37 +273,101 @@ function App() {
 
             // Find top 3 nearest cards
             const topMatches = findTopNCards(embeddingVector, 3);
-            const match = topMatches[0]; // Use best match for logic
 
-            console.log("🔍 Top 3 Similarity Results:", topMatches.map((m, i) => ({
-                rank: i + 1,
-                cardId: m.cardId,
-                similarity: (m.similarity * 100).toFixed(1) + "%",
-            })));
+            // console.log("🔍 Top 3 Similarity Results:", topMatches.map((m, i) => ({
+            //     rank: i + 1,
+            //     cardId: m.cardId,
+            //     similarity: (m.similarity * 100).toFixed(1) + "%",
+            // })));
 
             // Cleanup
             embeddingTensor.dispose();
 
-            // Add to hit history
-            const newHit: Hit = {
-                cardId: match.cardId,
-                similarity: match.similarity * 100,
-            };
+            // 🔤 OCR: Only run if all top 3 matches are >65% similarity
+            const allAboveThreshold = topMatches.every(m => m.similarity * 100 > 65);
 
-            setHitHistory((prev) => {
-                const updated = [...prev, newHit];
+            if (allAboveThreshold) {
+                // Create a temporary canvas for OCR with original resolution
+                const ocrCanvas = document.createElement('canvas');
+                const ocrContext = ocrCanvas.getContext('2d');
 
-                // Check for valid hit
-                const validResult = checkForValidHit(updated);
-                if (validResult) {
-                    console.log("✅ VALID HIT DETECTED:", validResult);
-                    setValidHit(validResult);
-                    stopScanning(); // Stop scanning when valid hit is detected
+                if (ocrContext) {
+                    // Set canvas to cropped card size (full resolution, not resized)
+                    ocrCanvas.width = sWidth;
+                    ocrCanvas.height = sHeight;
+
+                    // Draw the cropped card region at full resolution
+                    ocrContext.drawImage(video, sx, sy, sWidth, sHeight, 0, 0, sWidth, sHeight);
+
+                    // Preprocessing: Enhance image for better OCR
+                    const imageData = ocrContext.getImageData(0, 0, sWidth, sHeight);
+                    const data = imageData.data;
+
+                    // Apply brightness, contrast, and grayscale
+                    const brightness = 30; // Increase brightness
+                    const contrast = 40;   // Increase contrast
+
+                    for (let i = 0; i < data.length; i += 4) {
+                        // Convert to grayscale first (helps OCR focus on text)
+                        const gray = 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
+
+                        // Apply brightness and contrast
+                        let value = gray;
+                        value += brightness;
+                        value = ((value - 128) * (contrast + 100) / 100) + 128;
+
+                        // Clamp to valid range
+                        value = Math.max(0, Math.min(255, value));
+
+                        // Apply to all RGB channels
+                        data[i] = value;     // R
+                        data[i + 1] = value; // G
+                        data[i + 2] = value; // B
+                        // Alpha channel (data[i + 3]) stays unchanged
+                    }
+
+                    // Put the processed image back
+                    ocrContext.putImageData(imageData, 0, 0);
+
+                    try {
+                        const ocrResult = await Tesseract.recognize(ocrCanvas, "eng");
+
+                        console.log("📝 OCR Text Detected:", ocrResult.data.text);
+                        console.log("📊 OCR Confidence:", (ocrResult.data.confidence).toFixed(1) + "%");
+
+                        // Store OCR text for validation
+                        const ocrText = ocrResult.data.text.toLowerCase();
+
+                        // Check each of the top 3 matches against OCR text
+                        for (const match of topMatches) {
+                            // Extract card name from card ID (e.g., "sv02-085_Slowpoke" -> "Slowpoke")
+                            const cardName = match.cardId.split('_').slice(1).join('_');
+
+                            // Check if card name is in OCR text (case insensitive)
+                            if (ocrText.includes(cardName.toLowerCase())) {
+                                console.log("✅ VALID HIT! Card:", cardName, "| Similarity:", (match.similarity * 100).toFixed(1) + "%");
+                                const validResult: ScanResult = {
+                                    cardId: match.cardId,
+                                    cardName: cardName,
+                                    similarity: match.similarity * 100,
+                                };
+                                setValidHit(validResult);
+                                stopScanning();
+                                return; // Exit early since we found a valid hit
+                            }
+                        }
+
+                        // If we get here, none of the top 3 matched
+                        console.log("❌ OCR mismatch - None of top 3 matches found in OCR text:",
+                            topMatches.map(m => m.cardId.split('_').slice(1).join('_')).join(', '));
+                    } catch (ocrError) {
+                        console.error("❌ OCR Error:", ocrError);
+                    }
                 }
-
-                // Keep only last 10 hits to avoid memory issues
-                return updated.slice(-10);
-            });
+            } else {
+                console.log("⏭️ Skipping OCR - not all top 3 above 65%:",
+                    topMatches.map(m => (m.similarity * 100).toFixed(1) + "%").join(', '));
+            }
         } catch (err) {
             console.error("❌ Prediction error:", err);
         }
