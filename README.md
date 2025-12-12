@@ -10,7 +10,8 @@ AI-powered instant Pokemon card recognition using computer vision and embedding-
 ## Features
 
 -   **Real-time card recognition** via webcam
--   **MobileNet v2 embeddings** for fast similarity search
+-   **Dual validation system** - combines MobileNet v2 embeddings + Tesseract.js OCR
+-   **Fuzzy text matching** - handles OCR errors and misspellings with Fuse.js
 -   **Scalable architecture** - handles 20,000+ cards without retraining
 -   **100% TypeScript**
 -   **Compressed embeddings** - zipped embeddings committed to git for fast deployments
@@ -18,7 +19,9 @@ AI-powered instant Pokemon card recognition using computer vision and embedding-
 
 ## How It Works
 
-This scanner uses **embedding-based recognition**:
+This scanner uses a **two-stage validation system** combining embedding-based recognition with OCR verification:
+
+### Stage 1: Embedding-Based Recognition
 
 1. **MobileNet v2** extracts 1024-dimensional feature vectors from card images
 2. Pre-computed embeddings for all training images are stored in a database
@@ -26,14 +29,37 @@ This scanner uses **embedding-based recognition**:
     - Captured and preprocessed (224x224)
     - Converted to an embedding vector
     - Compared against all database embeddings using **cosine similarity**
-4. The card with the highest similarity score is identified
+4. The **top 3 matches** are retrieved and checked
 
-**Why embeddings?**
+### Stage 2: OCR Validation
 
--   Fixed model size regardless of card count
--   Add new cards without retraining - just compute their embeddings
--   More robust than classification for large datasets
--   Professional scanners use this approach
+If **all top 3 matches exceed 65% similarity**, the system performs OCR validation:
+
+1. **Image preprocessing**:
+    - Crops to top half of card (where Pokemon names appear)
+    - Converts to grayscale for better text recognition
+    - Applies brightness (+50) and contrast (+60) enhancement
+
+2. **Tesseract.js OCR**:
+    - Optimized for single-line text detection
+    - Extracts Pokemon name from card image
+
+3. **Fuzzy matching with Fuse.js**:
+    - Compares OCR text against Pokemon names database
+    - Handles misspellings and OCR errors
+    - Threshold: 0.4 (0 = exact match, 1 = match anything)
+
+4. **Final validation**:
+    - Checks if OCR text matches any of the top 3 embedding results
+    - Both exact substring matching and fuzzy matching are attempted
+    - Only confirms a hit if **both vision (embeddings) and text (OCR) agree**
+
+**Why this hybrid approach?**
+
+-   **Embeddings alone** can be fooled by similar-looking cards
+-   **OCR validation** ensures the detected Pokemon name matches what's visually recognized
+-   **Higher accuracy** with minimal false positives
+-   **Robust to variations** in lighting, angle, and card condition
 
 ## Quick Start
 
@@ -82,6 +108,7 @@ Downloads Pokemon card images from the [TCGdex API](https://www.tcgdex.dev/):
 -   Configurable limit via `CARD_LIMIT` environment variable
 -   Sets to download can be varied within the array in the script
 -   Default: 50 cards (configurable in `vercel.json`)
+-   **Generates `pokemon-names.json`** - database of all unique Pokemon names for OCR fuzzy matching
 
 ### 2. Augment Dataset
 
@@ -168,6 +195,8 @@ The project uses a **zip-based deployment** approach for fast builds:
 -   **TypeScript** - Type safety
 -   **Vite** - Build tool & dev server
 -   **@tensorflow/tfjs** - MobileNet inference in browser
+-   **Tesseract.js** - Client-side OCR for text recognition
+-   **Fuse.js** - Fuzzy string matching for OCR validation
 
 ### Backend/Scripts
 
